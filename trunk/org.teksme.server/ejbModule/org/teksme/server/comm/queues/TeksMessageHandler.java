@@ -1,30 +1,20 @@
 package org.teksme.server.comm.queues;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.logging.Logger;
 
-import javax.ejb.ActivationConfigProperty;
 import javax.ejb.EJB;
-import javax.ejb.MessageDriven;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 
-import org.jboss.ejb3.annotation.ResourceAdapter;
 import org.teksme.server.comm.DeadLetterHandler;
 
-@MessageDriven(name = "TeksMessageHandler", activationConfig = {
-		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/testQueue") })
-@TransactionManagement(value = TransactionManagementType.CONTAINER)
-@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
-@ResourceAdapter("hornetq-ra.rar")
 public abstract class TeksMessageHandler<T> implements MessageListener {
+
+	Logger logger = Logger.getLogger("TeksMessageHandler");
 
 	private final Class<?> expectedType;
 
@@ -38,16 +28,21 @@ public abstract class TeksMessageHandler<T> implements MessageListener {
 	}
 
 	public void onMessage(final Message message) {
+
 		if (matchesExpectedType(message)) {
+			logger.info("onMessage::matchesExpectedType(message)");
 			invokeConsume(message);
 		} else {
 			final Object payload = extractPayload(message);
 			if (matchesExpectedType(payload)) {
+				logger.info("matchesExpectedType(payload)");
 				invokeConsume(payload);
 			} else {
+				logger.info("deadLetterHandler");
 				deadLetterHandler.invalidMessageType(message);
 			}
 		}
+
 	}
 
 	protected DeadLetterHandler getDeadLetterHandler() {
