@@ -6,12 +6,12 @@ import javax.jms.Message;
 import org.teksme.server.comm.DeadLetterHandler;
 import org.teksme.server.comm.DeadLetterHandlerHome;
 
-@Stateless(name="DeadLetterHandler")
+@Stateless
 public class DeadLetterHandlerBean implements DeadLetterHandler,
 		DeadLetterHandlerHome {
 
 	public void invalidMessageType(Message message) {
-		// TODO Auto-generated method stub
+		System.out.println("DeadLetterHandlerBean.invalidMessageType()");
 
 	}
 

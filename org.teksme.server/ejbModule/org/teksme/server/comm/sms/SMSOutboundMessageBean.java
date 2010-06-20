@@ -16,12 +16,6 @@ import org.teksme.server.comm.SMSOutboundMessageLocal;
 public class SMSOutboundMessageBean implements SMSOutboundMessage,
 		SMSOutboundMessageLocal {
 
-	public static final String RemoteJNDIName = SMSOutboundMessageBean.class
-			.getSimpleName() + "/remote";
-
-	public static final String HomeJNDIName = SMSOutboundMessageBean.class
-			.getSimpleName() + "/remote";
-
 	public SMSOutboundMessageBean() {
 	}
 
