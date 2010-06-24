@@ -15,8 +15,8 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 public class GreetingServiceImpl extends RemoteServiceServlet implements
 		GreetingService {
 
-	@EJB
-	SMSOutboundMessage smsMessage;
+//	@EJB
+//	SMSOutboundMessage smsMessage;
 
 	public String greetServer(String input) throws IllegalArgumentException {
 		// Verify that the input is valid.
