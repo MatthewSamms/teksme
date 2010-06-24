@@ -11,12 +11,12 @@
 
 	<servlet-mapping>
 		<servlet-name>greetServlet</servlet-name>
-		<url-pattern>/org_teksme_server_web/greet</url-pattern>
+		<url-pattern>/teksme_web/greet</url-pattern>
 	</servlet-mapping>
 
 	<!-- Default page to serve -->
 	<welcome-file-list>
-		<welcome-file>Org_teksme_server_web.html</welcome-file>
+		<welcome-file>teksme_web.html</welcome-file>
 	</welcome-file-list>
 
 </web-app>
