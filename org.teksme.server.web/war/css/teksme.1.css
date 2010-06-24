@@ -1,0 +1,468 @@
+#navlist {
+	padding-left: 0;
+	margin-left: 0;
+	border-bottom: 1px solid gray;
+	width: 200px;
+}
+
+#navlist li {
+	list-style: none;
+	margin: 0;
+	padding: 0.25em;
+	border-top: 1px solid gray;
+}
+
+#navlist li a {
+	text-decoration: none;
+}
+
+.selector {
+	border-bottom: 1px dashed gray;
+}
+
+/* ================================================================ 
+This copyright notice must be untouched at all times.
+
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/vertical-list.html
+Copyright (c) 2005-2009 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any 
+way to fit your requirements.
+=================================================================== */
+#menuContainer {
+	width: 200px;
+	height: 300px;
+	/*background: url(vertical-list/fashion.jpg);*/
+	position: relative;
+}
+
+#verticalNav {
+	position: absolute;
+	left: 0px;
+	top: 5px;
+	margin: 0;
+	list-style: none;
+	position: relative;
+	font-family: verdana, sans-serif;
+	float: left;
+	padding: 10px 0 0 0;
+}
+
+#verticalNav ul.toplevel {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#verticalNav ul.sub {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#verticalNav table {
+	border-collapse: collapse;
+	margin: -1px;
+}
+
+#verticalNav ul.toplevel ul.sub {
+	position: absolute;
+	left: -9999px;
+	width: 173px;
+}
+
+#verticalNav ul.toplevel ul div.base {
+	position: absolute;
+	left: -9999px;
+	background: #fff;
+	border: 1px solid #ddd;
+	padding: 10px;
+	width: 350px;
+	height: 300px;
+}
+
+#verticalNav ul.toplevel ul div.border {
+	position: absolute;
+	left: -9999px;
+	background: transparent url(vertical-list/backing.png);
+	width: 390px;
+	height: 340px;
+}
+
+#verticalNav ul.toplevel {
+	width: 185px;
+	border-top: 1px solid #ddd;
+}
+
+#verticalNav ul.toplevel li {
+	float: left;
+	width: 185px;
+}
+
+#verticalNav ul.toplevel li a {
+	display: block;
+	width: 173px;
+	padding-left: 10px;
+	height: 22px;
+	line-height: 22px;
+	text-decoration: none;
+	color: #000;
+	font-size: 11px;
+	background: #eef0f0 url(../img/arrow-black.jpg) no-repeat 168px center;
+	border: 1px solid #ddd;
+	border-width: 0 1px 1px 1px;
+}
+
+#verticalNav a:hover {
+	white-space: nowrap;
+}
+
+#verticalNav :hover ul.toplevel li a {
+	background: #eee url(../img/icon_gray_arrow.gif) no-repeat 168px center;
+	color: #444;
+	filter: alpha(opacity =         90);
+	opacity: 0.9;
+}
+
+#verticalNav ul.toplevel li a:hover {
+	color: #069;
+	background: #fff url(../img/arrow-black.jpg) no-repeat 168px center;
+	filter: alpha(opacity =         100);
+	opacity: 1.0;
+}
+
+#verticalNav ul.toplevel li:hover>a {
+	color: #069;
+	background: #fff url(../img/arrow-black.jpg) no-repeat 168px center;
+	filter: alpha(opacity =         100);
+	opacity: 1.0;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub {
+	left: 184px;
+	top: 0;
+	border-top: 1px solid #ddd;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos1 {
+	top: 10px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos2 {
+	top: 33px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos3 {
+	top: 56px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos4 {
+	top: 79px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos5 {
+	top: 102px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos6 {
+	top: 125px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos7 {
+	top: 148px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos8 {
+	top: 171px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos9 {
+	top: 194px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.pos10 {
+	top: 217px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub li a {
+	background: #eee;
+	color: #000;
+	filter: alpha(opacity =         100);
+	opacity: 1.0;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub li a.sub2 {
+	background: #eee url(../img/arrow-black.jpg) no-repeat 168px center;
+	color: #000;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub li a:hover {
+	background: #fff;
+	color: #069;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub li a.sub2:hover {
+	background: #fff url(../img/arrow-black.jpg) no-repeat 168px center;
+	color: #069;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub li:hover>a.sub2 {
+	background: #fff url(../img/arrow-black.jpg) no-repeat 168px center;
+	color: #069;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub div.base {
+	left: -9999px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub div.border {
+	left: -9999px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.base {
+	left: 188px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.div1 {
+	top: -207px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.div2 {
+	top: -230px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.div3 {
+	top: -253px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.div4 {
+	top: -276px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.div5 {
+	top: -309px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.div6 {
+	top: -332px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.div7 {
+	top: -185px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.border {
+	left: 175px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.b1 {
+	top: -102px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.b2 {
+	top: -125px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.b3 {
+	top: -217px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.b4 {
+	top: -240px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.b5 {
+	top: -147px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.b6 {
+	top: -217px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.b7 {
+	top: -195px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.base ul {
+	float: left;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	width: 200px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.base ul li {
+	display: block;
+	float: left;
+	width: 150px;
+	height: auto;
+	padding: 0;
+	margin: 0;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.base ul li a {
+	width: 190px;
+	padding-left: 10px;
+	background: #fff url(vertical-list/dot.gif) no-repeat left center;
+	color: #000;
+	border: 0;
+	margin: 0;
+	height: auto;
+	line-height: 18px;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.base ul li a:hover
+	{
+	color: #069;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.base h4 {
+	color: #888;
+	font-size: 13px;
+	margin: 0;
+	padding: 5px 0 5px 0;
+}
+
+#verticalNav :hover ul.toplevel :hover ul.sub :hover div.base p {
+	color: #555;
+	font-size: 11px;
+	margin: 0;
+	padding: 0 0 5px 0;
+	line-height: 18px;
+}
+
+body {
+	font-family: "Lucida Grande", "Lucida Sans Unicode", Verdana, Arial,
+		Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+p,h1,form,button {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+.spacer {
+	clear: both;
+	height: 1px;
+}
+
+/* ----------- My Form ----------- */
+.myform {
+	margin: 0 auto;
+	width: 400px;
+	padding: 14px;
+}
+
+/* ----------- basic ----------- */
+#basic {
+	border: solid 2px #DEDEDE;
+}
+
+#basic h1 {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+#basic p {
+	font-size: 11px;
+	color: #666666;
+	margin-bottom: 20px;
+	border-bottom: solid 1px #dedede;
+	padding-bottom: 10px;
+}
+
+#basic label {
+	display: block;
+	font-weight: bold;
+	text-align: right;
+	width: 140px;
+	float: left;
+}
+
+#basic .small {
+	color: #666666;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: right;
+	width: 140px;
+}
+
+#basic input {
+	float: left;
+	width: 200px;
+	margin: 2px 0 30px 10px;
+}
+
+#basic button {
+	clear: both;
+	margin-left: 150px;
+	background: #888888;
+	color: #FFFFFF;
+	border: solid 1px #666666;
+	font-size: 11px;
+	font-weight: bold;
+	padding: 4px 6px;
+}
+
+/* ----------- stylized ----------- */
+#stylized {
+	border: solid 0px #b7ddf2;
+	/*background: #ebf4fb;*/
+}
+
+#stylized h1 {
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 8px;
+}
+
+#stylized p {
+	font-size: 11px;
+	color: #666666;
+	margin-bottom: 20px;
+	border-bottom: solid 1px #b7ddf2;
+	padding-bottom: 10px;
+}
+
+#stylized label {
+	display: block;
+	font-weight: bold;
+	text-align: right;
+	width: 140px;
+	float: left;
+}
+
+#stylized .small {
+	color: #666666;
+	display: block;
+	font-size: 11px;
+	font-weight: normal;
+	text-align: right;
+	width: 140px;
+}
+
+#stylized input, select, textarea {
+	float: left;
+	font-size: 12px;
+	padding: 4px 2px;
+	border: solid 1px #aacfe4;
+	width: 200px;
+	margin: 2px 0 20px 10px;
+}
+
+#stylized button {
+	clear: both;
+	margin-left: 150px;
+	width: 125px;
+	height: 31px;
+	background: #666666 url(../img/button.png) no-repeat;
+	text-align: center;
+	line-height: 31px;
+	color: #FFFFFF;
+	font-size: 11px;
+	font-weight: bold;
+}
