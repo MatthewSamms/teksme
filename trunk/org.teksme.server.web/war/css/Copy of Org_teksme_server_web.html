@@ -1,0 +1,421 @@
+<!doctype html>
+<!-- The DOCTYPE declaration above will set the    -->
+<!-- browser's rendering engine into               -->
+<!-- "Standards Mode". Replacing this declaration  -->
+<!-- with a "Quirks Mode" doctype may lead to some -->
+<!-- differences in layout.                        -->
+
+<!-- saved from url=(0060)https://www.rememberthemilk.com/home/fabianoc/#section.tasks -->
+<HTML xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+
+<STYLE>.gc-call-popup {
+  padding: 0;
+  border: 2px solid #6688EE;
+  background-color: #6688EE;
+  position: absolute;
+  z-index: 10001;
+  visibility: hidden;
+  font-family: arial, sans-serif;
+  top: 0;
+  right: 0;
+  width: 240px;
+  -webkit-border-radius: 5px 5px;
+  -webkit-box-shadow: 2px 2px 6px #777;
+  text-align: left;
+}
+
+div.gc-call-popup div {
+  height: auto;
+  font-family: arial, sans-serif;
+}
+
+span.gc-cs-link {
+  color: #03B;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.gc-cs-calli {
+  font-weight: bold;
+  padding: 3px 8px 4px 30px;
+  background: #6688EE no-repeat 6px 3px;
+  color: #fff;
+  font-size: 15px;
+}
+
+.gc-cs-calli img {
+  position: absolute;
+  top: 4px;
+  right: 5px;
+  cursor: pointer;
+}
+
+.gc-cs-content {
+  padding: 8px 10px 10px;
+  background-color: #fff;
+  -webkit-border-radius: 0 0 5px 5px;
+  height: auto;
+}
+
+div.gc-cs-content div {
+  height: auto;
+}
+
+.gc-cs-cwith {
+  padding: 0 0 2px 0;
+  font-size: 13px;
+  font-weight: bold;
+  height: inherit;
+}
+
+.gc-call-popup .gc-cs-phone {
+  margin: 0 0 8px 0;
+  height: inherit;
+}
+
+.gc-call-popup .gc-quickcall-msg,
+.gc-call-popup .gc-quickcall-err {
+  margin: 0px 3px 0px 5px;
+  padding: 4px 6px 4px;
+  min-width: 90px;
+  font-size: 13px;
+  vertical-align: middle;
+}
+
+.gc-call-popup .gc-quickcall-msg {
+  background-color: #eff3f8;
+}
+
+.gc-call-popup .gc-quickcall-err {
+  background-color: #f8c3c3;
+  color: #8c0a0a;
+}
+
+/* GOOG Styles */
+
+.gc-call-popup .goog-button-base {
+  cursor: default;
+  font-family: Arial, sans-serif;
+  letter-spacing: normal;
+  margin: 0 1px;
+  outline: none;
+  text-align: center;
+  text-indent: 0;
+  text-transform: none;
+  vertical-align: baseline;
+  white-space: nowrap;
+  word-spacing: normal;
+}
+
+.gc-call-popup .goog-button-base-outer-box {
+  border-top: 1px solid #bbb;
+  border-bottom: 1px solid #aaa;
+}
+
+.gc-call-popup .goog-button-base-inner-box {
+  background: #e3e3e3;
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #aaa;
+  margin: 0 -1px;
+}
+
+.gc-call-popup .goog-button-base-pos {
+  height: 100%;
+  position: relative;
+}
+
+.gc-call-popup .goog-button-base-top-shadow {
+  background: #f9f9f9;
+  border-bottom: .23em solid #eee;
+  height: 9px;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.gc-call-popup .goog-button-base-content {
+  color: #333;
+  line-height: 21.45px;
+  position: relative;
+  padding: 0 6px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.gc-call-popup .goog-flat-menu-button {
+  font-size: 13px;
+}
+
+.gc-call-popup .goog-flat-menu-button-caption {
+  font-size: 13px;
+}
+
+
+/* State: Hover, Focused */
+
+.goog-button-base-hover .goog-button-base-content,
+.goog-button-base-focused .goog-button-base-content {
+  color: #000;
+}
+
+.goog-button-base-hover .goog-button-base-outer-box,
+.goog-button-base-hover .goog-button-base-inner-box,
+.goog-button-base-focused .goog-button-base-outer-box,
+.goog-button-base-focused .goog-button-base-inner-box {
+  border-color: #888;
+}
+
+
+/* State: Active, Open */
+
+.gc-call-popup .goog-button-base-active .goog-button-base-inner-box,
+.gc-call-popup .goog-button-base-open .goog-button-base-inner-box {
+  background: #f9f9f9;
+}
+
+.gc-call-popup .goog-button-base-active .goog-button-base-top-shadow,
+.gc-call-popup .goog-button-base-open .goog-button-base-top-shadow {
+  background: #e3e3e3;
+}
+
+.gc-call-popup .goog-button-base-active .goog-button-base-content,
+.gc-call-popup .goog-button-base-open .goog-button-base-content {
+  color: #000;
+}
+
+
+/* State: Disabled */
+
+.goog-button-base-disabled {
+  cursor: default;
+}
+
+.gc-call-popup .goog-button-base-disabled .goog-button-base-inner-box,
+.gc-call-popup .goog-button-base-disabled .goog-button-base-top-shadow {
+  background: #eee;
+}
+
+.gc-call-popup .goog-button-base-disabled .goog-button-base-top-shadow {
+  border-color: #eee;
+}
+
+.gc-call-popup .goog-button-base-disabled .goog-button-base-content {
+  color: #999;
+}
+
+/* goog.ui.Menu */
+
+div.gc-cs {
+  position: absolute;
+  color: #000;
+  border: 1px solid #B5B6B5;
+  background-color: #f6f8fd;
+  cursor: default;
+  font: normal small arial, helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+  top: 0;
+  left: 0;
+  z-index: 10001;
+}
+
+.gc-cs .goog-menuitem {
+  position: relative;
+  padding: 2px 1.5em 2px 5px;
+  margin: 0px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.gc-cs .goog-menuitem-rtl {
+  padding: 2px 5px 2px 1.5em;
+}
+
+.gc-cs .goog-menuitem-highlight {
+  background: #e3e9ff;
+}
+
+.gc-cs .goog-option-selected {
+  background: #68e;
+}
+
+.gc-simple-menu .goog-menuitem-highlight,
+.gc-simple-menu .goog-option-selected {
+  background: #d6e9f8;
+}
+
+.gc-phone-menu {
+  min-width: 160px;
+}
+
+.gc-cs .goog-menuitem-disabled {
+  color: #999;
+}
+
+.gc-cs .goog-option-selected {
+  color: #fff;
+}
+
+.gc-cs .goog-option {
+  position: relative;
+  padding: 2px 16px 2px 5px;
+  margin: 0px;
+  list-style: none;
+  cursor: pointer;
+}
+
+.gc-cs .goog-option-selected {
+  font-weight: normal;
+}
+
+.gc-call-popup .goog-menuitem {
+  text-align: left;
+}
+
+.gc-call-popup .goog-menuitem-content {
+  font-size: 13px;
+}
+
+.gc-call-popup .goog-inline-block {
+  position: relative;
+  display: inline-block;
+}
+
+.gc-call-popup div.goog-button-base {
+  font-size: 13px;
+}
+
+.gc-call-popup .goog-button-base-pos {
+  height: inherit;
+}
+
+.gc-call-popup div.goog-flat-menu-button-dropdown {
+  background: url(toolbar_icons.gif) no-repeat -176px;
+}</STYLE><STYLE>/* Copyright 2010 Google Inc. All Rights Reserved. */
+.goog-button-base-collapse-right,.goog-button-base-collapse-right .goog-button-base-inner-box{margin-right:0}.goog-button-base-collapse-left,.goog-button-base-collapse-left .goog-button-base-inner-box{margin-left:0}.goog-button-base-collapse-left .goog-button-base-inner-box{border-left:1px solid #fff}.goog-button-base-hover.goog-button-base-collapse-left,.goog-button-base-focused.goog-button-base-collapse-left{border-left:1px solid #888;margin-left:-1px;z-index:1;}* html .goog-button-base-collapse-left .goog-button-base-inner-box{left:0}* html .goog-button-rtl.goog-button-base-collapse-right .goog-button-base-inner-box{margin-right:-1px}*:first-child+html .goog-button-base-collapse-left .goog-button-base-inner-box{left:0}*:first-child+html .goog-button-base-rtl.goog-button-base-collapse-left .goog-button-base-inner-box{left:1px}*:first-child+html .goog-button-base-rtl.goog-button-base-collapse-right .goog-button-base-inner-box{left:0}.goog-button-base-rtl.goog-button-base-hover.goog-button-base-collapse-left,x:-moz-any-link,.goog-button-base-rtl.goog-button-base-focused.goog-button-base-collapse-left,x:-moz-any-link{border-left:none;margin-left:0}*:first-child+html .goog-button-base-rtl.goog-button-base-hover.goog-button-base-collapse-left,*:first-child+html .goog-button-base-rtl.goog-button-base-focused.goog-button-base-collapse-left{border-left:1px solid #888;margin-left:-1px}.goog-flat-menu-button{margin:0 2px;color:#333;text-decoration:none;list-style:none;vertical-align:middle;cursor:pointer;outline:none;-moz-outline:none;border-width:1px;border-style:solid;border-color:#c9c9c9;background-color:#fff;padding:2px 0}.goog-flat-menu-button-disabled *{color:#999;border-color:#ccc;cursor:default}.goog-flat-menu-button-hover,.goog-flat-menu-button-hover{border-color:#9cf #69e #69e #7af!important;}.goog-flat-menu-button-active{background-color:#bbb;background-position:bottom left}.goog-flat-menu-button-focused{border-color:orange}.goog-flat-menu-button-caption{padding:1px 4px 1px 4px;vertical-align:middle;width:100px;white-space:nowrap;overflow:hidden}.goog-flat-menu-button-dropdown{width:7px;background:url(images/closure/toolbar_icons.gif) no-repeat -176px;vertical-align:middle;margin:1px 4px 1px 4px}.goog-flat-menu-button-option-select{border-top:1px solid #999}.goog-flat-menu-button-input input{border-width:0;width:100px;margin-right:4px;padding-left:1px}.gc-simple-menu .goog-flat-menu-button{margin:0;color:#03b;border-width:0;background-color:transparent;padding:0}.gc-simple-menu .goog-flat-menu-button-caption{padding:0;margin-right:3px;vertical-align:bottom;width:auto;text-decoration:underline}.gc-simple-menu .goog-flat-menu-button-dropdown{margin:0;background:none;font-size:1.0em;width:auto}.gc-simple-menu2 .goog-flat-menu-button{color:#78c}.gc-simple-menu2 .goog-flat-menu-button-caption{margin-right:2px;text-decoration:none;font-size:11px}.gc-simple-menu2 .goog-flat-menu-button-dropdown{font-size:11px}</STYLE><STYLE>.NFClass { background-color:red; }</STYLE><HEAD><META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<TITLE>Remember The Milk - Fabiano's Tasks</TITLE>
+
+<LINK rel="stylesheet" href="./Remember The Milk - Fabiano's Tasks_files/rtm.1.css" type="text/css">
+<LINK rel="alternate" type="application/atom+xml" title="Fabiano&#39;s Tasks - Inbox" href="http://www.rememberthemilk.com/atom/fabianoc/12200917/">
+<LINK rel="alternate" type="application/atom+xml" title="Fabiano&#39;s Tasks - All Tasks" href="http://www.rememberthemilk.com/atom/fabianoc/12200922/">
+<LINK rel="alternate" type="application/atom+xml" title="Fabiano&#39;s Tasks - Personal" href="http://www.rememberthemilk.com/atom/fabianoc/12200918/">
+<LINK rel="alternate" type="application/atom+xml" title="Fabiano&#39;s Tasks - Study" href="http://www.rememberthemilk.com/atom/fabianoc/12200919/">
+<LINK rel="alternate" type="application/atom+xml" title="Fabiano&#39;s Tasks - Work" href="http://www.rememberthemilk.com/atom/fabianoc/12200920/">
+<LINK rel="alternate" type="application/atom+xml" title="Fabiano&#39;s Tasks - Sent" href="http://www.rememberthemilk.com/atom/fabianoc/12200921/">
+<SCRIPT>
+var RTM_GMAPS_URL = "http:\/\/maps.google.com\/maps?file=api&v=2.92&key=ABQIAAAAnYpYQK6lEddCpc9LdzRRZBQ-We2BOtNRpox9QkX788VK3QIjlhSYWzFDVlMNJaLjppgU1h4oX-sjyg&async=2&callback=LocationManager.GmapsAsyncCallback";
+</SCRIPT>
+
+<SCRIPT type="text/javascript" src="./Remember The Milk - Fabiano's Tasks_files/en-US.interface.75.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="./Remember The Milk - Fabiano's Tasks_files/sha1.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="./Remember The Milk - Fabiano's Tasks_files/gears_init.js"></SCRIPT>
+<SCRIPT type="text/javascript" src="./Remember The Milk - Fabiano's Tasks_files/rtm.3.27.js"></SCRIPT>
+
+<LINK rel="stylesheet" href="./Remember The Milk - Fabiano's Tasks_files/app.14.css" type="text/css">
+<!--[if lt IE 8]>
+<link rel="stylesheet" href="/css/app/app_ie.6.css" type="text/css" />
+<![endif]-->
+<STYLE>
+#appheader { height: 1px; }
+</STYLE>
+<!--[if gt IE 6]>
+<style>
+#appheader { height: auto; min-height: 1px; }
+</style>
+<![endif]-->
+
+<LINK type="text/css" href="./Remember The Milk - Fabiano's Tasks_files/preview.s3.v2.css" rel="stylesheet" media="screen"><SCRIPT>window["_GOOG_TRANS_EXT_VER"] = "1";</SCRIPT><SCRIPT>window["_GOOG_TRANS_EXT_VER"] = "1";</SCRIPT><STYLE type="text/css">@media print{.gmnoprint{display:none}}@media screen{.gmnoscreen{display:none}}</STYLE><SCRIPT type="text/javascript" charset="UTF-8" src="./Remember The Milk - Fabiano's Tasks_files/{mod_drag,mod_ctrapi,mod_kbrd,mod_zoom,mod_ovrmpc}.js"></SCRIPT><SCRIPT>window["_GOOG_TRANS_EXT_VER"] = "1";</SCRIPT><SCRIPT>window["_GOOG_TRANS_EXT_VER"] = "1";</SCRIPT></HEAD><BODY onload="rtmLoad();" onbeforeunload="try{rtmOnBeforeUnload();}catch(e){}" class=" sf3">
+<DIV id="content">
+<DIV id="appheader">
+    <A href="https://www.rememberthemilk.com/" bitly="BITLY_PROCESSED"><DIV id="appheaderlogo" style="position: absolute; height: 83px; width: 188px; cursor: pointer; background:transparent url(&#39;/img/logo2.png&#39;);"></DIV></A>
+        <DIV id="topnav" style="float: right;"><SPAN id="personName" style="position: relative; color: #000; font-weight:bold;">fabianoc</SPAN><SPAN id="is-pro" class="prouser" style="display: none; "><IMG src="./Remember The Milk - Fabiano's Tasks_files/ico_pro_sm.gif" alt="Pro"></SPAN><SPAN id="offline-status" class=""> | <IMG width="11" height="11" title="Currently online: click to go offline" alt="" class="hidden" id="is-connected" src="./Remember The Milk - Fabiano's Tasks_files/off-connected-synced.gif"><IMG width="11" height="11" title="Currently offline: click to go online" alt="" class="hidden" id="is-disconnected" src="./Remember The Milk - Fabiano's Tasks_files/off-disconnected.gif"><IMG width="11" height="11" title="Synchronizing..." alt="" class="hidden" id="is-syncing" src="./Remember The Milk - Fabiano's Tasks_files/off-connected-syncing.gif"><SPAN class="" id="has-gears"><A href="https://www.rememberthemilk.com/home/fabianoc/#" onclick="try { this.blur(); Offline.Dialog.showGears(); return false; } catch(e) {} " bitly="BITLY_PROCESSED">Offline</A></SPAN></SPAN> | <SPAN id="viewSelector"><A href="https://www.rememberthemilk.com/home/fabianoc/#section.overview" bitly="BITLY_PROCESSED">Overview</A> | <SPAN style="font-weight: bold;">Tasks</SPAN> | <A href="https://www.rememberthemilk.com/home/fabianoc/#section.locations" bitly="BITLY_PROCESSED">Locations</A> | <A href="https://www.rememberthemilk.com/home/fabianoc/#section.contacts" bitly="BITLY_PROCESSED">Contacts</A> | <A href="https://www.rememberthemilk.com/home/fabianoc/#section.settings" bitly="BITLY_PROCESSED">Settings</A> | <A href="https://www.rememberthemilk.com/help/" target="_blank" bitly="BITLY_PROCESSED">Help</A> | <A href="https://www.rememberthemilk.com/auth.rtm?logout" bitly="BITLY_PROCESSED">Logout</A></SPAN></DIV>
+    <DIV style="float: right; clear: right; padding-top: 7px;"><SPAN id="datetime" style="white-space: nowrap; text-align: right; color: #A6A6A6; font-size: 10px;">Tuesday, June 22, 2010 | 8:56PM</SPAN></DIV>
+        <DIV id="searchbox">
+        <FORM onsubmit="control.updateListFilter(); return false;" action="">
+			<DIV id="searchboxwrap">
+	    	<TABLE>
+			<TBODY>
+			<TR>
+				<TD style="width: 1px;">
+				<DIV id="searchicon">
+				</DIV>
+				</TD>
+				<TD>
+				<INPUT onfocus="this.select();" type="text" id="listFilter">
+				</TD>
+			</TR>
+			</TBODY>
+			</TABLE>
+			</DIV>
+	        <DIV id="searchtogglewrap"><A id="searchtoggle" href="https://www.rememberthemilk.com/home/fabianoc/#" onclick="tasksView.toggleSearchOptions(); return false;" bitly="BITLY_PROCESSED">Show search options</A></DIV>
+        </FORM>
+    </DIV>
+</DIV>
+
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+
+    <!--                                                               -->
+    <!-- Consider inlining CSS to reduce the number of requested files -->
+    <!--                                                               -->
+    <link type="text/css" rel="stylesheet" href="Org_teksme_server_web.css">
+
+    <!--                                           -->
+    <!-- Any title is fine                         -->
+    <!--                                           -->
+    <title>TeksMe :: Mobile Voting</title>
+    
+    <!--                                           -->
+    <!-- This script loads your compiled module.   -->
+    <!-- If you add any GWT meta tags, they must   -->
+    <!-- be added before this line.                -->
+    <!--                                           -->
+    <script type="text/javascript" language="javascript" src="teksme_web/teksme_web.nocache.js"></script>
+  </head>
+
+  <!--                                           -->
+  <!-- The body can have arbitrary html, or      -->
+  <!-- you can leave the body empty if you want  -->
+  <!-- to create a completely dynamic UI.        -->
+  <!--                                           -->
+  <body>
+
+    <!-- <h1>Mobile Voting</h1> -->
+ 	<div align="center" id="campaignEdtPanel">
+ 		
+		<input type="hidden" id="contextPath" value="${pageContext.request.contextPath}" />
+		<input type="hidden" id="formAction" value="${pageContext.request.contextPath}/sendForm" />
+
+ 	</div>
+
+    <!-- OPTIONAL: include this if you want history support -->
+    <iframe src="javascript:''" id="__gwt_historyFrame" tabIndex='-1' style="position:absolute;width:0;height:0;border:0"></iframe>
+    
+    <!-- RECOMMENDED if your web app will not function without JavaScript enabled -->
+    <noscript>
+      <div style="width: 22em; position: absolute; left: 50%; margin-left: -11em; color: red; background-color: white; border: 1px solid red; padding: 4px; font-family: sans-serif">
+        Your web browser must have JavaScript enabled
+        in order for this application to display correctly.
+      </div>
+    </noscript>
+
+<!--  
+    <table align="center">
+      <tr>
+        <td colspan="2" style="font-weight:bold;">Please enter your name:</td>        
+      </tr>
+      <tr>
+        <td id="nameFieldContainer"></td>
+        <td id="sendButtonContainer"></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="color:red;" id="errorLabelContainer"></td>
+      </tr>
+    </table>
+  -->
+  </body>
+</html>
