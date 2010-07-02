@@ -11,44 +11,41 @@ import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.teksme.model.teks.AnswerRef;
-import org.teksme.model.teks.InboundMessage;
+import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.ResponseDetail;
 import org.teksme.model.teks.TeksPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Response Detail</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Response Detail</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.ResponseDetailImpl#getDateTime <em>Date Time</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ResponseDetailImpl#getRawMessage <em>Raw Message</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ResponseDetailImpl#getSetValueList <em>Set Value</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.ResponseDetailImpl#getDateTime <em>Date
+ * Time</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.ResponseDetailImpl#getRawMessage <em>
+ * Raw Message</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.ResponseDetailImpl#getSetValueList <em>
+ * Set Value</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	/**
-	 * The default value of the '{@link #getDateTime() <em>Date Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getDateTime() <em>Date Time</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDateTime()
 	 * @generated
 	 * @ordered
@@ -56,9 +53,9 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	protected static final Date DATE_TIME_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getDateTime() <em>Date Time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getDateTime() <em>Date Time</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getDateTime()
 	 * @generated
 	 * @ordered
@@ -66,19 +63,19 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	protected Date dateTime = DATE_TIME_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getRawMessage() <em>Raw Message</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getRawMessage() <em>Raw Message</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getRawMessage()
 	 * @generated
 	 * @ordered
 	 */
-	protected InboundMessage rawMessage;
+	protected InboundTextMessage rawMessage;
 
 	/**
-	 * The cached value of the '{@link #getSetValueList() <em>Set Value</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSetValueList() <em>Set Value</em>}'
+	 * containment reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSetValueList()
 	 * @generated
 	 * @ordered
@@ -86,9 +83,9 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	protected EList<AnswerRef> setValue;
 
 	/**
-	 * The empty value for the '{@link #getSetValue() <em>Set Value</em>}' array accessor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The empty value for the '{@link #getSetValue() <em>Set Value</em>}' array
+	 * accessor. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSetValue()
 	 * @generated
 	 * @ordered
@@ -96,8 +93,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	protected static final AnswerRef[] SET_VALUE_EEMPTY_ARRAY = new AnswerRef[0];
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ResponseDetailImpl() {
@@ -105,8 +102,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -115,8 +112,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Date getDateTime() {
@@ -124,8 +121,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setDateTime(Date newDateTime) {
@@ -138,14 +135,14 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public InboundMessage getRawMessage() {
+	public InboundTextMessage getRawMessage() {
 		if (rawMessage != null && rawMessage.eIsProxy()) {
 			InternalEObject oldRawMessage = (InternalEObject) rawMessage;
-			rawMessage = (InboundMessage) eResolveProxy(oldRawMessage);
+			rawMessage = (InboundTextMessage) eResolveProxy(oldRawMessage);
 			if (rawMessage != oldRawMessage) {
 				InternalEObject newRawMessage = (InternalEObject) rawMessage;
 				NotificationChain msgs = oldRawMessage.eInverseRemove(this,
@@ -170,22 +167,22 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public InboundMessage basicGetRawMessage() {
+	public InboundTextMessage basicGetRawMessage() {
 		return rawMessage;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetRawMessage(InboundMessage newRawMessage,
-			NotificationChain msgs) {
-		InboundMessage oldRawMessage = rawMessage;
+	public NotificationChain basicSetRawMessage(
+			InboundTextMessage newRawMessage, NotificationChain msgs) {
+		InboundTextMessage oldRawMessage = rawMessage;
 		rawMessage = newRawMessage;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
@@ -200,11 +197,11 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setRawMessage(InboundMessage newRawMessage) {
+	public void setRawMessage(InboundTextMessage newRawMessage) {
 		if (newRawMessage != rawMessage) {
 			NotificationChain msgs = null;
 			if (rawMessage != null)
@@ -227,8 +224,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AnswerRef[] getSetValue() {
@@ -240,8 +237,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public AnswerRef getSetValue(int index) {
@@ -249,8 +246,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getSetValueLength() {
@@ -258,8 +255,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSetValue(AnswerRef[] newSetValue) {
@@ -268,8 +265,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setSetValue(int index, AnswerRef element) {
@@ -277,8 +274,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<AnswerRef> getSetValueList() {
@@ -291,8 +288,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -309,8 +306,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -329,8 +326,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -341,7 +338,7 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 			setDateTime((Date) newValue);
 			return;
 		case TeksPackage.RESPONSE_DETAIL__RAW_MESSAGE:
-			setRawMessage((InboundMessage) newValue);
+			setRawMessage((InboundTextMessage) newValue);
 			return;
 		case TeksPackage.RESPONSE_DETAIL__SET_VALUE:
 			getSetValueList().clear();
@@ -353,8 +350,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -364,7 +361,7 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 			setDateTime(DATE_TIME_EDEFAULT);
 			return;
 		case TeksPackage.RESPONSE_DETAIL__RAW_MESSAGE:
-			setRawMessage((InboundMessage) null);
+			setRawMessage((InboundTextMessage) null);
 			return;
 		case TeksPackage.RESPONSE_DETAIL__SET_VALUE:
 			getSetValueList().clear();
@@ -374,8 +371,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -393,8 +390,8 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -409,4 +406,4 @@ public class ResponseDetailImpl extends EObjectImpl implements ResponseDetail {
 		return result.toString();
 	}
 
-} //ResponseDetailImpl
+} // ResponseDetailImpl

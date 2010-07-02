@@ -106,6 +106,11 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseText(Text object) {
+			return createTextAdapter();
+		}
+
+		@Override
 		public Adapter caseConfiguration(Configuration object) {
 			return createConfigurationAdapter();
 		}
@@ -118,6 +123,11 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseFreeText(FreeText object) {
 			return createFreeTextAdapter();
+		}
+
+		@Override
+		public Adapter caseSecureText(SecureText object) {
+			return createSecureTextAdapter();
 		}
 
 		@Override
@@ -151,13 +161,13 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseInboundMessage(InboundMessage object) {
-			return createInboundMessageAdapter();
+		public Adapter caseInboundTextMessage(InboundTextMessage object) {
+			return createInboundTextMessageAdapter();
 		}
 
 		@Override
-		public Adapter caseOutboundMessage(OutboundMessage object) {
-			return createOutboundMessageAdapter();
+		public Adapter caseOutboundTextMessage(OutboundTextMessage object) {
+			return createOutboundTextMessageAdapter();
 		}
 
 		@Override
@@ -303,6 +313,20 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.Text <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.teksme.model.teks.Text
+	 * @generated
+	 */
+	public Adapter createTextAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.Configuration <em>Configuration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -341,6 +365,20 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createFreeTextAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.SecureText <em>Secure Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.teksme.model.teks.SecureText
+	 * @generated
+	 */
+	public Adapter createSecureTextAdapter() {
 		return null;
 	}
 
@@ -429,30 +467,30 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.InboundMessage <em>Inbound Message</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.InboundTextMessage <em>Inbound Text Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.teksme.model.teks.InboundMessage
+	 * @see org.teksme.model.teks.InboundTextMessage
 	 * @generated
 	 */
-	public Adapter createInboundMessageAdapter() {
+	public Adapter createInboundTextMessageAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.OutboundMessage <em>Outbound Message</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.OutboundTextMessage <em>Outbound Text Message</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.teksme.model.teks.OutboundMessage
+	 * @see org.teksme.model.teks.OutboundTextMessage
 	 * @generated
 	 */
-	public Adapter createOutboundMessageAdapter() {
+	public Adapter createOutboundTextMessageAdapter() {
 		return null;
 	}
 

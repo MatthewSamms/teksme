@@ -16,5 +16,5 @@ package org.teksme.model.teks;
  * @model
  * @generated
  */
-public interface CustomOutboundMessage extends OutboundMessage {
+public interface CustomOutboundMessage extends OutboundTextMessage {
 } // CustomOutboundMessage

@@ -141,6 +141,17 @@ public class TeksSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
+		case TeksPackage.TEXT: {
+			Text text = (Text) theEObject;
+			T result = caseText(text);
+			if (result == null)
+				result = caseChoice(text);
+			if (result == null)
+				result = caseTeksElement(text);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
 		case TeksPackage.CONFIGURATION: {
 			Configuration configuration = (Configuration) theEObject;
 			T result = caseConfiguration(configuration);
@@ -159,9 +170,24 @@ public class TeksSwitch<T> {
 			FreeText freeText = (FreeText) theEObject;
 			T result = caseFreeText(freeText);
 			if (result == null)
+				result = caseText(freeText);
+			if (result == null)
 				result = caseChoice(freeText);
 			if (result == null)
 				result = caseTeksElement(freeText);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TeksPackage.SECURE_TEXT: {
+			SecureText secureText = (SecureText) theEObject;
+			T result = caseSecureText(secureText);
+			if (result == null)
+				result = caseText(secureText);
+			if (result == null)
+				result = caseChoice(secureText);
+			if (result == null)
+				result = caseTeksElement(secureText);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -212,20 +238,20 @@ public class TeksSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TeksPackage.INBOUND_MESSAGE: {
-			InboundMessage inboundMessage = (InboundMessage) theEObject;
-			T result = caseInboundMessage(inboundMessage);
+		case TeksPackage.INBOUND_TEXT_MESSAGE: {
+			InboundTextMessage inboundTextMessage = (InboundTextMessage) theEObject;
+			T result = caseInboundTextMessage(inboundTextMessage);
 			if (result == null)
-				result = caseMessage(inboundMessage);
+				result = caseMessage(inboundTextMessage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TeksPackage.OUTBOUND_MESSAGE: {
-			OutboundMessage outboundMessage = (OutboundMessage) theEObject;
-			T result = caseOutboundMessage(outboundMessage);
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE: {
+			OutboundTextMessage outboundTextMessage = (OutboundTextMessage) theEObject;
+			T result = caseOutboundTextMessage(outboundTextMessage);
 			if (result == null)
-				result = caseMessage(outboundMessage);
+				result = caseMessage(outboundTextMessage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -234,7 +260,7 @@ public class TeksSwitch<T> {
 			CustomOutboundMessage customOutboundMessage = (CustomOutboundMessage) theEObject;
 			T result = caseCustomOutboundMessage(customOutboundMessage);
 			if (result == null)
-				result = caseOutboundMessage(customOutboundMessage);
+				result = caseOutboundTextMessage(customOutboundMessage);
 			if (result == null)
 				result = caseMessage(customOutboundMessage);
 			if (result == null)
@@ -380,6 +406,21 @@ public class TeksSwitch<T> {
 	}
 
 	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Text</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Text</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseText(Text object) {
+		return null;
+	}
+
+	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Configuration</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -421,6 +462,21 @@ public class TeksSwitch<T> {
 	 * @generated
 	 */
 	public T caseFreeText(FreeText object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Secure Text</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Secure Text</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSecureText(SecureText object) {
 		return null;
 	}
 
@@ -515,32 +571,32 @@ public class TeksSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Inbound Message</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Inbound Text Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Inbound Message</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Inbound Text Message</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseInboundMessage(InboundMessage object) {
+	public T caseInboundTextMessage(InboundTextMessage object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Outbound Message</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Outbound Text Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Outbound Message</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Outbound Text Message</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseOutboundMessage(OutboundMessage object) {
+	public T caseOutboundTextMessage(OutboundTextMessage object) {
 		return null;
 	}
 

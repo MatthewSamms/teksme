@@ -18,6 +18,7 @@ package org.teksme.model.teks;
  *   <li>{@link org.teksme.model.teks.Choice#getNote <em>Note</em>}</li>
  *   <li>{@link org.teksme.model.teks.Choice#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.teksme.model.teks.Choice#getInquiryRef <em>Inquiry Ref</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Choice#getHelpText <em>Help Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -131,5 +132,31 @@ public interface Choice extends TeksElement {
 	 * @generated
 	 */
 	void setInquiryRef(Inquiry value);
+
+	/**
+	 * Returns the value of the '<em><b>Help Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Help Text</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Help Text</em>' attribute.
+	 * @see #setHelpText(String)
+	 * @see org.teksme.model.teks.TeksPackage#getChoice_HelpText()
+	 * @model
+	 * @generated
+	 */
+	String getHelpText();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Choice#getHelpText <em>Help Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Help Text</em>' attribute.
+	 * @see #getHelpText()
+	 * @generated
+	 */
+	void setHelpText(String value);
 
 } // Choice

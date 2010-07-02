@@ -88,14 +88,14 @@ public interface Teks extends EObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	OutboundMessage[] getS();
+	OutboundTextMessage[] getS();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	OutboundMessage getS(int index);
+	OutboundTextMessage getS(int index);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -109,18 +109,18 @@ public interface Teks extends EObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	void setS(OutboundMessage[] newS);
+	void setS(OutboundTextMessage[] newS);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	void setS(int index, OutboundMessage element);
+	void setS(int index, OutboundTextMessage element);
 
 	/**
 	 * Returns the value of the '<em><b>S</b></em>' containment reference list.
-	 * The list contents are of type {@link org.teksme.model.teks.OutboundMessage}.
+	 * The list contents are of type {@link org.teksme.model.teks.OutboundTextMessage}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>S</em>' containment reference list isn't clear,
@@ -132,21 +132,21 @@ public interface Teks extends EObject {
 	 * @model containment="true" resolveProxies="true" keys="id"
 	 * @generated
 	 */
-	EList<OutboundMessage> getSList();
+	EList<OutboundTextMessage> getSList();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InboundMessage[] getInMsg();
+	InboundTextMessage[] getInMsg();
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	InboundMessage getInMsg(int index);
+	InboundTextMessage getInMsg(int index);
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -160,18 +160,18 @@ public interface Teks extends EObject {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	void setInMsg(InboundMessage[] newInMsg);
+	void setInMsg(InboundTextMessage[] newInMsg);
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	void setInMsg(int index, InboundMessage element);
+	void setInMsg(int index, InboundTextMessage element);
 
 	/**
 	 * Returns the value of the '<em><b>In Msg</b></em>' reference list.
-	 * The list contents are of type {@link org.teksme.model.teks.InboundMessage}.
+	 * The list contents are of type {@link org.teksme.model.teks.InboundTextMessage}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>In Msg</em>' reference list isn't clear,
@@ -183,7 +183,7 @@ public interface Teks extends EObject {
 	 * @model keys="id"
 	 * @generated
 	 */
-	EList<InboundMessage> getInMsgList();
+	EList<InboundTextMessage> getInMsgList();
 
 	/**
 	 * Returns the value of the '<em><b>Account ID</b></em>' attribute.

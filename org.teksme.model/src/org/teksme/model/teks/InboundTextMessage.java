@@ -8,22 +8,22 @@ package org.teksme.model.teks;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Inbound Message</b></em>'.
+ * A representation of the model object '<em><b>Inbound Text Message</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.teksme.model.teks.InboundMessage#getPartNumber <em>Part Number</em>}</li>
- *   <li>{@link org.teksme.model.teks.InboundMessage#getMessageType <em>Message Type</em>}</li>
+ *   <li>{@link org.teksme.model.teks.InboundTextMessage#getPartNumber <em>Part Number</em>}</li>
+ *   <li>{@link org.teksme.model.teks.InboundTextMessage#getMessageType <em>Message Type</em>}</li>
  * </ul>
  * </p>
  *
- * @see org.teksme.model.teks.TeksPackage#getInboundMessage()
+ * @see org.teksme.model.teks.TeksPackage#getInboundTextMessage()
  * @model
  * @generated
  */
-public interface InboundMessage extends Message {
+public interface InboundTextMessage extends Message {
 	/**
 	 * Returns the value of the '<em><b>Part Number</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -34,14 +34,14 @@ public interface InboundMessage extends Message {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Part Number</em>' attribute.
 	 * @see #setPartNumber(String)
-	 * @see org.teksme.model.teks.TeksPackage#getInboundMessage_PartNumber()
+	 * @see org.teksme.model.teks.TeksPackage#getInboundTextMessage_PartNumber()
 	 * @model
 	 * @generated
 	 */
 	String getPartNumber();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.InboundMessage#getPartNumber <em>Part Number</em>}' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.InboundTextMessage#getPartNumber <em>Part Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Part Number</em>' attribute.
@@ -60,14 +60,14 @@ public interface InboundMessage extends Message {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Message Type</em>' attribute.
 	 * @see #setMessageType(String)
-	 * @see org.teksme.model.teks.TeksPackage#getInboundMessage_MessageType()
+	 * @see org.teksme.model.teks.TeksPackage#getInboundTextMessage_MessageType()
 	 * @model
 	 * @generated
 	 */
 	String getMessageType();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.InboundMessage#getMessageType <em>Message Type</em>}' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.InboundTextMessage#getMessageType <em>Message Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Message Type</em>' attribute.
@@ -76,4 +76,4 @@ public interface InboundMessage extends Message {
 	 */
 	void setMessageType(String value);
 
-} // InboundMessage
+} // InboundTextMessage

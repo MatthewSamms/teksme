@@ -8,42 +8,42 @@ package org.teksme.model.teks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.teksme.model.teks.Campaign;
 import org.teksme.model.teks.Confirmation;
 import org.teksme.model.teks.Inquiry;
-import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.Response;
 import org.teksme.model.teks.TeksPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Campaign</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Campaign</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.CampaignImpl#getInstance <em>Instance</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.CampaignImpl#getResponses <em>Responses</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.CampaignImpl#getConfirmations <em>Confirmations</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.CampaignImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.CampaignImpl#getAdvertiseIt <em>Advertise It</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.CampaignImpl#getInstance <em>Instance
+ * </em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.CampaignImpl#getResponses <em>Responses
+ * </em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.CampaignImpl#getConfirmations <em>
+ * Confirmations</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.CampaignImpl#getId <em>Id</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.CampaignImpl#getAdvertiseIt <em>
+ * Advertise It</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class CampaignImpl extends EObjectImpl implements Campaign {
 	/**
-	 * The cached value of the '{@link #getInstance() <em>Instance</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInstance() <em>Instance</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInstance()
 	 * @generated
 	 * @ordered
@@ -51,9 +51,9 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	protected Inquiry instance;
 
 	/**
-	 * The cached value of the '{@link #getResponses() <em>Responses</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResponses() <em>Responses</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResponses()
 	 * @generated
 	 * @ordered
@@ -61,9 +61,10 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	protected Response responses;
 
 	/**
-	 * The cached value of the '{@link #getConfirmations() <em>Confirmations</em>}' containment reference.
-	 * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getConfirmations()
+	 * <em>Confirmations</em>}' containment reference. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #getConfirmations()
 	 * @generated
 	 * @ordered
@@ -71,9 +72,9 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	protected Confirmation confirmations;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -81,9 +82,9 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -91,18 +92,18 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAdvertiseIt() <em>Advertise It</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAdvertiseIt() <em>Advertise It</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAdvertiseIt()
 	 * @generated
 	 * @ordered
 	 */
-	protected OutboundMessage advertiseIt;
+	protected OutboundTextMessage advertiseIt;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected CampaignImpl() {
@@ -110,8 +111,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -120,8 +121,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Inquiry getInstance() {
@@ -149,8 +150,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Inquiry basicGetInstance() {
@@ -158,8 +159,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetInstance(Inquiry newInstance,
@@ -179,8 +180,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setInstance(Inquiry newInstance) {
@@ -203,8 +204,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Response getResponses() {
@@ -234,8 +235,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Response basicGetResponses() {
@@ -243,8 +244,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetResponses(Response newResponses,
@@ -264,8 +265,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResponses(Response newResponses) {
@@ -288,8 +289,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Confirmation getConfirmations() {
@@ -320,8 +321,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Confirmation basicGetConfirmations() {
@@ -329,8 +330,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetConfirmations(
@@ -350,8 +351,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConfirmations(Confirmation newConfirmations) {
@@ -377,8 +378,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getId() {
@@ -386,8 +387,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -399,14 +400,14 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OutboundMessage getAdvertiseIt() {
+	public OutboundTextMessage getAdvertiseIt() {
 		if (advertiseIt != null && advertiseIt.eIsProxy()) {
 			InternalEObject oldAdvertiseIt = (InternalEObject) advertiseIt;
-			advertiseIt = (OutboundMessage) eResolveProxy(oldAdvertiseIt);
+			advertiseIt = (OutboundTextMessage) eResolveProxy(oldAdvertiseIt);
 			if (advertiseIt != oldAdvertiseIt) {
 				InternalEObject newAdvertiseIt = (InternalEObject) advertiseIt;
 				NotificationChain msgs = oldAdvertiseIt.eInverseRemove(this,
@@ -431,22 +432,22 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OutboundMessage basicGetAdvertiseIt() {
+	public OutboundTextMessage basicGetAdvertiseIt() {
 		return advertiseIt;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetAdvertiseIt(
-			OutboundMessage newAdvertiseIt, NotificationChain msgs) {
-		OutboundMessage oldAdvertiseIt = advertiseIt;
+			OutboundTextMessage newAdvertiseIt, NotificationChain msgs) {
+		OutboundTextMessage oldAdvertiseIt = advertiseIt;
 		advertiseIt = newAdvertiseIt;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
@@ -461,11 +462,11 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setAdvertiseIt(OutboundMessage newAdvertiseIt) {
+	public void setAdvertiseIt(OutboundTextMessage newAdvertiseIt) {
 		if (newAdvertiseIt != advertiseIt) {
 			NotificationChain msgs = null;
 			if (advertiseIt != null)
@@ -488,8 +489,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -509,8 +510,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -539,8 +540,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -559,15 +560,15 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 			setId((String) newValue);
 			return;
 		case TeksPackage.CAMPAIGN__ADVERTISE_IT:
-			setAdvertiseIt((OutboundMessage) newValue);
+			setAdvertiseIt((OutboundTextMessage) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -586,15 +587,15 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 			setId(ID_EDEFAULT);
 			return;
 		case TeksPackage.CAMPAIGN__ADVERTISE_IT:
-			setAdvertiseIt((OutboundMessage) null);
+			setAdvertiseIt((OutboundTextMessage) null);
 			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -615,8 +616,8 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -631,4 +632,4 @@ public class CampaignImpl extends EObjectImpl implements Campaign {
 		return result.toString();
 	}
 
-} //CampaignImpl
+} // CampaignImpl

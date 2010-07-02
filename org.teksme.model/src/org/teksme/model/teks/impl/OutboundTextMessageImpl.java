@@ -12,23 +12,24 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.TeksPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Outbound Message</b></em>'.
+ * An implementation of the model object '<em><b>Outbound Text Message</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#getMessageHandler <em>Message Handler</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getMessageHandler <em>Message Handler</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class OutboundMessageImpl extends MessageImpl implements OutboundMessage {
+public class OutboundTextMessageImpl extends MessageImpl implements
+		OutboundTextMessage {
 	/**
 	 * The default value of the '{@link #getMessageHandler() <em>Message Handler</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,7 +55,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected OutboundMessageImpl() {
+	protected OutboundTextMessageImpl() {
 		super();
 	}
 
@@ -65,7 +66,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TeksPackage.Literals.OUTBOUND_MESSAGE;
+		return TeksPackage.Literals.OUTBOUND_TEXT_MESSAGE;
 	}
 
 	/**
@@ -87,7 +88,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 		messageHandler = newMessageHandler;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.OUTBOUND_MESSAGE__MESSAGE_HANDLER,
+					TeksPackage.OUTBOUND_TEXT_MESSAGE__MESSAGE_HANDLER,
 					oldMessageHandler, messageHandler));
 	}
 
@@ -99,7 +100,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_MESSAGE__MESSAGE_HANDLER:
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__MESSAGE_HANDLER:
 			return getMessageHandler();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -113,7 +114,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_MESSAGE__MESSAGE_HANDLER:
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__MESSAGE_HANDLER:
 			setMessageHandler((String) newValue);
 			return;
 		}
@@ -128,7 +129,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_MESSAGE__MESSAGE_HANDLER:
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__MESSAGE_HANDLER:
 			setMessageHandler(MESSAGE_HANDLER_EDEFAULT);
 			return;
 		}
@@ -143,7 +144,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_MESSAGE__MESSAGE_HANDLER:
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__MESSAGE_HANDLER:
 			return MESSAGE_HANDLER_EDEFAULT == null ? messageHandler != null
 					: !MESSAGE_HANDLER_EDEFAULT.equals(messageHandler);
 		}
@@ -167,4 +168,4 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 		return result.toString();
 	}
 
-} //OutboundMessageImpl
+} //OutboundTextMessageImpl

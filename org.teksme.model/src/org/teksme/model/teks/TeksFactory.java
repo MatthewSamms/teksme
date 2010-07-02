@@ -98,6 +98,15 @@ public interface TeksFactory extends EFactory {
 	FreeText createFreeText();
 
 	/**
+	 * Returns a new object of class '<em>Secure Text</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Secure Text</em>'.
+	 * @generated
+	 */
+	SecureText createSecureText();
+
+	/**
 	 * Returns a new object of class '<em>Multiple Choice</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -143,22 +152,22 @@ public interface TeksFactory extends EFactory {
 	AnswerRef createAnswerRef();
 
 	/**
-	 * Returns a new object of class '<em>Inbound Message</em>'.
+	 * Returns a new object of class '<em>Inbound Text Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Inbound Message</em>'.
+	 * @return a new object of class '<em>Inbound Text Message</em>'.
 	 * @generated
 	 */
-	InboundMessage createInboundMessage();
+	InboundTextMessage createInboundTextMessage();
 
 	/**
-	 * Returns a new object of class '<em>Outbound Message</em>'.
+	 * Returns a new object of class '<em>Outbound Text Message</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Outbound Message</em>'.
+	 * @return a new object of class '<em>Outbound Text Message</em>'.
 	 * @generated
 	 */
-	OutboundMessage createOutboundMessage();
+	OutboundTextMessage createOutboundTextMessage();
 
 	/**
 	 * Returns a new object of class '<em>Custom Outbound Message</em>'.

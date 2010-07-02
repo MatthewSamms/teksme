@@ -37,12 +37,12 @@ public interface Confirmation extends TeksElement {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Auto Reply</em>' containment reference.
-	 * @see #setAutoReply(OutboundMessage)
+	 * @see #setAutoReply(OutboundTextMessage)
 	 * @see org.teksme.model.teks.TeksPackage#getConfirmation_AutoReply()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	OutboundMessage getAutoReply();
+	OutboundTextMessage getAutoReply();
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Confirmation#getAutoReply <em>Auto Reply</em>}' containment reference.
@@ -52,7 +52,7 @@ public interface Confirmation extends TeksElement {
 	 * @see #getAutoReply()
 	 * @generated
 	 */
-	void setAutoReply(OutboundMessage value);
+	void setAutoReply(OutboundTextMessage value);
 
 	/**
 	 * <!-- begin-user-doc -->
