@@ -10,55 +10,54 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.teksme.model.teks.Confirmation;
 import org.teksme.model.teks.CustomOutboundMessage;
-import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.Response;
 import org.teksme.model.teks.TeksPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Confirmation</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Confirmation</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getAutoReply <em>Auto Reply</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getConfirmationList <em>Confirmation</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getCustomReply <em>Custom Reply</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getResponseRef <em>Response Ref</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getAutoReply <em>Auto
+ * Reply</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getConfirmationList
+ * <em>Confirmation</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getCustomReply <em>
+ * Custom Reply</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.ConfirmationImpl#getResponseRef <em>
+ * Response Ref</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	/**
-	 * The cached value of the '{@link #getAutoReply() <em>Auto Reply</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAutoReply() <em>Auto Reply</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAutoReply()
 	 * @generated
 	 * @ordered
 	 */
-	protected OutboundMessage autoReply;
+	protected OutboundTextMessage autoReply;
 
 	/**
-	 * The cached value of the '{@link #getConfirmationList() <em>Confirmation</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getConfirmationList()
+	 * <em>Confirmation</em>}' containment reference list. <!-- begin-user-doc
+	 * --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConfirmationList()
 	 * @generated
 	 * @ordered
@@ -66,9 +65,9 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	protected EList<Confirmation> confirmation;
 
 	/**
-	 * The empty value for the '{@link #getConfirmation() <em>Confirmation</em>}' array accessor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The empty value for the '{@link #getConfirmation() <em>Confirmation</em>}
+	 * ' array accessor. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getConfirmation()
 	 * @generated
 	 * @ordered
@@ -76,9 +75,9 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	protected static final Confirmation[] CONFIRMATION_EEMPTY_ARRAY = new Confirmation[0];
 
 	/**
-	 * The cached value of the '{@link #getCustomReply() <em>Custom Reply</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCustomReply() <em>Custom Reply</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCustomReply()
 	 * @generated
 	 * @ordered
@@ -86,9 +85,9 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	protected CustomOutboundMessage customReply;
 
 	/**
-	 * The cached value of the '{@link #getResponseRef() <em>Response Ref</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getResponseRef() <em>Response Ref</em>}'
+	 * reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getResponseRef()
 	 * @generated
 	 * @ordered
@@ -96,8 +95,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	protected Response responseRef;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected ConfirmationImpl() {
@@ -105,8 +104,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -115,14 +114,14 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OutboundMessage getAutoReply() {
+	public OutboundTextMessage getAutoReply() {
 		if (autoReply != null && autoReply.eIsProxy()) {
 			InternalEObject oldAutoReply = (InternalEObject) autoReply;
-			autoReply = (OutboundMessage) eResolveProxy(oldAutoReply);
+			autoReply = (OutboundTextMessage) eResolveProxy(oldAutoReply);
 			if (autoReply != oldAutoReply) {
 				InternalEObject newAutoReply = (InternalEObject) autoReply;
 				NotificationChain msgs = oldAutoReply.eInverseRemove(this,
@@ -147,22 +146,22 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OutboundMessage basicGetAutoReply() {
+	public OutboundTextMessage basicGetAutoReply() {
 		return autoReply;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public NotificationChain basicSetAutoReply(OutboundMessage newAutoReply,
-			NotificationChain msgs) {
-		OutboundMessage oldAutoReply = autoReply;
+	public NotificationChain basicSetAutoReply(
+			OutboundTextMessage newAutoReply, NotificationChain msgs) {
+		OutboundTextMessage oldAutoReply = autoReply;
 		autoReply = newAutoReply;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
@@ -177,11 +176,11 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setAutoReply(OutboundMessage newAutoReply) {
+	public void setAutoReply(OutboundTextMessage newAutoReply) {
 		if (newAutoReply != autoReply) {
 			NotificationChain msgs = null;
 			if (autoReply != null)
@@ -204,8 +203,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Confirmation[] getConfirmation() {
@@ -217,8 +216,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Confirmation getConfirmation(int index) {
@@ -226,8 +225,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getConfirmationLength() {
@@ -235,8 +234,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConfirmation(Confirmation[] newConfirmation) {
@@ -245,8 +244,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setConfirmation(int index, Confirmation element) {
@@ -254,8 +253,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public EList<Confirmation> getConfirmationList() {
@@ -268,8 +267,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CustomOutboundMessage getCustomReply() {
@@ -287,8 +286,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public CustomOutboundMessage basicGetCustomReply() {
@@ -296,8 +295,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCustomReply(CustomOutboundMessage newCustomReply) {
@@ -310,8 +309,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Response getResponseRef() {
@@ -329,8 +328,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Response basicGetResponseRef() {
@@ -338,8 +337,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setResponseRef(Response newResponseRef) {
@@ -352,8 +351,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -370,8 +369,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -396,8 +395,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -405,7 +404,7 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case TeksPackage.CONFIRMATION__AUTO_REPLY:
-			setAutoReply((OutboundMessage) newValue);
+			setAutoReply((OutboundTextMessage) newValue);
 			return;
 		case TeksPackage.CONFIRMATION__CONFIRMATION:
 			getConfirmationList().clear();
@@ -423,15 +422,15 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case TeksPackage.CONFIRMATION__AUTO_REPLY:
-			setAutoReply((OutboundMessage) null);
+			setAutoReply((OutboundTextMessage) null);
 			return;
 		case TeksPackage.CONFIRMATION__CONFIRMATION:
 			getConfirmationList().clear();
@@ -447,8 +446,8 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -466,4 +465,4 @@ public class ConfirmationImpl extends TeksElementImpl implements Confirmation {
 		return super.eIsSet(featureID);
 	}
 
-} //ConfirmationImpl
+} // ConfirmationImpl

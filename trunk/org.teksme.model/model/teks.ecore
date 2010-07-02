@@ -7,10 +7,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="appId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="campaign" eType="#//Campaign"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="s" upperBound="-1" eType="#//OutboundMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="s" upperBound="-1" eType="#//OutboundTextMessage"
         containment="true" eKeys="#//Message/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inMsg" upperBound="-1"
-        eType="#//InboundMessage" eKeys="#//Message/id"/>
+        eType="#//InboundTextMessage" eKeys="#//Message/id"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="accountID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Campaign">
@@ -22,7 +22,7 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="advertiseIt" eType="#//OutboundMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advertiseIt" eType="#//OutboundTextMessage"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TeksElement" abstract="true">
@@ -56,7 +56,7 @@
         eType="#//ResponseDetail" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Confirmation" eSuperTypes="#//TeksElement">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="autoReply" eType="#//OutboundMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="autoReply" eType="#//OutboundTextMessage"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="confirmation" upperBound="-1"
         eType="#//Confirmation" containment="true"/>
@@ -114,7 +114,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResponseDetail">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rawMessage" eType="#//InboundMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rawMessage" eType="#//InboundTextMessage"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setValue" upperBound="-1"
         eType="#//AnswerRef" containment="true" eKeys="#//AnswerRef/id"/>
@@ -130,6 +130,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="headerData" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="username" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="password" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="apiId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnnotationMapEntry">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -142,14 +145,14 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InboundMessage" eSuperTypes="#//Message">
+  <eClassifiers xsi:type="ecore:EClass" name="InboundTextMessage" eSuperTypes="#//Message">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="partNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OutboundMessage" eSuperTypes="#//Message">
+  <eClassifiers xsi:type="ecore:EClass" name="OutboundTextMessage" eSuperTypes="#//Message">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageHandler" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="CustomOutboundMessage" eSuperTypes="#//OutboundMessage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CustomOutboundMessage" eSuperTypes="#//OutboundTextMessage"/>
   <eClassifiers xsi:type="ecore:EClass" name="Comment">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="body" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

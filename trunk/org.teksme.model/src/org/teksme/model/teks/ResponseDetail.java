@@ -66,12 +66,12 @@ public interface ResponseDetail extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Raw Message</em>' containment reference.
-	 * @see #setRawMessage(InboundMessage)
+	 * @see #setRawMessage(InboundTextMessage)
 	 * @see org.teksme.model.teks.TeksPackage#getResponseDetail_RawMessage()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	InboundMessage getRawMessage();
+	InboundTextMessage getRawMessage();
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.ResponseDetail#getRawMessage <em>Raw Message</em>}' containment reference.
@@ -81,7 +81,7 @@ public interface ResponseDetail extends EObject {
 	 * @see #getRawMessage()
 	 * @generated
 	 */
-	void setRawMessage(InboundMessage value);
+	void setRawMessage(InboundTextMessage value);
 
 	/**
 	 * <!-- begin-user-doc -->

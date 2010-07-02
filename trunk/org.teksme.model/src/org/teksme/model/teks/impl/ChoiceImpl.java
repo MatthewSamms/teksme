@@ -31,6 +31,7 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.ChoiceImpl#getNote <em>Note</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.ChoiceImpl#isMandatory <em>Mandatory</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.ChoiceImpl#getInquiryRef <em>Inquiry Ref</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.ChoiceImpl#getHelpText <em>Help Text</em>}</li>
  * </ul>
  * </p>
  *
@@ -96,6 +97,26 @@ public abstract class ChoiceImpl extends TeksElementImpl implements Choice {
 	 * @ordered
 	 */
 	protected boolean mandatory = MANDATORY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getHelpText() <em>Help Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHelpText()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String HELP_TEXT_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getHelpText() <em>Help Text</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getHelpText()
+	 * @generated
+	 * @ordered
+	 */
+	protected String helpText = HELP_TEXT_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -247,6 +268,28 @@ public abstract class ChoiceImpl extends TeksElementImpl implements Choice {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getHelpText() {
+		return helpText;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setHelpText(String newHelpText) {
+		String oldHelpText = helpText;
+		helpText = newHelpText;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.CHOICE__HELP_TEXT, oldHelpText, helpText));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -308,6 +351,8 @@ public abstract class ChoiceImpl extends TeksElementImpl implements Choice {
 			if (resolve)
 				return getInquiryRef();
 			return basicGetInquiryRef();
+		case TeksPackage.CHOICE__HELP_TEXT:
+			return getHelpText();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -331,6 +376,9 @@ public abstract class ChoiceImpl extends TeksElementImpl implements Choice {
 			return;
 		case TeksPackage.CHOICE__INQUIRY_REF:
 			setInquiryRef((Inquiry) newValue);
+			return;
+		case TeksPackage.CHOICE__HELP_TEXT:
+			setHelpText((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -356,6 +404,9 @@ public abstract class ChoiceImpl extends TeksElementImpl implements Choice {
 		case TeksPackage.CHOICE__INQUIRY_REF:
 			setInquiryRef((Inquiry) null);
 			return;
+		case TeksPackage.CHOICE__HELP_TEXT:
+			setHelpText(HELP_TEXT_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -378,6 +429,9 @@ public abstract class ChoiceImpl extends TeksElementImpl implements Choice {
 			return mandatory != MANDATORY_EDEFAULT;
 		case TeksPackage.CHOICE__INQUIRY_REF:
 			return basicGetInquiryRef() != null;
+		case TeksPackage.CHOICE__HELP_TEXT:
+			return HELP_TEXT_EDEFAULT == null ? helpText != null
+					: !HELP_TEXT_EDEFAULT.equals(helpText);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -399,6 +453,8 @@ public abstract class ChoiceImpl extends TeksElementImpl implements Choice {
 		result.append(note);
 		result.append(", mandatory: ");
 		result.append(mandatory);
+		result.append(", helpText: ");
+		result.append(helpText);
 		result.append(')');
 		return result.toString();
 	}

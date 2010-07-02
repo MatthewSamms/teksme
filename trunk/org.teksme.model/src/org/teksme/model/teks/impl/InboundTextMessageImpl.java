@@ -12,24 +12,25 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.teksme.model.teks.InboundMessage;
+import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.TeksPackage;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Inbound Message</b></em>'.
+ * An implementation of the model object '<em><b>Inbound Text Message</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.InboundMessageImpl#getPartNumber <em>Part Number</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.InboundMessageImpl#getMessageType <em>Message Type</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.InboundTextMessageImpl#getPartNumber <em>Part Number</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.InboundTextMessageImpl#getMessageType <em>Message Type</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class InboundMessageImpl extends MessageImpl implements InboundMessage {
+public class InboundTextMessageImpl extends MessageImpl implements
+		InboundTextMessage {
 	/**
 	 * The default value of the '{@link #getPartNumber() <em>Part Number</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -75,7 +76,7 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected InboundMessageImpl() {
+	protected InboundTextMessageImpl() {
 		super();
 	}
 
@@ -86,7 +87,7 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TeksPackage.Literals.INBOUND_MESSAGE;
+		return TeksPackage.Literals.INBOUND_TEXT_MESSAGE;
 	}
 
 	/**
@@ -108,8 +109,8 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 		partNumber = newPartNumber;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.INBOUND_MESSAGE__PART_NUMBER, oldPartNumber,
-					partNumber));
+					TeksPackage.INBOUND_TEXT_MESSAGE__PART_NUMBER,
+					oldPartNumber, partNumber));
 	}
 
 	/**
@@ -131,8 +132,8 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 		messageType = newMessageType;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.INBOUND_MESSAGE__MESSAGE_TYPE, oldMessageType,
-					messageType));
+					TeksPackage.INBOUND_TEXT_MESSAGE__MESSAGE_TYPE,
+					oldMessageType, messageType));
 	}
 
 	/**
@@ -143,9 +144,9 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.INBOUND_MESSAGE__PART_NUMBER:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__PART_NUMBER:
 			return getPartNumber();
-		case TeksPackage.INBOUND_MESSAGE__MESSAGE_TYPE:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__MESSAGE_TYPE:
 			return getMessageType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -159,10 +160,10 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.INBOUND_MESSAGE__PART_NUMBER:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__PART_NUMBER:
 			setPartNumber((String) newValue);
 			return;
-		case TeksPackage.INBOUND_MESSAGE__MESSAGE_TYPE:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__MESSAGE_TYPE:
 			setMessageType((String) newValue);
 			return;
 		}
@@ -177,10 +178,10 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.INBOUND_MESSAGE__PART_NUMBER:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__PART_NUMBER:
 			setPartNumber(PART_NUMBER_EDEFAULT);
 			return;
-		case TeksPackage.INBOUND_MESSAGE__MESSAGE_TYPE:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__MESSAGE_TYPE:
 			setMessageType(MESSAGE_TYPE_EDEFAULT);
 			return;
 		}
@@ -195,10 +196,10 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.INBOUND_MESSAGE__PART_NUMBER:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__PART_NUMBER:
 			return PART_NUMBER_EDEFAULT == null ? partNumber != null
 					: !PART_NUMBER_EDEFAULT.equals(partNumber);
-		case TeksPackage.INBOUND_MESSAGE__MESSAGE_TYPE:
+		case TeksPackage.INBOUND_TEXT_MESSAGE__MESSAGE_TYPE:
 			return MESSAGE_TYPE_EDEFAULT == null ? messageType != null
 					: !MESSAGE_TYPE_EDEFAULT.equals(messageType);
 		}
@@ -224,4 +225,4 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 		return result.toString();
 	}
 
-} //InboundMessageImpl
+} //InboundTextMessageImpl

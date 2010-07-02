@@ -10,48 +10,44 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
 import org.teksme.model.teks.Campaign;
-import org.teksme.model.teks.InboundMessage;
-import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.InboundTextMessage;
+import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Teks</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Teks</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAppId <em>App Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getCampaign <em>Campaign</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getSList <em>S</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getInMsgList <em>In Msg</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAccountID <em>Account ID</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.TeksImpl#getAppId <em>App Id</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.TeksImpl#getCampaign <em>Campaign</em>}
+ * </li>
+ * <li>{@link org.teksme.model.teks.impl.TeksImpl#getSList <em>S</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.TeksImpl#getInMsgList <em>In Msg</em>}</li>
+ * <li>{@link org.teksme.model.teks.impl.TeksImpl#getAccountID <em>Account ID
+ * </em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @generated
  */
 public class TeksImpl extends EObjectImpl implements Teks {
 	/**
 	 * The default value of the '{@link #getAppId() <em>App Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAppId()
 	 * @generated
 	 * @ordered
@@ -60,8 +56,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 
 	/**
 	 * The cached value of the '{@link #getAppId() <em>App Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAppId()
 	 * @generated
 	 * @ordered
@@ -69,9 +65,9 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected String appId = APP_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCampaign() <em>Campaign</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getCampaign() <em>Campaign</em>}'
+	 * containment reference. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getCampaign()
 	 * @generated
 	 * @ordered
@@ -79,49 +75,49 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected Campaign campaign;
 
 	/**
-	 * The cached value of the '{@link #getSList() <em>S</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getSList() <em>S</em>}' containment
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getSList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<OutboundMessage> s;
+	protected EList<OutboundTextMessage> s;
 
 	/**
-	 * The empty value for the '{@link #getS() <em>S</em>}' array accessor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The empty value for the '{@link #getS() <em>S</em>}' array accessor. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getS()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final OutboundMessage[] S_EEMPTY_ARRAY = new OutboundMessage[0];
+	protected static final OutboundTextMessage[] S_EEMPTY_ARRAY = new OutboundTextMessage[0];
 
 	/**
-	 * The cached value of the '{@link #getInMsgList() <em>In Msg</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInMsgList() <em>In Msg</em>}'
+	 * reference list. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInMsgList()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<InboundMessage> inMsg;
+	protected EList<InboundTextMessage> inMsg;
 
 	/**
-	 * The empty value for the '{@link #getInMsg() <em>In Msg</em>}' array accessor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The empty value for the '{@link #getInMsg() <em>In Msg</em>}' array
+	 * accessor. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInMsg()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final InboundMessage[] IN_MSG_EEMPTY_ARRAY = new InboundMessage[0];
+	protected static final InboundTextMessage[] IN_MSG_EEMPTY_ARRAY = new InboundTextMessage[0];
 
 	/**
-	 * The default value of the '{@link #getAccountID() <em>Account ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getAccountID() <em>Account ID</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAccountID()
 	 * @generated
 	 * @ordered
@@ -129,9 +125,9 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected static final String ACCOUNT_ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getAccountID() <em>Account ID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAccountID() <em>Account ID</em>}'
+	 * attribute. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getAccountID()
 	 * @generated
 	 * @ordered
@@ -139,8 +135,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected String accountID = ACCOUNT_ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	protected TeksImpl() {
@@ -148,8 +144,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -158,8 +154,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getAppId() {
@@ -167,8 +163,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAppId(String newAppId) {
@@ -180,8 +176,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Campaign getCampaign() {
@@ -208,8 +204,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public Campaign basicGetCampaign() {
@@ -217,8 +213,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public NotificationChain basicSetCampaign(Campaign newCampaign,
@@ -238,8 +234,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setCampaign(Campaign newCampaign) {
@@ -262,30 +258,30 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OutboundMessage[] getS() {
+	public OutboundTextMessage[] getS() {
 		if (s == null || s.isEmpty())
 			return S_EEMPTY_ARRAY;
-		BasicEList<OutboundMessage> list = (BasicEList<OutboundMessage>) s;
+		BasicEList<OutboundTextMessage> list = (BasicEList<OutboundTextMessage>) s;
 		list.shrink();
-		return (OutboundMessage[]) list.data();
+		return (OutboundTextMessage[]) list.data();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public OutboundMessage getS(int index) {
+	public OutboundTextMessage getS(int index) {
 		return getSList().get(index);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getSLength() {
@@ -293,61 +289,62 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setS(OutboundMessage[] newS) {
-		((BasicEList<OutboundMessage>) getSList()).setData(newS.length, newS);
+	public void setS(OutboundTextMessage[] newS) {
+		((BasicEList<OutboundTextMessage>) getSList()).setData(newS.length,
+				newS);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setS(int index, OutboundMessage element) {
+	public void setS(int index, OutboundTextMessage element) {
 		getSList().set(index, element);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EList<OutboundMessage> getSList() {
+	public EList<OutboundTextMessage> getSList() {
 		if (s == null) {
-			s = new EObjectContainmentEList.Resolving<OutboundMessage>(
-					OutboundMessage.class, this, TeksPackage.TEKS__S);
+			s = new EObjectContainmentEList.Resolving<OutboundTextMessage>(
+					OutboundTextMessage.class, this, TeksPackage.TEKS__S);
 		}
 		return s;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public InboundMessage[] getInMsg() {
+	public InboundTextMessage[] getInMsg() {
 		if (inMsg == null || inMsg.isEmpty())
 			return IN_MSG_EEMPTY_ARRAY;
-		BasicEList<InboundMessage> list = (BasicEList<InboundMessage>) inMsg;
+		BasicEList<InboundTextMessage> list = (BasicEList<InboundTextMessage>) inMsg;
 		list.shrink();
-		return (InboundMessage[]) list.data();
+		return (InboundTextMessage[]) list.data();
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public InboundMessage getInMsg(int index) {
+	public InboundTextMessage getInMsg(int index) {
 		return getInMsgList().get(index);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getInMsgLength() {
@@ -355,40 +352,40 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setInMsg(InboundMessage[] newInMsg) {
-		((BasicEList<InboundMessage>) getInMsgList()).setData(newInMsg.length,
-				newInMsg);
+	public void setInMsg(InboundTextMessage[] newInMsg) {
+		((BasicEList<InboundTextMessage>) getInMsgList()).setData(
+				newInMsg.length, newInMsg);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public void setInMsg(int index, InboundMessage element) {
+	public void setInMsg(int index, InboundTextMessage element) {
 		getInMsgList().set(index, element);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
-	public EList<InboundMessage> getInMsgList() {
+	public EList<InboundTextMessage> getInMsgList() {
 		if (inMsg == null) {
-			inMsg = new EObjectResolvingEList<InboundMessage>(
-					InboundMessage.class, this, TeksPackage.TEKS__IN_MSG);
+			inMsg = new EObjectResolvingEList<InboundTextMessage>(
+					InboundTextMessage.class, this, TeksPackage.TEKS__IN_MSG);
 		}
 		return inMsg;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getAccountID() {
@@ -396,8 +393,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void setAccountID(String newAccountID) {
@@ -409,8 +406,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -426,8 +423,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -450,8 +447,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -466,12 +463,13 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			return;
 		case TeksPackage.TEKS__S:
 			getSList().clear();
-			getSList().addAll((Collection<? extends OutboundMessage>) newValue);
+			getSList().addAll(
+					(Collection<? extends OutboundTextMessage>) newValue);
 			return;
 		case TeksPackage.TEKS__IN_MSG:
 			getInMsgList().clear();
 			getInMsgList().addAll(
-					(Collection<? extends InboundMessage>) newValue);
+					(Collection<? extends InboundTextMessage>) newValue);
 			return;
 		case TeksPackage.TEKS__ACCOUNT_ID:
 			setAccountID((String) newValue);
@@ -481,8 +479,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -508,8 +506,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -532,8 +530,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override
@@ -550,4 +548,4 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		return result.toString();
 	}
 
-} //TeksImpl
+} // TeksImpl

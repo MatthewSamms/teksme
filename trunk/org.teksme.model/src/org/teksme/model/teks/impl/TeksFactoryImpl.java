@@ -77,6 +77,8 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 			return createResponseRestriction();
 		case TeksPackage.FREE_TEXT:
 			return createFreeText();
+		case TeksPackage.SECURE_TEXT:
+			return createSecureText();
 		case TeksPackage.MULTIPLE_CHOICE:
 			return createMultipleChoice();
 		case TeksPackage.ANNOTATION:
@@ -87,10 +89,10 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 			return createAnnotationMapEntry();
 		case TeksPackage.ANSWER_REF:
 			return createAnswerRef();
-		case TeksPackage.INBOUND_MESSAGE:
-			return createInboundMessage();
-		case TeksPackage.OUTBOUND_MESSAGE:
-			return createOutboundMessage();
+		case TeksPackage.INBOUND_TEXT_MESSAGE:
+			return createInboundTextMessage();
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE:
+			return createOutboundTextMessage();
 		case TeksPackage.CUSTOM_OUTBOUND_MESSAGE:
 			return createCustomOutboundMessage();
 		case TeksPackage.COMMENT:
@@ -240,6 +242,16 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public SecureText createSecureText() {
+		SecureTextImpl secureText = new SecureTextImpl();
+		return secureText;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public MultipleChoice createMultipleChoice() {
 		MultipleChoiceImpl multipleChoice = new MultipleChoiceImpl();
 		return multipleChoice;
@@ -290,9 +302,9 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public InboundMessage createInboundMessage() {
-		InboundMessageImpl inboundMessage = new InboundMessageImpl();
-		return inboundMessage;
+	public InboundTextMessage createInboundTextMessage() {
+		InboundTextMessageImpl inboundTextMessage = new InboundTextMessageImpl();
+		return inboundTextMessage;
 	}
 
 	/**
@@ -300,9 +312,9 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public OutboundMessage createOutboundMessage() {
-		OutboundMessageImpl outboundMessage = new OutboundMessageImpl();
-		return outboundMessage;
+	public OutboundTextMessage createOutboundTextMessage() {
+		OutboundTextMessageImpl outboundTextMessage = new OutboundTextMessageImpl();
+		return outboundTextMessage;
 	}
 
 	/**

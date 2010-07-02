@@ -142,12 +142,12 @@ public interface Campaign extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Advertise It</em>' containment reference.
-	 * @see #setAdvertiseIt(OutboundMessage)
+	 * @see #setAdvertiseIt(OutboundTextMessage)
 	 * @see org.teksme.model.teks.TeksPackage#getCampaign_AdvertiseIt()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	OutboundMessage getAdvertiseIt();
+	OutboundTextMessage getAdvertiseIt();
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Campaign#getAdvertiseIt <em>Advertise It</em>}' containment reference.
@@ -157,6 +157,6 @@ public interface Campaign extends EObject {
 	 * @see #getAdvertiseIt()
 	 * @generated
 	 */
-	void setAdvertiseIt(OutboundMessage value);
+	void setAdvertiseIt(OutboundTextMessage value);
 
 } // Campaign

@@ -41,6 +41,9 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getHeaderData <em>Header Data</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getFrom <em>From</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getToList <em>To</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getUsername <em>Username</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getPassword <em>Password</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getApiId <em>Api Id</em>}</li>
  * </ul>
  * </p>
  *
@@ -226,6 +229,66 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	 * @ordered
 	 */
 	protected static final String[] TO_EEMPTY_ARRAY = new String[0];
+
+	/**
+	 * The default value of the '{@link #getUsername() <em>Username</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsername()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String USERNAME_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUsername() <em>Username</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUsername()
+	 * @generated
+	 * @ordered
+	 */
+	protected String username = USERNAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String PASSWORD_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getPassword() <em>Password</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPassword()
+	 * @generated
+	 * @ordered
+	 */
+	protected String password = PASSWORD_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getApiId() <em>Api Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiId()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String API_ID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getApiId() <em>Api Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApiId()
+	 * @generated
+	 * @ordered
+	 */
+	protected String apiId = API_ID_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -531,6 +594,72 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getUsername() {
+		return username;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUsername(String newUsername) {
+		String oldUsername = username;
+		username = newUsername;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.MESSAGE__USERNAME, oldUsername, username));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setPassword(String newPassword) {
+		String oldPassword = password;
+		password = newPassword;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.MESSAGE__PASSWORD, oldPassword, password));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getApiId() {
+		return apiId;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApiId(String newApiId) {
+		String oldApiId = apiId;
+		apiId = newApiId;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.MESSAGE__API_ID, oldApiId, apiId));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -552,6 +681,12 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 			return getFrom();
 		case TeksPackage.MESSAGE__TO:
 			return getToList();
+		case TeksPackage.MESSAGE__USERNAME:
+			return getUsername();
+		case TeksPackage.MESSAGE__PASSWORD:
+			return getPassword();
+		case TeksPackage.MESSAGE__API_ID:
+			return getApiId();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -594,6 +729,15 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 			getToList().clear();
 			getToList().addAll((Collection<? extends String>) newValue);
 			return;
+		case TeksPackage.MESSAGE__USERNAME:
+			setUsername((String) newValue);
+			return;
+		case TeksPackage.MESSAGE__PASSWORD:
+			setPassword((String) newValue);
+			return;
+		case TeksPackage.MESSAGE__API_ID:
+			setApiId((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -633,6 +777,15 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		case TeksPackage.MESSAGE__TO:
 			getToList().clear();
 			return;
+		case TeksPackage.MESSAGE__USERNAME:
+			setUsername(USERNAME_EDEFAULT);
+			return;
+		case TeksPackage.MESSAGE__PASSWORD:
+			setPassword(PASSWORD_EDEFAULT);
+			return;
+		case TeksPackage.MESSAGE__API_ID:
+			setApiId(API_ID_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -669,6 +822,15 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 					.equals(from);
 		case TeksPackage.MESSAGE__TO:
 			return to != null && !to.isEmpty();
+		case TeksPackage.MESSAGE__USERNAME:
+			return USERNAME_EDEFAULT == null ? username != null
+					: !USERNAME_EDEFAULT.equals(username);
+		case TeksPackage.MESSAGE__PASSWORD:
+			return PASSWORD_EDEFAULT == null ? password != null
+					: !PASSWORD_EDEFAULT.equals(password);
+		case TeksPackage.MESSAGE__API_ID:
+			return API_ID_EDEFAULT == null ? apiId != null : !API_ID_EDEFAULT
+					.equals(apiId);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -702,6 +864,12 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		result.append(from);
 		result.append(", to: ");
 		result.append(to);
+		result.append(", username: ");
+		result.append(username);
+		result.append(", password: ");
+		result.append(password);
+		result.append(", apiId: ");
+		result.append(apiId);
 		result.append(')');
 		return result.toString();
 	}
