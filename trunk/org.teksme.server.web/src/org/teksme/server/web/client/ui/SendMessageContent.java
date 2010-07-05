@@ -16,7 +16,6 @@ import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.FormPanel;
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
@@ -50,8 +49,6 @@ public class SendMessageContent extends Content {
 		gridPanel.setCellPadding(0);
 		gridPanel.setBorderWidth(0);
 
-		mainVPanel.setHorizontalAlignment(HorizontalPanel.ALIGN_LEFT);
-
 		final ListBox countryListBox = new ListBox();
 		final TextBox mobileNumberBox = new TextBox();
 		final TextArea messageTextArea = new TextArea();
@@ -59,7 +56,7 @@ public class SendMessageContent extends Content {
 
 		countryListBox.addItem("USA", "USA");
 		countryListBox.setVisibleItemCount(1);
-
+		
 		final Label errorLabel = new Label();
 
 		final FormPanel form = new FormPanel();
@@ -102,7 +99,7 @@ public class SendMessageContent extends Content {
 		gridPanel.setWidget(3, 1, sendButton);
 
 		mainVPanel.add(gridPanel);
-		
+
 		form.add(mainVPanel);
 
 		// Create the popup dialog box
@@ -202,9 +199,5 @@ public class SendMessageContent extends Content {
 
 	}
 
-	@Override
-	public void initWidget(Content content) {
-		// TODO Auto-generated method stub
-
-	}
+	
 }

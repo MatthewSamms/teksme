@@ -1,7 +1,9 @@
 package org.teksme.server.web.client.ui;
 
+import org.teksme.server.web.shared.DateTimeUtils;
 import org.teksme.server.web.shared.PageLinks;
 
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Hyperlink;
 import com.google.gwt.user.client.ui.Label;
@@ -23,13 +25,8 @@ public class AppHeader extends Content {
 		panel.setSpacing(3);
 		panel.setBorderWidth(0);
 
-		Label date = new Label("Tuesday, June 22, 2010");
-		Label separator = new Label("  |  ");
-		Label time = new Label("8:56PM");
-
-		panel.add(date);
-		panel.add(separator);
-		panel.add(time);
+		String dateTime = DateTimeUtils.INSTANCE.getDateTime();
+		panel.add(new HTML(dateTime));
 
 		RootPanel.get("datetime").add(panel);
 
@@ -72,9 +69,4 @@ public class AppHeader extends Content {
 
 	}
 
-	@Override
-	public void initWidget(Content content) {
-		// TODO Auto-generated method stub
-		
-	}
 }
