@@ -1,22 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	version="2.5">
 
-	<!-- Servlets -->
-	<servlet>
-		<servlet-name>greetServlet</servlet-name>
-		<servlet-class>org.teksme.server.web.server.GreetingServiceImpl</servlet-class>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>greetServlet</servlet-name>
-		<url-pattern>/teksme_web/greet</url-pattern>
-	</servlet-mapping>
+	<!-- Session -->
+	<session-config>
+		<session-timeout>125</session-timeout>
+	</session-config>
 
 	<!-- Default page to serve -->
 	<welcome-file-list>
-		<welcome-file>teksme_web.html</welcome-file>
+		<welcome-file>teksme_web.html#home</welcome-file>
 	</welcome-file-list>
+
+	<servlet>
+		<servlet-name>sendMessageServlet</servlet-name>
+		<servlet-class>org.teksme.server.web.server.SendMessageServiceImpl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>sendMessageServlet</servlet-name>
+		<url-pattern>/teksme_web/sendmsg</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>loginServlet</servlet-name>
+		<servlet-class>org.teksme.server.web.server.LoginServiceImpl</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>loginServlet</servlet-name>
+		<url-pattern>/teksme_web/login</url-pattern>
+	</servlet-mapping>
 
 </web-app>
