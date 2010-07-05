@@ -4,6 +4,7 @@ import org.teksme.server.web.client.ui.AppHeader;
 import org.teksme.server.web.client.ui.ContentContainer;
 import org.teksme.server.web.client.ui.HomeContent;
 import org.teksme.server.web.client.ui.RecommendationsBox;
+import org.teksme.server.web.client.ui.SMSSimplePollContent;
 import org.teksme.server.web.client.ui.SendMessageContent;
 import org.teksme.server.web.shared.PageLinks;
 
@@ -25,8 +26,12 @@ public class TeksEntryPoint implements EntryPoint, ValueChangeHandler {
 		if (historyToken.isEmpty()) {
 			History.newItem("home");
 		} else {
-			System.out.println("TeksEntryPoint.onModuleLoad()");
-			// changePage(PageLinks.get(historyToken));
+			try {
+				changePage(historyToken);
+			} catch (PageNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -51,12 +56,22 @@ public class TeksEntryPoint implements EntryPoint, ValueChangeHandler {
 
 		switch (page) {
 		case HOME:
-			ContentContainer.getInstance().setContent(new RecommendationsBox());
-		case CAMPAIGNS:
-			ContentContainer.getInstance().setContent(new SendMessageContent());
-		default:
 			ContentContainer.getInstance().setContent(new HomeContent());
 			ContentContainer.getInstance().setContent(new AppHeader());
+			ContentContainer.getInstance().setContent(new RecommendationsBox());
+			break;
+		case SEND_MSG:
+			ContentContainer.getInstance().setContent(new SendMessageContent());
+			break;
+		case NEW_POLL:
+			ContentContainer.getInstance().setContent(
+					new SMSSimplePollContent());
+			break;
+		case CAMPAIGNS:
+			ContentContainer.getInstance().setContent(
+					new SMSSimplePollContent());
+			break;
+		default:
 			break;
 		}
 

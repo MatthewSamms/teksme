@@ -47,9 +47,4 @@ public class RecommendationsBox extends Content {
 
 	}
 
-	@Override
-	public void initWidget(Content content) {
-		// TODO Auto-generated method stub
-		
-	}
 }

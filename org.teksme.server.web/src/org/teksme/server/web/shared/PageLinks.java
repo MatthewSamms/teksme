@@ -16,7 +16,9 @@ public enum PageLinks {
 
 	CONTACTS(4, "ContactsContent", "section.contacts"),
 
-	SETTINGS(5, "SettingsContent", "section.settings");
+	SETTINGS(5, "SettingsContent", "section.settings"),
+
+	NEW_POLL(6, "SMSSimplePollContent", "section.newpoll");
 
 	public static final int HOME_VALUE = 0;
 
@@ -30,8 +32,10 @@ public enum PageLinks {
 
 	public static final int SETTINGS_VALUE = 5;
 
+	public static final int NEW_POLL_VALUE = 6;
+
 	private static final PageLinks[] VALUES_ARRAY = new PageLinks[] { HOME,
-			SEND_MSG, DASHBOARD, CAMPAIGNS, CONTACTS, SETTINGS };
+			SEND_MSG, DASHBOARD, CAMPAIGNS, CONTACTS, SETTINGS, NEW_POLL };
 
 	public static final List<PageLinks> VALUES = Collections
 			.unmodifiableList(Arrays.asList(VALUES_ARRAY));

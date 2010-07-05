@@ -12,9 +12,4 @@ public class VerticalNavMenuContent extends Content {
 		RootPanel.get("stylized").removeFromParent();
 	}
 
-	@Override
-	public void initWidget(Content content) {
-		// TODO Auto-generated method stub
-		
-	}
 }
