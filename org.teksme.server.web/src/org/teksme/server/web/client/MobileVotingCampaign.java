@@ -2,6 +2,8 @@ package org.teksme.server.web.client;
 
 import java.util.Iterator;
 
+import org.teksme.server.web.shared.QuestionType;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -16,7 +18,6 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.PushButton;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
@@ -58,7 +59,7 @@ public class MobileVotingCampaign implements EntryPoint {
 		mainVPanel.add(doneButton);
 
 		// Associate the Main panel with the HTML host page.
-		//RootPanel.get("campaignEdtPanel").add(mainVPanel);
+		// RootPanel.get("campaignEdtPanel").add(mainVPanel);
 
 	}
 
@@ -137,12 +138,11 @@ public class MobileVotingCampaign implements EntryPoint {
 		PushButton addOptionButton = new PushButton("Add an Option");
 
 		keywordTextBox.setText("AUTO KEYWORD");
-		
+
 		grid.setWidget(3, 0, optionLabel);
 		grid.setWidget(3, 1, optionTextBox);
 		grid.setWidget(3, 2, keywordTextBox);
 		grid.setWidget(3, 3, delButton);
-		
 
 		grid.setWidget(4, 0, addOptionButton);
 
