@@ -15,7 +15,7 @@
 <HEAD>
 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name='gwt:module' content='org.teksme.server.web.client.TeksEntryPoint'>
+ <meta name='gwt:module' content='org.teksme.server.web.client.TeksMeEntryPoint'>
  
 <TITLE>TeksMe</TITLE>
 
@@ -189,6 +189,35 @@ application to display correctly.</div>
 				<li>
 
 				<div id="LinkRecommendation-ROOT">
+				<table style="display: block;" class="re-box"
+					id="product-recommendation-panel" cellpadding="0" cellspacing="0"
+					border="0">
+					<tbody>
+						<tr>
+							<td style="vertical-align: top;" align="left">
+							<div class="re-box-header">Recommended for you</div>
+							</td>
+						</tr>
+						<tr>
+							<td style="vertical-align: top;" align="left">
+							<div class="re-box-body" id="product-recommendation-panel-body">
+							<table border="0" cellpadding="0" cellspacing="0" width="100%">
+								<tbody>
+									<tr>
+										<td>
+											<div class="re-title">SMS Poll</div>
+											<a href=""><img src="" alt="" class="re-img"></a>
+											<div class="re-desc">Your can ask your audience a question and they can answer using SMS, text messages, Twitter, email, or the web.</div>
+											<a href="" class="re-link">Learn more &raquo;</a><br>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 				</div>
 
 				</li>
@@ -344,16 +373,51 @@ application to display correctly.</div>
 					<tr>
 						<td>
 						<div id="Content-ROOT">
-						
-<table class="entity_table" cellpadding="0" cellspacing="0">
+						<table class="entity_table" cellpadding="0" cellspacing="0">
 							<tbody>
-									<tr>
-										<td style="vertical-align: top;" align="left">
+								<tr>
+									<td style="vertical-align: top;" align="left">
+									<table style="width: 100%;">
+										<colgroup>
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td>
+												<table class="gami-profile-btns" cellpadding="0"
+													cellspacing="0">
+													<tbody>
+														<tr>
+															<td style="vertical-align: top;" align="left">
 
-										<div id="stylized" class="myform">
-										</div>
-										</td>
-									</tr>
+															<div id="stylized" class="myform">
+															<form id="form1" name="form1" method="post" action="">
+															<h1>Send a text message</h1>
+															<p>Enter the mobile phone number into the space
+															provided below, click send, and we will send a message
+															for you.</p>
+															<label>Country <span class="small">Select
+															the country</span> </label> <span id="countryTextBox"> </span> <label>Mobile
+															number <span class="small"> Prefix and Number (no
+															leading zero, no spaces)</span> </label> <span id="mobileNumberBox">
+															</span> <label>Message Text<span class="small">Max.
+															130 characteres </span> </label> 
+															<span id="messageTextArea"></span>
+															<span id="sendButton"></span>
+															<div class="spacer"></div>
+
+															</form>
+															</div>
+															</td>
+														</tr>
+													</tbody>
+												</table>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									</td>
+								</tr>
 							</tbody>
 						</table>
 						</div>
