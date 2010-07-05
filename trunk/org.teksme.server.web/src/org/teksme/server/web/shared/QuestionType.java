@@ -1,4 +1,4 @@
-package org.teksme.server.web.client;
+package org.teksme.server.web.shared;
 
 import java.util.Arrays;
 import java.util.Collections;

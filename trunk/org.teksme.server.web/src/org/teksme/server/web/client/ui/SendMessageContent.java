@@ -1,8 +1,9 @@
-package org.teksme.server.web.client;
+package org.teksme.server.web.client.ui;
 
+import org.teksme.server.web.client.SendMessageService;
+import org.teksme.server.web.client.SendMessageServiceAsync;
 import org.teksme.server.web.shared.FieldVerifier;
 
-import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -12,11 +13,9 @@ import com.google.gwt.event.dom.client.KeyUpHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.DialogBox;
-import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.FlexTable.FlexCellFormatter;
+import com.google.gwt.user.client.ui.FormPanel;
+import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.HTML;
-import com.google.gwt.user.client.ui.HTMLTable.Cell;
-import com.google.gwt.user.client.ui.HasHorizontalAlignment;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
@@ -25,11 +24,7 @@ import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
-public class SendMessages implements EntryPoint {
-
-	private VerticalPanel mainVPanel = new VerticalPanel();
-
-	private FlexTable formLayout = new FlexTable();
+public class SendMessageContent extends Content {
 
 	/**
 	 * The message displayed to the user when the server cannot be reached or
@@ -43,41 +38,72 @@ public class SendMessages implements EntryPoint {
 	 * Create a remote service proxy to talk to the server-side Greeting
 	 * service.
 	 */
-	private final GreetingServiceAsync greetingService = GWT
-			.create(GreetingService.class);
+	private final SendMessageServiceAsync sendMessageService = GWT
+			.create(SendMessageService.class);
 
-	public void onModuleLoad() {
+	public void setWidget() {
 
-		FlexCellFormatter cellFormatter = formLayout.getFlexCellFormatter();
+		VerticalPanel mainVPanel = new VerticalPanel();
+		Grid gridPanel = new Grid(4, 2);
 
-		// Add a title to the form
-		// formLayout.setHTML(0, 0, "");
-		// cellFormatter.setColSpan(0, 0, 2);
-		cellFormatter.setHorizontalAlignment(0, 0,
-				HasHorizontalAlignment.ALIGN_LEFT);
+		gridPanel.setCellSpacing(0);
+		gridPanel.setCellPadding(0);
+		gridPanel.setBorderWidth(0);
 
-		formLayout.setCellSpacing(5);
-		formLayout.setCellPadding(5);
-		formLayout.setBorderWidth(0);
-
-		mainVPanel.setHorizontalAlignment(HorizontalPanel.ALIGN_RIGHT);
+		mainVPanel.setHorizontalAlignment(HorizontalPanel.ALIGN_LEFT);
 
 		final ListBox countryListBox = new ListBox();
 		final TextBox mobileNumberBox = new TextBox();
 		final TextArea messageTextArea = new TextArea();
 		final Button sendButton = new Button("Send");
 
-		// String[] countryCodes = Locale.getISOCountries();
-
 		countryListBox.addItem("USA", "USA");
 		countryListBox.setVisibleItemCount(1);
 
-		RootPanel.get("countryTextBox").add(countryListBox);
-		RootPanel.get("mobileNumberBox").add(mobileNumberBox);
-		RootPanel.get("messageTextArea").add(messageTextArea);
-		RootPanel.get("sendButton").add(sendButton);
-
 		final Label errorLabel = new Label();
+
+		final FormPanel form = new FormPanel();
+		form.setEncoding(FormPanel.ENCODING_MULTIPART);
+		form.setMethod(FormPanel.METHOD_POST);
+
+		mainVPanel.add(new HTML("<h1>Send a text message</h1>"));
+
+		mainVPanel
+				.add(new HTML(
+						"<p>Enter the mobile phone number into the space provided below, click send, and we will send a message for you.</p>"));
+
+		gridPanel
+				.setWidget(
+						0,
+						0,
+						new HTML(
+								"<label> Country <span class='small'>Select the country</span></label>"));
+
+		gridPanel.setWidget(0, 1, countryListBox);
+
+		gridPanel
+				.setWidget(
+						1,
+						0,
+						new HTML(
+								"<label>Mobile number <span class='small'> Prefix and Number (no leading zero, no spaces)</span> </label>"));
+
+		gridPanel.setWidget(1, 1, mobileNumberBox);
+
+		gridPanel
+				.setWidget(
+						2,
+						0,
+						new HTML(
+								"<label>Message Text<span class='small'>Max. 130 characteres </span> </label>"));
+
+		gridPanel.setWidget(2, 1, messageTextArea);
+
+		gridPanel.setWidget(3, 1, sendButton);
+
+		mainVPanel.add(gridPanel);
+		
+		form.add(mainVPanel);
 
 		// Create the popup dialog box
 		final DialogBox dialogBox = new DialogBox();
@@ -102,7 +128,7 @@ public class SendMessages implements EntryPoint {
 		closeButton.addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				dialogBox.hide();
-				sendButton.setEnabled(true);
+				sendButton.setEnabled(false);
 				sendButton.setFocus(true);
 			}
 		});
@@ -141,7 +167,7 @@ public class SendMessages implements EntryPoint {
 				sendButton.setEnabled(false);
 				textToServerLabel.setText(textToServer);
 				serverResponseLabel.setText("");
-				greetingService.greetServer(textToServer,
+				sendMessageService.sendMessageToServer(textToServer,
 						new AsyncCallback<String>() {
 							public void onFailure(Throwable caught) {
 								// Show the RPC error message to the user
@@ -155,6 +181,7 @@ public class SendMessages implements EntryPoint {
 							}
 
 							public void onSuccess(String result) {
+
 								dialogBox.setText("Remote Procedure Call");
 								serverResponseLabel
 										.removeStyleName("serverResponseLabelError");
@@ -171,18 +198,13 @@ public class SendMessages implements EntryPoint {
 		sendButton.addClickHandler(handler);
 		mobileNumberBox.addKeyUpHandler(handler);
 
+		RootPanel.get("stylized").add(form);
+
 	}
 
-	/**
-	 * Remove a row from the flex table.
-	 */
-	private void removeRow(FlexTable flexTable, Cell cell) {
-		int numRows = flexTable.getRowCount();
-		if (numRows > 1) {
-			// flexTable.removeRow(numRows - 1);
-			flexTable.removeRow(cell.getRowIndex());
-			flexTable.getFlexCellFormatter().setRowSpan(0, 1, numRows - 1);
-		}
-	}
+	@Override
+	public void initWidget(Content content) {
+		// TODO Auto-generated method stub
 
+	}
 }
