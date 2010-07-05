@@ -41,7 +41,8 @@ input,select {
 .re-box {
 	margin-top: 1em;
 	width: 185px;
-	display: none
+	/*display: none*/
+	display: block;
 }
 
 .re-box-header {
