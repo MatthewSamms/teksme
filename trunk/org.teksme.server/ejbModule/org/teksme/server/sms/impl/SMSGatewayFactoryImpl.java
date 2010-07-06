@@ -1,11 +1,16 @@
 package org.teksme.server.sms.impl;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import org.smslib.AGateway;
+import org.smslib.GatewayException;
+import org.smslib.SMSLibException;
+import org.smslib.Service;
+import org.smslib.TimeoutException;
 import org.smslib.http.BulkSmsHTTPGateway;
 import org.smslib.http.ClickatellHTTPGateway;
 import org.smslib.modem.SerialModemGateway;
@@ -14,7 +19,8 @@ import org.teksme.server.SMSGatewayKind;
 
 public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 
-	private static Logger logger = Logger.getLogger("SMSGatewayFactoryImpl");
+	private static Logger logger = Logger.getLogger(SMSGatewayFactoryImpl.class
+			.getName());
 
 	private static Map<String, Object> registry = Collections
 			.synchronizedMap(new HashMap<String, Object>());
@@ -22,36 +28,97 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 	private static SMSGatewayFactoryImpl INSTANCE = null;
 
 	@Override
-	public SerialModemGateway createSerialModemGateway() {
-		final String id = Configuration.getString("modem.id");
-		final String port = Configuration.getString("modem.port");
-		final Integer baudrate = Integer.valueOf(Configuration
-				.getString("modem.baudrate"));
-		final String manufacturer = Configuration
-				.getString("modem.manufacturer");
-		final String model = Configuration.getString("modem.model");
+	public Service getDefaultSMSGatewayService() throws IOException,
+			InterruptedException, SMSLibException {
 
-		SerialModemGateway serialModemGateway = new SerialModemGateway(id,
-				port, baudrate, manufacturer, model);
+		Service srv = (Service) registry.get(Service.class.getSimpleName());
 
-		final Boolean inbound = Boolean.valueOf(Configuration
-				.getString("modem.inbound"));
+		if (srv != null) {
 
-		final Boolean outbound = Boolean.valueOf(Configuration
-				.getString("modem.outbound"));
+			return srv;
 
-		final String pin = Configuration.getString("modem.pin");
+		} else {
 
-//		SerialModemGateway gateway = new SerialModemGateway("usbmodem412", "/dev/tty.usbmodem412", 115200, "Nokia", "6212 classic");
-		serialModemGateway.setInbound(true);
-		serialModemGateway.setOutbound(true);
-		serialModemGateway.setSimPin("0000");
+			srv = new Service();
 
-//		serialModemGateway.setInbound(inbound);
-//		serialModemGateway.setOutbound(outbound);
-//		serialModemGateway.setSimPin(pin); //$NON-NLS-1$
+			OutboundNotification outboundNotification = new OutboundNotification();
+			srv.setOutboundMessageNotification(outboundNotification);
 
-		return serialModemGateway;
+			if (getDefaultSMSGateway() == SMSGatewayKind.SERIAL_MODEM) {
+
+				SerialModemGateway serialModemGateway = createSerialModemGateway();
+				srv.addGateway(serialModemGateway);
+				srv.startService();
+
+				logger.info("Modem Information:");
+				logger.info("  Manufacturer: "
+						+ serialModemGateway.getManufacturer());
+				logger.info("  Model: " + serialModemGateway.getModel());
+				logger.info("  Serial No: " + serialModemGateway.getSerialNo());
+				logger.info("  SIM IMSI: " + serialModemGateway.getImsi());
+				logger.info("  Signal Level: "
+						+ serialModemGateway.getSignalLevel() + "%");
+				logger.info("  Battery Level: "
+						+ serialModemGateway.getBatteryLevel() + "%");
+
+			} else if (getDefaultSMSGateway() == SMSGatewayKind.CLICKATELL_HTTP_GATEWAY) {
+
+				ClickatellHTTPGateway clickatellHTTPGateway = createClickatellHTTPGateway();
+				srv.addGateway(clickatellHTTPGateway);
+				srv.startService();
+
+			}
+
+			registry.put(Service.class.getSimpleName(), srv);
+
+			// srv.stopService();
+
+			return srv;
+		}
+
+	}
+
+	@Override
+	public SerialModemGateway createSerialModemGateway()
+			throws TimeoutException, GatewayException, IOException,
+			InterruptedException {
+
+		SerialModemGateway theSerialModemGateway = (SerialModemGateway) registry
+				.get(SerialModemGateway.class.getSimpleName());
+
+		if (theSerialModemGateway != null) {
+			return theSerialModemGateway;
+
+		} else {
+
+			final String id = Configuration.getString("modem.id");
+			final String port = Configuration.getString("modem.port");
+			final Integer baudrate = Integer.valueOf(Configuration
+					.getString("modem.baudrate"));
+			final String manufacturer = Configuration
+					.getString("modem.manufacturer");
+			final String model = Configuration.getString("modem.model");
+
+			theSerialModemGateway = new SerialModemGateway(id, port, baudrate,
+					manufacturer, model);
+
+			final Boolean inbound = Boolean.valueOf(Configuration
+					.getString("modem.inbound"));
+
+			final Boolean outbound = Boolean.valueOf(Configuration
+					.getString("modem.outbound"));
+
+			final String pin = Configuration.getString("modem.pin");
+
+			theSerialModemGateway.setInbound(inbound);
+			theSerialModemGateway.setOutbound(outbound);
+			theSerialModemGateway.setSimPin(pin); //$NON-NLS-1$
+
+			registry.put(SerialModemGateway.class.getSimpleName(),
+					theSerialModemGateway);
+
+			return theSerialModemGateway;
+		}
 	}
 
 	@Override
@@ -89,7 +156,7 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 
 			if (registry.containsKey(SMSGatewayFactory.class.getSimpleName())) {
 				SMSGatewayFactory theGatewayFactory = (SMSGatewayFactory) registry
-						.get(SMSGatewayFactory.class);
+						.get(SMSGatewayFactory.class.getSimpleName());
 
 				if (theGatewayFactory != null) {
 					return theGatewayFactory;
@@ -106,7 +173,8 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 		return INSTANCE;
 	}
 
-	public AGateway create(SMSGatewayKind smsGateway) {
+	public AGateway create(SMSGatewayKind smsGateway) throws TimeoutException,
+			GatewayException, IOException, InterruptedException {
 		switch (smsGateway) {
 		case SERIAL_MODEM:
 			return createSerialModemGateway();

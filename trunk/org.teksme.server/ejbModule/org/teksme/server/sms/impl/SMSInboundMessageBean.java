@@ -1,4 +1,4 @@
-package org.teksme.server.comm.sms;
+package org.teksme.server.sms.impl;
 
 import javax.ejb.Stateless;
 

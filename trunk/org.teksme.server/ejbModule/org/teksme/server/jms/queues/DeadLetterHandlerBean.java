@@ -3,8 +3,8 @@ package org.teksme.server.jms.queues;
 import javax.ejb.Stateless;
 import javax.jms.Message;
 
-import org.teksme.server.comm.DeadLetterHandler;
-import org.teksme.server.comm.DeadLetterHandlerHome;
+import org.teksme.server.DeadLetterHandler;
+import org.teksme.server.DeadLetterHandlerHome;
 
 @Stateless
 public class DeadLetterHandlerBean implements DeadLetterHandler,
