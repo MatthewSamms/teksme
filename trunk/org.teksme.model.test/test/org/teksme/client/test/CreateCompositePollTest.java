@@ -10,18 +10,19 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.teksme.model.teks.Campaign;
 import org.teksme.model.teks.FreeText;
-import org.teksme.model.teks.Inquiry;
+import org.teksme.model.teks.Keyword;
+import org.teksme.model.teks.Poll;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
+import org.teksme.model.teks.UserProfile;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 
-public class TeksInquiryTest {
+public class CreateCompositePollTest {
 
 	private static final String APPID = "6152376517";
-	private static final String ACCOUNTID = "8392748729";
+	private static final String USERPROFILE_ID = "o318947871972892719jiasjs8198";
 	private static final String MODEL_FILE = "output/teks.xml";
 	private static ResourceSet resourceSet = null;
 
@@ -37,55 +38,50 @@ public class TeksInquiryTest {
 	}
 
 	@Test
-	public void testInquiryCreation() throws IOException {
-
+	public void testCompositePollCreation() throws IOException {
 		TeksPackageImpl.init();
 		// Retrieve the default factory singleton
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 		Teks eduTeks = factory.createTeks();
 		eduTeks.setAppId(APPID);
-		eduTeks.setAccountID(ACCOUNTID);
 
-		Campaign campaign = factory.createCampaign();
-		campaign.setId(UUID.randomUUID().toString());
+		UserProfile userProfile = factory.createUserProfile();
+		userProfile.setId(USERPROFILE_ID);
 
-		Inquiry checkInRequest = factory.createInquiry();
-		checkInRequest.setAuthor("Ministry of Education");
-		checkInRequest.setLastModified(new Date());
-		checkInRequest.setTitle("Time and attendance system");
+		eduTeks.setUserProfile(userProfile);
+
+		Poll poll = factory.createPoll();
+		poll.setAuthor("Fabiano Cruz");
+		poll.setLastModified(new Date());
+		poll.setId(UUID.randomUUID().toString());
+
+		Keyword key = factory.createKeyword();
+		key.setAutoKeyword(false);
+		key.setKey("CHECKIN");
 
 		FreeText employeeId = factory.createFreeText();
 		employeeId.setQuestion("Please enter your Employee ID Number");
-		employeeId.setAutoKeyword(false);
-		employeeId.setInquiryRef(checkInRequest);
-		employeeId.setMandatory(true);
-		employeeId.setKeyword("");
-
-		checkInRequest.setChoice(0, employeeId);
+		employeeId.setRequired(true);
+		employeeId.setPollRef(poll);
+		employeeId.setKeyword(key);
 
 		FreeText numMaleStudents = factory.createFreeText();
 		numMaleStudents.setQuestion("Number of male students in the classroom");
-		numMaleStudents.setAutoKeyword(false);
-		numMaleStudents.setInquiryRef(checkInRequest);
-		numMaleStudents.setMandatory(true);
-		numMaleStudents.setKeyword("");
-
-		checkInRequest.setChoice(1, numMaleStudents);
+		numMaleStudents.setRequired(true);
+		numMaleStudents.setPollRef(poll);
 
 		FreeText numFemaleStudents = factory.createFreeText();
 		numFemaleStudents
 				.setQuestion("Number of female students in the classroom");
-		numFemaleStudents.setAutoKeyword(false);
-		numFemaleStudents.setInquiryRef(checkInRequest);
-		numFemaleStudents.setMandatory(true);
-		numFemaleStudents.setKeyword("");
+		numFemaleStudents.setRequired(true);
+		numFemaleStudents.setPollRef(poll);
 
-		checkInRequest.setChoice(2, numFemaleStudents);
+		poll.setQuestion(0, employeeId);
+		poll.setQuestion(1, numMaleStudents);
+		poll.setQuestion(2, numFemaleStudents);
 
-		campaign.setInstance(checkInRequest);
-
-		eduTeks.setCampaign(campaign);
+		eduTeks.setPoll(poll);
 
 		Resource resource = resourceSet.createResource(URI
 				.createFileURI(MODEL_FILE));
