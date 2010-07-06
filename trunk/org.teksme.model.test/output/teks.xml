@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="ASCII"?>
-<teks:Teks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:teks="http://teksme.org/meta/1.0.0/teks" appId="6152376517" accountID="8392748729">
-  <campaign id="6863375c-2139-41f8-834e-d6deac688a19">
-    <instance title="Time and attendance system" author="Ministry of Education" lastModified="2010-06-14T11:25:28.958-0400">
-      <choice xsi:type="teks:FreeText" question="Please enter your Employee ID Number" mandatory="true" keyword="" autoKeyword="false"/>
-      <choice xsi:type="teks:FreeText" question="Number of male students in the classroom" mandatory="true" keyword="" autoKeyword="false"/>
-      <choice xsi:type="teks:FreeText" question="Number of female students in the classroom" mandatory="true" keyword="" autoKeyword="false"/>
-    </instance>
-  </campaign>
+<teks:Teks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:teks="http://teksme.org/meta/1.0.0/teks" appId="6152376517">
+  <userProfile id="o318947871972892719jiasjs8198"/>
+  <poll author="Fabiano Cruz" lastModified="2010-07-06T19:22:40.026-0400" id="aa4658d5-7e53-4837-a8bf-3c0e12b1cd3f">
+    <question xsi:type="teks:FreeText" required="true" question="Please enter your Employee ID Number">
+      <keyword key="CHECKIN" autoKeyword="false"/>
+    </question>
+    <question xsi:type="teks:FreeText" required="true" question="Number of male students in the classroom"/>
+    <question xsi:type="teks:FreeText" required="true" question="Number of female students in the classroom"/>
+  </poll>
 </teks:Teks>
