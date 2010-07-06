@@ -1,5 +1,6 @@
 package org.teksme.server.jms.queues;
 
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.annotation.Resource;
@@ -41,7 +42,7 @@ public class SMSQueueHandlerBean extends
 	public void consume(final OutboundTextMessage message) {
 		try {
 
-			logger.info("message " + message.getTextMessage() + " received");
+			logger.info("Message received: " + message.getTextMessage());
 
 			Transaction tx = tm.getTransaction();
 
@@ -50,8 +51,8 @@ public class SMSQueueHandlerBean extends
 				outboundMessage.sendMessage(message);
 
 			} else {
-				System.out
-						.println("something is wrong, I was expecting a transaction");
+				logger.log(Level.SEVERE,
+						"something is wrong, I was expecting a transaction");
 			}
 		} catch (SystemException e) {
 			e.printStackTrace();

@@ -1,12 +1,6 @@
 package org.teksme.server.jms.queues;
 
 import javax.annotation.Resource;
-import javax.ejb.ActivationConfigProperty;
-import javax.ejb.MessageDriven;
-import javax.ejb.TransactionAttribute;
-import javax.ejb.TransactionAttributeType;
-import javax.ejb.TransactionManagement;
-import javax.ejb.TransactionManagementType;
 import javax.jms.JMSException;
 import javax.jms.TextMessage;
 import javax.mail.Message;
@@ -14,23 +8,22 @@ import javax.transaction.SystemException;
 import javax.transaction.Transaction;
 import javax.transaction.TransactionManager;
 
-import org.jboss.ejb3.annotation.ResourceAdapter;
-import org.teksme.server.comm.queues.TeksMessageHandler;
-
-@MessageDriven(name = "MailQueueHandler", activationConfig = {
-		@ActivationConfigProperty(propertyName = "mailServer", propertyValue = "mail.philips.local"),
-		// @ActivationConfigProperty(propertyName="port",
-		// propertyValue="10143"),
-		@ActivationConfigProperty(propertyName = "mailFolder", propertyValue = "INBOX"),
-		@ActivationConfigProperty(propertyName = "storeProtocol", propertyValue = "imap"),
-		@ActivationConfigProperty(propertyName = "userName", propertyValue = "noway@spam.com"),
-		@ActivationConfigProperty(propertyName = "password", propertyValue = "????????"),
-		@ActivationConfigProperty(propertyName = "debug", propertyValue = "false"),
-		@ActivationConfigProperty(propertyName = "pollingInterval", propertyValue = "30000"),
-		@ActivationConfigProperty(propertyName = "maxMessages", propertyValue = "5") })
-@TransactionManagement(value = TransactionManagementType.CONTAINER)
-@TransactionAttribute(value = TransactionAttributeType.REQUIRED)
-@ResourceAdapter("mail-ra.rar")
+/*
+ @MessageDriven(name = "MailQueueHandler", activationConfig = {
+ @ActivationConfigProperty(propertyName = "mailServer", propertyValue = "mail.philips.local"),
+ // @ActivationConfigProperty(propertyName="port",
+ // propertyValue="10143"),
+ @ActivationConfigProperty(propertyName = "mailFolder", propertyValue = "INBOX"),
+ @ActivationConfigProperty(propertyName = "storeProtocol", propertyValue = "imap"),
+ @ActivationConfigProperty(propertyName = "userName", propertyValue = "noway@spam.com"),
+ @ActivationConfigProperty(propertyName = "password", propertyValue = "????????"),
+ @ActivationConfigProperty(propertyName = "debug", propertyValue = "false"),
+ @ActivationConfigProperty(propertyName = "pollingInterval", propertyValue = "30000"),
+ @ActivationConfigProperty(propertyName = "maxMessages", propertyValue = "5") })
+ @TransactionManagement(value = TransactionManagementType.CONTAINER)
+ @TransactionAttribute(value = TransactionAttributeType.REQUIRED)
+ @ResourceAdapter("mail-ra.rar")
+ */
 public class MailQueueHandlerBean extends TeksMessageHandler<Message> {
 
 	@Resource(mappedName = "java:/TransactionManager")

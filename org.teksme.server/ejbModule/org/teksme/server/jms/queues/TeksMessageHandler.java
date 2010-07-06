@@ -10,7 +10,7 @@ import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import javax.jms.TextMessage;
 
-import org.teksme.server.comm.DeadLetterHandler;
+import org.teksme.server.DeadLetterHandler;
 
 public abstract class TeksMessageHandler<T> implements MessageListener {
 
