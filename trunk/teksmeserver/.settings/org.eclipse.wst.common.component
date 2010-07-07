@@ -6,8 +6,11 @@
             <dependent-object/>
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="org.teksme.server.web.war" deploy-path="/" handle="module:/resource/org.teksme.server.web/org.teksme.server.web">
+        <dependent-module archiveName="org.teksme.server.web.api.war" deploy-path="/" handle="module:/resource/org.teksme.server.web.api/org.teksme.server.web.api">
             <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.teksme.model.jar" deploy-path="/lib" handle="module:/resource/org.teksme.model/org.teksme.model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
     </wb-module>
