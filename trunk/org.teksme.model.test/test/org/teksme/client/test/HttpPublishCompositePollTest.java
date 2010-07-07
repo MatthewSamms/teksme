@@ -13,7 +13,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
-import java.net.URLEncoder;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -63,16 +62,15 @@ public class HttpPublishCompositePollTest {
 	}
 
 	@Test
+	public void testConvertionXMLFileToString() {
+		System.out.println(convertXMLFileToString(MODEL_FILE));
+	}
+
+	@Test
 	public void publishCompositePoll() {
 
-		// String fileContent =
-		// "<?xml version=\"1.0\" encoding=\"UTF-8\"?><WAV> this is the content</WAV>";
-
 		try {
-			String fileContentEncoded = URLEncoder.encode(
-					convertXMLFileToString(MODEL_FILE), "UTF-8");
-			out.write(fileContentEncoded);
-			out.write("Writing to XML file");
+			out.write(convertXMLFileToString(MODEL_FILE));
 
 			out.flush();
 			connection.connect();
@@ -82,11 +80,12 @@ public class HttpPublishCompositePollTest {
 					connection.getInputStream()));
 
 			String decodedString;
-
 			while ((decodedString = in.readLine()) != null) {
 				System.out.println(decodedString);
 			}
+
 			in.close();
+		
 		} catch (UnsupportedEncodingException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
