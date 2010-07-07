@@ -22,7 +22,7 @@ public class ReadCompositePollTest {
 		TeksPackageImpl.init();
 		// Retrieve the default factory singleton
 		TeksFactory factory = TeksFactory.eINSTANCE;
-		
+
 		// create resource set and resource
 		ResourceSet resourceSet = new ResourceSetImpl();
 
@@ -34,6 +34,8 @@ public class ReadCompositePollTest {
 		Resource res = resourceSet.getResource(URI.createURI(MODEL_FILE), true);
 
 		Teks eduTeks = (Teks) res.getContents().get(0);
+
+		System.out.println(eduTeks.toString());
 
 	}
 }

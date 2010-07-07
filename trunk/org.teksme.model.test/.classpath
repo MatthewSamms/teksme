@@ -10,6 +10,5 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/org.teksme.model"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="/org.teksme.library.target/mysql/mysql-connector-java-5.1.13-bin.jar"/>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-5.1.13-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
