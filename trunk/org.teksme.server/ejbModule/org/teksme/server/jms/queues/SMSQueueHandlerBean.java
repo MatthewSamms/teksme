@@ -42,7 +42,7 @@ public class SMSQueueHandlerBean extends
 	public void consume(final OutboundTextMessage message) {
 		try {
 
-			logger.info("Message received: " + message.getTextMessage());
+			logger.info("Message received: " + message.getText());
 
 			Transaction tx = tm.getTransaction();
 

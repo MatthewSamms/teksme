@@ -32,13 +32,13 @@ public class SMSOutboundMessageBean implements SMSOutboundMessage,
 
 		Service srv = factory.getDefaultSMSGatewayService();
 
-		OutboundMessage msg = new OutboundMessage(message.getTo(0),
-				message.getTextMessage());
+		OutboundMessage msg = new OutboundMessage(message.getRecipient(0),
+				message.getText());
 
-		//srv.sendMessage(msg);
+		// srv.sendMessage(msg);
 
 		logger.info(msg.toString());
-		//System.in.read();
+		// System.in.read();
 
 	}
 
