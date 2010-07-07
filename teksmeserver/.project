@@ -4,7 +4,8 @@
 	<comment></comment>
 	<projects>
 		<project>org.teksme.server</project>
-		<project>org.teksme.server.web</project>
+		<project>org.teksme.server.web.api</project>
+		<project>org.teksme.model</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
