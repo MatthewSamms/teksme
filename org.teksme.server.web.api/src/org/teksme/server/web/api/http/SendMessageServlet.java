@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.teksme.model.teks.MessageType;
 import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.impl.TeksPackageImpl;
@@ -52,12 +51,6 @@ public class SendMessageServlet extends HttpServlet {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 
 		OutboundTextMessage msg = factory.createOutboundTextMessage();
-		msg.setUsername(username);
-		msg.setPassword(password);
-		msg.setApiId(apiId);
-		msg.setTextMessage(text);
-		msg.setTo(new String[] { to });
-		msg.setType(new MessageType[] { MessageType.SMS });
 
 		Connection connection = null;
 		Session session = null;
@@ -81,7 +74,7 @@ public class SendMessageServlet extends HttpServlet {
 			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
 
 			ObjectMessage objMsg = session.createObjectMessage();
-			objMsg.setObject(msg);
+			// objMsg.setObject(msg);
 			// objMsg.setJMSType(this.CMD_TYPE_MESSAGETYPE_OBJECT);
 
 			// Create a JMS Message Producer
