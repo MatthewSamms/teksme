@@ -1,4 +1,4 @@
-package org.teksme.client.test;
+package org.teksme.client.test.persistence;
 
 import java.io.IOException;
 import java.util.List;

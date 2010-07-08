@@ -1,4 +1,4 @@
-package org.teksme.client.test;
+package org.teksme.client.test.model;
 
 import java.io.IOException;
 
