@@ -14,7 +14,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.teksme.server.CreatePollRemote;
+import org.teksme.model.teks.Teks;
+import org.teksme.server.SMSPollHandler;
 
 /**
  * Servlet implementation class CreatePoll
@@ -27,8 +28,8 @@ public class CreatePollServlet extends HttpServlet {
 
 	private static String message = "Error during Servlet processing";
 
-	@EJB(mappedName = CreatePollRemote.JNDI_NAME)
-	private CreatePollRemote createPollBean;
+	@EJB(mappedName = SMSPollHandler.JNDI_NAME)
+	private SMSPollHandler createPollBean;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -71,7 +72,11 @@ public class CreatePollServlet extends HttpServlet {
 			}
 			reader.close();
 			// logger.info("XML Buff: " + xmlBuff.toString());
-			createPollBean.create(xmlBuff.toString());
+			Teks teksModel = createPollBean.createPollModelFromXml(xmlBuff
+					.toString());
+
+			createPollBean.persistPoll(teksModel);
+
 			if (!gotNessage) {
 				outStream.println("Got no message");
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
