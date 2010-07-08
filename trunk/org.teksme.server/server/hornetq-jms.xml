@@ -44,12 +44,12 @@
 		<entry name="/queue/testQueue" />
 	</queue>
 
-	<queue name="testQueue">
-		<entry name="/queue/inboundPrimaryQueue" />
-	</queue>
+	<queue name="inboundPrimaryQueue">
+      <entry name="/queue/inboundPrimaryQueue"/>
+   </queue>
 
-	<queue name="testQueue">
-		<entry name="/queue/outboundPrimaryQueue" />
-	</queue>
-
+	<queue name="outboundPrimaryQueue">
+      <entry name="/queue/outboundPrimaryQueue"/>
+   </queue>
+   
 </configuration>
