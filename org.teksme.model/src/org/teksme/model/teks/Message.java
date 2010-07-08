@@ -6,10 +6,10 @@
  */
 package org.teksme.model.teks;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -32,9 +32,8 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.teksme.model.teks.TeksPackage#getMessage()
  * @model abstract="true"
- * @generated
  */
-public interface Message extends EObject {
+public interface Message extends EObject, Serializable {
 	/**
 	 * Returns the value of the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
