@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
+import java.util.Properties;
 
 import javax.ejb.EJBHome;
 import javax.ejb.EJBObject;
@@ -17,10 +18,20 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 
+import org.eclipse.emf.teneo.PersistenceOptions;
+import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.hibernate.cfg.Environment;
+
 public class ServiceLocator {
 
 	private Context initialContext;
+
 	private Map<String, Object> cache;
+
+	private static Properties dbProps = new Properties();
+
+	private static final String DB_NAME = "teksme";
 
 	private static ServiceLocator me;
 
@@ -72,6 +83,23 @@ public class ServiceLocator {
 			this.initialContext = getInitialContext();
 			this.cache = Collections
 					.synchronizedMap(new HashMap<String, Object>());
+
+			dbProps.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
+			dbProps.setProperty(Environment.USER, "teksmeuser");
+			dbProps.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:8889/"
+					+ DB_NAME);
+			dbProps.setProperty(Environment.PASS, "teks");
+			dbProps.setProperty(Environment.DIALECT,
+					org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
+
+			// set a specific option
+			// see this page
+			// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
+			// for all the available options
+			dbProps.setProperty(
+					PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
+					"REFRESH,PERSIST,MERGE");
+
 		} catch (NamingException ex) {
 			System.err.printf(
 					"Error in CTX looking up %s because of %s while %s",
@@ -136,6 +164,16 @@ public class ServiceLocator {
 		}
 
 		return queue;
+	}
+
+	public HbDataStore getHbDataStore() {
+		HbDataStore dataStore = (HbDataStore) HbHelper.INSTANCE
+				.createRegisterDataStore(DB_NAME);
+
+		// set the properties
+		dataStore.setProperties(dbProps);
+
+		return dataStore;
 	}
 
 }

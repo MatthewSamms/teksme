@@ -1,4 +1,4 @@
-package org.teksme.server.sms.impl;
+package org.teksme.server.impl;
 
 import java.util.logging.Logger;
 
