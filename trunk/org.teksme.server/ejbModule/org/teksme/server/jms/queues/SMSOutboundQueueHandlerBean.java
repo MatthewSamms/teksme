@@ -17,32 +17,34 @@ import javax.transaction.TransactionManager;
 
 import org.jboss.ejb3.annotation.ResourceAdapter;
 import org.teksme.model.teks.OutboundTextMessage;
-import org.teksme.server.SMSOutboundMessageLocal;
+import org.teksme.server.SMSOutboundMessage;
 
-@MessageDriven(name = "SMSQueueHandler", activationConfig = {
+@MessageDriven(name = "SMSOutboundQueueHandler", activationConfig = {
 		@ActivationConfigProperty(propertyName = "destinationType", propertyValue = "javax.jms.Queue"),
-		@ActivationConfigProperty(propertyName = "destination", propertyValue = "queue/testQueue"),
+		@ActivationConfigProperty(propertyName = "destination", propertyValue = Queues.OUTBOUND_QUEUE),
 		@ActivationConfigProperty(propertyName = "acknowledgeMode", propertyValue = "AUTO_ACKNOWLEDGE"),
 		@ActivationConfigProperty(propertyName = "maxSession", propertyValue = "4") }, messageListenerInterface = javax.jms.MessageListener.class)
 @TransactionManagement(value = TransactionManagementType.CONTAINER)
 @TransactionAttribute(value = TransactionAttributeType.REQUIRED)
 @ResourceAdapter("hornetq-ra.rar")
-public class SMSQueueHandlerBean extends
+public class SMSOutboundQueueHandlerBean extends
 		TeksMessageHandler<OutboundTextMessage> {
 
-	Logger logger = Logger.getLogger(SMSQueueHandlerBean.class.getName());
+	Logger logger = Logger.getLogger(SMSOutboundQueueHandlerBean.class
+			.getName());
 
 	@Resource(mappedName = "java:/TransactionManager")
 	private TransactionManager tm;
 
 	@EJB
-	private SMSOutboundMessageLocal outboundMessage;
+	private SMSOutboundMessage outboundMessage;
 
 	@Override
 	public void consume(final OutboundTextMessage message) {
 		try {
 
-			logger.info("Message received: " + message.getText());
+			logger.info("Message received: "
+					+ message.getTextMessage().getText());
 
 			Transaction tx = tm.getTransaction();
 

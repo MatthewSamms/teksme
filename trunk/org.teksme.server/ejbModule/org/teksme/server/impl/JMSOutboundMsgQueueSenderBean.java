@@ -14,6 +14,7 @@ import javax.jms.Session;
 import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.server.JMSOutboundMsgQueueSender;
 import org.teksme.server.JMSOutboundMsgQueueSenderBeanLocal;
+import org.teksme.server.jms.queues.Queues;
 
 /**
  * Session Bean implementation class JMSOutboundMsgQueueSenderBean
@@ -49,7 +50,7 @@ public class JMSOutboundMsgQueueSenderBean implements
 
 			// Lookup the JMS queue
 			Queue queue = ServiceLocator.getInstance().getQueue(
-					"/queue/testQueue");
+					Queues.OUTBOUND_QUEUE);
 
 			// Create the JMS objects to connect to the server and manage a
 			// session
