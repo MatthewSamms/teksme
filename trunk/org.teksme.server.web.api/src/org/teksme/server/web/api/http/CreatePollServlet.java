@@ -1,3 +1,16 @@
+/*
+ * Copyright 2010 TèksMe, Inc.
+ * TèksMe licenses this file to you under the Apache License, version
+ * 2.0 (the "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.  See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package org.teksme.server.web.api.http;
 
 import java.io.BufferedReader;
@@ -8,13 +21,11 @@ import java.util.logging.Logger;
 
 import javax.ejb.EJB;
 import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.teksme.model.teks.Teks;
 import org.teksme.server.SMSPollHandler;
 
 /**
@@ -56,26 +67,26 @@ public class CreatePollServlet extends HttpServlet {
 			HttpServletResponse response) {
 
 		try {
-			final ServletInputStream in = request.getInputStream();
-			final BufferedReader reader = new BufferedReader(
-					new InputStreamReader(in));
+
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					request.getInputStream()));
+
 			final ServletOutputStream outStream = response.getOutputStream();
-			outStream.println("OK, got you");
+
+			logger.info("OK, got you");
+
 			String inXMLString = null;
+
 			StringBuffer xmlBuff = new StringBuffer();
+
 			boolean gotNessage = false;
+
 			while ((inXMLString = reader.readLine()) != null) {
 				// outStream.println();
-				// logger.info("Read " + message);
 				xmlBuff.append(inXMLString);
 				gotNessage = true;
 			}
 			reader.close();
-			// logger.info("XML Buff: " + xmlBuff.toString());
-			Teks teksModel = createPollBean.createPollModelFromXml(xmlBuff
-					.toString());
-
-			createPollBean.persistPoll(teksModel);
 
 			if (!gotNessage) {
 				outStream.println("Got no message");
@@ -85,16 +96,17 @@ public class CreatePollServlet extends HttpServlet {
 				return;
 			}
 
-			outStream
-					.println("getContentLength: " + request.getContentLength());
-			outStream.println("getContentType: " + request.getContentType());
+			logger.info("XML Buff: " + xmlBuff.toString());
+			logger.info("getContentLength: " + request.getContentLength());
+			logger.info("getContentType: " + request.getContentType());
+
+			createPollBean.createPollModelFromXml(xmlBuff.toString());
 
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);
 			OutputStreamWriter writer = new OutputStreamWriter(
 					response.getOutputStream());
-
-			writer.write(xmlBuff.toString());
+			writer.write("Result");
 			writer.flush();
 			writer.close();
 
