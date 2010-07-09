@@ -1,3 +1,16 @@
+/*
+ * Copyright 2010 TèksMe, Inc.
+ * TèksMe licenses this file to you under the Apache License, version
+ * 2.0 (the "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.  See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package org.teksme.server.impl;
 
 import java.io.BufferedReader;
@@ -8,7 +21,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -21,7 +33,6 @@ import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.teksme.model.teks.Poll;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
@@ -33,8 +44,6 @@ public class TeksModelHelper {
 
 	Logger logger = Logger.getLogger(TeksModelHelper.class.getName());
 
-	private static ResourceSet resourceSet = null;
-
 	private TeksModelHelper() {
 
 	}
@@ -42,14 +51,6 @@ public class TeksModelHelper {
 	private static TeksModelHelper init() {
 
 		if (INSTANCE == null) {
-
-			// create resource set and resource
-			resourceSet = new ResourceSetImpl();
-
-			// Register XML resource factory
-			resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-					.put("xml", new TeksResourceFactoryImpl());
-
 			INSTANCE = new TeksModelHelper();
 		}
 
@@ -62,24 +63,32 @@ public class TeksModelHelper {
 
 		InputStream is = new ByteArrayInputStream(xmlInput.getBytes("ASCII"));
 
+		// create resource set and resource
+		ResourceSet resourceSet = new ResourceSetImpl();
+		// Register XML resource factory
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("xml", new TeksResourceFactoryImpl());
+
+		TeksPackageImpl.init();
+
 		XMLResourceImpl load_resource = (XMLResourceImpl) resourceSet
 				.createResource(URI.createURI("*.xml"));
 		load_resource.load(is, null);
 
-		TeksPackageImpl.init();
-
 		Teks teksObj = (Teks) load_resource.getContents().get(0);
-
-		Poll poll = teksObj.getPoll();
-		poll.setId(UUID.randomUUID().toString());
-
-		logger.info(teksObj.getPoll().getAuthor());
 
 		return teksObj;
 
 	}
 
-	public void serializeTeksModelXMLData(Teks teksObj, String filePath) throws IOException {
+	public void serializeTeksModelXMLData(Teks teksObj, String filePath)
+			throws IOException {
+		// create resource set and resource
+		ResourceSet resourceSet = new ResourceSetImpl();
+
+		// Register XML resource factory
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
+				.put("xml", new TeksResourceFactoryImpl());
 		Resource resource = resourceSet.createResource(URI
 				.createFileURI(filePath));
 		// add the root object to the resource
@@ -89,12 +98,11 @@ public class TeksModelHelper {
 		resource.save(null);
 	}
 
-	public void serializeTeksModelXMLData(String xmlInput) throws IOException {
+	public void serializeTeksModelXMLData(String xmlInput, String filePath) throws IOException {
 		InputStream is = new ByteArrayInputStream(xmlInput.getBytes("ASCII"));
 		BufferedReader in = new BufferedReader(new InputStreamReader(is));
-		String fileName = "/Users/fabianocruz/input.xml";
 		PrintWriter fileWriter = new PrintWriter(new BufferedWriter(
-				new FileWriter(fileName)));
+				new FileWriter(filePath)));
 
 		String decodedString;
 		while ((decodedString = in.readLine()) != null) {
