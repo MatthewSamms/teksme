@@ -23,7 +23,7 @@ package org.teksme.model.teks;
  * @model
  * @generated
  */
-public interface SecureText extends Text {
+public interface SecureText extends PlainText {
 	/**
 	 * Returns the value of the '<em><b>Hash Algorithm</b></em>' attribute.
 	 * <!-- begin-user-doc -->

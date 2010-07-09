@@ -11,18 +11,22 @@ import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.teksme.model.teks.FailureCauses;
 import org.teksme.model.teks.MessageStatuses;
 import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
 
 /**
@@ -42,6 +46,7 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getValidityPeriod <em>Validity Period</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getDispatchDate <em>Dispatch Date</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getRefNo <em>Ref No</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getTeksRef <em>Teks Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -543,6 +548,114 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public Teks getTeksRef() {
+		if (eContainerFeatureID() != TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF)
+			return null;
+		return (Teks) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Teks basicGetTeksRef() {
+		if (eContainerFeatureID() != TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF)
+			return null;
+		return (Teks) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTeksRef(Teks newTeksRef,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newTeksRef,
+				TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTeksRef(Teks newTeksRef) {
+		if (newTeksRef != eInternalContainer()
+				|| (eContainerFeatureID() != TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF && newTeksRef != null)) {
+			if (EcoreUtil.isAncestor(this, newTeksRef))
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newTeksRef != null)
+				msgs = ((InternalEObject) newTeksRef).eInverseAdd(this,
+						TeksPackage.TEKS__OUTBOUND_MESSAGE, Teks.class, msgs);
+			msgs = basicSetTeksRef(newTeksRef, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF, newTeksRef,
+					newTeksRef));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetTeksRef((Teks) otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
+			return basicSetTeksRef(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
+			return eInternalContainer().eInverseRemove(this,
+					TeksPackage.TEKS__OUTBOUND_MESSAGE, Teks.class, msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -566,6 +679,10 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 			return getDispatchDate();
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__REF_NO:
 			return getRefNo();
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
+			if (resolve)
+				return getTeksRef();
+			return basicGetTeksRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -610,6 +727,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__REF_NO:
 			setRefNo((String) newValue);
 			return;
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
+			setTeksRef((Teks) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -652,6 +772,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__REF_NO:
 			setRefNo(REF_NO_EDEFAULT);
 			return;
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
+			setTeksRef((Teks) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -687,6 +810,8 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__REF_NO:
 			return REF_NO_EDEFAULT == null ? refNo != null : !REF_NO_EDEFAULT
 					.equals(refNo);
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
+			return basicGetTeksRef() != null;
 		}
 		return super.eIsSet(featureID);
 	}

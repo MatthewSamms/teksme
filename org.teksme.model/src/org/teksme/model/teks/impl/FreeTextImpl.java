@@ -20,7 +20,7 @@ import org.teksme.model.teks.TeksPackage;
  *
  * @generated
  */
-public class FreeTextImpl extends TextImpl implements FreeText {
+public class FreeTextImpl extends PlainTextImpl implements FreeText {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

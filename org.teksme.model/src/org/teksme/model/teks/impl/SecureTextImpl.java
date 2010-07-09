@@ -29,7 +29,7 @@ import org.teksme.model.teks.TeksPackage;
  *
  * @generated
  */
-public class SecureTextImpl extends TextImpl implements SecureText {
+public class SecureTextImpl extends PlainTextImpl implements SecureText {
 	/**
 	 * The default value of the '{@link #getHashAlgorithm() <em>Hash Algorithm</em>}' attribute.
 	 * <!-- begin-user-doc -->

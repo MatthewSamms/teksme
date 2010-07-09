@@ -168,11 +168,11 @@ public class TeksSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TeksPackage.TEXT: {
-			Text text = (Text) theEObject;
-			T result = caseText(text);
+		case TeksPackage.PLAIN_TEXT: {
+			PlainText plainText = (PlainText) theEObject;
+			T result = casePlainText(plainText);
 			if (result == null)
-				result = casePollQuestion(text);
+				result = casePollQuestion(plainText);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -188,7 +188,7 @@ public class TeksSwitch<T> {
 			FreeText freeText = (FreeText) theEObject;
 			T result = caseFreeText(freeText);
 			if (result == null)
-				result = caseText(freeText);
+				result = casePlainText(freeText);
 			if (result == null)
 				result = casePollQuestion(freeText);
 			if (result == null)
@@ -199,7 +199,7 @@ public class TeksSwitch<T> {
 			SecureText secureText = (SecureText) theEObject;
 			T result = caseSecureText(secureText);
 			if (result == null)
-				result = caseText(secureText);
+				result = casePlainText(secureText);
 			if (result == null)
 				result = casePollQuestion(secureText);
 			if (result == null)
@@ -257,6 +257,13 @@ public class TeksSwitch<T> {
 			T result = caseOutboundTextMessage(outboundTextMessage);
 			if (result == null)
 				result = caseMessage(outboundTextMessage);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TeksPackage.TEXT_MESSAGE: {
+			TextMessage textMessage = (TextMessage) theEObject;
+			T result = caseTextMessage(textMessage);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -461,17 +468,17 @@ public class TeksSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Text</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Plain Text</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Text</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Plain Text</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseText(Text object) {
+	public T casePlainText(PlainText object) {
 		return null;
 	}
 
@@ -622,6 +629,21 @@ public class TeksSwitch<T> {
 	 * @generated
 	 */
 	public T caseOutboundTextMessage(OutboundTextMessage object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Text Message</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Text Message</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseTextMessage(TextMessage object) {
 		return null;
 	}
 

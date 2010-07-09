@@ -101,6 +101,8 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 			return createInboundTextMessage();
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE:
 			return createOutboundTextMessage();
+		case TeksPackage.TEXT_MESSAGE:
+			return createTextMessage();
 		case TeksPackage.REPORT:
 			return createReport();
 		case TeksPackage.COMMAND:
@@ -361,6 +363,16 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	public OutboundTextMessage createOutboundTextMessage() {
 		OutboundTextMessageImpl outboundTextMessage = new OutboundTextMessageImpl();
 		return outboundTextMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TextMessage createTextMessage() {
+		TextMessageImpl textMessage = new TextMessageImpl();
+		return textMessage;
 	}
 
 	/**

@@ -206,6 +206,15 @@ public interface TeksFactory extends EFactory {
 	OutboundTextMessage createOutboundTextMessage();
 
 	/**
+	 * Returns a new object of class '<em>Text Message</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Text Message</em>'.
+	 * @generated
+	 */
+	TextMessage createTextMessage();
+
+	/**
 	 * Returns a new object of class '<em>Report</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

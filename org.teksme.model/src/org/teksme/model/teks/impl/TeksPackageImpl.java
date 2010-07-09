@@ -11,9 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
-
 import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import org.teksme.model.teks.Annotation;
 import org.teksme.model.teks.AnnotationMapEntry;
 import org.teksme.model.teks.Answer;
@@ -30,6 +28,7 @@ import org.teksme.model.teks.Message;
 import org.teksme.model.teks.MessageStatuses;
 import org.teksme.model.teks.MultipleChoice;
 import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.PlainText;
 import org.teksme.model.teks.Poll;
 import org.teksme.model.teks.PollQuestion;
 import org.teksme.model.teks.PollSettings;
@@ -45,243 +44,217 @@ import org.teksme.model.teks.Survey;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.TeksPackage;
-import org.teksme.model.teks.Text;
+import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.UserProfile;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Package</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
+ * end-user-doc -->
  * @generated
  */
 public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass teksEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass commentEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass annotationEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass annotationMapEntryEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass userProfileEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass pollEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass surveyEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass pollSettingsEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass replyMessageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass responseEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass responseRestrictionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass pollQuestionEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass textEClass = null;
+	private EClass plainTextEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass keywordEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass freeTextEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass secureTextEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass multipleChoiceEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass answerEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass responseDetailEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass messageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass answerRefEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass inboundTextMessageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass outboundTextMessageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass textMessageEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass reportEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass commandEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum languageKindEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum channelKindEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum restrictionKindEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum stopCommandKindEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum messageStatusesEEnum = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EEnum failureCausesEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
-	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the package
-	 * package URI value.
-	 * <p>Note: the correct way to create the package is via the static
-	 * factory method {@link #init init()}, which also performs
-	 * initialization of the package, or returns the registered package,
-	 * if one already exists.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * {@link org.eclipse.emf.ecore.EPackage.Registry EPackage.Registry} by the
+	 * package package URI value.
+	 * <p>
+	 * Note: the correct way to create the package is via the static factory
+	 * method {@link #init init()}, which also performs initialization of the
+	 * package, or returns the registered package, if one already exists. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
 	 * @see org.teksme.model.teks.TeksPackage#eNS_URI
 	 * @see #init()
@@ -292,19 +265,21 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static boolean isInited = false;
 
 	/**
-	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
+	 * Creates, registers, and initializes the <b>Package</b> for this model,
+	 * and for any others upon which it depends.
 	 * 
-	 * <p>This method is used to initialize {@link TeksPackage#eINSTANCE} when that field is accessed.
-	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <p>
+	 * This method is used to initialize {@link TeksPackage#eINSTANCE} when that
+	 * field is accessed. Clients should not invoke it directly. Instead, they
+	 * should simply access that field to obtain the package. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #eNS_URI
 	 * @see #createPackageContents()
 	 * @see #initializePackageContents()
@@ -337,8 +312,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getTeks() {
@@ -346,8 +320,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getTeks_AppId() {
@@ -355,8 +328,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTeks_UserProfile() {
@@ -364,8 +336,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTeks_Poll() {
@@ -373,8 +344,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTeks_Survey() {
@@ -382,8 +352,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTeks_Responses() {
@@ -391,8 +360,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTeks_OutboundMessage() {
@@ -400,8 +368,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getTeks_InboundMessage() {
@@ -409,8 +376,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getComment() {
@@ -418,8 +384,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getComment_Id() {
@@ -427,8 +392,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getComment_Body() {
@@ -436,8 +400,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getComment_DateTime() {
@@ -445,8 +408,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAnnotation() {
@@ -454,8 +416,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnnotation_Annotation() {
@@ -463,8 +424,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnnotation_Source() {
@@ -472,8 +432,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getAnnotation_Entry() {
@@ -481,8 +440,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAnnotationMapEntry() {
@@ -490,8 +448,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnnotationMapEntry_Key() {
@@ -500,8 +457,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnnotationMapEntry_Value() {
@@ -510,8 +466,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getUserProfile() {
@@ -519,8 +474,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getUserProfile_Id() {
@@ -528,8 +482,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getPoll() {
@@ -537,8 +490,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPoll_Question() {
@@ -546,8 +498,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPoll_Settings() {
@@ -555,8 +506,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPoll_ReplyMessage() {
@@ -564,8 +514,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPoll_Annotations() {
@@ -573,8 +522,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPoll_Comments() {
@@ -582,8 +530,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPoll_Title() {
@@ -591,8 +538,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPoll_Note() {
@@ -600,8 +546,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPoll_Author() {
@@ -609,8 +554,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPoll_LastModified() {
@@ -618,8 +562,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPoll_Id() {
@@ -627,8 +570,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSurvey() {
@@ -636,8 +578,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSurvey_Annotations() {
@@ -645,8 +586,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getSurvey_Comments() {
@@ -654,8 +594,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSurvey_Title() {
@@ -663,8 +602,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSurvey_Note() {
@@ -672,8 +610,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSurvey_Author() {
@@ -681,8 +618,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSurvey_LastModified() {
@@ -690,8 +626,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSurvey_Id() {
@@ -699,8 +634,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getPollSettings() {
@@ -708,8 +642,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_CloseDate() {
@@ -717,8 +650,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_ScheduleStartDate() {
@@ -726,8 +658,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_SuspendOnFailure() {
@@ -735,8 +666,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_Language() {
@@ -744,8 +674,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_BatchResponseDelivery() {
@@ -753,8 +682,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_SynchronousConfirmation() {
@@ -762,8 +690,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPollSettings_ReplyMessage() {
@@ -771,8 +698,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPollSettings_AdvertiseIt() {
@@ -780,8 +706,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_FolderID() {
@@ -789,8 +714,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_Sharing() {
@@ -798,8 +722,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPollSettings_ResponseRestrictions() {
@@ -807,8 +730,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollSettings_ShortNumber() {
@@ -816,8 +738,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getReplyMessage() {
@@ -825,8 +746,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getReplyMessage_Confirmation() {
@@ -834,8 +754,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getReplyMessage_DefaultMessage() {
@@ -843,8 +762,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getReplyMessage_CustomMessage() {
@@ -852,8 +770,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getResponse() {
@@ -861,8 +778,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getResponse_Response() {
@@ -870,8 +786,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getResponseRestriction() {
@@ -879,8 +794,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getResponseRestriction_AcceptMultipleChannels() {
@@ -889,8 +803,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getResponseRestriction_CommunicationChannel() {
@@ -899,8 +812,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getResponseRestriction_RestrictionType() {
@@ -909,8 +821,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getResponseRestriction_BlockRepeat() {
@@ -919,8 +830,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getResponseRestriction_ModerateFirst() {
@@ -929,8 +839,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getPollQuestion() {
@@ -938,8 +847,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollQuestion_Note() {
@@ -947,8 +855,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getPollQuestion_Required() {
@@ -956,8 +863,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPollQuestion_PollRef() {
@@ -965,8 +871,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getPollQuestion_Keyword() {
@@ -974,26 +879,23 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getText() {
-		return textEClass;
+	public EClass getPlainText() {
+		return plainTextEClass;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getText_Question() {
-		return (EAttribute) textEClass.getEStructuralFeatures().get(0);
+	public EAttribute getPlainText_Question() {
+		return (EAttribute) plainTextEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getKeyword() {
@@ -1001,8 +903,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getKeyword_Key() {
@@ -1010,8 +911,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getKeyword_AutoKeyword() {
@@ -1019,8 +919,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getFreeText() {
@@ -1028,8 +927,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getSecureText() {
@@ -1037,8 +935,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSecureText_HashAlgorithm() {
@@ -1046,8 +943,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getSecureText_HashEncoding() {
@@ -1055,8 +951,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getMultipleChoice() {
@@ -1064,8 +959,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getMultipleChoice_Question() {
@@ -1074,8 +968,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getMultipleChoice_Answer() {
@@ -1084,8 +977,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getMultipleChoice_AddOther() {
@@ -1094,8 +986,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAnswer() {
@@ -1103,8 +994,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswer_Text() {
@@ -1112,8 +1002,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswer_Id() {
@@ -1121,8 +1010,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswer_Keyword() {
@@ -1130,8 +1018,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswer_AutoKeyword() {
@@ -1139,8 +1026,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswer_DefaultValue() {
@@ -1148,8 +1034,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswer_Selected() {
@@ -1157,8 +1042,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getResponseDetail() {
@@ -1166,8 +1050,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getResponseDetail_DateTime() {
@@ -1176,8 +1059,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getResponseDetail_RawMessage() {
@@ -1186,8 +1068,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getResponseDetail_SetValue() {
@@ -1196,8 +1077,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getMessage() {
@@ -1205,8 +1085,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getMessage_Id() {
@@ -1214,62 +1093,55 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_Text() {
+	public EAttribute getMessage_Timestamp() {
 		return (EAttribute) messageEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_Timestamp() {
+	public EAttribute getMessage_Encoding() {
 		return (EAttribute) messageEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_Encoding() {
+	public EAttribute getMessage_CommunicationChannel() {
 		return (EAttribute) messageEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_CommunicationChannel() {
+	public EAttribute getMessage_GatewayId() {
 		return (EAttribute) messageEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_GatewayId() {
+	public EAttribute getMessage_MessageCharCount() {
 		return (EAttribute) messageEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_MessageCharCount() {
-		return (EAttribute) messageEClass.getEStructuralFeatures().get(6);
+	public EReference getMessage_TextMessage() {
+		return (EReference) messageEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getAnswerRef() {
@@ -1277,8 +1149,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getAnswerRef_ChoiceRef() {
@@ -1286,8 +1157,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EReference getAnswerRef_AnswerRef() {
@@ -1295,8 +1165,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswerRef_Value() {
@@ -1304,8 +1173,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getAnswerRef_Id() {
@@ -1313,8 +1181,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getInboundTextMessage() {
@@ -1322,8 +1189,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInboundTextMessage_PartNumber() {
@@ -1332,8 +1198,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInboundTextMessage_MessageType() {
@@ -1342,8 +1207,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInboundTextMessage_Originator() {
@@ -1352,8 +1216,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getInboundTextMessage_SmscNumber() {
@@ -1362,8 +1225,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getOutboundTextMessage() {
@@ -1371,8 +1233,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_From() {
@@ -1381,8 +1242,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_Recipient() {
@@ -1391,8 +1251,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_StatusReport() {
@@ -1401,8 +1260,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_Priority() {
@@ -1411,8 +1269,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_RetryCount() {
@@ -1421,8 +1278,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_MessageStatus() {
@@ -1431,8 +1287,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_FailureCause() {
@@ -1441,8 +1296,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_ValidityPeriod() {
@@ -1451,8 +1305,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_DispatchDate() {
@@ -1461,8 +1314,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getOutboundTextMessage_RefNo() {
@@ -1471,8 +1323,32 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getOutboundTextMessage_TeksRef() {
+		return (EReference) outboundTextMessageEClass.getEStructuralFeatures()
+				.get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getTextMessage() {
+		return textMessageEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getTextMessage_Text() {
+		return (EAttribute) textMessageEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getReport() {
@@ -1480,8 +1356,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getReport_HideResults() {
@@ -1489,8 +1364,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getReport_PercentageOnly() {
@@ -1498,8 +1372,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getCommand() {
@@ -1507,8 +1380,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getCommand_DefaultHandler() {
@@ -1516,8 +1388,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getCommand_ID() {
@@ -1525,8 +1396,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EAttribute getCommand_Name() {
@@ -1534,8 +1404,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getLanguageKind() {
@@ -1543,8 +1412,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getChannelKind() {
@@ -1552,8 +1420,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getRestrictionKind() {
@@ -1561,8 +1428,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getStopCommandKind() {
@@ -1570,8 +1436,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getMessageStatuses() {
@@ -1579,8 +1444,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EEnum getFailureCauses() {
@@ -1588,8 +1452,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public TeksFactory getTeksFactory() {
@@ -1597,8 +1460,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isCreated = false;
@@ -1706,8 +1568,8 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEReference(pollQuestionEClass, POLL_QUESTION__POLL_REF);
 		createEReference(pollQuestionEClass, POLL_QUESTION__KEYWORD);
 
-		textEClass = createEClass(TEXT);
-		createEAttribute(textEClass, TEXT__QUESTION);
+		plainTextEClass = createEClass(PLAIN_TEXT);
+		createEAttribute(plainTextEClass, PLAIN_TEXT__QUESTION);
 
 		keywordEClass = createEClass(KEYWORD);
 		createEAttribute(keywordEClass, KEYWORD__KEY);
@@ -1739,12 +1601,12 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 
 		messageEClass = createEClass(MESSAGE);
 		createEAttribute(messageEClass, MESSAGE__ID);
-		createEAttribute(messageEClass, MESSAGE__TEXT);
 		createEAttribute(messageEClass, MESSAGE__TIMESTAMP);
 		createEAttribute(messageEClass, MESSAGE__ENCODING);
 		createEAttribute(messageEClass, MESSAGE__COMMUNICATION_CHANNEL);
 		createEAttribute(messageEClass, MESSAGE__GATEWAY_ID);
 		createEAttribute(messageEClass, MESSAGE__MESSAGE_CHAR_COUNT);
+		createEReference(messageEClass, MESSAGE__TEXT_MESSAGE);
 
 		answerRefEClass = createEClass(ANSWER_REF);
 		createEReference(answerRefEClass, ANSWER_REF__CHOICE_REF);
@@ -1782,6 +1644,11 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				OUTBOUND_TEXT_MESSAGE__DISPATCH_DATE);
 		createEAttribute(outboundTextMessageEClass,
 				OUTBOUND_TEXT_MESSAGE__REF_NO);
+		createEReference(outboundTextMessageEClass,
+				OUTBOUND_TEXT_MESSAGE__TEKS_REF);
+
+		textMessageEClass = createEClass(TEXT_MESSAGE);
+		createEAttribute(textMessageEClass, TEXT_MESSAGE__TEXT);
 
 		reportEClass = createEClass(REPORT);
 		createEAttribute(reportEClass, REPORT__HIDE_RESULTS);
@@ -1802,17 +1669,16 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	private boolean isInitialized = false;
 
 	/**
-	 * Complete the initialization of the package and its meta-model.  This
-	 * method is guarded to have no affect on any invocation but its first.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Complete the initialization of the package and its meta-model. This
+	 * method is guarded to have no affect on any invocation but its first. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public void initializePackageContents() {
@@ -1830,9 +1696,9 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		textEClass.getESuperTypes().add(this.getPollQuestion());
-		freeTextEClass.getESuperTypes().add(this.getText());
-		secureTextEClass.getESuperTypes().add(this.getText());
+		plainTextEClass.getESuperTypes().add(this.getPollQuestion());
+		freeTextEClass.getESuperTypes().add(this.getPlainText());
+		secureTextEClass.getESuperTypes().add(this.getPlainText());
 		multipleChoiceEClass.getESuperTypes().add(this.getPollQuestion());
 		inboundTextMessageEClass.getESuperTypes().add(this.getMessage());
 		outboundTextMessageEClass.getESuperTypes().add(this.getMessage());
@@ -1861,7 +1727,8 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTeks_OutboundMessage(),
-				this.getOutboundTextMessage(), null, "outboundMessage", null,
+				this.getOutboundTextMessage(),
+				this.getOutboundTextMessage_TeksRef(), "outboundMessage", null,
 				0, -1, Teks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
@@ -2123,10 +1990,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(textEClass, Text.class, "Text", IS_ABSTRACT, !IS_INTERFACE,
-				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getText_Question(), ecorePackage.getEString(),
-				"question", null, 0, 1, Text.class, !IS_TRANSIENT,
+		initEClass(plainTextEClass, PlainText.class, "PlainText", IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getPlainText_Question(), ecorePackage.getEString(),
+				"question", null, 0, 1, PlainText.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
@@ -2221,10 +2088,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getMessage_Text(), ecorePackage.getEString(), "text",
-				null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 		initEAttribute(getMessage_Timestamp(), ecorePackage.getEDate(),
 				"timestamp", null, 0, 1, Message.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
@@ -2245,6 +2108,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				ecorePackage.getEString(), "messageCharCount", null, 0, 1,
 				Message.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMessage_TextMessage(), this.getTextMessage(), null,
+				"textMessage", null, 0, 1, Message.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(answerRefEClass, AnswerRef.class, "AnswerRef", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2343,6 +2210,18 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				OutboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEReference(getOutboundTextMessage_TeksRef(), this.getTeks(),
+				this.getTeks_OutboundMessage(), "teksRef", null, 0, 1,
+				OutboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(textMessageEClass, TextMessage.class, "TextMessage",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTextMessage_Text(), ecorePackage.getEString(),
+				"text", null, 0, 1, TextMessage.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(reportEClass, Report.class, "Report", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2419,4 +2298,4 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createResource(eNS_URI);
 	}
 
-} //TeksPackageImpl
+} // TeksPackageImpl

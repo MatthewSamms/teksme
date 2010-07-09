@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.teksme.model.teks.InboundTextMessage;
@@ -582,9 +583,10 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	 */
 	public EList<OutboundTextMessage> getOutboundMessageList() {
 		if (outboundMessage == null) {
-			outboundMessage = new EObjectContainmentEList.Resolving<OutboundTextMessage>(
+			outboundMessage = new EObjectContainmentWithInverseEList.Resolving<OutboundTextMessage>(
 					OutboundTextMessage.class, this,
-					TeksPackage.TEKS__OUTBOUND_MESSAGE);
+					TeksPackage.TEKS__OUTBOUND_MESSAGE,
+					TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF);
 		}
 		return outboundMessage;
 	}
@@ -651,6 +653,23 @@ public class TeksImpl extends EObjectImpl implements Teks {
 					TeksPackage.TEKS__INBOUND_MESSAGE);
 		}
 		return inboundMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getOutboundMessageList())
+					.basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

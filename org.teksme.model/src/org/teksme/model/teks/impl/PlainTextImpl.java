@@ -12,23 +12,24 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.teksme.model.teks.PlainText;
 import org.teksme.model.teks.TeksPackage;
-import org.teksme.model.teks.Text;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Text</b></em>'.
+ * An implementation of the model object '<em><b>Plain Text</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.TextImpl#getQuestion <em>Question</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.PlainTextImpl#getQuestion <em>Question</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public abstract class TextImpl extends PollQuestionImpl implements Text {
+public abstract class PlainTextImpl extends PollQuestionImpl implements
+		PlainText {
 	/**
 	 * The default value of the '{@link #getQuestion() <em>Question</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -54,7 +55,7 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected TextImpl() {
+	protected PlainTextImpl() {
 		super();
 	}
 
@@ -65,7 +66,7 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TeksPackage.Literals.TEXT;
+		return TeksPackage.Literals.PLAIN_TEXT;
 	}
 
 	/**
@@ -87,7 +88,7 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 		question = newQuestion;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.TEXT__QUESTION, oldQuestion, question));
+					TeksPackage.PLAIN_TEXT__QUESTION, oldQuestion, question));
 	}
 
 	/**
@@ -98,7 +99,7 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.TEXT__QUESTION:
+		case TeksPackage.PLAIN_TEXT__QUESTION:
 			return getQuestion();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -112,7 +113,7 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.TEXT__QUESTION:
+		case TeksPackage.PLAIN_TEXT__QUESTION:
 			setQuestion((String) newValue);
 			return;
 		}
@@ -127,7 +128,7 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.TEXT__QUESTION:
+		case TeksPackage.PLAIN_TEXT__QUESTION:
 			setQuestion(QUESTION_EDEFAULT);
 			return;
 		}
@@ -142,7 +143,7 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.TEXT__QUESTION:
+		case TeksPackage.PLAIN_TEXT__QUESTION:
 			return QUESTION_EDEFAULT == null ? question != null
 					: !QUESTION_EDEFAULT.equals(question);
 		}
@@ -166,4 +167,4 @@ public abstract class TextImpl extends PollQuestionImpl implements Text {
 		return result.toString();
 	}
 
-} //TextImpl
+} //PlainTextImpl

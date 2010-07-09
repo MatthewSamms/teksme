@@ -131,8 +131,8 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseText(Text object) {
-			return createTextAdapter();
+		public Adapter casePlainText(PlainText object) {
+			return createPlainTextAdapter();
 		}
 
 		@Override
@@ -183,6 +183,11 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseOutboundTextMessage(OutboundTextMessage object) {
 			return createOutboundTextMessageAdapter();
+		}
+
+		@Override
+		public Adapter caseTextMessage(TextMessage object) {
+			return createTextMessageAdapter();
 		}
 
 		@Override
@@ -383,16 +388,16 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.Text <em>Text</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.PlainText <em>Plain Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.teksme.model.teks.Text
+	 * @see org.teksme.model.teks.PlainText
 	 * @generated
 	 */
-	public Adapter createTextAdapter() {
+	public Adapter createPlainTextAdapter() {
 		return null;
 	}
 
@@ -533,6 +538,20 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createOutboundTextMessageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.TextMessage <em>Text Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.teksme.model.teks.TextMessage
+	 * @generated
+	 */
+	public Adapter createTextMessageAdapter() {
 		return null;
 	}
 

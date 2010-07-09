@@ -10,35 +10,32 @@ import java.util.Collection;
 import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
-
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
-
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
 import org.teksme.model.teks.ChannelKind;
 import org.teksme.model.teks.Message;
 import org.teksme.model.teks.TeksPackage;
+import org.teksme.model.teks.TextMessage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Message</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getTimestamp <em>Timestamp</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getEncoding <em>Encoding</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getCommunicationChannelList <em>Communication Channel</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getGatewayId <em>Gateway Id</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getMessageCharCount <em>Message Char Count</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getTextMessage <em>Text Message</em>}</li>
  * </ul>
  * </p>
  *
@@ -46,9 +43,9 @@ import org.teksme.model.teks.TeksPackage;
  */
 public abstract class MessageImpl extends EObjectImpl implements Message {
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -56,9 +53,9 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -66,29 +63,8 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String TEXT_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getText() <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getText()
-	 * @generated
-	 * @ordered
-	 */
-	protected String text = TEXT_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTimestamp()
 	 * @generated
 	 * @ordered
@@ -97,8 +73,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTimestamp()
 	 * @generated
 	 * @ordered
@@ -107,8 +82,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
 	/**
 	 * The default value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -117,8 +91,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -147,8 +120,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
 	/**
 	 * The default value of the '{@link #getGatewayId() <em>Gateway Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getGatewayId()
 	 * @generated
 	 * @ordered
@@ -157,8 +129,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getGatewayId() <em>Gateway Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getGatewayId()
 	 * @generated
 	 * @ordered
@@ -167,8 +138,8 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
 	/**
 	 * The default value of the '{@link #getMessageCharCount() <em>Message Char Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getMessageCharCount()
 	 * @generated
 	 * @ordered
@@ -177,8 +148,8 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getMessageCharCount() <em>Message Char Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getMessageCharCount()
 	 * @generated
 	 * @ordered
@@ -186,8 +157,16 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	protected String messageCharCount = MESSAGE_CHAR_COUNT_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getTextMessage() <em>Text Message</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getTextMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected TextMessage textMessage;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected MessageImpl() {
@@ -195,8 +174,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -205,8 +183,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getId() {
@@ -214,8 +191,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -227,30 +203,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getText() {
-		return text;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setText(String newText) {
-		String oldText = text;
-		text = newText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.MESSAGE__TEXT, oldText, text));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Date getTimestamp() {
@@ -258,8 +211,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setTimestamp(Date newTimestamp) {
@@ -271,8 +223,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getEncoding() {
@@ -280,8 +231,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEncoding(String newEncoding) {
@@ -293,8 +243,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChannelKind[] getCommunicationChannel() {
@@ -306,8 +255,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChannelKind getCommunicationChannel(int index) {
@@ -315,8 +263,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getCommunicationChannelLength() {
@@ -324,8 +271,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setCommunicationChannel(ChannelKind[] newCommunicationChannel) {
@@ -334,8 +280,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setCommunicationChannel(int index, ChannelKind element) {
@@ -343,8 +288,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<ChannelKind> getCommunicationChannelList() {
@@ -357,8 +301,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getGatewayId() {
@@ -366,8 +309,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setGatewayId(String newGatewayId) {
@@ -379,8 +321,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getMessageCharCount() {
@@ -388,8 +329,7 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setMessageCharCount(String newMessageCharCount) {
@@ -402,8 +342,105 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 	}
 
 	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TextMessage getTextMessage() {
+		if (textMessage != null && textMessage.eIsProxy()) {
+			InternalEObject oldTextMessage = (InternalEObject) textMessage;
+			textMessage = (TextMessage) eResolveProxy(oldTextMessage);
+			if (textMessage != oldTextMessage) {
+				InternalEObject newTextMessage = (InternalEObject) textMessage;
+				NotificationChain msgs = oldTextMessage
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+								- TeksPackage.MESSAGE__TEXT_MESSAGE, null, null);
+				if (newTextMessage.eInternalContainer() == null) {
+					msgs = newTextMessage.eInverseAdd(this,
+							EOPPOSITE_FEATURE_BASE
+									- TeksPackage.MESSAGE__TEXT_MESSAGE, null,
+							msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							TeksPackage.MESSAGE__TEXT_MESSAGE, oldTextMessage,
+							textMessage));
+			}
+		}
+		return textMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public TextMessage basicGetTextMessage() {
+		return textMessage;
+	}
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetTextMessage(TextMessage newTextMessage,
+			NotificationChain msgs) {
+		TextMessage oldTextMessage = textMessage;
+		textMessage = newTextMessage;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, TeksPackage.MESSAGE__TEXT_MESSAGE,
+					oldTextMessage, newTextMessage);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setTextMessage(TextMessage newTextMessage) {
+		if (newTextMessage != textMessage) {
+			NotificationChain msgs = null;
+			if (textMessage != null)
+				msgs = ((InternalEObject) textMessage)
+						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
+								- TeksPackage.MESSAGE__TEXT_MESSAGE, null, msgs);
+			if (newTextMessage != null)
+				msgs = ((InternalEObject) newTextMessage)
+						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+								- TeksPackage.MESSAGE__TEXT_MESSAGE, null, msgs);
+			msgs = basicSetTextMessage(newTextMessage, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.MESSAGE__TEXT_MESSAGE, newTextMessage,
+					newTextMessage));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.MESSAGE__TEXT_MESSAGE:
+			return basicSetTextMessage(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -411,8 +448,6 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		switch (featureID) {
 		case TeksPackage.MESSAGE__ID:
 			return getId();
-		case TeksPackage.MESSAGE__TEXT:
-			return getText();
 		case TeksPackage.MESSAGE__TIMESTAMP:
 			return getTimestamp();
 		case TeksPackage.MESSAGE__ENCODING:
@@ -423,13 +458,16 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 			return getGatewayId();
 		case TeksPackage.MESSAGE__MESSAGE_CHAR_COUNT:
 			return getMessageCharCount();
+		case TeksPackage.MESSAGE__TEXT_MESSAGE:
+			if (resolve)
+				return getTextMessage();
+			return basicGetTextMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -438,9 +476,6 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		switch (featureID) {
 		case TeksPackage.MESSAGE__ID:
 			setId((String) newValue);
-			return;
-		case TeksPackage.MESSAGE__TEXT:
-			setText((String) newValue);
 			return;
 		case TeksPackage.MESSAGE__TIMESTAMP:
 			setTimestamp((Date) newValue);
@@ -459,13 +494,15 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		case TeksPackage.MESSAGE__MESSAGE_CHAR_COUNT:
 			setMessageCharCount((String) newValue);
 			return;
+		case TeksPackage.MESSAGE__TEXT_MESSAGE:
+			setTextMessage((TextMessage) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -473,9 +510,6 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		switch (featureID) {
 		case TeksPackage.MESSAGE__ID:
 			setId(ID_EDEFAULT);
-			return;
-		case TeksPackage.MESSAGE__TEXT:
-			setText(TEXT_EDEFAULT);
 			return;
 		case TeksPackage.MESSAGE__TIMESTAMP:
 			setTimestamp(TIMESTAMP_EDEFAULT);
@@ -492,13 +526,15 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		case TeksPackage.MESSAGE__MESSAGE_CHAR_COUNT:
 			setMessageCharCount(MESSAGE_CHAR_COUNT_EDEFAULT);
 			return;
+		case TeksPackage.MESSAGE__TEXT_MESSAGE:
+			setTextMessage((TextMessage) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -506,9 +542,6 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		switch (featureID) {
 		case TeksPackage.MESSAGE__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-		case TeksPackage.MESSAGE__TEXT:
-			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT
-					.equals(text);
 		case TeksPackage.MESSAGE__TIMESTAMP:
 			return TIMESTAMP_EDEFAULT == null ? timestamp != null
 					: !TIMESTAMP_EDEFAULT.equals(timestamp);
@@ -524,13 +557,14 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		case TeksPackage.MESSAGE__MESSAGE_CHAR_COUNT:
 			return MESSAGE_CHAR_COUNT_EDEFAULT == null ? messageCharCount != null
 					: !MESSAGE_CHAR_COUNT_EDEFAULT.equals(messageCharCount);
+		case TeksPackage.MESSAGE__TEXT_MESSAGE:
+			return textMessage != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -541,8 +575,6 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
-		result.append(", text: ");
-		result.append(text);
 		result.append(", timestamp: ");
 		result.append(timestamp);
 		result.append(", encoding: ");
@@ -557,4 +589,4 @@ public abstract class MessageImpl extends EObjectImpl implements Message {
 		return result.toString();
 	}
 
-} //MessageImpl
+} // MessageImpl

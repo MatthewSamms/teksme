@@ -811,14 +811,14 @@ public interface TeksPackage extends EPackage {
 	int POLL_QUESTION_FEATURE_COUNT = 4;
 
 	/**
-	 * The meta object id for the '{@link org.teksme.model.teks.impl.TextImpl <em>Text</em>}' class.
+	 * The meta object id for the '{@link org.teksme.model.teks.impl.PlainTextImpl <em>Plain Text</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.teksme.model.teks.impl.TextImpl
-	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getText()
+	 * @see org.teksme.model.teks.impl.PlainTextImpl
+	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getPlainText()
 	 * @generated
 	 */
-	int TEXT = 12;
+	int PLAIN_TEXT = 12;
 
 	/**
 	 * The feature id for the '<em><b>Note</b></em>' attribute.
@@ -827,7 +827,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT__NOTE = POLL_QUESTION__NOTE;
+	int PLAIN_TEXT__NOTE = POLL_QUESTION__NOTE;
 
 	/**
 	 * The feature id for the '<em><b>Required</b></em>' attribute.
@@ -836,7 +836,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT__REQUIRED = POLL_QUESTION__REQUIRED;
+	int PLAIN_TEXT__REQUIRED = POLL_QUESTION__REQUIRED;
 
 	/**
 	 * The feature id for the '<em><b>Poll Ref</b></em>' container reference.
@@ -845,7 +845,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT__POLL_REF = POLL_QUESTION__POLL_REF;
+	int PLAIN_TEXT__POLL_REF = POLL_QUESTION__POLL_REF;
 
 	/**
 	 * The feature id for the '<em><b>Keyword</b></em>' containment reference.
@@ -854,7 +854,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT__KEYWORD = POLL_QUESTION__KEYWORD;
+	int PLAIN_TEXT__KEYWORD = POLL_QUESTION__KEYWORD;
 
 	/**
 	 * The feature id for the '<em><b>Question</b></em>' attribute.
@@ -863,16 +863,16 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT__QUESTION = POLL_QUESTION_FEATURE_COUNT + 0;
+	int PLAIN_TEXT__QUESTION = POLL_QUESTION_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>Text</em>' class.
+	 * The number of structural features of the '<em>Plain Text</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEXT_FEATURE_COUNT = POLL_QUESTION_FEATURE_COUNT + 1;
+	int PLAIN_TEXT_FEATURE_COUNT = POLL_QUESTION_FEATURE_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.KeywordImpl <em>Keyword</em>}' class.
@@ -928,7 +928,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREE_TEXT__NOTE = TEXT__NOTE;
+	int FREE_TEXT__NOTE = PLAIN_TEXT__NOTE;
 
 	/**
 	 * The feature id for the '<em><b>Required</b></em>' attribute.
@@ -937,7 +937,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREE_TEXT__REQUIRED = TEXT__REQUIRED;
+	int FREE_TEXT__REQUIRED = PLAIN_TEXT__REQUIRED;
 
 	/**
 	 * The feature id for the '<em><b>Poll Ref</b></em>' container reference.
@@ -946,7 +946,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREE_TEXT__POLL_REF = TEXT__POLL_REF;
+	int FREE_TEXT__POLL_REF = PLAIN_TEXT__POLL_REF;
 
 	/**
 	 * The feature id for the '<em><b>Keyword</b></em>' containment reference.
@@ -955,7 +955,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREE_TEXT__KEYWORD = TEXT__KEYWORD;
+	int FREE_TEXT__KEYWORD = PLAIN_TEXT__KEYWORD;
 
 	/**
 	 * The feature id for the '<em><b>Question</b></em>' attribute.
@@ -964,7 +964,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREE_TEXT__QUESTION = TEXT__QUESTION;
+	int FREE_TEXT__QUESTION = PLAIN_TEXT__QUESTION;
 
 	/**
 	 * The number of structural features of the '<em>Free Text</em>' class.
@@ -973,7 +973,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int FREE_TEXT_FEATURE_COUNT = TEXT_FEATURE_COUNT + 0;
+	int FREE_TEXT_FEATURE_COUNT = PLAIN_TEXT_FEATURE_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.SecureTextImpl <em>Secure Text</em>}' class.
@@ -992,7 +992,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT__NOTE = TEXT__NOTE;
+	int SECURE_TEXT__NOTE = PLAIN_TEXT__NOTE;
 
 	/**
 	 * The feature id for the '<em><b>Required</b></em>' attribute.
@@ -1001,7 +1001,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT__REQUIRED = TEXT__REQUIRED;
+	int SECURE_TEXT__REQUIRED = PLAIN_TEXT__REQUIRED;
 
 	/**
 	 * The feature id for the '<em><b>Poll Ref</b></em>' container reference.
@@ -1010,7 +1010,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT__POLL_REF = TEXT__POLL_REF;
+	int SECURE_TEXT__POLL_REF = PLAIN_TEXT__POLL_REF;
 
 	/**
 	 * The feature id for the '<em><b>Keyword</b></em>' containment reference.
@@ -1019,7 +1019,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT__KEYWORD = TEXT__KEYWORD;
+	int SECURE_TEXT__KEYWORD = PLAIN_TEXT__KEYWORD;
 
 	/**
 	 * The feature id for the '<em><b>Question</b></em>' attribute.
@@ -1028,7 +1028,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT__QUESTION = TEXT__QUESTION;
+	int SECURE_TEXT__QUESTION = PLAIN_TEXT__QUESTION;
 
 	/**
 	 * The feature id for the '<em><b>Hash Algorithm</b></em>' attribute.
@@ -1037,7 +1037,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT__HASH_ALGORITHM = TEXT_FEATURE_COUNT + 0;
+	int SECURE_TEXT__HASH_ALGORITHM = PLAIN_TEXT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Hash Encoding</b></em>' attribute.
@@ -1046,7 +1046,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT__HASH_ENCODING = TEXT_FEATURE_COUNT + 1;
+	int SECURE_TEXT__HASH_ENCODING = PLAIN_TEXT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Secure Text</em>' class.
@@ -1055,7 +1055,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SECURE_TEXT_FEATURE_COUNT = TEXT_FEATURE_COUNT + 2;
+	int SECURE_TEXT_FEATURE_COUNT = PLAIN_TEXT_FEATURE_COUNT + 2;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.MultipleChoiceImpl <em>Multiple Choice</em>}' class.
@@ -1278,22 +1278,13 @@ public interface TeksPackage extends EPackage {
 	int MESSAGE__ID = 0;
 
 	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE__TEXT = 1;
-
-	/**
 	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__TIMESTAMP = 2;
+	int MESSAGE__TIMESTAMP = 1;
 
 	/**
 	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
@@ -1302,7 +1293,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__ENCODING = 3;
+	int MESSAGE__ENCODING = 2;
 
 	/**
 	 * The feature id for the '<em><b>Communication Channel</b></em>' attribute list.
@@ -1311,7 +1302,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__COMMUNICATION_CHANNEL = 4;
+	int MESSAGE__COMMUNICATION_CHANNEL = 3;
 
 	/**
 	 * The feature id for the '<em><b>Gateway Id</b></em>' attribute.
@@ -1320,7 +1311,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__GATEWAY_ID = 5;
+	int MESSAGE__GATEWAY_ID = 4;
 
 	/**
 	 * The feature id for the '<em><b>Message Char Count</b></em>' attribute.
@@ -1329,7 +1320,16 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__MESSAGE_CHAR_COUNT = 6;
+	int MESSAGE__MESSAGE_CHAR_COUNT = 5;
+
+	/**
+	 * The feature id for the '<em><b>Text Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MESSAGE__TEXT_MESSAGE = 6;
 
 	/**
 	 * The number of structural features of the '<em>Message</em>' class.
@@ -1415,15 +1415,6 @@ public interface TeksPackage extends EPackage {
 	int INBOUND_TEXT_MESSAGE__ID = MESSAGE__ID;
 
 	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_TEXT_MESSAGE__TEXT = MESSAGE__TEXT;
-
-	/**
 	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1467,6 +1458,15 @@ public interface TeksPackage extends EPackage {
 	 * @ordered
 	 */
 	int INBOUND_TEXT_MESSAGE__MESSAGE_CHAR_COUNT = MESSAGE__MESSAGE_CHAR_COUNT;
+
+	/**
+	 * The feature id for the '<em><b>Text Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INBOUND_TEXT_MESSAGE__TEXT_MESSAGE = MESSAGE__TEXT_MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>Part Number</b></em>' attribute.
@@ -1533,15 +1533,6 @@ public interface TeksPackage extends EPackage {
 	int OUTBOUND_TEXT_MESSAGE__ID = MESSAGE__ID;
 
 	/**
-	 * The feature id for the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTBOUND_TEXT_MESSAGE__TEXT = MESSAGE__TEXT;
-
-	/**
 	 * The feature id for the '<em><b>Timestamp</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1585,6 +1576,15 @@ public interface TeksPackage extends EPackage {
 	 * @ordered
 	 */
 	int OUTBOUND_TEXT_MESSAGE__MESSAGE_CHAR_COUNT = MESSAGE__MESSAGE_CHAR_COUNT;
+
+	/**
+	 * The feature id for the '<em><b>Text Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTBOUND_TEXT_MESSAGE__TEXT_MESSAGE = MESSAGE__TEXT_MESSAGE;
 
 	/**
 	 * The feature id for the '<em><b>From</b></em>' attribute.
@@ -1677,13 +1677,50 @@ public interface TeksPackage extends EPackage {
 	int OUTBOUND_TEXT_MESSAGE__REF_NO = MESSAGE_FEATURE_COUNT + 9;
 
 	/**
+	 * The feature id for the '<em><b>Teks Ref</b></em>' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTBOUND_TEXT_MESSAGE__TEKS_REF = MESSAGE_FEATURE_COUNT + 10;
+
+	/**
 	 * The number of structural features of the '<em>Outbound Text Message</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OUTBOUND_TEXT_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 10;
+	int OUTBOUND_TEXT_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 11;
+
+	/**
+	 * The meta object id for the '{@link org.teksme.model.teks.impl.TextMessageImpl <em>Text Message</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.teksme.model.teks.impl.TextMessageImpl
+	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getTextMessage()
+	 * @generated
+	 */
+	int TEXT_MESSAGE = 23;
+
+	/**
+	 * The feature id for the '<em><b>Text</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_MESSAGE__TEXT = 0;
+
+	/**
+	 * The number of structural features of the '<em>Text Message</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEXT_MESSAGE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.ReportImpl <em>Report</em>}' class.
@@ -1693,7 +1730,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getReport()
 	 * @generated
 	 */
-	int REPORT = 23;
+	int REPORT = 24;
 
 	/**
 	 * The feature id for the '<em><b>Hide Results</b></em>' attribute.
@@ -1730,7 +1767,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 24;
+	int COMMAND = 25;
 
 	/**
 	 * The feature id for the '<em><b>Default Handler</b></em>' attribute.
@@ -1776,7 +1813,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getLanguageKind()
 	 * @generated
 	 */
-	int LANGUAGE_KIND = 25;
+	int LANGUAGE_KIND = 26;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.ChannelKind <em>Channel Kind</em>}' enum.
@@ -1786,7 +1823,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getChannelKind()
 	 * @generated
 	 */
-	int CHANNEL_KIND = 26;
+	int CHANNEL_KIND = 27;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.RestrictionKind <em>Restriction Kind</em>}' enum.
@@ -1796,7 +1833,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getRestrictionKind()
 	 * @generated
 	 */
-	int RESTRICTION_KIND = 27;
+	int RESTRICTION_KIND = 28;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.StopCommandKind <em>Stop Command Kind</em>}' enum.
@@ -1806,7 +1843,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getStopCommandKind()
 	 * @generated
 	 */
-	int STOP_COMMAND_KIND = 28;
+	int STOP_COMMAND_KIND = 29;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.MessageStatuses <em>Message Statuses</em>}' enum.
@@ -1816,7 +1853,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getMessageStatuses()
 	 * @generated
 	 */
-	int MESSAGE_STATUSES = 29;
+	int MESSAGE_STATUSES = 30;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.FailureCauses <em>Failure Causes</em>}' enum.
@@ -1826,7 +1863,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getFailureCauses()
 	 * @generated
 	 */
-	int FAILURE_CAUSES = 30;
+	int FAILURE_CAUSES = 31;
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.Teks <em>Teks</em>}'.
@@ -2587,25 +2624,25 @@ public interface TeksPackage extends EPackage {
 	EReference getPollQuestion_Keyword();
 
 	/**
-	 * Returns the meta object for class '{@link org.teksme.model.teks.Text <em>Text</em>}'.
+	 * Returns the meta object for class '{@link org.teksme.model.teks.PlainText <em>Plain Text</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Text</em>'.
-	 * @see org.teksme.model.teks.Text
+	 * @return the meta object for class '<em>Plain Text</em>'.
+	 * @see org.teksme.model.teks.PlainText
 	 * @generated
 	 */
-	EClass getText();
+	EClass getPlainText();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Text#getQuestion <em>Question</em>}'.
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.PlainText#getQuestion <em>Question</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Question</em>'.
-	 * @see org.teksme.model.teks.Text#getQuestion()
-	 * @see #getText()
+	 * @see org.teksme.model.teks.PlainText#getQuestion()
+	 * @see #getPlainText()
 	 * @generated
 	 */
-	EAttribute getText_Question();
+	EAttribute getPlainText_Question();
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.Keyword <em>Keyword</em>}'.
@@ -2865,17 +2902,6 @@ public interface TeksPackage extends EPackage {
 	EAttribute getMessage_Id();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Message#getText <em>Text</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Text</em>'.
-	 * @see org.teksme.model.teks.Message#getText()
-	 * @see #getMessage()
-	 * @generated
-	 */
-	EAttribute getMessage_Text();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Message#getTimestamp <em>Timestamp</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2929,6 +2955,17 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMessage_MessageCharCount();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.teksme.model.teks.Message#getTextMessage <em>Text Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Text Message</em>'.
+	 * @see org.teksme.model.teks.Message#getTextMessage()
+	 * @see #getMessage()
+	 * @generated
+	 */
+	EReference getMessage_TextMessage();
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.AnswerRef <em>Answer Ref</em>}'.
@@ -3157,6 +3194,38 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOutboundTextMessage_RefNo();
+
+	/**
+	 * Returns the meta object for the container reference '{@link org.teksme.model.teks.OutboundTextMessage#getTeksRef <em>Teks Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the container reference '<em>Teks Ref</em>'.
+	 * @see org.teksme.model.teks.OutboundTextMessage#getTeksRef()
+	 * @see #getOutboundTextMessage()
+	 * @generated
+	 */
+	EReference getOutboundTextMessage_TeksRef();
+
+	/**
+	 * Returns the meta object for class '{@link org.teksme.model.teks.TextMessage <em>Text Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Text Message</em>'.
+	 * @see org.teksme.model.teks.TextMessage
+	 * @generated
+	 */
+	EClass getTextMessage();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.TextMessage#getText <em>Text</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Text</em>'.
+	 * @see org.teksme.model.teks.TextMessage#getText()
+	 * @see #getTextMessage()
+	 * @generated
+	 */
+	EAttribute getTextMessage_Text();
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.Report <em>Report</em>}'.
@@ -3924,14 +3993,14 @@ public interface TeksPackage extends EPackage {
 		EReference POLL_QUESTION__KEYWORD = eINSTANCE.getPollQuestion_Keyword();
 
 		/**
-		 * The meta object literal for the '{@link org.teksme.model.teks.impl.TextImpl <em>Text</em>}' class.
+		 * The meta object literal for the '{@link org.teksme.model.teks.impl.PlainTextImpl <em>Plain Text</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.teksme.model.teks.impl.TextImpl
-		 * @see org.teksme.model.teks.impl.TeksPackageImpl#getText()
+		 * @see org.teksme.model.teks.impl.PlainTextImpl
+		 * @see org.teksme.model.teks.impl.TeksPackageImpl#getPlainText()
 		 * @generated
 		 */
-		EClass TEXT = eINSTANCE.getText();
+		EClass PLAIN_TEXT = eINSTANCE.getPlainText();
 
 		/**
 		 * The meta object literal for the '<em><b>Question</b></em>' attribute feature.
@@ -3939,7 +4008,7 @@ public interface TeksPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute TEXT__QUESTION = eINSTANCE.getText_Question();
+		EAttribute PLAIN_TEXT__QUESTION = eINSTANCE.getPlainText_Question();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.KeywordImpl <em>Keyword</em>}' class.
@@ -4156,14 +4225,6 @@ public interface TeksPackage extends EPackage {
 		EAttribute MESSAGE__ID = eINSTANCE.getMessage_Id();
 
 		/**
-		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE__TEXT = eINSTANCE.getMessage_Text();
-
-		/**
 		 * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4204,6 +4265,14 @@ public interface TeksPackage extends EPackage {
 		 */
 		EAttribute MESSAGE__MESSAGE_CHAR_COUNT = eINSTANCE
 				.getMessage_MessageCharCount();
+
+		/**
+		 * The meta object literal for the '<em><b>Text Message</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MESSAGE__TEXT_MESSAGE = eINSTANCE.getMessage_TextMessage();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.AnswerRefImpl <em>Answer Ref</em>}' class.
@@ -4392,6 +4461,33 @@ public interface TeksPackage extends EPackage {
 		 */
 		EAttribute OUTBOUND_TEXT_MESSAGE__REF_NO = eINSTANCE
 				.getOutboundTextMessage_RefNo();
+
+		/**
+		 * The meta object literal for the '<em><b>Teks Ref</b></em>' container reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference OUTBOUND_TEXT_MESSAGE__TEKS_REF = eINSTANCE
+				.getOutboundTextMessage_TeksRef();
+
+		/**
+		 * The meta object literal for the '{@link org.teksme.model.teks.impl.TextMessageImpl <em>Text Message</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.teksme.model.teks.impl.TextMessageImpl
+		 * @see org.teksme.model.teks.impl.TeksPackageImpl#getTextMessage()
+		 * @generated
+		 */
+		EClass TEXT_MESSAGE = eINSTANCE.getTextMessage();
+
+		/**
+		 * The meta object literal for the '<em><b>Text</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEXT_MESSAGE__TEXT = eINSTANCE.getTextMessage_Text();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.ReportImpl <em>Report</em>}' class.

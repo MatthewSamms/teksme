@@ -201,6 +201,7 @@ public interface Teks extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Outbound Message</b></em>' containment reference list.
 	 * The list contents are of type {@link org.teksme.model.teks.OutboundTextMessage}.
+	 * It is bidirectional and its opposite is '{@link org.teksme.model.teks.OutboundTextMessage#getTeksRef <em>Teks Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Outbound Message</em>' containment reference list isn't clear,
@@ -209,7 +210,8 @@ public interface Teks extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Outbound Message</em>' containment reference list.
 	 * @see org.teksme.model.teks.TeksPackage#getTeks_OutboundMessage()
-	 * @model containment="true" resolveProxies="true" keys="id"
+	 * @see org.teksme.model.teks.OutboundTextMessage#getTeksRef
+	 * @model opposite="teksRef" containment="true" resolveProxies="true" keys="id"
 	 * @generated
 	 */
 	EList<OutboundTextMessage> getOutboundMessageList();

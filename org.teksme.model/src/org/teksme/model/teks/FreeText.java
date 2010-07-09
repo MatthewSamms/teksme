@@ -16,5 +16,5 @@ package org.teksme.model.teks;
  * @model
  * @generated
  */
-public interface FreeText extends Text {
+public interface FreeText extends PlainText {
 } // FreeText
