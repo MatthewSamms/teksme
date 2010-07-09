@@ -1,5 +1,5 @@
 #summary TèksMe API Documentation
-#labels APIDocumentation
+#labels Featured
 
 = Introduction =
 
