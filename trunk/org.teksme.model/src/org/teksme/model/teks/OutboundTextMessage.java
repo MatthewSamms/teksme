@@ -28,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getValidityPeriod <em>Validity Period</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getDispatchDate <em>Dispatch Date</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getRefNo <em>Ref No</em>}</li>
+ *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getTeksRef <em>Teks Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -326,5 +327,33 @@ public interface OutboundTextMessage extends Message {
 	 * @generated
 	 */
 	void setRefNo(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Teks Ref</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.teksme.model.teks.Teks#getOutboundMessageList <em>Outbound Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Teks Ref</em>' container reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Teks Ref</em>' container reference.
+	 * @see #setTeksRef(Teks)
+	 * @see org.teksme.model.teks.TeksPackage#getOutboundTextMessage_TeksRef()
+	 * @see org.teksme.model.teks.Teks#getOutboundMessageList
+	 * @model opposite="outboundMessage" transient="false"
+	 * @generated
+	 */
+	Teks getTeksRef();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.OutboundTextMessage#getTeksRef <em>Teks Ref</em>}' container reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Teks Ref</em>' container reference.
+	 * @see #getTeksRef()
+	 * @generated
+	 */
+	void setTeksRef(Teks value);
 
 } // OutboundTextMessage

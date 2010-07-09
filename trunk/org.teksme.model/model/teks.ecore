@@ -13,7 +13,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="responses" eType="#//Response"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outboundMessage" upperBound="-1"
-        eType="#//OutboundTextMessage" containment="true" eKeys="#//Message/id"/>
+        eType="#//OutboundTextMessage" containment="true" eOpposite="#//OutboundTextMessage/teksRef"
+        eKeys="#//Message/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inboundMessage" upperBound="-1"
         eType="#//InboundTextMessage" containment="true" eKeys="#//Message/id"/>
   </eClassifiers>
@@ -112,7 +113,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="keyword" eType="#//Keyword"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Text" abstract="true" eSuperTypes="#//PollQuestion">
+  <eClassifiers xsi:type="ecore:EClass" name="PlainText" abstract="true" eSuperTypes="#//PollQuestion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="question" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Keyword">
@@ -120,8 +121,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoKeyword" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="FreeText" eSuperTypes="#//Text"/>
-  <eClassifiers xsi:type="ecore:EClass" name="SecureText" eSuperTypes="#//Text">
+  <eClassifiers xsi:type="ecore:EClass" name="FreeText" eSuperTypes="#//PlainText"/>
+  <eClassifiers xsi:type="ecore:EClass" name="SecureText" eSuperTypes="#//PlainText">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashAlgorithm" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hashEncoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -153,13 +154,14 @@
   <eClassifiers xsi:type="ecore:EClass" name="Message" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="communicationChannel" upperBound="-1"
         eType="#//ChannelKind"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="gatewayId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageCharCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="textMessage" eType="#//TextMessage"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnswerRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="choiceRef" eType="#//PollQuestion"/>
@@ -186,6 +188,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="validityPeriod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dispatchDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refNo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="teksRef" eType="#//Teks"
+        eOpposite="#//Teks/outboundMessage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TextMessage">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Report">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideResults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

@@ -32,6 +32,8 @@ import org.eclipse.emf.ecore.EObject;
  *
  * @see org.teksme.model.teks.TeksPackage#getMessage()
  * @model abstract="true"
+ * 
+ * @generated false
  */
 public interface Message extends EObject, Serializable {
 	/**
@@ -59,32 +61,6 @@ public interface Message extends EObject, Serializable {
 	 * @generated
 	 */
 	void setId(String value);
-
-	/**
-	 * Returns the value of the '<em><b>Text</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Text</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Text</em>' attribute.
-	 * @see #setText(String)
-	 * @see org.teksme.model.teks.TeksPackage#getMessage_Text()
-	 * @model
-	 * @generated
-	 */
-	String getText();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Message#getText <em>Text</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Text</em>' attribute.
-	 * @see #getText()
-	 * @generated
-	 */
-	void setText(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
@@ -242,5 +218,31 @@ public interface Message extends EObject, Serializable {
 	 * @generated
 	 */
 	void setMessageCharCount(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Text Message</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Text Message</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Text Message</em>' containment reference.
+	 * @see #setTextMessage(TextMessage)
+	 * @see org.teksme.model.teks.TeksPackage#getMessage_TextMessage()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	TextMessage getTextMessage();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Message#getTextMessage <em>Text Message</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Text Message</em>' containment reference.
+	 * @see #getTextMessage()
+	 * @generated
+	 */
+	void setTextMessage(TextMessage value);
 
 } // Message
