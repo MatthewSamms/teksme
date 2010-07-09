@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ASCII"?>
+<teks:Teks xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:teks="http://teksme.org/meta/1.0.0/teks" appId="128552450490126">
+  <userProfile id="56f3d45cb6f14af22fee33245bf53b8e"/>
+  <poll author="Fabiano Cruz" lastModified="2010-07-09T00:40:13.446-0400" id="406fb8e6-eb60-4803-875c-685c8d803203">
+    <question xsi:type="teks:MultipleChoice" required="true" question="Which media helped establish mass marketing because they could target segments of the audience rather than geographic areas of distribution">
+      <answer text="magazines and radio">
+        <keyword key="1120" autoKeyword="false"/>
+      </answer>
+      <answer text="radio and newspapers">
+        <keyword key="1121" autoKeyword="false"/>
+      </answer>
+      <answer text="newspapers and radio">
+        <keyword key="1122" autoKeyword="false"/>
+      </answer>
+      <answer text="newspapers and television">
+        <keyword key="1123" autoKeyword="false"/>
+      </answer>
+    </question>
+  </poll>
+</teks:Teks>

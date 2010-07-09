@@ -6,36 +6,20 @@ import java.util.UUID;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.resource.ResourceSet;
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.junit.BeforeClass;
 import org.junit.Test;
+import org.teksme.model.teks.Developer;
 import org.teksme.model.teks.FreeText;
 import org.teksme.model.teks.Keyword;
 import org.teksme.model.teks.Poll;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
-import org.teksme.model.teks.UserProfile;
 import org.teksme.model.teks.impl.TeksPackageImpl;
-import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 
-public class CreateCompositePollTest {
+public class CreateCompositePollTest extends TeksModelTest {
 
 	private static final String APPID = "6152376517";
-	private static final String USERPROFILE_ID = "o318947871972892719jiasjs8198";
+	private static final String DEVELOPER_PROFILE_ID = "o318947871972892719jiasjs8198";
 	private static final String MODEL_FILE = "output/teks.xml";
-	private static ResourceSet resourceSet = null;
-
-	@BeforeClass
-	public static void setResourceSet() {
-		// create resource set and resource
-		resourceSet = new ResourceSetImpl();
-
-		// Register XML resource factory
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("xml", new TeksResourceFactoryImpl());
-
-	}
 
 	@Test
 	public void testCompositePollCreation() throws IOException {
@@ -46,10 +30,10 @@ public class CreateCompositePollTest {
 		Teks eduTeks = factory.createTeks();
 		eduTeks.setAppId(APPID);
 
-		UserProfile userProfile = factory.createUserProfile();
-		userProfile.setId(USERPROFILE_ID);
+		Developer developerProfile = factory.createDeveloper();
+		developerProfile.setId(DEVELOPER_PROFILE_ID);
 
-		eduTeks.setUserProfile(userProfile);
+		eduTeks.setDeveloper(developerProfile);
 
 		Poll poll = factory.createPoll();
 		poll.setAuthor("Fabiano Cruz");

@@ -3,12 +3,12 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="test"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
-	<classpathentry kind="lib" path="lib/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/org.teksme.model"/>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
 	<classpathentry kind="lib" path="/org.teksme.library.target/mysql/mysql-connector-java-5.1.13-bin.jar"/>
+	<classpathentry kind="lib" path="/org.teksme.library.target/emf/org.eclipse.emf.common_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="/org.teksme.library.target/emf/org.eclipse.emf.ecore_2.5.0.v200906151043.jar"/>
+	<classpathentry kind="lib" path="/org.teksme.library.target/emf/org.eclipse.emf.ecore.xmi_2.5.0.v200906151043.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
