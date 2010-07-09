@@ -91,6 +91,7 @@ public interface MultipleChoice extends PollQuestion {
 	/**
 	 * Returns the value of the '<em><b>Answer</b></em>' containment reference list.
 	 * The list contents are of type {@link org.teksme.model.teks.Answer}.
+	 * It is bidirectional and its opposite is '{@link org.teksme.model.teks.Answer#getQuestionRef <em>Question Ref</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Answer</em>' containment reference list isn't clear,
@@ -99,7 +100,8 @@ public interface MultipleChoice extends PollQuestion {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Answer</em>' containment reference list.
 	 * @see org.teksme.model.teks.TeksPackage#getMultipleChoice_Answer()
-	 * @model containment="true" resolveProxies="true"
+	 * @see org.teksme.model.teks.Answer#getQuestionRef
+	 * @model opposite="questionRef" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<Answer> getAnswerList();

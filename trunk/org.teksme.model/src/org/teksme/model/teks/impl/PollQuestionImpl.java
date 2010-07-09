@@ -32,7 +32,6 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.PollQuestionImpl#getNote <em>Note</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.PollQuestionImpl#isRequired <em>Required</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.PollQuestionImpl#getPollRef <em>Poll Ref</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.PollQuestionImpl#getKeyword <em>Keyword</em>}</li>
  * </ul>
  * </p>
  *
@@ -79,16 +78,6 @@ public abstract class PollQuestionImpl extends EObjectImpl implements
 	 * @ordered
 	 */
 	protected boolean required = REQUIRED_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getKeyword() <em>Keyword</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKeyword()
-	 * @generated
-	 * @ordered
-	 */
-	protected Keyword keyword;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -217,92 +206,6 @@ public abstract class PollQuestionImpl extends EObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Keyword getKeyword() {
-		if (keyword != null && keyword.eIsProxy()) {
-			InternalEObject oldKeyword = (InternalEObject) keyword;
-			keyword = (Keyword) eResolveProxy(oldKeyword);
-			if (keyword != oldKeyword) {
-				InternalEObject newKeyword = (InternalEObject) keyword;
-				NotificationChain msgs = oldKeyword.eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- TeksPackage.POLL_QUESTION__KEYWORD, null,
-						null);
-				if (newKeyword.eInternalContainer() == null) {
-					msgs = newKeyword.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-							- TeksPackage.POLL_QUESTION__KEYWORD, null, msgs);
-				}
-				if (msgs != null)
-					msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							TeksPackage.POLL_QUESTION__KEYWORD, oldKeyword,
-							keyword));
-			}
-		}
-		return keyword;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Keyword basicGetKeyword() {
-		return keyword;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetKeyword(Keyword newKeyword,
-			NotificationChain msgs) {
-		Keyword oldKeyword = keyword;
-		keyword = newKeyword;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, TeksPackage.POLL_QUESTION__KEYWORD,
-					oldKeyword, newKeyword);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setKeyword(Keyword newKeyword) {
-		if (newKeyword != keyword) {
-			NotificationChain msgs = null;
-			if (keyword != null)
-				msgs = ((InternalEObject) keyword).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- TeksPackage.POLL_QUESTION__KEYWORD, null,
-						msgs);
-			if (newKeyword != null)
-				msgs = ((InternalEObject) newKeyword).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- TeksPackage.POLL_QUESTION__KEYWORD, null,
-						msgs);
-			msgs = basicSetKeyword(newKeyword, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.POLL_QUESTION__KEYWORD, newKeyword, newKeyword));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -326,8 +229,6 @@ public abstract class PollQuestionImpl extends EObjectImpl implements
 		switch (featureID) {
 		case TeksPackage.POLL_QUESTION__POLL_REF:
 			return basicSetPollRef(null, msgs);
-		case TeksPackage.POLL_QUESTION__KEYWORD:
-			return basicSetKeyword(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -364,10 +265,6 @@ public abstract class PollQuestionImpl extends EObjectImpl implements
 			if (resolve)
 				return getPollRef();
 			return basicGetPollRef();
-		case TeksPackage.POLL_QUESTION__KEYWORD:
-			if (resolve)
-				return getKeyword();
-			return basicGetKeyword();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -388,9 +285,6 @@ public abstract class PollQuestionImpl extends EObjectImpl implements
 			return;
 		case TeksPackage.POLL_QUESTION__POLL_REF:
 			setPollRef((Poll) newValue);
-			return;
-		case TeksPackage.POLL_QUESTION__KEYWORD:
-			setKeyword((Keyword) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -413,9 +307,6 @@ public abstract class PollQuestionImpl extends EObjectImpl implements
 		case TeksPackage.POLL_QUESTION__POLL_REF:
 			setPollRef((Poll) null);
 			return;
-		case TeksPackage.POLL_QUESTION__KEYWORD:
-			setKeyword((Keyword) null);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -435,8 +326,6 @@ public abstract class PollQuestionImpl extends EObjectImpl implements
 			return required != REQUIRED_EDEFAULT;
 		case TeksPackage.POLL_QUESTION__POLL_REF:
 			return basicGetPollRef() != null;
-		case TeksPackage.POLL_QUESTION__KEYWORD:
-			return keyword != null;
 		}
 		return super.eIsSet(featureID);
 	}

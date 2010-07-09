@@ -19,7 +19,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.teksme.model.teks.PollQuestion#getNote <em>Note</em>}</li>
  *   <li>{@link org.teksme.model.teks.PollQuestion#isRequired <em>Required</em>}</li>
  *   <li>{@link org.teksme.model.teks.PollQuestion#getPollRef <em>Poll Ref</em>}</li>
- *   <li>{@link org.teksme.model.teks.PollQuestion#getKeyword <em>Keyword</em>}</li>
  * </ul>
  * </p>
  *
@@ -107,31 +106,5 @@ public interface PollQuestion extends EObject {
 	 * @generated
 	 */
 	void setPollRef(Poll value);
-
-	/**
-	 * Returns the value of the '<em><b>Keyword</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Keyword</em>' reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Keyword</em>' containment reference.
-	 * @see #setKeyword(Keyword)
-	 * @see org.teksme.model.teks.TeksPackage#getPollQuestion_Keyword()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	Keyword getKeyword();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.PollQuestion#getKeyword <em>Keyword</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Keyword</em>' containment reference.
-	 * @see #getKeyword()
-	 * @generated
-	 */
-	void setKeyword(Keyword value);
 
 } // PollQuestion

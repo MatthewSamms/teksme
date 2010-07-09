@@ -62,13 +62,22 @@ public interface TeksFactory extends EFactory {
 	AnnotationMapEntry createAnnotationMapEntry();
 
 	/**
-	 * Returns a new object of class '<em>User Profile</em>'.
+	 * Returns a new object of class '<em>User</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>User Profile</em>'.
+	 * @return a new object of class '<em>User</em>'.
 	 * @generated
 	 */
-	UserProfile createUserProfile();
+	User createUser();
+
+	/**
+	 * Returns a new object of class '<em>Developer</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Developer</em>'.
+	 * @generated
+	 */
+	Developer createDeveloper();
 
 	/**
 	 * Returns a new object of class '<em>Poll</em>'.

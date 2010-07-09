@@ -91,8 +91,13 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseUserProfile(UserProfile object) {
-			return createUserProfileAdapter();
+		public Adapter caseUser(User object) {
+			return createUserAdapter();
+		}
+
+		@Override
+		public Adapter caseDeveloper(Developer object) {
+			return createDeveloperAdapter();
 		}
 
 		@Override
@@ -276,16 +281,30 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.UserProfile <em>User Profile</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.User <em>User</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.teksme.model.teks.UserProfile
+	 * @see org.teksme.model.teks.User
 	 * @generated
 	 */
-	public Adapter createUserProfileAdapter() {
+	public Adapter createUserAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.Developer <em>Developer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.teksme.model.teks.Developer
+	 * @generated
+	 */
+	public Adapter createDeveloperAdapter() {
 		return null;
 	}
 

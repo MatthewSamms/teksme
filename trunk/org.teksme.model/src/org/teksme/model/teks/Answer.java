@@ -18,10 +18,10 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.teksme.model.teks.Answer#getText <em>Text</em>}</li>
  *   <li>{@link org.teksme.model.teks.Answer#isId <em>Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.Answer#getKeyword <em>Keyword</em>}</li>
- *   <li>{@link org.teksme.model.teks.Answer#isAutoKeyword <em>Auto Keyword</em>}</li>
  *   <li>{@link org.teksme.model.teks.Answer#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.teksme.model.teks.Answer#isSelected <em>Selected</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Answer#getKeyword <em>Keyword</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Answer#getQuestionRef <em>Question Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -83,57 +83,58 @@ public interface Answer extends EObject {
 	void setId(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Keyword</b></em>' attribute.
+	 * Returns the value of the '<em><b>Keyword</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Keyword</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Keyword</em>' attribute.
-	 * @see #setKeyword(String)
+	 * @return the value of the '<em>Keyword</em>' containment reference.
+	 * @see #setKeyword(Keyword)
 	 * @see org.teksme.model.teks.TeksPackage#getAnswer_Keyword()
-	 * @model
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	String getKeyword();
+	Keyword getKeyword();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Answer#getKeyword <em>Keyword</em>}' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Answer#getKeyword <em>Keyword</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Keyword</em>' attribute.
+	 * @param value the new value of the '<em>Keyword</em>' containment reference.
 	 * @see #getKeyword()
 	 * @generated
 	 */
-	void setKeyword(String value);
+	void setKeyword(Keyword value);
 
 	/**
-	 * Returns the value of the '<em><b>Auto Keyword</b></em>' attribute.
-	 * The default value is <code>"true"</code>.
+	 * Returns the value of the '<em><b>Question Ref</b></em>' container reference.
+	 * It is bidirectional and its opposite is '{@link org.teksme.model.teks.MultipleChoice#getAnswerList <em>Answer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Auto Keyword</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Question Ref</em>' container reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Auto Keyword</em>' attribute.
-	 * @see #setAutoKeyword(boolean)
-	 * @see org.teksme.model.teks.TeksPackage#getAnswer_AutoKeyword()
-	 * @model default="true"
+	 * @return the value of the '<em>Question Ref</em>' container reference.
+	 * @see #setQuestionRef(MultipleChoice)
+	 * @see org.teksme.model.teks.TeksPackage#getAnswer_QuestionRef()
+	 * @see org.teksme.model.teks.MultipleChoice#getAnswerList
+	 * @model opposite="answer" transient="false"
 	 * @generated
 	 */
-	boolean isAutoKeyword();
+	MultipleChoice getQuestionRef();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Answer#isAutoKeyword <em>Auto Keyword</em>}' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Answer#getQuestionRef <em>Question Ref</em>}' container reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Auto Keyword</em>' attribute.
-	 * @see #isAutoKeyword()
+	 * @param value the new value of the '<em>Question Ref</em>' container reference.
+	 * @see #getQuestionRef()
 	 * @generated
 	 */
-	void setAutoKeyword(boolean value);
+	void setQuestionRef(MultipleChoice value);
 
 	/**
 	 * Returns the value of the '<em><b>Default Value</b></em>' attribute.

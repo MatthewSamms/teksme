@@ -10,20 +10,16 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
-
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
+import org.teksme.model.teks.Developer;
 import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.Poll;
@@ -31,22 +27,22 @@ import org.teksme.model.teks.Response;
 import org.teksme.model.teks.Survey;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
-import org.teksme.model.teks.UserProfile;
+import org.teksme.model.teks.User;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Teks</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Teks</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAppId <em>App Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getUserProfile <em>User Profile</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getDeveloper <em>Developer</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getPoll <em>Poll</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getSurvey <em>Survey</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getResponses <em>Responses</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getOutboundMessageList <em>Outbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getInboundMessageList <em>Inbound Message</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAccount <em>Account</em>}</li>
  * </ul>
  * </p>
  *
@@ -55,8 +51,7 @@ import org.teksme.model.teks.UserProfile;
 public class TeksImpl extends EObjectImpl implements Teks {
 	/**
 	 * The default value of the '{@link #getAppId() <em>App Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAppId()
 	 * @generated
 	 * @ordered
@@ -65,8 +60,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 
 	/**
 	 * The cached value of the '{@link #getAppId() <em>App Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAppId()
 	 * @generated
 	 * @ordered
@@ -74,19 +68,17 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected String appId = APP_ID_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getUserProfile() <em>User Profile</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUserProfile()
+	 * The cached value of the '{@link #getDeveloper() <em>Developer</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getDeveloper()
 	 * @generated
 	 * @ordered
 	 */
-	protected UserProfile userProfile;
+	protected Developer developer;
 
 	/**
 	 * The cached value of the '{@link #getPoll() <em>Poll</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getPoll()
 	 * @generated
 	 * @ordered
@@ -95,8 +87,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 
 	/**
 	 * The cached value of the '{@link #getSurvey() <em>Survey</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getSurvey()
 	 * @generated
 	 * @ordered
@@ -105,8 +96,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 
 	/**
 	 * The cached value of the '{@link #getResponses() <em>Responses</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getResponses()
 	 * @generated
 	 * @ordered
@@ -114,9 +104,10 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected Response responses;
 
 	/**
-	 * The cached value of the '{@link #getOutboundMessageList() <em>Outbound Message</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getOutboundMessageList()
+	 * <em>Outbound Message</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getOutboundMessageList()
 	 * @generated
 	 * @ordered
@@ -125,8 +116,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 
 	/**
 	 * The empty value for the '{@link #getOutboundMessage() <em>Outbound Message</em>}' array accessor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getOutboundMessage()
 	 * @generated
 	 * @ordered
@@ -134,9 +125,10 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected static final OutboundTextMessage[] OUTBOUND_MESSAGE_EEMPTY_ARRAY = new OutboundTextMessage[0];
 
 	/**
-	 * The cached value of the '{@link #getInboundMessageList() <em>Inbound Message</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getInboundMessageList()
+	 * <em>Inbound Message</em>}' containment reference list. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getInboundMessageList()
 	 * @generated
 	 * @ordered
@@ -145,8 +137,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 
 	/**
 	 * The empty value for the '{@link #getInboundMessage() <em>Inbound Message</em>}' array accessor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @see #getInboundMessage()
 	 * @generated
 	 * @ordered
@@ -154,8 +146,16 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	protected static final InboundTextMessage[] INBOUND_MESSAGE_EEMPTY_ARRAY = new InboundTextMessage[0];
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getAccount() <em>Account</em>}' containment reference.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @see #getAccount()
+	 * @generated
+	 * @ordered
+	 */
+	protected User account;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected TeksImpl() {
@@ -163,8 +163,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -173,8 +172,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getAppId() {
@@ -182,8 +180,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setAppId(String newAppId) {
@@ -195,58 +192,54 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UserProfile getUserProfile() {
-		if (userProfile != null && userProfile.eIsProxy()) {
-			InternalEObject oldUserProfile = (InternalEObject) userProfile;
-			userProfile = (UserProfile) eResolveProxy(oldUserProfile);
-			if (userProfile != oldUserProfile) {
-				InternalEObject newUserProfile = (InternalEObject) userProfile;
-				NotificationChain msgs = oldUserProfile
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-								- TeksPackage.TEKS__USER_PROFILE, null, null);
-				if (newUserProfile.eInternalContainer() == null) {
-					msgs = newUserProfile.eInverseAdd(this,
+	public Developer getDeveloper() {
+		if (developer != null && developer.eIsProxy()) {
+			InternalEObject oldDeveloper = (InternalEObject) developer;
+			developer = (Developer) eResolveProxy(oldDeveloper);
+			if (developer != oldDeveloper) {
+				InternalEObject newDeveloper = (InternalEObject) developer;
+				NotificationChain msgs = oldDeveloper.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__DEVELOPER,
+						null, null);
+				if (newDeveloper.eInternalContainer() == null) {
+					msgs = newDeveloper.eInverseAdd(this,
 							EOPPOSITE_FEATURE_BASE
-									- TeksPackage.TEKS__USER_PROFILE, null,
-							msgs);
+									- TeksPackage.TEKS__DEVELOPER, null, msgs);
 				}
 				if (msgs != null)
 					msgs.dispatch();
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							TeksPackage.TEKS__USER_PROFILE, oldUserProfile,
-							userProfile));
+							TeksPackage.TEKS__DEVELOPER, oldDeveloper,
+							developer));
 			}
 		}
-		return userProfile;
+		return developer;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UserProfile basicGetUserProfile() {
-		return userProfile;
+	public Developer basicGetDeveloper() {
+		return developer;
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetUserProfile(UserProfile newUserProfile,
+	public NotificationChain basicSetDeveloper(Developer newDeveloper,
 			NotificationChain msgs) {
-		UserProfile oldUserProfile = userProfile;
-		userProfile = newUserProfile;
+		Developer oldDeveloper = developer;
+		developer = newDeveloper;
 		if (eNotificationRequired()) {
 			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, TeksPackage.TEKS__USER_PROFILE,
-					oldUserProfile, newUserProfile);
+					Notification.SET, TeksPackage.TEKS__DEVELOPER,
+					oldDeveloper, newDeveloper);
 			if (msgs == null)
 				msgs = notification;
 			else
@@ -256,33 +249,30 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setUserProfile(UserProfile newUserProfile) {
-		if (newUserProfile != userProfile) {
+	public void setDeveloper(Developer newDeveloper) {
+		if (newDeveloper != developer) {
 			NotificationChain msgs = null;
-			if (userProfile != null)
-				msgs = ((InternalEObject) userProfile)
-						.eInverseRemove(this, EOPPOSITE_FEATURE_BASE
-								- TeksPackage.TEKS__USER_PROFILE, null, msgs);
-			if (newUserProfile != null)
-				msgs = ((InternalEObject) newUserProfile)
-						.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
-								- TeksPackage.TEKS__USER_PROFILE, null, msgs);
-			msgs = basicSetUserProfile(newUserProfile, msgs);
+			if (developer != null)
+				msgs = ((InternalEObject) developer).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__DEVELOPER,
+						null, msgs);
+			if (newDeveloper != null)
+				msgs = ((InternalEObject) newDeveloper).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__DEVELOPER,
+						null, msgs);
+			msgs = basicSetDeveloper(newDeveloper, msgs);
 			if (msgs != null)
 				msgs.dispatch();
 		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.TEKS__USER_PROFILE, newUserProfile,
-					newUserProfile));
+					TeksPackage.TEKS__DEVELOPER, newDeveloper, newDeveloper));
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Poll getPoll() {
@@ -309,8 +299,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Poll basicGetPoll() {
@@ -318,8 +307,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetPoll(Poll newPoll, NotificationChain msgs) {
@@ -337,8 +325,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setPoll(Poll newPoll) {
@@ -361,8 +348,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Survey getSurvey() {
@@ -389,8 +375,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Survey basicGetSurvey() {
@@ -398,8 +383,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetSurvey(Survey newSurvey,
@@ -419,8 +403,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setSurvey(Survey newSurvey) {
@@ -443,8 +426,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Response getResponses() {
@@ -473,8 +455,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Response basicGetResponses() {
@@ -482,8 +463,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetResponses(Response newResponses,
@@ -503,8 +483,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setResponses(Response newResponses) {
@@ -527,8 +506,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public OutboundTextMessage[] getOutboundMessage() {
@@ -540,8 +518,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public OutboundTextMessage getOutboundMessage(int index) {
@@ -549,8 +526,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getOutboundMessageLength() {
@@ -558,8 +534,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setOutboundMessage(OutboundTextMessage[] newOutboundMessage) {
@@ -568,8 +543,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setOutboundMessage(int index, OutboundTextMessage element) {
@@ -577,8 +551,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<OutboundTextMessage> getOutboundMessageList() {
@@ -592,8 +565,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public InboundTextMessage[] getInboundMessage() {
@@ -605,8 +577,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public InboundTextMessage getInboundMessage(int index) {
@@ -614,8 +585,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getInboundMessageLength() {
@@ -623,8 +593,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setInboundMessage(InboundTextMessage[] newInboundMessage) {
@@ -633,8 +602,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setInboundMessage(int index, InboundTextMessage element) {
@@ -642,8 +610,7 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<InboundTextMessage> getInboundMessageList() {
@@ -656,8 +623,85 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public User getAccount() {
+		if (account != null && account.eIsProxy()) {
+			InternalEObject oldAccount = (InternalEObject) account;
+			account = (User) eResolveProxy(oldAccount);
+			if (account != oldAccount) {
+				InternalEObject newAccount = (InternalEObject) account;
+				NotificationChain msgs = oldAccount.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__ACCOUNT,
+						null, null);
+				if (newAccount.eInternalContainer() == null) {
+					msgs = newAccount.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- TeksPackage.TEKS__ACCOUNT, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							TeksPackage.TEKS__ACCOUNT, oldAccount, account));
+			}
+		}
+		return account;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public User basicGetAccount() {
+		return account;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetAccount(User newAccount,
+			NotificationChain msgs) {
+		User oldAccount = account;
+		account = newAccount;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, TeksPackage.TEKS__ACCOUNT, oldAccount,
+					newAccount);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAccount(User newAccount) {
+		if (newAccount != account) {
+			NotificationChain msgs = null;
+			if (account != null)
+				msgs = ((InternalEObject) account).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__ACCOUNT,
+						null, msgs);
+			if (newAccount != null)
+				msgs = ((InternalEObject) newAccount).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__ACCOUNT,
+						null, msgs);
+			msgs = basicSetAccount(newAccount, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.TEKS__ACCOUNT, newAccount, newAccount));
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -673,16 +717,15 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
 		switch (featureID) {
-		case TeksPackage.TEKS__USER_PROFILE:
-			return basicSetUserProfile(null, msgs);
+		case TeksPackage.TEKS__DEVELOPER:
+			return basicSetDeveloper(null, msgs);
 		case TeksPackage.TEKS__POLL:
 			return basicSetPoll(null, msgs);
 		case TeksPackage.TEKS__SURVEY:
@@ -695,13 +738,14 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			return ((InternalEList<?>) getInboundMessageList()).basicRemove(
 					otherEnd, msgs);
+		case TeksPackage.TEKS__ACCOUNT:
+			return basicSetAccount(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -709,10 +753,10 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		switch (featureID) {
 		case TeksPackage.TEKS__APP_ID:
 			return getAppId();
-		case TeksPackage.TEKS__USER_PROFILE:
+		case TeksPackage.TEKS__DEVELOPER:
 			if (resolve)
-				return getUserProfile();
-			return basicGetUserProfile();
+				return getDeveloper();
+			return basicGetDeveloper();
 		case TeksPackage.TEKS__POLL:
 			if (resolve)
 				return getPoll();
@@ -729,13 +773,16 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			return getOutboundMessageList();
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			return getInboundMessageList();
+		case TeksPackage.TEKS__ACCOUNT:
+			if (resolve)
+				return getAccount();
+			return basicGetAccount();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -745,8 +792,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		case TeksPackage.TEKS__APP_ID:
 			setAppId((String) newValue);
 			return;
-		case TeksPackage.TEKS__USER_PROFILE:
-			setUserProfile((UserProfile) newValue);
+		case TeksPackage.TEKS__DEVELOPER:
+			setDeveloper((Developer) newValue);
 			return;
 		case TeksPackage.TEKS__POLL:
 			setPoll((Poll) newValue);
@@ -767,13 +814,15 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			getInboundMessageList().addAll(
 					(Collection<? extends InboundTextMessage>) newValue);
 			return;
+		case TeksPackage.TEKS__ACCOUNT:
+			setAccount((User) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -782,8 +831,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		case TeksPackage.TEKS__APP_ID:
 			setAppId(APP_ID_EDEFAULT);
 			return;
-		case TeksPackage.TEKS__USER_PROFILE:
-			setUserProfile((UserProfile) null);
+		case TeksPackage.TEKS__DEVELOPER:
+			setDeveloper((Developer) null);
 			return;
 		case TeksPackage.TEKS__POLL:
 			setPoll((Poll) null);
@@ -800,13 +849,15 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			getInboundMessageList().clear();
 			return;
+		case TeksPackage.TEKS__ACCOUNT:
+			setAccount((User) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -815,8 +866,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		case TeksPackage.TEKS__APP_ID:
 			return APP_ID_EDEFAULT == null ? appId != null : !APP_ID_EDEFAULT
 					.equals(appId);
-		case TeksPackage.TEKS__USER_PROFILE:
-			return userProfile != null;
+		case TeksPackage.TEKS__DEVELOPER:
+			return developer != null;
 		case TeksPackage.TEKS__POLL:
 			return poll != null;
 		case TeksPackage.TEKS__SURVEY:
@@ -827,13 +878,14 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			return outboundMessage != null && !outboundMessage.isEmpty();
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			return inboundMessage != null && !inboundMessage.isEmpty();
+		case TeksPackage.TEKS__ACCOUNT:
+			return account != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -848,4 +900,4 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		return result.toString();
 	}
 
-} //TeksImpl
+} // TeksImpl

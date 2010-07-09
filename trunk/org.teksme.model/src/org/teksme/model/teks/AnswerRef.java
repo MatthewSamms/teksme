@@ -65,7 +65,7 @@ public interface AnswerRef extends EObject {
 	 * @return the value of the '<em>Answer Ref</em>' reference.
 	 * @see #setAnswerRef(Answer)
 	 * @see org.teksme.model.teks.TeksPackage#getAnswerRef_AnswerRef()
-	 * @model keys="keyword"
+	 * @model
 	 * @generated
 	 */
 	Answer getAnswerRef();
