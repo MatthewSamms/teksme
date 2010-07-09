@@ -3,7 +3,7 @@
 
 = Introduction =
 
-TèksMe platform exposes API's that enable application developers to interact with the XML data containers. The platform uses JBoss HornetQ as it's underlying Message Oriented Middleware (MoM) .
+TèksMe platform exposes API's that enable application developers to interact with the XML data containers. It makes powerful functionality available to developers by exposing various features.The platform uses JBoss HornetQ as it's underlying Message Oriented Middleware (MoM) .
 
 The HTTP Server API enables applications to communicate over HTTP without requiring any special infrastructure and it can be used for low or high-volume messaging. As HTTP is a means for relaying information, the HTTP API can be used with practically any web-service application. This is particularly useful for high-volume message sending. 
 
@@ -62,4 +62,21 @@ XML Request
 </teks:Teks>
 
 }}}
+
+
+CreateAccount
+
+Endpoint URL: /createaccount
+
+XML Request
+
+{{{
+
+<?xml version="1.0" encoding="ASCII"?>
+<teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+  <account userName="patadams" firstName="Pat" lastName="Adams" email="pat@painting.com" country="USA" yearOfBirth="1928" gender="male"/>
+</teks:Teks>
+
+}}}
+
 
