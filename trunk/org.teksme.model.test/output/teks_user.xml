@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="ASCII"?>
+<teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+  <account userName="patadams" firstName="Pat" lastName="Adams" email="pat@painting.com" country="USA" yearOfBirth="1928" gender="male"/>
+</teks:Teks>
