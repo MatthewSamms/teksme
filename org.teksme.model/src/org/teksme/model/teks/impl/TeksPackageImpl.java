@@ -19,6 +19,7 @@ import org.teksme.model.teks.AnswerRef;
 import org.teksme.model.teks.ChannelKind;
 import org.teksme.model.teks.Command;
 import org.teksme.model.teks.Comment;
+import org.teksme.model.teks.Developer;
 import org.teksme.model.teks.FailureCauses;
 import org.teksme.model.teks.FreeText;
 import org.teksme.model.teks.InboundTextMessage;
@@ -45,7 +46,7 @@ import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.TeksPackage;
 import org.teksme.model.teks.TextMessage;
-import org.teksme.model.teks.UserProfile;
+import org.teksme.model.teks.User;
 
 /**
  * <!-- begin-user-doc --> An implementation of the model <b>Package</b>. <!--
@@ -81,7 +82,13 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass userProfileEClass = null;
+	private EClass userEClass = null;
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass developerEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -331,7 +338,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTeks_UserProfile() {
+	public EReference getTeks_Developer() {
 		return (EReference) teksEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -373,6 +380,14 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 */
 	public EReference getTeks_InboundMessage() {
 		return (EReference) teksEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTeks_Account() {
+		return (EReference) teksEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -469,16 +484,96 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getUserProfile() {
-		return userProfileEClass;
+	public EClass getUser() {
+		return userEClass;
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUserProfile_Id() {
-		return (EAttribute) userProfileEClass.getEStructuralFeatures().get(0);
+	public EAttribute getUser_UserName() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_FirstName() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_LastName() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_Email() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_Password() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_Country() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_YearOfBirth() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_Gender() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getDeveloper() {
+		return developerEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeveloper_Id() {
+		return (EAttribute) developerEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getDeveloper_WebsiteURL() {
+		return (EAttribute) developerEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -874,14 +969,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getPollQuestion_Keyword() {
-		return (EReference) pollQuestionEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPlainText() {
 		return plainTextEClass;
 	}
@@ -892,6 +979,14 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 */
 	public EAttribute getPlainText_Question() {
 		return (EAttribute) plainTextEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPlainText_Keyword() {
+		return (EReference) plainTextEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1013,16 +1108,16 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAnswer_Keyword() {
-		return (EAttribute) answerEClass.getEStructuralFeatures().get(2);
+	public EReference getAnswer_Keyword() {
+		return (EReference) answerEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getAnswer_AutoKeyword() {
-		return (EAttribute) answerEClass.getEStructuralFeatures().get(3);
+	public EReference getAnswer_QuestionRef() {
+		return (EReference) answerEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1030,7 +1125,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EAttribute getAnswer_DefaultValue() {
-		return (EAttribute) answerEClass.getEStructuralFeatures().get(4);
+		return (EAttribute) answerEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1038,7 +1133,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EAttribute getAnswer_Selected() {
-		return (EAttribute) answerEClass.getEStructuralFeatures().get(5);
+		return (EAttribute) answerEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -1480,12 +1575,13 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		// Create classes and their features
 		teksEClass = createEClass(TEKS);
 		createEAttribute(teksEClass, TEKS__APP_ID);
-		createEReference(teksEClass, TEKS__USER_PROFILE);
+		createEReference(teksEClass, TEKS__DEVELOPER);
 		createEReference(teksEClass, TEKS__POLL);
 		createEReference(teksEClass, TEKS__SURVEY);
 		createEReference(teksEClass, TEKS__RESPONSES);
 		createEReference(teksEClass, TEKS__OUTBOUND_MESSAGE);
 		createEReference(teksEClass, TEKS__INBOUND_MESSAGE);
+		createEReference(teksEClass, TEKS__ACCOUNT);
 
 		commentEClass = createEClass(COMMENT);
 		createEAttribute(commentEClass, COMMENT__ID);
@@ -1501,8 +1597,19 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEAttribute(annotationMapEntryEClass, ANNOTATION_MAP_ENTRY__KEY);
 		createEAttribute(annotationMapEntryEClass, ANNOTATION_MAP_ENTRY__VALUE);
 
-		userProfileEClass = createEClass(USER_PROFILE);
-		createEAttribute(userProfileEClass, USER_PROFILE__ID);
+		userEClass = createEClass(USER);
+		createEAttribute(userEClass, USER__USER_NAME);
+		createEAttribute(userEClass, USER__FIRST_NAME);
+		createEAttribute(userEClass, USER__LAST_NAME);
+		createEAttribute(userEClass, USER__EMAIL);
+		createEAttribute(userEClass, USER__PASSWORD);
+		createEAttribute(userEClass, USER__COUNTRY);
+		createEAttribute(userEClass, USER__YEAR_OF_BIRTH);
+		createEAttribute(userEClass, USER__GENDER);
+
+		developerEClass = createEClass(DEVELOPER);
+		createEAttribute(developerEClass, DEVELOPER__ID);
+		createEAttribute(developerEClass, DEVELOPER__WEBSITE_URL);
 
 		pollEClass = createEClass(POLL);
 		createEReference(pollEClass, POLL__QUESTION);
@@ -1566,10 +1673,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEAttribute(pollQuestionEClass, POLL_QUESTION__NOTE);
 		createEAttribute(pollQuestionEClass, POLL_QUESTION__REQUIRED);
 		createEReference(pollQuestionEClass, POLL_QUESTION__POLL_REF);
-		createEReference(pollQuestionEClass, POLL_QUESTION__KEYWORD);
 
 		plainTextEClass = createEClass(PLAIN_TEXT);
 		createEAttribute(plainTextEClass, PLAIN_TEXT__QUESTION);
+		createEReference(plainTextEClass, PLAIN_TEXT__KEYWORD);
 
 		keywordEClass = createEClass(KEYWORD);
 		createEAttribute(keywordEClass, KEYWORD__KEY);
@@ -1589,10 +1696,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		answerEClass = createEClass(ANSWER);
 		createEAttribute(answerEClass, ANSWER__TEXT);
 		createEAttribute(answerEClass, ANSWER__ID);
-		createEAttribute(answerEClass, ANSWER__KEYWORD);
-		createEAttribute(answerEClass, ANSWER__AUTO_KEYWORD);
 		createEAttribute(answerEClass, ANSWER__DEFAULT_VALUE);
 		createEAttribute(answerEClass, ANSWER__SELECTED);
+		createEReference(answerEClass, ANSWER__KEYWORD);
+		createEReference(answerEClass, ANSWER__QUESTION_REF);
 
 		responseDetailEClass = createEClass(RESPONSE_DETAIL);
 		createEAttribute(responseDetailEClass, RESPONSE_DETAIL__DATE_TIME);
@@ -1710,8 +1817,8 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				null, 0, 1, Teks.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEReference(getTeks_UserProfile(), this.getUserProfile(), null,
-				"userProfile", null, 0, 1, Teks.class, !IS_TRANSIENT,
+		initEReference(getTeks_Developer(), this.getDeveloper(), null,
+				"developer", null, 0, 1, Teks.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getTeks_Poll(), this.getPoll(), null, "poll", null, 0,
@@ -1738,6 +1845,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getTeks_InboundMessage().getEKeys().add(this.getMessage_Id());
+		initEReference(getTeks_Account(), this.getUser(), null, "account",
+				null, 0, 1, Teks.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(commentEClass, Comment.class, "Comment", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1782,12 +1893,51 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 
-		initEClass(userProfileEClass, UserProfile.class, "UserProfile",
-				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getUserProfile_Id(), ecorePackage.getEString(), "id",
-				null, 0, 1, UserProfile.class, !IS_TRANSIENT, !IS_VOLATILE,
+		initEClass(userEClass, User.class, "User", !IS_ABSTRACT, !IS_INTERFACE,
+				IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getUser_UserName(), ecorePackage.getEString(),
+				"userName", null, 0, 1, User.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID,
+				!IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_FirstName(), ecorePackage.getEString(),
+				"firstName", null, 0, 1, User.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_LastName(), ecorePackage.getEString(),
+				"lastName", null, 0, 1, User.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Email(), ecorePackage.getEString(), "email",
+				null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getUser_Password(), ecorePackage.getEString(),
+				"password", null, 0, 1, User.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Country(), ecorePackage.getEString(), "country",
+				null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getUser_YearOfBirth(), ecorePackage.getEInt(),
+				"yearOfBirth", null, 0, 1, User.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_Gender(), ecorePackage.getEString(), "gender",
+				null, 0, 1, User.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+
+		initEClass(developerEClass, Developer.class, "Developer", !IS_ABSTRACT,
+				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getDeveloper_Id(), ecorePackage.getEString(), "id",
+				null, 0, 1, Developer.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getDeveloper_WebsiteURL(), ecorePackage.getEString(),
+				"websiteURL", null, 0, 1, Developer.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(pollEClass, Poll.class, "Poll", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -1985,10 +2135,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				PollQuestion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getPollQuestion_Keyword(), this.getKeyword(), null,
-				"keyword", null, 0, 1, PollQuestion.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
-				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(plainTextEClass, PlainText.class, "PlainText", IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1996,6 +2142,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"question", null, 0, 1, PlainText.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
+		initEReference(getPlainText_Keyword(), this.getKeyword(), null,
+				"keyword", null, 0, 1, PlainText.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(keywordEClass, Keyword.class, "Keyword", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2029,9 +2179,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"question", null, 0, 1, MultipleChoice.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
-		initEReference(getMultipleChoice_Answer(), this.getAnswer(), null,
-				"answer", null, 0, -1, MultipleChoice.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+		initEReference(getMultipleChoice_Answer(), this.getAnswer(),
+				this.getAnswer_QuestionRef(), "answer", null, 0, -1,
+				MultipleChoice.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMultipleChoice_AddOther(), this.getFreeText(), null,
 				"addOther", null, 0, 1, MultipleChoice.class, !IS_TRANSIENT,
@@ -2047,14 +2198,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		initEAttribute(getAnswer_Id(), ecorePackage.getEBoolean(), "id", null,
 				1, 1, Answer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnswer_Keyword(), ecorePackage.getEString(),
-				"keyword", null, 0, 1, Answer.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
-		initEAttribute(getAnswer_AutoKeyword(), ecorePackage.getEBoolean(),
-				"autoKeyword", "true", 0, 1, Answer.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnswer_DefaultValue(), ecorePackage.getEString(),
 				"defaultValue", null, 0, 1, Answer.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
@@ -2062,6 +2205,15 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		initEAttribute(getAnswer_Selected(), ecorePackage.getEBoolean(),
 				"selected", "false", 0, 1, Answer.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEReference(getAnswer_Keyword(), this.getKeyword(), null, "keyword",
+				null, 0, 1, Answer.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getAnswer_QuestionRef(), this.getMultipleChoice(),
+				this.getMultipleChoice_Answer(), "questionRef", null, 0, 1,
+				Answer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(responseDetailEClass, ResponseDetail.class,
@@ -2123,7 +2275,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"answerRef", null, 0, 1, AnswerRef.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getAnswerRef_AnswerRef().getEKeys().add(this.getAnswer_Keyword());
 		initEAttribute(getAnswerRef_Value(), ecorePackage.getEString(),
 				"value", null, 0, 1, AnswerRef.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,

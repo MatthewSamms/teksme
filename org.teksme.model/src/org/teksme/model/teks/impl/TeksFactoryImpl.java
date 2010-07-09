@@ -69,8 +69,10 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 			return createAnnotation();
 		case TeksPackage.ANNOTATION_MAP_ENTRY:
 			return createAnnotationMapEntry();
-		case TeksPackage.USER_PROFILE:
-			return createUserProfile();
+		case TeksPackage.USER:
+			return createUser();
+		case TeksPackage.DEVELOPER:
+			return createDeveloper();
 		case TeksPackage.POLL:
 			return createPoll();
 		case TeksPackage.SURVEY:
@@ -210,9 +212,19 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public UserProfile createUserProfile() {
-		UserProfileImpl userProfile = new UserProfileImpl();
-		return userProfile;
+	public User createUser() {
+		UserImpl user = new UserImpl();
+		return user;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Developer createDeveloper() {
+		DeveloperImpl developer = new DeveloperImpl();
+		return developer;
 	}
 
 	/**

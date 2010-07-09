@@ -13,23 +13,24 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.teksme.model.teks.Developer;
 import org.teksme.model.teks.TeksPackage;
-import org.teksme.model.teks.UserProfile;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>User Profile</b></em>'.
+ * An implementation of the model object '<em><b>Developer</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.UserProfileImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.DeveloperImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.DeveloperImpl#getWebsiteURL <em>Website URL</em>}</li>
  * </ul>
  * </p>
  *
  * @generated
  */
-public class UserProfileImpl extends EObjectImpl implements UserProfile {
+public class DeveloperImpl extends EObjectImpl implements Developer {
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -51,11 +52,31 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 	protected String id = ID_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getWebsiteURL() <em>Website URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWebsiteURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WEBSITE_URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWebsiteURL() <em>Website URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWebsiteURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected String websiteURL = WEBSITE_URL_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected UserProfileImpl() {
+	protected DeveloperImpl() {
 		super();
 	}
 
@@ -66,7 +87,7 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return TeksPackage.Literals.USER_PROFILE;
+		return TeksPackage.Literals.DEVELOPER;
 	}
 
 	/**
@@ -88,7 +109,30 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.USER_PROFILE__ID, oldId, id));
+					TeksPackage.DEVELOPER__ID, oldId, id));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWebsiteURL() {
+		return websiteURL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWebsiteURL(String newWebsiteURL) {
+		String oldWebsiteURL = websiteURL;
+		websiteURL = newWebsiteURL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.DEVELOPER__WEBSITE_URL, oldWebsiteURL,
+					websiteURL));
 	}
 
 	/**
@@ -99,8 +143,10 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.USER_PROFILE__ID:
+		case TeksPackage.DEVELOPER__ID:
 			return getId();
+		case TeksPackage.DEVELOPER__WEBSITE_URL:
+			return getWebsiteURL();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,8 +159,11 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.USER_PROFILE__ID:
+		case TeksPackage.DEVELOPER__ID:
 			setId((String) newValue);
+			return;
+		case TeksPackage.DEVELOPER__WEBSITE_URL:
+			setWebsiteURL((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -128,8 +177,11 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.USER_PROFILE__ID:
+		case TeksPackage.DEVELOPER__ID:
 			setId(ID_EDEFAULT);
+			return;
+		case TeksPackage.DEVELOPER__WEBSITE_URL:
+			setWebsiteURL(WEBSITE_URL_EDEFAULT);
 			return;
 		}
 		super.eUnset(featureID);
@@ -143,8 +195,11 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.USER_PROFILE__ID:
+		case TeksPackage.DEVELOPER__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
+		case TeksPackage.DEVELOPER__WEBSITE_URL:
+			return WEBSITE_URL_EDEFAULT == null ? websiteURL != null
+					: !WEBSITE_URL_EDEFAULT.equals(websiteURL);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -162,8 +217,10 @@ public class UserProfileImpl extends EObjectImpl implements UserProfile {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
+		result.append(", websiteURL: ");
+		result.append(websiteURL);
 		result.append(')');
 		return result.toString();
 	}
 
-} //UserProfileImpl
+} //DeveloperImpl

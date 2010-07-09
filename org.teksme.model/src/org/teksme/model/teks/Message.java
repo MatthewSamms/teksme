@@ -13,37 +13,39 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Message</b></em>'.
- * <!-- end-user-doc -->
- *
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Message</b></em>'. <!-- end-user-doc -->
+ * 
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.teksme.model.teks.Message#getId <em>Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.Message#getText <em>Text</em>}</li>
- *   <li>{@link org.teksme.model.teks.Message#getTimestamp <em>Timestamp</em>}</li>
- *   <li>{@link org.teksme.model.teks.Message#getEncoding <em>Encoding</em>}</li>
- *   <li>{@link org.teksme.model.teks.Message#getCommunicationChannelList <em>Communication Channel</em>}</li>
- *   <li>{@link org.teksme.model.teks.Message#getGatewayId <em>Gateway Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.Message#getMessageCharCount <em>Message Char Count</em>}</li>
+ * <li>{@link org.teksme.model.teks.Message#getId <em>Id</em>}</li>
+ * <li>{@link org.teksme.model.teks.Message#getText <em>Text</em>}</li>
+ * <li>{@link org.teksme.model.teks.Message#getTimestamp <em>Timestamp</em>}</li>
+ * <li>{@link org.teksme.model.teks.Message#getEncoding <em>Encoding</em>}</li>
+ * <li>{@link org.teksme.model.teks.Message#getCommunicationChannelList <em>
+ * Communication Channel</em>}</li>
+ * <li>{@link org.teksme.model.teks.Message#getGatewayId <em>Gateway Id</em>}</li>
+ * <li>{@link org.teksme.model.teks.Message#getMessageCharCount <em>Message Char
+ * Count</em>}</li>
  * </ul>
  * </p>
- *
+ * 
  * @see org.teksme.model.teks.TeksPackage#getMessage()
  * @model abstract="true"
  * 
- * @generated false
+ * @generated=false
  */
 public interface Message extends EObject, Serializable {
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_Id()
@@ -54,8 +56,7 @@ public interface Message extends EObject, Serializable {
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -63,13 +64,14 @@ public interface Message extends EObject, Serializable {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Timestamp</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Timestamp</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Timestamp</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Timestamp</em>' attribute.
 	 * @see #setTimestamp(Date)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_Timestamp()
@@ -79,23 +81,26 @@ public interface Message extends EObject, Serializable {
 	Date getTimestamp();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Message#getTimestamp <em>Timestamp</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Timestamp</em>' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Message#getTimestamp
+	 * <em>Timestamp</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Timestamp</em>' attribute.
 	 * @see #getTimestamp()
 	 * @generated
 	 */
 	void setTimestamp(Date value);
 
 	/**
-	 * Returns the value of the '<em><b>Encoding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Encoding</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Encoding</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Encoding</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Encoding</em>' attribute.
 	 * @see #setEncoding(String)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_Encoding()
@@ -105,60 +110,59 @@ public interface Message extends EObject, Serializable {
 	String getEncoding();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Message#getEncoding <em>Encoding</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Encoding</em>' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Message#getEncoding
+	 * <em>Encoding</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Encoding</em>' attribute.
 	 * @see #getEncoding()
 	 * @generated
 	 */
 	void setEncoding(String value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	ChannelKind[] getCommunicationChannel();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	ChannelKind getCommunicationChannel(int index);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	int getCommunicationChannelLength();
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	void setCommunicationChannel(ChannelKind[] newCommunicationChannel);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	void setCommunicationChannel(int index, ChannelKind element);
 
 	/**
-	 * Returns the value of the '<em><b>Communication Channel</b></em>' attribute list.
-	 * The list contents are of type {@link org.teksme.model.teks.ChannelKind}.
-	 * The literals are from the enumeration {@link org.teksme.model.teks.ChannelKind}.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Communication Channel</b></em>'
+	 * attribute list. The list contents are of type
+	 * {@link org.teksme.model.teks.ChannelKind}. The literals are from the
+	 * enumeration {@link org.teksme.model.teks.ChannelKind}. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Communication Channel</em>' attribute list isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Communication Channel</em>' attribute list
+	 * isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Communication Channel</em>' attribute list.
 	 * @see org.teksme.model.teks.ChannelKind
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_CommunicationChannel()
@@ -168,13 +172,14 @@ public interface Message extends EObject, Serializable {
 	EList<ChannelKind> getCommunicationChannelList();
 
 	/**
-	 * Returns the value of the '<em><b>Gateway Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Gateway Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Gateway Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Gateway Id</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Gateway Id</em>' attribute.
 	 * @see #setGatewayId(String)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_GatewayId()
@@ -185,8 +190,8 @@ public interface Message extends EObject, Serializable {
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getGatewayId <em>Gateway Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Gateway Id</em>' attribute.
 	 * @see #getGatewayId()
 	 * @generated
@@ -197,8 +202,8 @@ public interface Message extends EObject, Serializable {
 	 * Returns the value of the '<em><b>Message Char Count</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Message Char Count</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Message Char Count</em>' attribute isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Message Char Count</em>' attribute.
@@ -211,8 +216,8 @@ public interface Message extends EObject, Serializable {
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getMessageCharCount <em>Message Char Count</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Message Char Count</em>' attribute.
 	 * @see #getMessageCharCount()
 	 * @generated

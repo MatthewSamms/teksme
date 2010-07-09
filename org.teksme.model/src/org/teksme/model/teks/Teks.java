@@ -19,12 +19,13 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.teksme.model.teks.Teks#getAppId <em>App Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.Teks#getUserProfile <em>User Profile</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Teks#getDeveloper <em>Developer</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getPoll <em>Poll</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getSurvey <em>Survey</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getResponses <em>Responses</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getOutboundMessageList <em>Outbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getInboundMessageList <em>Inbound Message</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}</li>
  * </ul>
  * </p>
  *
@@ -60,30 +61,30 @@ public interface Teks extends EObject {
 	void setAppId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>User Profile</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Developer</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>User Profile</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Developer</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>User Profile</em>' containment reference.
-	 * @see #setUserProfile(UserProfile)
-	 * @see org.teksme.model.teks.TeksPackage#getTeks_UserProfile()
+	 * @return the value of the '<em>Developer</em>' containment reference.
+	 * @see #setDeveloper(Developer)
+	 * @see org.teksme.model.teks.TeksPackage#getTeks_Developer()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	UserProfile getUserProfile();
+	Developer getDeveloper();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getUserProfile <em>User Profile</em>}' containment reference.
+	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getDeveloper <em>Developer</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>User Profile</em>' containment reference.
-	 * @see #getUserProfile()
+	 * @param value the new value of the '<em>Developer</em>' containment reference.
+	 * @see #getDeveloper()
 	 * @generated
 	 */
-	void setUserProfile(UserProfile value);
+	void setDeveloper(Developer value);
 
 	/**
 	 * Returns the value of the '<em><b>Poll</b></em>' containment reference.
@@ -266,5 +267,31 @@ public interface Teks extends EObject {
 	 * @generated
 	 */
 	EList<InboundTextMessage> getInboundMessageList();
+
+	/**
+	 * Returns the value of the '<em><b>Account</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Account</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Account</em>' containment reference.
+	 * @see #setAccount(User)
+	 * @see org.teksme.model.teks.TeksPackage#getTeks_Account()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	User getAccount();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Account</em>' containment reference.
+	 * @see #getAccount()
+	 * @generated
+	 */
+	void setAccount(User value);
 
 } // Teks

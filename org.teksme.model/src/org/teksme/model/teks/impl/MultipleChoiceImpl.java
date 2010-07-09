@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
@@ -193,8 +194,9 @@ public class MultipleChoiceImpl extends PollQuestionImpl implements
 	 */
 	public EList<Answer> getAnswerList() {
 		if (answer == null) {
-			answer = new EObjectContainmentEList.Resolving<Answer>(
-					Answer.class, this, TeksPackage.MULTIPLE_CHOICE__ANSWER);
+			answer = new EObjectContainmentWithInverseEList.Resolving<Answer>(
+					Answer.class, this, TeksPackage.MULTIPLE_CHOICE__ANSWER,
+					TeksPackage.ANSWER__QUESTION_REF);
 		}
 		return answer;
 	}
@@ -285,6 +287,23 @@ public class MultipleChoiceImpl extends PollQuestionImpl implements
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					TeksPackage.MULTIPLE_CHOICE__ADD_OTHER, newAddOther,
 					newAddOther));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.MULTIPLE_CHOICE__ANSWER:
+			return ((InternalEList<InternalEObject>) (InternalEList<?>) getAnswerList())
+					.basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
 	}
 
 	/**

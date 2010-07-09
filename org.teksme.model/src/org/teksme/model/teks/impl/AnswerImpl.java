@@ -8,12 +8,17 @@ package org.teksme.model.teks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.EObjectImpl;
 
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.teksme.model.teks.Answer;
+import org.teksme.model.teks.Keyword;
+import org.teksme.model.teks.MultipleChoice;
 import org.teksme.model.teks.TeksPackage;
 
 /**
@@ -25,10 +30,10 @@ import org.teksme.model.teks.TeksPackage;
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getText <em>Text</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#isId <em>Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getKeyword <em>Keyword</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#isAutoKeyword <em>Auto Keyword</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#isSelected <em>Selected</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getKeyword <em>Keyword</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getQuestionRef <em>Question Ref</em>}</li>
  * </ul>
  * </p>
  *
@@ -76,46 +81,6 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	protected boolean id = ID_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getKeyword() <em>Keyword</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKeyword()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String KEYWORD_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getKeyword() <em>Keyword</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getKeyword()
-	 * @generated
-	 * @ordered
-	 */
-	protected String keyword = KEYWORD_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isAutoKeyword() <em>Auto Keyword</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isAutoKeyword()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean AUTO_KEYWORD_EDEFAULT = true;
-
-	/**
-	 * The cached value of the '{@link #isAutoKeyword() <em>Auto Keyword</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isAutoKeyword()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean autoKeyword = AUTO_KEYWORD_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -154,6 +119,16 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	 * @ordered
 	 */
 	protected boolean selected = SELECTED_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getKeyword() <em>Keyword</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getKeyword()
+	 * @generated
+	 * @ordered
+	 */
+	protected Keyword keyword;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -223,7 +198,26 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getKeyword() {
+	public Keyword getKeyword() {
+		if (keyword != null && keyword.eIsProxy()) {
+			InternalEObject oldKeyword = (InternalEObject) keyword;
+			keyword = (Keyword) eResolveProxy(oldKeyword);
+			if (keyword != oldKeyword) {
+				InternalEObject newKeyword = (InternalEObject) keyword;
+				NotificationChain msgs = oldKeyword.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.ANSWER__KEYWORD,
+						null, null);
+				if (newKeyword.eInternalContainer() == null) {
+					msgs = newKeyword.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- TeksPackage.ANSWER__KEYWORD, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							TeksPackage.ANSWER__KEYWORD, oldKeyword, keyword));
+			}
+		}
 		return keyword;
 	}
 
@@ -232,12 +226,29 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setKeyword(String newKeyword) {
-		String oldKeyword = keyword;
+	public Keyword basicGetKeyword() {
+		return keyword;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetKeyword(Keyword newKeyword,
+			NotificationChain msgs) {
+		Keyword oldKeyword = keyword;
 		keyword = newKeyword;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.ANSWER__KEYWORD, oldKeyword, keyword));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, TeksPackage.ANSWER__KEYWORD, oldKeyword,
+					newKeyword);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -245,8 +256,23 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isAutoKeyword() {
-		return autoKeyword;
+	public void setKeyword(Keyword newKeyword) {
+		if (newKeyword != keyword) {
+			NotificationChain msgs = null;
+			if (keyword != null)
+				msgs = ((InternalEObject) keyword).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.ANSWER__KEYWORD,
+						null, msgs);
+			if (newKeyword != null)
+				msgs = ((InternalEObject) newKeyword).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.ANSWER__KEYWORD,
+						null, msgs);
+			msgs = basicSetKeyword(newKeyword, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.ANSWER__KEYWORD, newKeyword, newKeyword));
 	}
 
 	/**
@@ -254,13 +280,111 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAutoKeyword(boolean newAutoKeyword) {
-		boolean oldAutoKeyword = autoKeyword;
-		autoKeyword = newAutoKeyword;
-		if (eNotificationRequired())
+	public MultipleChoice getQuestionRef() {
+		if (eContainerFeatureID() != TeksPackage.ANSWER__QUESTION_REF)
+			return null;
+		return (MultipleChoice) eContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public MultipleChoice basicGetQuestionRef() {
+		if (eContainerFeatureID() != TeksPackage.ANSWER__QUESTION_REF)
+			return null;
+		return (MultipleChoice) eInternalContainer();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetQuestionRef(MultipleChoice newQuestionRef,
+			NotificationChain msgs) {
+		msgs = eBasicSetContainer((InternalEObject) newQuestionRef,
+				TeksPackage.ANSWER__QUESTION_REF, msgs);
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setQuestionRef(MultipleChoice newQuestionRef) {
+		if (newQuestionRef != eInternalContainer()
+				|| (eContainerFeatureID() != TeksPackage.ANSWER__QUESTION_REF && newQuestionRef != null)) {
+			if (EcoreUtil.isAncestor(this, newQuestionRef))
+				throw new IllegalArgumentException(
+						"Recursive containment not allowed for " + toString());
+			NotificationChain msgs = null;
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			if (newQuestionRef != null)
+				msgs = ((InternalEObject) newQuestionRef).eInverseAdd(this,
+						TeksPackage.MULTIPLE_CHOICE__ANSWER,
+						MultipleChoice.class, msgs);
+			msgs = basicSetQuestionRef(newQuestionRef, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.ANSWER__AUTO_KEYWORD, oldAutoKeyword,
-					autoKeyword));
+					TeksPackage.ANSWER__QUESTION_REF, newQuestionRef,
+					newQuestionRef));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseAdd(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.ANSWER__QUESTION_REF:
+			if (eInternalContainer() != null)
+				msgs = eBasicRemoveFromContainer(msgs);
+			return basicSetQuestionRef((MultipleChoice) otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.ANSWER__KEYWORD:
+			return basicSetKeyword(null, msgs);
+		case TeksPackage.ANSWER__QUESTION_REF:
+			return basicSetQuestionRef(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eBasicRemoveFromContainerFeature(
+			NotificationChain msgs) {
+		switch (eContainerFeatureID()) {
+		case TeksPackage.ANSWER__QUESTION_REF:
+			return eInternalContainer().eInverseRemove(this,
+					TeksPackage.MULTIPLE_CHOICE__ANSWER, MultipleChoice.class,
+					msgs);
+		}
+		return super.eBasicRemoveFromContainerFeature(msgs);
 	}
 
 	/**
@@ -320,14 +444,18 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 			return getText();
 		case TeksPackage.ANSWER__ID:
 			return isId();
-		case TeksPackage.ANSWER__KEYWORD:
-			return getKeyword();
-		case TeksPackage.ANSWER__AUTO_KEYWORD:
-			return isAutoKeyword();
 		case TeksPackage.ANSWER__DEFAULT_VALUE:
 			return getDefaultValue();
 		case TeksPackage.ANSWER__SELECTED:
 			return isSelected();
+		case TeksPackage.ANSWER__KEYWORD:
+			if (resolve)
+				return getKeyword();
+			return basicGetKeyword();
+		case TeksPackage.ANSWER__QUESTION_REF:
+			if (resolve)
+				return getQuestionRef();
+			return basicGetQuestionRef();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -346,17 +474,17 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 		case TeksPackage.ANSWER__ID:
 			setId((Boolean) newValue);
 			return;
-		case TeksPackage.ANSWER__KEYWORD:
-			setKeyword((String) newValue);
-			return;
-		case TeksPackage.ANSWER__AUTO_KEYWORD:
-			setAutoKeyword((Boolean) newValue);
-			return;
 		case TeksPackage.ANSWER__DEFAULT_VALUE:
 			setDefaultValue((String) newValue);
 			return;
 		case TeksPackage.ANSWER__SELECTED:
 			setSelected((Boolean) newValue);
+			return;
+		case TeksPackage.ANSWER__KEYWORD:
+			setKeyword((Keyword) newValue);
+			return;
+		case TeksPackage.ANSWER__QUESTION_REF:
+			setQuestionRef((MultipleChoice) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -376,17 +504,17 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 		case TeksPackage.ANSWER__ID:
 			setId(ID_EDEFAULT);
 			return;
-		case TeksPackage.ANSWER__KEYWORD:
-			setKeyword(KEYWORD_EDEFAULT);
-			return;
-		case TeksPackage.ANSWER__AUTO_KEYWORD:
-			setAutoKeyword(AUTO_KEYWORD_EDEFAULT);
-			return;
 		case TeksPackage.ANSWER__DEFAULT_VALUE:
 			setDefaultValue(DEFAULT_VALUE_EDEFAULT);
 			return;
 		case TeksPackage.ANSWER__SELECTED:
 			setSelected(SELECTED_EDEFAULT);
+			return;
+		case TeksPackage.ANSWER__KEYWORD:
+			setKeyword((Keyword) null);
+			return;
+		case TeksPackage.ANSWER__QUESTION_REF:
+			setQuestionRef((MultipleChoice) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -405,16 +533,15 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 					.equals(text);
 		case TeksPackage.ANSWER__ID:
 			return id != ID_EDEFAULT;
-		case TeksPackage.ANSWER__KEYWORD:
-			return KEYWORD_EDEFAULT == null ? keyword != null
-					: !KEYWORD_EDEFAULT.equals(keyword);
-		case TeksPackage.ANSWER__AUTO_KEYWORD:
-			return autoKeyword != AUTO_KEYWORD_EDEFAULT;
 		case TeksPackage.ANSWER__DEFAULT_VALUE:
 			return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null
 					: !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
 		case TeksPackage.ANSWER__SELECTED:
 			return selected != SELECTED_EDEFAULT;
+		case TeksPackage.ANSWER__KEYWORD:
+			return keyword != null;
+		case TeksPackage.ANSWER__QUESTION_REF:
+			return basicGetQuestionRef() != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -434,10 +561,6 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 		result.append(text);
 		result.append(", id: ");
 		result.append(id);
-		result.append(", keyword: ");
-		result.append(keyword);
-		result.append(", autoKeyword: ");
-		result.append(autoKeyword);
 		result.append(", defaultValue: ");
 		result.append(defaultValue);
 		result.append(", selected: ");

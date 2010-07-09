@@ -112,9 +112,16 @@ public class TeksSwitch<T> {
 				result = defaultCase(theEObject);
 			return result;
 		}
-		case TeksPackage.USER_PROFILE: {
-			UserProfile userProfile = (UserProfile) theEObject;
-			T result = caseUserProfile(userProfile);
+		case TeksPackage.USER: {
+			User user = (User) theEObject;
+			T result = caseUser(user);
+			if (result == null)
+				result = defaultCase(theEObject);
+			return result;
+		}
+		case TeksPackage.DEVELOPER: {
+			Developer developer = (Developer) theEObject;
+			T result = caseDeveloper(developer);
 			if (result == null)
 				result = defaultCase(theEObject);
 			return result;
@@ -348,17 +355,32 @@ public class TeksSwitch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>User Profile</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>User</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>User Profile</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>User</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseUserProfile(UserProfile object) {
+	public T caseUser(User object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Developer</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Developer</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDeveloper(Developer object) {
 		return null;
 	}
 
