@@ -13,6 +13,7 @@ The HTTP Server API enables applications to communicate over HTTP without requir
 CreatePoll
 
 Endpoint URL: /createpoll
+
 Testcase: [http://code.google.com/p/teksme/source/browse/trunk/org.teksme.model.test/test/org/teksme/client/test/model/CreateMultipleChoicePollTest.java CreateMultipleChoicePollTest.java]
 
 XML Request
@@ -46,7 +47,9 @@ question="Which media helped establish mass marketing because they could target 
 SendMessage
 
 Endpoint URL: /sendmsg
+
 Testcase: [http://code.google.com/p/teksme/source/browse/trunk/org.teksme.model.test/test/org/teksme/client/test/model/CreateOutboundMsgTest.java CreateOutboundMsgTest.java]
+
 XML Request
 
 {{{
@@ -68,6 +71,7 @@ XML Request
 CreateAccount
 
 Endpoint URL: /createaccount
+
 Testcase: [http://code.google.com/p/teksme/source/browse/trunk/org.teksme.model.test/test/org/teksme/client/test/model/CreateAccountTest.java CreateAccountTest.java]
 
 XML Request
