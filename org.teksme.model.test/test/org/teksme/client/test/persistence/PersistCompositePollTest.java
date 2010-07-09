@@ -1,3 +1,16 @@
+/*
+ * Copyright 2010 TèksMe, Inc.
+ * TèksMe licenses this file to you under the Apache License, version
+ * 2.0 (the "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.  See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package org.teksme.client.test.persistence;
 
 import java.io.IOException;
@@ -15,7 +28,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Environment;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
@@ -24,14 +37,14 @@ import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 
 public class PersistCompositePollTest {
 
-	private static ResourceSet resourceSet = null;
+	private ResourceSet resourceSet = null;
 
-	private static final String MODEL_FILE = "output/teks.xml";
+	private static final String MODEL_FILE = "output/multiple_choice_teks.xml";
 	private static Properties props = new Properties();
 	private static final String dbName = "teksme";
 
-	@BeforeClass
-	public static void setResourceSet() {
+	@Before
+	public void setResourceSet() {
 		// create resource set and resource
 		resourceSet = new ResourceSetImpl();
 
@@ -91,7 +104,7 @@ public class PersistCompositePollTest {
 
 		Teks eduTeks = (Teks) res.getContents().get(0);
 		session.save(eduTeks);
-		
+
 		// at commit the objects will be present in the database
 		tx.commit();
 		// and close of, this should actually be done in a finally block
