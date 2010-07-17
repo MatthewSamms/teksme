@@ -36,7 +36,6 @@ import org.teksme.model.teks.TeksPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getFrom <em>From</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getRecipientList <em>Recipient</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#isStatusReport <em>Status Report</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getPriority <em>Priority</em>}</li>
@@ -47,6 +46,7 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getDispatchDate <em>Dispatch Date</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getRefNo <em>Ref No</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getTeksRef <em>Teks Ref</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.OutboundTextMessageImpl#getFrom <em>From</em>}</li>
  * </ul>
  * </p>
  *
@@ -54,26 +54,6 @@ import org.teksme.model.teks.TeksPackage;
  */
 public class OutboundTextMessageImpl extends MessageImpl implements
 		OutboundTextMessage {
-	/**
-	 * The default value of the '{@link #getFrom() <em>From</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFrom()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String FROM_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getFrom() <em>From</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getFrom()
-	 * @generated
-	 * @ordered
-	 */
-	protected String from = FROM_EDEFAULT;
-
 	/**
 	 * The cached value of the '{@link #getRecipientList() <em>Recipient</em>}' attribute list.
 	 * <!-- begin-user-doc -->
@@ -255,6 +235,26 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	protected String refNo = REF_NO_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getFrom() <em>From</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFrom()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String FROM_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getFrom() <em>From</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getFrom()
+	 * @generated
+	 * @ordered
+	 */
+	protected String from = FROM_EDEFAULT;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -271,28 +271,6 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	@Override
 	protected EClass eStaticClass() {
 		return TeksPackage.Literals.OUTBOUND_TEXT_MESSAGE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getFrom() {
-		return from;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setFrom(String newFrom) {
-		String oldFrom = from;
-		from = newFrom;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM, oldFrom, from));
 	}
 
 	/**
@@ -608,6 +586,28 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getFrom() {
+		return from;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setFrom(String newFrom) {
+		String oldFrom = from;
+		from = newFrom;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM, oldFrom, from));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseAdd(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -659,8 +659,6 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
-			return getFrom();
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__RECIPIENT:
 			return getRecipientList();
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__STATUS_REPORT:
@@ -683,6 +681,8 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 			if (resolve)
 				return getTeksRef();
 			return basicGetTeksRef();
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
+			return getFrom();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -696,9 +696,6 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
-			setFrom((String) newValue);
-			return;
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__RECIPIENT:
 			getRecipientList().clear();
 			getRecipientList().addAll((Collection<? extends String>) newValue);
@@ -730,6 +727,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
 			setTeksRef((Teks) newValue);
 			return;
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
+			setFrom((String) newValue);
+			return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -742,9 +742,6 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
-			setFrom(FROM_EDEFAULT);
-			return;
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__RECIPIENT:
 			getRecipientList().clear();
 			return;
@@ -775,6 +772,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
 			setTeksRef((Teks) null);
 			return;
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
+			setFrom(FROM_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -787,9 +787,6 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
-			return FROM_EDEFAULT == null ? from != null : !FROM_EDEFAULT
-					.equals(from);
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__RECIPIENT:
 			return recipient != null && !recipient.isEmpty();
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__STATUS_REPORT:
@@ -812,6 +809,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 					.equals(refNo);
 		case TeksPackage.OUTBOUND_TEXT_MESSAGE__TEKS_REF:
 			return basicGetTeksRef() != null;
+		case TeksPackage.OUTBOUND_TEXT_MESSAGE__FROM:
+			return FROM_EDEFAULT == null ? from != null : !FROM_EDEFAULT
+					.equals(from);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -827,9 +827,7 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (from: ");
-		result.append(from);
-		result.append(", recipient: ");
+		result.append(" (recipient: ");
 		result.append(recipient);
 		result.append(", statusReport: ");
 		result.append(statusReport);
@@ -847,6 +845,8 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 		result.append(dispatchDate);
 		result.append(", refNo: ");
 		result.append(refNo);
+		result.append(", from: ");
+		result.append(from);
 		result.append(')');
 		return result.toString();
 	}

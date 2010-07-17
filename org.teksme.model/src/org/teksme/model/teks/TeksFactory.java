@@ -98,6 +98,15 @@ public interface TeksFactory extends EFactory {
 	Survey createSurvey();
 
 	/**
+	 * Returns a new object of class '<em>Application</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Application</em>'.
+	 * @generated
+	 */
+	Application createApplication();
+
+	/**
 	 * Returns a new object of class '<em>Poll Settings</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

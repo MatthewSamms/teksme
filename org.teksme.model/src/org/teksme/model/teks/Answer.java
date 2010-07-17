@@ -17,7 +17,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.teksme.model.teks.Answer#getText <em>Text</em>}</li>
- *   <li>{@link org.teksme.model.teks.Answer#isId <em>Id</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Answer#getId <em>Id</em>}</li>
  *   <li>{@link org.teksme.model.teks.Answer#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.teksme.model.teks.Answer#isSelected <em>Selected</em>}</li>
  *   <li>{@link org.teksme.model.teks.Answer#getKeyword <em>Keyword</em>}</li>
@@ -65,22 +65,22 @@ public interface Answer extends EObject {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Id</em>' attribute.
-	 * @see #setId(boolean)
+	 * @see #setId(String)
 	 * @see org.teksme.model.teks.TeksPackage#getAnswer_Id()
 	 * @model id="true" required="true"
 	 * @generated
 	 */
-	boolean isId();
+	String getId();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Answer#isId <em>Id</em>}' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Answer#getId <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
-	 * @see #isId()
+	 * @see #getId()
 	 * @generated
 	 */
-	void setId(boolean value);
+	void setId(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Keyword</b></em>' containment reference.

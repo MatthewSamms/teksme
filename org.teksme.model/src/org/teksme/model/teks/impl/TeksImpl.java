@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.impl.EObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.teksme.model.teks.Application;
 import org.teksme.model.teks.Developer;
 import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.OutboundTextMessage;
@@ -40,6 +41,7 @@ import org.teksme.model.teks.User;
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getPoll <em>Poll</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getSurvey <em>Survey</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getResponses <em>Responses</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getApp <em>App</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getOutboundMessageList <em>Outbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getInboundMessageList <em>Inbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAccount <em>Account</em>}</li>
@@ -102,6 +104,16 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	 * @ordered
 	 */
 	protected Response responses;
+
+	/**
+	 * The cached value of the '{@link #getApp() <em>App</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getApp()
+	 * @generated
+	 * @ordered
+	 */
+	protected Application app;
 
 	/**
 	 * The cached value of the '{@link #getOutboundMessageList()
@@ -506,6 +518,87 @@ public class TeksImpl extends EObjectImpl implements Teks {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Application getApp() {
+		if (app != null && app.eIsProxy()) {
+			InternalEObject oldApp = (InternalEObject) app;
+			app = (Application) eResolveProxy(oldApp);
+			if (app != oldApp) {
+				InternalEObject newApp = (InternalEObject) app;
+				NotificationChain msgs = oldApp.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__APP, null,
+						null);
+				if (newApp.eInternalContainer() == null) {
+					msgs = newApp.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- TeksPackage.TEKS__APP, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							TeksPackage.TEKS__APP, oldApp, app));
+			}
+		}
+		return app;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Application basicGetApp() {
+		return app;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetApp(Application newApp,
+			NotificationChain msgs) {
+		Application oldApp = app;
+		app = newApp;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, TeksPackage.TEKS__APP, oldApp, newApp);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setApp(Application newApp) {
+		if (newApp != app) {
+			NotificationChain msgs = null;
+			if (app != null)
+				msgs = ((InternalEObject) app).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__APP, null,
+						msgs);
+			if (newApp != null)
+				msgs = ((InternalEObject) newApp).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__APP, null,
+						msgs);
+			msgs = basicSetApp(newApp, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.TEKS__APP, newApp, newApp));
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -732,6 +825,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			return basicSetSurvey(null, msgs);
 		case TeksPackage.TEKS__RESPONSES:
 			return basicSetResponses(null, msgs);
+		case TeksPackage.TEKS__APP:
+			return basicSetApp(null, msgs);
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return ((InternalEList<?>) getOutboundMessageList()).basicRemove(
 					otherEnd, msgs);
@@ -769,6 +864,10 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			if (resolve)
 				return getResponses();
 			return basicGetResponses();
+		case TeksPackage.TEKS__APP:
+			if (resolve)
+				return getApp();
+			return basicGetApp();
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return getOutboundMessageList();
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
@@ -803,6 +902,9 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			return;
 		case TeksPackage.TEKS__RESPONSES:
 			setResponses((Response) newValue);
+			return;
+		case TeksPackage.TEKS__APP:
+			setApp((Application) newValue);
 			return;
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			getOutboundMessageList().clear();
@@ -843,6 +945,9 @@ public class TeksImpl extends EObjectImpl implements Teks {
 		case TeksPackage.TEKS__RESPONSES:
 			setResponses((Response) null);
 			return;
+		case TeksPackage.TEKS__APP:
+			setApp((Application) null);
+			return;
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			getOutboundMessageList().clear();
 			return;
@@ -874,6 +979,8 @@ public class TeksImpl extends EObjectImpl implements Teks {
 			return survey != null;
 		case TeksPackage.TEKS__RESPONSES:
 			return responses != null;
+		case TeksPackage.TEKS__APP:
+			return app != null;
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return outboundMessage != null && !outboundMessage.isEmpty();
 		case TeksPackage.TEKS__INBOUND_MESSAGE:

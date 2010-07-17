@@ -24,7 +24,6 @@ import org.teksme.model.teks.TeksPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.DeveloperImpl#getId <em>Id</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.DeveloperImpl#getWebsiteURL <em>Website URL</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,26 +49,6 @@ public class DeveloperImpl extends EObjectImpl implements Developer {
 	 * @ordered
 	 */
 	protected String id = ID_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getWebsiteURL() <em>Website URL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWebsiteURL()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String WEBSITE_URL_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getWebsiteURL() <em>Website URL</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getWebsiteURL()
-	 * @generated
-	 * @ordered
-	 */
-	protected String websiteURL = WEBSITE_URL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -117,36 +96,11 @@ public class DeveloperImpl extends EObjectImpl implements Developer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getWebsiteURL() {
-		return websiteURL;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setWebsiteURL(String newWebsiteURL) {
-		String oldWebsiteURL = websiteURL;
-		websiteURL = newWebsiteURL;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.DEVELOPER__WEBSITE_URL, oldWebsiteURL,
-					websiteURL));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case TeksPackage.DEVELOPER__ID:
 			return getId();
-		case TeksPackage.DEVELOPER__WEBSITE_URL:
-			return getWebsiteURL();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -161,9 +115,6 @@ public class DeveloperImpl extends EObjectImpl implements Developer {
 		switch (featureID) {
 		case TeksPackage.DEVELOPER__ID:
 			setId((String) newValue);
-			return;
-		case TeksPackage.DEVELOPER__WEBSITE_URL:
-			setWebsiteURL((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -180,9 +131,6 @@ public class DeveloperImpl extends EObjectImpl implements Developer {
 		case TeksPackage.DEVELOPER__ID:
 			setId(ID_EDEFAULT);
 			return;
-		case TeksPackage.DEVELOPER__WEBSITE_URL:
-			setWebsiteURL(WEBSITE_URL_EDEFAULT);
-			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -197,9 +145,6 @@ public class DeveloperImpl extends EObjectImpl implements Developer {
 		switch (featureID) {
 		case TeksPackage.DEVELOPER__ID:
 			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
-		case TeksPackage.DEVELOPER__WEBSITE_URL:
-			return WEBSITE_URL_EDEFAULT == null ? websiteURL != null
-					: !WEBSITE_URL_EDEFAULT.equals(websiteURL);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -217,8 +162,6 @@ public class DeveloperImpl extends EObjectImpl implements Developer {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (id: ");
 		result.append(id);
-		result.append(", websiteURL: ");
-		result.append(websiteURL);
 		result.append(')');
 		return result.toString();
 	}

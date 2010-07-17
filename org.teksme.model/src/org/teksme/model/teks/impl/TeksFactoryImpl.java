@@ -77,6 +77,8 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 			return createPoll();
 		case TeksPackage.SURVEY:
 			return createSurvey();
+		case TeksPackage.APPLICATION:
+			return createApplication();
 		case TeksPackage.POLL_SETTINGS:
 			return createPollSettings();
 		case TeksPackage.REPLY_MESSAGE:
@@ -245,6 +247,16 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	public Survey createSurvey() {
 		SurveyImpl survey = new SurveyImpl();
 		return survey;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Application createApplication() {
+		ApplicationImpl application = new ApplicationImpl();
+		return application;
 	}
 
 	/**

@@ -18,6 +18,9 @@ package org.teksme.model.teks;
  *   <li>{@link org.teksme.model.teks.InboundTextMessage#getMessageType <em>Message Type</em>}</li>
  *   <li>{@link org.teksme.model.teks.InboundTextMessage#getOriginator <em>Originator</em>}</li>
  *   <li>{@link org.teksme.model.teks.InboundTextMessage#getSmscNumber <em>Smsc Number</em>}</li>
+ *   <li>{@link org.teksme.model.teks.InboundTextMessage#getTo <em>To</em>}</li>
+ *   <li>{@link org.teksme.model.teks.InboundTextMessage#getMoMsgId <em>Mo Msg Id</em>}</li>
+ *   <li>{@link org.teksme.model.teks.InboundTextMessage#getUdh <em>Udh</em>}</li>
  * </ul>
  * </p>
  *
@@ -129,5 +132,83 @@ public interface InboundTextMessage extends Message {
 	 * @generated
 	 */
 	void setSmscNumber(String value);
+
+	/**
+	 * Returns the value of the '<em><b>To</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>To</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>To</em>' attribute.
+	 * @see #setTo(String)
+	 * @see org.teksme.model.teks.TeksPackage#getInboundTextMessage_To()
+	 * @model
+	 * @generated
+	 */
+	String getTo();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.InboundTextMessage#getTo <em>To</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>To</em>' attribute.
+	 * @see #getTo()
+	 * @generated
+	 */
+	void setTo(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Mo Msg Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mo Msg Id</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mo Msg Id</em>' attribute.
+	 * @see #setMoMsgId(String)
+	 * @see org.teksme.model.teks.TeksPackage#getInboundTextMessage_MoMsgId()
+	 * @model
+	 * @generated
+	 */
+	String getMoMsgId();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.InboundTextMessage#getMoMsgId <em>Mo Msg Id</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mo Msg Id</em>' attribute.
+	 * @see #getMoMsgId()
+	 * @generated
+	 */
+	void setMoMsgId(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Udh</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Udh</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Udh</em>' attribute.
+	 * @see #setUdh(String)
+	 * @see org.teksme.model.teks.TeksPackage#getInboundTextMessage_Udh()
+	 * @model
+	 * @generated
+	 */
+	String getUdh();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.InboundTextMessage#getUdh <em>Udh</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Udh</em>' attribute.
+	 * @see #getUdh()
+	 * @generated
+	 */
+	void setUdh(String value);
 
 } // InboundTextMessage

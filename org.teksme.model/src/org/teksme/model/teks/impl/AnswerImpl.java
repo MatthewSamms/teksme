@@ -29,7 +29,7 @@ import org.teksme.model.teks.TeksPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getText <em>Text</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#isId <em>Id</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getDefaultValue <em>Default Value</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#isSelected <em>Selected</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.AnswerImpl#getKeyword <em>Keyword</em>}</li>
@@ -61,24 +61,24 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	protected String text = TEXT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #isId() <em>Id</em>}' attribute.
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isId()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean ID_EDEFAULT = false;
+	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #isId() <em>Id</em>}' attribute.
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isId()
+	 * @see #getId()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean id = ID_EDEFAULT;
+	protected String id = ID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDefaultValue() <em>Default Value</em>}' attribute.
@@ -176,7 +176,7 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean isId() {
+	public String getId() {
 		return id;
 	}
 
@@ -185,8 +185,8 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setId(boolean newId) {
-		boolean oldId = id;
+	public void setId(String newId) {
+		String oldId = id;
 		id = newId;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
@@ -443,7 +443,7 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 		case TeksPackage.ANSWER__TEXT:
 			return getText();
 		case TeksPackage.ANSWER__ID:
-			return isId();
+			return getId();
 		case TeksPackage.ANSWER__DEFAULT_VALUE:
 			return getDefaultValue();
 		case TeksPackage.ANSWER__SELECTED:
@@ -472,7 +472,7 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 			setText((String) newValue);
 			return;
 		case TeksPackage.ANSWER__ID:
-			setId((Boolean) newValue);
+			setId((String) newValue);
 			return;
 		case TeksPackage.ANSWER__DEFAULT_VALUE:
 			setDefaultValue((String) newValue);
@@ -532,7 +532,7 @@ public class AnswerImpl extends EObjectImpl implements Answer {
 			return TEXT_EDEFAULT == null ? text != null : !TEXT_EDEFAULT
 					.equals(text);
 		case TeksPackage.ANSWER__ID:
-			return id != ID_EDEFAULT;
+			return ID_EDEFAULT == null ? id != null : !ID_EDEFAULT.equals(id);
 		case TeksPackage.ANSWER__DEFAULT_VALUE:
 			return DEFAULT_VALUE_EDEFAULT == null ? defaultValue != null
 					: !DEFAULT_VALUE_EDEFAULT.equals(defaultValue);
