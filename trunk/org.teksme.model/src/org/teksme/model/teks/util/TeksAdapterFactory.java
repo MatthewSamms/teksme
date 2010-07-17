@@ -111,6 +111,11 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseApplication(Application object) {
+			return createApplicationAdapter();
+		}
+
+		@Override
 		public Adapter casePollSettings(PollSettings object) {
 			return createPollSettingsAdapter();
 		}
@@ -333,6 +338,20 @@ public class TeksAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSurveyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.teksme.model.teks.Application <em>Application</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.teksme.model.teks.Application
+	 * @generated
+	 */
+	public Adapter createApplicationAdapter() {
 		return null;
 	}
 

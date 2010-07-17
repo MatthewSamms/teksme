@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.teksme.model.teks.Teks#getPoll <em>Poll</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getSurvey <em>Survey</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getResponses <em>Responses</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Teks#getApp <em>App</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getOutboundMessageList <em>Outbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getInboundMessageList <em>Inbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}</li>
@@ -163,6 +164,32 @@ public interface Teks extends EObject {
 	 * @generated
 	 */
 	void setResponses(Response value);
+
+	/**
+	 * Returns the value of the '<em><b>App</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>App</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>App</em>' containment reference.
+	 * @see #setApp(Application)
+	 * @see org.teksme.model.teks.TeksPackage#getTeks_App()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	Application getApp();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getApp <em>App</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>App</em>' containment reference.
+	 * @see #getApp()
+	 * @generated
+	 */
+	void setApp(Application value);
 
 	/**
 	 * <!-- begin-user-doc -->

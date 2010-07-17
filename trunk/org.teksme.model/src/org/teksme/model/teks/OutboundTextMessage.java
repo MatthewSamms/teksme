@@ -18,7 +18,6 @@ import org.eclipse.emf.common.util.EList;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getFrom <em>From</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getRecipientList <em>Recipient</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#isStatusReport <em>Status Report</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getPriority <em>Priority</em>}</li>
@@ -29,6 +28,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getDispatchDate <em>Dispatch Date</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getRefNo <em>Ref No</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getTeksRef <em>Teks Ref</em>}</li>
+ *   <li>{@link org.teksme.model.teks.OutboundTextMessage#getFrom <em>From</em>}</li>
  * </ul>
  * </p>
  *
@@ -37,32 +37,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface OutboundTextMessage extends Message {
-	/**
-	 * Returns the value of the '<em><b>From</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>From</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>From</em>' attribute.
-	 * @see #setFrom(String)
-	 * @see org.teksme.model.teks.TeksPackage#getOutboundTextMessage_From()
-	 * @model
-	 * @generated
-	 */
-	String getFrom();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.OutboundTextMessage#getFrom <em>From</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>From</em>' attribute.
-	 * @see #getFrom()
-	 * @generated
-	 */
-	void setFrom(String value);
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -355,5 +329,31 @@ public interface OutboundTextMessage extends Message {
 	 * @generated
 	 */
 	void setTeksRef(Teks value);
+
+	/**
+	 * Returns the value of the '<em><b>From</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>From</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>From</em>' attribute.
+	 * @see #setFrom(String)
+	 * @see org.teksme.model.teks.TeksPackage#getOutboundTextMessage_From()
+	 * @model
+	 * @generated
+	 */
+	String getFrom();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.OutboundTextMessage#getFrom <em>From</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>From</em>' attribute.
+	 * @see #getFrom()
+	 * @generated
+	 */
+	void setFrom(String value);
 
 } // OutboundTextMessage

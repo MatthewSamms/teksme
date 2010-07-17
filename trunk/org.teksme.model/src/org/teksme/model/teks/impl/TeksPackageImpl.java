@@ -16,6 +16,7 @@ import org.teksme.model.teks.Annotation;
 import org.teksme.model.teks.AnnotationMapEntry;
 import org.teksme.model.teks.Answer;
 import org.teksme.model.teks.AnswerRef;
+import org.teksme.model.teks.Application;
 import org.teksme.model.teks.ChannelKind;
 import org.teksme.model.teks.Command;
 import org.teksme.model.teks.Comment;
@@ -101,6 +102,13 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	private EClass surveyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass applicationEClass = null;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
@@ -367,10 +375,11 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTeks_OutboundMessage() {
+	public EReference getTeks_App() {
 		return (EReference) teksEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -378,7 +387,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTeks_InboundMessage() {
+	public EReference getTeks_OutboundMessage() {
 		return (EReference) teksEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -386,8 +395,16 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getTeks_Account() {
+	public EReference getTeks_InboundMessage() {
 		return (EReference) teksEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getTeks_Account() {
+		return (EReference) teksEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -572,14 +589,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getDeveloper_WebsiteURL() {
-		return (EAttribute) developerEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EClass getPoll() {
 		return pollEClass;
 	}
@@ -726,6 +735,141 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 */
 	public EAttribute getSurvey_Id() {
 		return (EAttribute) surveyEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getApplication() {
+		return applicationEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplication_Annotations() {
+		return (EReference) applicationEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getApplication_Comments() {
+		return (EReference) applicationEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_Title() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_Note() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_Author() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_LastModified() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_AppId() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_ApiKey() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(7);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_SecretKey() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(8);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_SupportEmail() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(9);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_ContactEmail() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_PrivateInstall() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_WebsiteURL() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getApplication_WebsiteName() {
+		return (EAttribute) applicationEClass.getEStructuralFeatures().get(13);
 	}
 
 	/**
@@ -1320,6 +1464,36 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundTextMessage_To() {
+		return (EAttribute) inboundTextMessageEClass.getEStructuralFeatures()
+				.get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundTextMessage_MoMsgId() {
+		return (EAttribute) inboundTextMessageEClass.getEStructuralFeatures()
+				.get(5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getInboundTextMessage_Udh() {
+		return (EAttribute) inboundTextMessageEClass.getEStructuralFeatures()
+				.get(6);
+	}
+
+	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
@@ -1331,7 +1505,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_From() {
+	public EAttribute getOutboundTextMessage_Recipient() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(0);
 	}
@@ -1340,7 +1514,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_Recipient() {
+	public EAttribute getOutboundTextMessage_StatusReport() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(1);
 	}
@@ -1349,7 +1523,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_StatusReport() {
+	public EAttribute getOutboundTextMessage_Priority() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(2);
 	}
@@ -1358,7 +1532,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_Priority() {
+	public EAttribute getOutboundTextMessage_RetryCount() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(3);
 	}
@@ -1367,7 +1541,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_RetryCount() {
+	public EAttribute getOutboundTextMessage_MessageStatus() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(4);
 	}
@@ -1376,7 +1550,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_MessageStatus() {
+	public EAttribute getOutboundTextMessage_FailureCause() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(5);
 	}
@@ -1385,7 +1559,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_FailureCause() {
+	public EAttribute getOutboundTextMessage_ValidityPeriod() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(6);
 	}
@@ -1394,7 +1568,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_ValidityPeriod() {
+	public EAttribute getOutboundTextMessage_DispatchDate() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(7);
 	}
@@ -1403,7 +1577,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_DispatchDate() {
+	public EAttribute getOutboundTextMessage_RefNo() {
 		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(8);
 	}
@@ -1412,17 +1586,18 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundTextMessage_RefNo() {
-		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
+	public EReference getOutboundTextMessage_TeksRef() {
+		return (EReference) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(9);
 	}
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getOutboundTextMessage_TeksRef() {
-		return (EReference) outboundTextMessageEClass.getEStructuralFeatures()
+	public EAttribute getOutboundTextMessage_From() {
+		return (EAttribute) outboundTextMessageEClass.getEStructuralFeatures()
 				.get(10);
 	}
 
@@ -1579,6 +1754,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEReference(teksEClass, TEKS__POLL);
 		createEReference(teksEClass, TEKS__SURVEY);
 		createEReference(teksEClass, TEKS__RESPONSES);
+		createEReference(teksEClass, TEKS__APP);
 		createEReference(teksEClass, TEKS__OUTBOUND_MESSAGE);
 		createEReference(teksEClass, TEKS__INBOUND_MESSAGE);
 		createEReference(teksEClass, TEKS__ACCOUNT);
@@ -1609,7 +1785,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 
 		developerEClass = createEClass(DEVELOPER);
 		createEAttribute(developerEClass, DEVELOPER__ID);
-		createEAttribute(developerEClass, DEVELOPER__WEBSITE_URL);
 
 		pollEClass = createEClass(POLL);
 		createEReference(pollEClass, POLL__QUESTION);
@@ -1631,6 +1806,22 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEAttribute(surveyEClass, SURVEY__AUTHOR);
 		createEAttribute(surveyEClass, SURVEY__LAST_MODIFIED);
 		createEAttribute(surveyEClass, SURVEY__ID);
+
+		applicationEClass = createEClass(APPLICATION);
+		createEReference(applicationEClass, APPLICATION__ANNOTATIONS);
+		createEReference(applicationEClass, APPLICATION__COMMENTS);
+		createEAttribute(applicationEClass, APPLICATION__TITLE);
+		createEAttribute(applicationEClass, APPLICATION__NOTE);
+		createEAttribute(applicationEClass, APPLICATION__AUTHOR);
+		createEAttribute(applicationEClass, APPLICATION__LAST_MODIFIED);
+		createEAttribute(applicationEClass, APPLICATION__APP_ID);
+		createEAttribute(applicationEClass, APPLICATION__API_KEY);
+		createEAttribute(applicationEClass, APPLICATION__SECRET_KEY);
+		createEAttribute(applicationEClass, APPLICATION__SUPPORT_EMAIL);
+		createEAttribute(applicationEClass, APPLICATION__CONTACT_EMAIL);
+		createEAttribute(applicationEClass, APPLICATION__PRIVATE_INSTALL);
+		createEAttribute(applicationEClass, APPLICATION__WEBSITE_URL);
+		createEAttribute(applicationEClass, APPLICATION__WEBSITE_NAME);
 
 		pollSettingsEClass = createEClass(POLL_SETTINGS);
 		createEAttribute(pollSettingsEClass, POLL_SETTINGS__CLOSE_DATE);
@@ -1730,9 +1921,12 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				INBOUND_TEXT_MESSAGE__ORIGINATOR);
 		createEAttribute(inboundTextMessageEClass,
 				INBOUND_TEXT_MESSAGE__SMSC_NUMBER);
+		createEAttribute(inboundTextMessageEClass, INBOUND_TEXT_MESSAGE__TO);
+		createEAttribute(inboundTextMessageEClass,
+				INBOUND_TEXT_MESSAGE__MO_MSG_ID);
+		createEAttribute(inboundTextMessageEClass, INBOUND_TEXT_MESSAGE__UDH);
 
 		outboundTextMessageEClass = createEClass(OUTBOUND_TEXT_MESSAGE);
-		createEAttribute(outboundTextMessageEClass, OUTBOUND_TEXT_MESSAGE__FROM);
 		createEAttribute(outboundTextMessageEClass,
 				OUTBOUND_TEXT_MESSAGE__RECIPIENT);
 		createEAttribute(outboundTextMessageEClass,
@@ -1753,6 +1947,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				OUTBOUND_TEXT_MESSAGE__REF_NO);
 		createEReference(outboundTextMessageEClass,
 				OUTBOUND_TEXT_MESSAGE__TEKS_REF);
+		createEAttribute(outboundTextMessageEClass, OUTBOUND_TEXT_MESSAGE__FROM);
 
 		textMessageEClass = createEClass(TEXT_MESSAGE);
 		createEAttribute(textMessageEClass, TEXT_MESSAGE__TEXT);
@@ -1833,6 +2028,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"responses", null, 0, 1, Teks.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTeks_App(), this.getApplication(), null, "app", null,
+				0, 1, Teks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 		initEReference(getTeks_OutboundMessage(),
 				this.getOutboundTextMessage(),
 				this.getOutboundTextMessage_TeksRef(), "outboundMessage", null,
@@ -1934,10 +2133,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				null, 0, 1, Developer.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getDeveloper_WebsiteURL(), ecorePackage.getEString(),
-				"websiteURL", null, 0, 1, Developer.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(pollEClass, Poll.class, "Poll", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
@@ -2010,6 +2205,66 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		initEAttribute(getSurvey_Id(), ecorePackage.getEString(), "id", null,
 				0, 1, Survey.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(applicationEClass, Application.class, "Application",
+				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getApplication_Annotations(), this.getAnnotation(),
+				null, "annotations", null, 0, -1, Application.class,
+				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE,
+				IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEReference(getApplication_Comments(), this.getComment(), null,
+				"comments", null, 0, -1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
+				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Title(), ecorePackage.getEString(),
+				"title", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Note(), ecorePackage.getEString(),
+				"note", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_Author(), ecorePackage.getEString(),
+				"author", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_LastModified(), ecorePackage.getEDate(),
+				"lastModified", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_AppId(), ecorePackage.getEString(),
+				"appId", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_ApiKey(), ecorePackage.getEString(),
+				"apiKey", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_SecretKey(), ecorePackage.getEString(),
+				"secretKey", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_SupportEmail(),
+				ecorePackage.getEString(), "supportEmail", null, 0, 1,
+				Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_ContactEmail(),
+				ecorePackage.getEString(), "contactEmail", null, 0, 1,
+				Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_PrivateInstall(),
+				ecorePackage.getEBoolean(), "privateInstall", null, 0, 1,
+				Application.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
+				!IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_WebsiteURL(), ecorePackage.getEString(),
+				"websiteURL", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getApplication_WebsiteName(), ecorePackage.getEString(),
+				"websiteName", null, 0, 1, Application.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(pollSettingsEClass, PollSettings.class, "PollSettings",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2195,7 +2450,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				null, 0, 1, Answer.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getAnswer_Id(), ecorePackage.getEBoolean(), "id", null,
+		initEAttribute(getAnswer_Id(), ecorePackage.getEString(), "id", null,
 				1, 1, Answer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
 				!IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getAnswer_DefaultValue(), ecorePackage.getEString(),
@@ -2307,15 +2562,23 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				InboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
+		initEAttribute(getInboundTextMessage_To(), ecorePackage.getEString(),
+				"to", null, 0, 1, InboundTextMessage.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getInboundTextMessage_MoMsgId(),
+				ecorePackage.getEString(), "moMsgId", null, 0, 1,
+				InboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
+		initEAttribute(getInboundTextMessage_Udh(), ecorePackage.getEString(),
+				"udh", null, 0, 1, InboundTextMessage.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(outboundTextMessageEClass, OutboundTextMessage.class,
 				"OutboundTextMessage", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getOutboundTextMessage_From(),
-				ecorePackage.getEString(), "from", null, 0, 1,
-				OutboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
-				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
-				IS_ORDERED);
 		initEAttribute(getOutboundTextMessage_Recipient(),
 				ecorePackage.getEString(), "recipient", null, 0, -1,
 				OutboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
@@ -2366,6 +2629,11 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				OutboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOutboundTextMessage_From(),
+				ecorePackage.getEString(), "from", null, 0, 1,
+				OutboundTextMessage.class, !IS_TRANSIENT, !IS_VOLATILE,
+				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
+				IS_ORDERED);
 
 		initEClass(textMessageEClass, TextMessage.class, "TextMessage",
 				!IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
