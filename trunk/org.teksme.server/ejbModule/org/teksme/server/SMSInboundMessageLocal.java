@@ -12,9 +12,23 @@
  */
 
 package org.teksme.server;
+
+import java.io.IOException;
+
 import javax.ejb.Local;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.teksme.model.teks.InboundTextMessage;
+import org.xml.sax.SAXException;
 
 @Local
 public interface SMSInboundMessageLocal {
+
+	void setReceiveCycle(int receiveCycle);
+
+	void readMessage(InboundTextMessage inboundMessage);
+
+	InboundTextMessage createInboundMsgModelFromXml(String xmlInput)
+			throws IOException, SAXException, ParserConfigurationException;
 
 }

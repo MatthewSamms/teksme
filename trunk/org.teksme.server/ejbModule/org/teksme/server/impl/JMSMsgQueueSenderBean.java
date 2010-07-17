@@ -24,19 +24,20 @@ import javax.jms.ObjectMessage;
 import javax.jms.Queue;
 import javax.jms.Session;
 
+import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.OutboundTextMessage;
-import org.teksme.server.JMSOutboundMsgQueueSender;
-import org.teksme.server.JMSOutboundMsgQueueSenderBeanLocal;
+import org.teksme.server.JMSMsgQueueSender;
+import org.teksme.server.JMSMsgQueueSenderBeanLocal;
 import org.teksme.server.jms.queues.Queues;
 
 /**
  * Session Bean implementation class JMSOutboundMsgQueueSenderBean
  */
-@Local({ JMSOutboundMsgQueueSenderBeanLocal.class })
-@Remote({ JMSOutboundMsgQueueSender.class })
-@Stateless(name = "JMSOutboundMsgQueueSender", mappedName = JMSOutboundMsgQueueSender.JNDI_NAME)
-public class JMSOutboundMsgQueueSenderBean implements
-		JMSOutboundMsgQueueSender, JMSOutboundMsgQueueSenderBeanLocal {
+@Local({ JMSMsgQueueSenderBeanLocal.class })
+@Remote({ JMSMsgQueueSender.class })
+@Stateless(name = "JMSOutboundMsgQueueSender", mappedName = JMSMsgQueueSender.JNDI_NAME)
+public class JMSMsgQueueSenderBean implements JMSMsgQueueSender,
+		JMSMsgQueueSenderBeanLocal {
 
 	private static final String MESSAGETYPE_OBJECT = OutboundTextMessage.class
 			.getName();
@@ -44,7 +45,7 @@ public class JMSOutboundMsgQueueSenderBean implements
 	/**
 	 * Default constructor.
 	 */
-	public JMSOutboundMsgQueueSenderBean() {
+	public JMSMsgQueueSenderBean() {
 		// TODO Auto-generated constructor stub
 	}
 
@@ -74,6 +75,59 @@ public class JMSOutboundMsgQueueSenderBean implements
 
 			ObjectMessage objMsg = session.createObjectMessage();
 			objMsg.setObject(outboundMsg);
+			objMsg.setJMSType(MESSAGETYPE_OBJECT);
+
+			// Create a JMS Message Producer
+			MessageProducer producer = session.createProducer(queue);
+
+			producer.send(objMsg);
+
+			// Thread.sleep(1000);
+
+		} catch (ServiceLocatorException e) {
+			e.printStackTrace();
+
+		} catch (JMSException e) {
+			e.printStackTrace();
+
+		} finally {
+			try {
+				if (connection != null) {
+					connection.close();
+				}
+			} catch (JMSException e) {
+				e.printStackTrace();
+			}
+		}
+
+	}
+
+	@Override
+	public void send(InboundTextMessage inboundMsg) {
+
+		Connection connection = null;
+		Session session = null;
+
+		try {
+
+			// Lookup the connection factory
+			ConnectionFactory cf;
+			cf = ServiceLocator.getInstance().getQueueConnectionFactory(
+					"/ConnectionFactory");
+
+			// Lookup the JMS queue
+			Queue queue = ServiceLocator.getInstance().getQueue(
+					Queues.INBOUND_QUEUE);
+
+			// Create the JMS objects to connect to the server and manage a
+			// session
+			connection = cf.createConnection();
+
+			// Create a JMS Session
+			session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+
+			ObjectMessage objMsg = session.createObjectMessage();
+			objMsg.setObject(inboundMsg);
 			objMsg.setJMSType(MESSAGETYPE_OBJECT);
 
 			// Create a JMS Message Producer

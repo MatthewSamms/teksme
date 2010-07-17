@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.impl;
+package org.teksme.server.sms.impl;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -30,14 +30,13 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.smslib.OutboundMessage;
-import org.smslib.Service;
 import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
-import org.teksme.server.SMSGatewayFactory;
 import org.teksme.server.SMSOutboundMessage;
 import org.teksme.server.SMSOutboundMessageLocal;
+import org.teksme.server.impl.TeksModelHelper;
 
 @Local({ SMSOutboundMessageLocal.class })
 @Remote({ SMSOutboundMessage.class })
@@ -47,8 +46,6 @@ public class SMSOutboundMessageBean implements SMSOutboundMessage,
 
 	private Logger logger = Logger.getLogger(SMSOutboundMessageBean.class
 			.getName());
-
-	private SMSGatewayFactory factory = SMSGatewayFactory.INSTANCE;
 
 	private static final String MODEL_FILE = "/Users/fabianocruz/teks_outmsg.xml";
 
@@ -69,18 +66,15 @@ public class SMSOutboundMessageBean implements SMSOutboundMessage,
 		TeksPackageImpl.init();
 	}
 
+	@Override
 	public void sendMessage(OutboundTextMessage message) throws Exception {
-		// Send a message synchronously.
-
-		Service srv = factory.getDefaultSMSGatewayService();
 
 		OutboundMessage msg = new OutboundMessage(message.getRecipient(0),
 				message.getTextMessage().getText());
 
-		// srv.sendMessage(msg);
+		TeksSMSGateway.getInstance().sendMessage(msg);
 
 		logger.info(msg.toString());
-		// System.in.read();
 
 	}
 
@@ -103,9 +97,16 @@ public class SMSOutboundMessageBean implements SMSOutboundMessage,
 
 		logger.info(outMsg.getTextMessage().getText());
 
-		serializeTeksModelXMLData(resourceSet, teksObj, MODEL_FILE);
-
 		return teksObj;
+
+	}
+
+	@Override
+	public void persistOutboundMessage(Teks teksObj) throws IOException {
+
+		TeksModelHelper.INSTANCE.persistPoll(teksObj);
+
+		serializeTeksModelXMLData(resourceSet, teksObj, MODEL_FILE);
 
 	}
 
@@ -118,13 +119,6 @@ public class SMSOutboundMessageBean implements SMSOutboundMessage,
 		// serialize resource Ð you can specify also serialization
 		// options which defined on org.eclipse.emf.ecore.xmi.XMIResource
 		resource.save(null);
-
-	}
-
-	@Override
-	public void persistOutboundMessage(Teks teksInquiry) {
-
-		TeksModelHelper.INSTANCE.persistPoll(teksInquiry);
 
 	}
 

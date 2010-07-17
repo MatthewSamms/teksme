@@ -20,6 +20,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.smslib.AGateway;
+import org.smslib.AGateway.Protocols;
 import org.smslib.GatewayException;
 import org.smslib.SMSLibException;
 import org.smslib.Service;
@@ -40,9 +41,29 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 
 	private static SMSGatewayFactoryImpl INSTANCE = null;
 
+	private String gatewayId = null;
+
 	@Override
-	public Service getDefaultSMSGatewayService() throws IOException,
-			InterruptedException, SMSLibException {
+	public void stopSMSGateway() throws TimeoutException, GatewayException,
+			SMSLibException, IOException, InterruptedException {
+		Service srv = (Service) registry.get(Service.class.getSimpleName());
+
+		if (srv != null) {
+
+			registry.remove(Service.class.getSimpleName());
+			srv.stopService();
+
+		}
+	}
+
+	@Override
+	public String getSMSGatewayId() {
+		return this.gatewayId;
+	}
+
+	@Override
+	public Service startSMSGateway() throws IOException, InterruptedException,
+			SMSLibException {
 
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 
@@ -54,12 +75,13 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 
 			srv = new Service();
 
-			OutboundNotification outboundNotification = new OutboundNotification();
-			srv.setOutboundMessageNotification(outboundNotification);
-
-			if (getDefaultSMSGateway() == SMSGatewayKind.SERIAL_MODEM) {
+			if (getDefaultSMSGatewayClazz() == SMSGatewayKind.SERIAL_MODEM) {
 
 				SerialModemGateway serialModemGateway = createSerialModemGateway();
+				// Set the modem protocol to PDU (alternative is TEXT). PDU is
+				// the
+				// default, anyway...
+				serialModemGateway.setProtocol(Protocols.PDU);
 				srv.addGateway(serialModemGateway);
 				srv.startService();
 
@@ -74,17 +96,41 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 				logger.info("  Battery Level: "
 						+ serialModemGateway.getBatteryLevel() + "%");
 
-			} else if (getDefaultSMSGateway() == SMSGatewayKind.CLICKATELL_HTTP_GATEWAY) {
+			} else if (getDefaultSMSGatewayClazz() == SMSGatewayKind.CLICKATELL_HTTP_GATEWAY) {
 
 				ClickatellHTTPGateway clickatellHTTPGateway = createClickatellHTTPGateway();
+				// Set the modem protocol to PDU (alternative is TEXT). PDU is
+				// the
+				// default, anyway...
+				clickatellHTTPGateway.setProtocol(Protocols.PDU);
 				srv.addGateway(clickatellHTTPGateway);
 				srv.startService();
 
 			}
 
-			registry.put(Service.class.getSimpleName(), srv);
+			OutboundNotification outboundNotification = new OutboundNotification();
 
-			// srv.stopService();
+			// Create the notification callback method for inbound & status
+			// report
+			// messages.
+			InboundNotification inboundNotification = new InboundNotification();
+
+			// Create the notification callback method for inbound voice calls.
+			CallNotification callNotification = new CallNotification();
+
+			// Create the notification callback method for gateway statuses.
+			GatewayStatusNotification statusNotification = new GatewayStatusNotification();
+
+			OrphanedMessageNotification orphanedMessageNotification = new OrphanedMessageNotification();
+
+			// Set up the notification methods.
+			srv.setInboundMessageNotification(inboundNotification);
+			srv.setCallNotification(callNotification);
+			srv.setGatewayStatusNotification(statusNotification);
+			srv.setOrphanedMessageNotification(orphanedMessageNotification);
+			srv.setOutboundMessageNotification(outboundNotification);
+
+			registry.put(Service.class.getSimpleName(), srv);
 
 			return srv;
 		}
@@ -105,6 +151,8 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 		} else {
 
 			final String id = Configuration.getString("modem.id");
+			this.gatewayId = id;
+
 			final String port = Configuration.getString("modem.port");
 			final Integer baudrate = Integer.valueOf(Configuration
 					.getString("modem.baudrate"));
@@ -148,16 +196,41 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 
 	@Override
 	public ClickatellHTTPGateway createClickatellHTTPGateway() {
-		ClickatellHTTPGateway gateway = new ClickatellHTTPGateway(
-				Configuration.getString("http.gateway.id"),
-				Configuration.getString("http.gateway.appid"),
-				Configuration.getString("http.gateway.username"),
-				Configuration.getString("http.gateway.passwd"));
-		gateway.setOutbound(Boolean.getBoolean(Configuration
-				.getString("http.gateway.outbound")));
-		gateway.setInbound(Boolean.getBoolean(Configuration
-				.getString("http.gateway.inbound")));
-		return null;
+		ClickatellHTTPGateway clickatellGateway = (ClickatellHTTPGateway) registry
+				.get(ClickatellHTTPGateway.class.getSimpleName());
+
+		if (clickatellGateway != null) {
+			return clickatellGateway;
+
+		} else {
+
+			final String id = Configuration.getString("http.gateway.id");
+			this.gatewayId = id;
+
+			final String appId = Configuration.getString("http.gateway.appid");
+			final String username = Configuration
+					.getString("http.gateway.username");
+			final String passwd = Configuration
+					.getString("http.gateway.passwd");
+
+			clickatellGateway = new ClickatellHTTPGateway(id, appId, username,
+					passwd);
+
+			final Boolean inbound = Boolean.valueOf(Configuration
+					.getString("http.gateway.inbound"));
+
+			final Boolean outbound = Boolean.valueOf(Configuration
+					.getString("http.gateway.outbound"));
+
+			clickatellGateway.setInbound(inbound);
+			clickatellGateway.setOutbound(outbound);
+
+			registry.put(ClickatellHTTPGateway.class.getSimpleName(),
+					clickatellGateway);
+
+			return clickatellGateway;
+
+		}
 	}
 
 	private SMSGatewayFactoryImpl() {
@@ -201,7 +274,7 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 		}
 	}
 
-	public SMSGatewayKind getDefaultSMSGateway() {
+	public SMSGatewayKind getDefaultSMSGatewayClazz() {
 		return SMSGatewayKind.getByName(Configuration
 				.getString("gateway.default.class"));
 	}

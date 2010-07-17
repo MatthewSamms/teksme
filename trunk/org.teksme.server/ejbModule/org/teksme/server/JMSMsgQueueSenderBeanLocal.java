@@ -13,15 +13,16 @@
 
 package org.teksme.server;
 
-import javax.ejb.Remote;
+import javax.ejb.Local;
 
+import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.OutboundTextMessage;
 
-@Remote
-public interface JMSOutboundMsgQueueSender {
+@Local
+public interface JMSMsgQueueSenderBeanLocal {
 
-	public static String JNDI_NAME = "ejb/JNDI/JMSOutboundMsgQueueSender";
+	void send(OutboundTextMessage outboundMsg);
 
-	public void send(OutboundTextMessage outboundMsg);
+	void send(InboundTextMessage outboundMsg);
 
 }

@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.impl;
+package org.teksme.server.sms.impl;
 
 import java.util.List;
 
@@ -30,6 +30,8 @@ import org.teksme.model.teks.TeksPackage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.SMSKeywordHandler;
 import org.teksme.server.SMSKeywordHandlerBeanLocal;
+import org.teksme.server.impl.ServiceLocator;
+import org.teksme.server.impl.ServiceLocatorException;
 
 /**
  * Session Bean implementation class SMSKeywordHandlerBean

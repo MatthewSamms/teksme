@@ -13,11 +13,24 @@
 
 package org.teksme.server;
 
+import java.io.IOException;
+
 import javax.ejb.Remote;
+import javax.xml.parsers.ParserConfigurationException;
+
+import org.teksme.model.teks.InboundTextMessage;
+import org.xml.sax.SAXException;
 
 @Remote
 public interface SMSInboundMessage {
 
 	public static String JNDI_NAME = "ejb/JNDI/SMSInboundMessage";
+
+	void setReceiveCycle(int receiveCycle);
+
+	void readMessage(InboundTextMessage inboundMessage);
+
+	InboundTextMessage createInboundMsgModelFromXml(String xmlInput)
+			throws IOException, SAXException, ParserConfigurationException;
 
 }

@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.impl;
+package org.teksme.server.sms.impl;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -27,6 +27,7 @@ import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.SMSPollHandler;
 import org.teksme.server.SMSPollHandlerBeanLocal;
+import org.teksme.server.impl.TeksModelHelper;
 
 /**
  * Session Bean implementation class CreatePollBean
