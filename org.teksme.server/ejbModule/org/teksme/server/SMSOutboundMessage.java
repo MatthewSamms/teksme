@@ -29,5 +29,5 @@ public interface SMSOutboundMessage {
 
 	Teks createOutboundMsgModelFromXml(String xmlInput) throws IOException;
 
-	void persistOutboundMessage(Teks teksInquiry);
+	void persistOutboundMessage(Teks teksInquiry) throws IOException;
 }

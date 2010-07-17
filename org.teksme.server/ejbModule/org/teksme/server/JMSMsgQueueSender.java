@@ -11,29 +11,20 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.impl;
+package org.teksme.server;
 
-import javax.ejb.Local;
 import javax.ejb.Remote;
-import javax.ejb.Stateless;
 
-import org.teksme.server.SMSInboundMessage;
-import org.teksme.server.SMSInboundMessageLocal;
+import org.teksme.model.teks.InboundTextMessage;
+import org.teksme.model.teks.OutboundTextMessage;
 
-/**
- * Session Bean implementation class SMSReceiver
- */
-@Local({ SMSInboundMessageLocal.class })
-@Remote({ SMSInboundMessage.class })
-@Stateless(name = "SMSInboundMessage", mappedName = SMSInboundMessage.JNDI_NAME)
-public class SMSInboundMessageBean implements SMSInboundMessage,
-		SMSInboundMessageLocal {
+@Remote
+public interface JMSMsgQueueSender {
 
-	/**
-	 * Default constructor.
-	 */
-	public SMSInboundMessageBean() {
-		// TODO Auto-generated constructor stub
-	}
+	public static String JNDI_NAME = "ejb/JNDI/JMSOutboundMsgQueueSender";
+
+	public void send(OutboundTextMessage outboundMsg);
+
+	public void send(InboundTextMessage outboundMsg);
 
 }

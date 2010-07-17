@@ -38,9 +38,14 @@ public interface SMSGatewayFactory {
 
 	DigicelHTTPGateway createDigicelHTTPGateway();
 
-	SMSGatewayKind getDefaultSMSGateway();
+	SMSGatewayKind getDefaultSMSGatewayClazz();
 
-	Service getDefaultSMSGatewayService() throws IOException,
-			InterruptedException, SMSLibException;
+	Service startSMSGateway() throws IOException, InterruptedException,
+			SMSLibException;
+
+	void stopSMSGateway() throws TimeoutException, GatewayException,
+			SMSLibException, IOException, InterruptedException;
+
+	String getSMSGatewayId();
 
 }

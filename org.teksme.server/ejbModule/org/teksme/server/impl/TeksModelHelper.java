@@ -98,7 +98,8 @@ public class TeksModelHelper {
 		resource.save(null);
 	}
 
-	public void serializeTeksModelXMLData(String xmlInput, String filePath) throws IOException {
+	public void serializeTeksModelXMLData(String xmlInput, String filePath)
+			throws IOException {
 		InputStream is = new ByteArrayInputStream(xmlInput.getBytes("ASCII"));
 		BufferedReader in = new BufferedReader(new InputStreamReader(is));
 		PrintWriter fileWriter = new PrintWriter(new BufferedWriter(

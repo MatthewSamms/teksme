@@ -45,11 +45,11 @@
 	</queue>
 
 	<queue name="inboundPrimaryQueue">
-      <entry name="/queue/inboundPrimaryQueue"/>
-   </queue>
+		<entry name="/queue/inboundPrimaryQueue" />
+	</queue>
 
 	<queue name="outboundPrimaryQueue">
-      <entry name="/queue/outboundPrimaryQueue"/>
-   </queue>
-   
+		<entry name="/queue/outboundPrimaryQueue" />
+	</queue>
+
 </configuration>
