@@ -152,5 +152,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.dom4j,
  org.hsqldb,
  com.mysql.jdbc,
- org.teksme.model.temp;bundle-version="1.0.0"
+ org.teksme.model;bundle-version="1.0.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
