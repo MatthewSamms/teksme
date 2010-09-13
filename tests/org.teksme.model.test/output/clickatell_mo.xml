@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<clickmo>
+	<api_id>12345</api_id>
+	<moMsgId>fa6ba35b330ce1bc7e2008e5d92d57aa</moMsgId>
+	<from>279991235642</from>
+	<to>27123456789</to>
+	<timestamp>2007-02-26 14:36:50</timestamp>
+	<text>Here is the message text</text>
+	<charset>ISO-8859-1</charset>
+	<udh></udh>
+</clickmo>
