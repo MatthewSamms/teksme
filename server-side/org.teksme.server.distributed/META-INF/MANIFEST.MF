@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: org.teksme.server.distributed
+Bundle-SymbolicName: org.teksme.server.distributed
+Bundle-Version: 1.0.0.qualifier
+Bundle-Activator: org.teksme.server.distributed.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.osgi.framework;version="1.5.0"
