@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ASCII"?>
+<teks:Teks xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:teks="http://teksme.org/meta/1.0.0/teks"
+	xsi:schemaLocation="http://teksme.org/meta/1.0.0/teks teks.ecore"
+	appId="109328091284971897248819">
+	<userProfile id="o318947871972892719jiasjs8198" />
+	<campaign id="">
+		<poll title="Teacher monitoring system" note="" author="Fabiano Cruz"
+			lastModified="2010-06-14T11:25:28.958-0400">
+			<question xsi:type="teks:FreeText" required="true" keyword="CHECKIN"
+				autoKeyword="false" question="Please enter your Employee ID Number" />
+			<question xsi:type="teks:FreeText" required="true"
+				autoKeyword="false" question="Number of male students in the classroom" />
+			<settings />
+		</poll>
+	</campaign>
+</teks:Teks>
