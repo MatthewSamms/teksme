@@ -34,6 +34,8 @@ import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
+import org.teksme.server.jms.queues.JMSMsgQueueSender;
+import org.teksme.server.sms.service.SMSOutboundMessage;
 
 @SuppressWarnings("serial")
 public class SendMessageServlet extends HttpServlet {
@@ -42,10 +44,10 @@ public class SendMessageServlet extends HttpServlet {
 
 	private static String message = "Error during Servlet processing";
 
-	@EJB(mappedName = JMSMsgQueueSender.JNDI_NAME)
+	// @EJB(mappedName = JMSMsgQueueSender.JNDI_NAME)
 	private JMSMsgQueueSender outboundMsgQueueSender;
 
-	@EJB(mappedName = SMSOutboundMessage.JNDI_NAME)
+	// @EJB(mappedName = SMSOutboundMessage.JNDI_NAME)
 	private SMSOutboundMessage outboundMsg;
 
 	public SendMessageServlet() {
