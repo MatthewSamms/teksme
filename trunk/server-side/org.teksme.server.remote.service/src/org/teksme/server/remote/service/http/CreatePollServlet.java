@@ -19,14 +19,13 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.logging.Logger;
 
-import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.teksme.server.SMSPollHandler;
+import org.teksme.server.sms.service.SMSPollHandler;
 
 /**
  * Servlet implementation class CreatePoll
@@ -39,7 +38,7 @@ public class CreatePollServlet extends HttpServlet {
 
 	private static String message = "Error during Servlet processing";
 
-	@EJB(mappedName = SMSPollHandler.JNDI_NAME)
+	//@EJB(mappedName = SMSPollHandler.JNDI_NAME)
 	private SMSPollHandler createPollBean;
 
 	/**

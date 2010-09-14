@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.teksme.model.teks.InboundTextMessage;
+import org.teksme.server.jms.queues.JMSMsgQueueSender;
+import org.teksme.server.sms.service.SMSInboundMessage;
 import org.xml.sax.SAXException;
 
 /**
@@ -26,10 +28,10 @@ public class ClickatellCallbackServlet extends HttpServlet {
 
 	private static String message = "Error during Servlet processing";
 
-	@EJB(mappedName = SMSInboundMessage.JNDI_NAME)
+	//@EJB(mappedName = SMSInboundMessage.JNDI_NAME)
 	private SMSInboundMessage smsInboundMessage;
 
-	@EJB(mappedName = JMSMsgQueueSender.JNDI_NAME)
+	//@EJB(mappedName = JMSMsgQueueSender.JNDI_NAME)
 	private JMSMsgQueueSender outboundMsgQueueSender;
 
 	/**
