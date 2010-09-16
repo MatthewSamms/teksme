@@ -21,12 +21,12 @@ public class SimpleComponent {
 	}
 	
 	public void bind(SMSOutboundMessage outboundMsg) {
-		this.outboundMsg = null;
+		this.outboundMsg = outboundMsg;
 
 	}
 	
 	public void unbind(HttpService httpService) {
-		this.httpService = httpService;
+		this.httpService = null;
 	}
 	
 	public void unbind(SMSOutboundMessage outboundMsg) {
