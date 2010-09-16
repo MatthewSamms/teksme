@@ -170,13 +170,11 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="communicationChannel" upperBound="-1"
         eType="#//ChannelKind"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="gatewayId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageCharCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="textMessage" eType="#//TextMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="#//TextMessage"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="smsGateway" eType="#//SMSGatewayKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="AnswerRef">
     <eStructuralFeatures xsi:type="ecore:EReference" name="choiceRef" eType="#//PollQuestion"/>
@@ -191,19 +189,38 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="smscNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OutboundTextMessage" eSuperTypes="#//Message">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recipient" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statusReport" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="retryCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageStatus" eType="#//MessageStatuses"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failureCause" eType="#//FailureCauses"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validityPeriod" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dispatchDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="refNo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="teksRef" eType="#//Teks"
         eOpposite="#//Teks/outboundMessage"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recipient" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" unique="false" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryDelayTime" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validityTimeframe" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clientMsgId" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryQueuePriority"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryAck" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="callbackCode" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concatenated" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageStatus" upperBound="-1"
+        eType="#//MessageStatuses"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mobileOriginated" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failureCause" upperBound="-1"
+        eType="#//FailureCauses"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryScheduledTime"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TextMessage">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -244,9 +261,19 @@
     <eLiterals name="STOP_ALL" value="6" literal="STOP ALL"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="MessageStatuses">
-    <eLiterals name="UNSENT" literal="UNSENT"/>
-    <eLiterals name="SENT" value="1"/>
-    <eLiterals name="FAILED" value="2"/>
+    <eLiterals name="MSG_UNKNOWN" value="1"/>
+    <eLiterals name="MSG_QUEUED" value="2"/>
+    <eLiterals name="DELIVERED_GATEWAY" value="3" literal="DELIVERED_GATEWAY"/>
+    <eLiterals name="RECEIVED_BY_RECIPIENT" value="4"/>
+    <eLiterals name="ERROR_WITH_MSG" value="5"/>
+    <eLiterals name="USER_CANCELLED_MSG" value="6"/>
+    <eLiterals name="ERROR_DELIVERING_MSG" value="7"/>
+    <eLiterals name="SENT" value="8"/>
+    <eLiterals name="ROUTING_ERROR" value="9"/>
+    <eLiterals name="MSG_EXPIRED" value="10"/>
+    <eLiterals name="MSG_QUEUED_FOR_LATER_DELIVERY" value="11"/>
+    <eLiterals name="UNSENT" value="12" literal="UNSENT"/>
+    <eLiterals name="FAILED" value="13"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="FailureCauses">
     <eLiterals name="NO_ERROR"/>
@@ -257,5 +284,11 @@
     <eLiterals name="GATEWAY_AUTH" value="5"/>
     <eLiterals name="NO_ROUTE" value="6"/>
     <eLiterals name="UNKNOWN" value="6"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="SMSGatewayKind">
+    <eLiterals name="CLICKATELL"/>
+    <eLiterals name="DIGICEL" value="1"/>
+    <eLiterals name="MOVISTAR_PERU" value="2"/>
+    <eLiterals name="MODEM" value="3"/>
   </eClassifiers>
 </ecore:EPackage>
