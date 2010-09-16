@@ -25,8 +25,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.teksme.server.sms.service.SMSPollHandler;
-
 /**
  * Servlet implementation class CreatePoll
  */
@@ -38,8 +36,8 @@ public class CreatePollServlet extends HttpServlet {
 
 	private static String message = "Error during Servlet processing";
 
-	//@EJB(mappedName = SMSPollHandler.JNDI_NAME)
-	private SMSPollHandler createPollBean;
+//	@EJB(mappedName = SMSPollHandler.JNDI_NAME)
+//	private SMSPollHandler createPollBean;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -99,7 +97,7 @@ public class CreatePollServlet extends HttpServlet {
 			logger.info("getContentLength: " + request.getContentLength());
 			logger.info("getContentType: " + request.getContentType());
 
-			createPollBean.createPollModelFromXml(xmlBuff.toString());
+//			createPollBean.createPollModelFromXml(xmlBuff.toString());
 
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);
