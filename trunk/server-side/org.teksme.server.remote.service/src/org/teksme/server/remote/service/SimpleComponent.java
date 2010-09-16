@@ -13,20 +13,33 @@ public class SimpleComponent {
 	private static final String SERVLET_ALIAS = "/hellods";
 	private static final String SEND_MSG_SERVLET_ALIAS = "/sendmsg";
 
+	private SMSOutboundMessage outboundMsg;
 	private HttpService httpService;
 
-	public void setHttpService(HttpService httpService) {
+	public void bind(HttpService httpService) {
 		this.httpService = httpService;
 	}
-	private SMSOutboundMessage outboundMsg;
+	
+	public void bind(SMSOutboundMessage outboundMsg) {
+		this.outboundMsg = null;
+
+	}
+	
+	public void unbind(HttpService httpService) {
+		this.httpService = httpService;
+	}
+	
+	public void unbind(SMSOutboundMessage outboundMsg) {
+		this.outboundMsg = null;
+
+	}
+
 
 	// Method will be used by DS to set the quote service
 	public synchronized void setOutMessage(SMSOutboundMessage outboundMsg) {
-		System.out.println("Service was set. Thank you DS!");
-		this.outboundMsg = outboundMsg;
 	}
 
-	protected void startup() {
+	protected void activate() {
 		try {
 			System.out.println("Staring up sevlet at " + SERVLET_ALIAS);
 			SimpleServlet servlet = new SimpleServlet();
@@ -43,7 +56,7 @@ public class SimpleComponent {
 		}
 	}
 
-	protected void shutdown() {
+	protected void deactivate() {
 		httpService.unregister(SERVLET_ALIAS);
 	}
 
