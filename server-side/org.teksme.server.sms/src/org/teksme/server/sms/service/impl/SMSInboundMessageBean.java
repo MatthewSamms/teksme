@@ -37,12 +37,6 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-/**
- * Session Bean implementation class SMSReceiver
- */
-//@Local({ SMSInboundMessageLocal.class })
-//@Remote({ SMSInboundMessage.class })
-//@Stateless(name = "SMSInboundMessage", mappedName = SMSInboundMessage.JNDI_NAME)
 public class SMSInboundMessageBean implements SMSInboundMessage{
 
 	private Logger logger = Logger.getLogger(SMSInboundMessageBean.class
@@ -138,19 +132,19 @@ public class SMSInboundMessageBean implements SMSInboundMessage{
 
 		InboundTextMessage inboundMsg = factory.createInboundTextMessage();
 
-		inboundMsg.setMoMsgId(moMsgId);
-		inboundMsg.setOriginator(from);
-		inboundMsg.setTo(to);
-		inboundMsg.setTimestamp(new Date());
-
-		TextMessage textMsg = factory.createTextMessage();
-		textMsg.setText(text);
-
-		inboundMsg.setTextMessage(textMsg);
-
-		inboundMsg.setEncoding(charset);
-
-		inboundMsg.setUdh(udh);
+//		inboundMsg.setMoMsgId(moMsgId);
+//		inboundMsg.setOriginator(from);
+//		inboundMsg.setTo(to);
+//		inboundMsg.setTimestamp(new Date());
+//
+//		TextMessage textMsg = factory.createTextMessage();
+//		textMsg.setText(text);
+//
+//		inboundMsg.setTextMessage(textMsg);
+//
+//		inboundMsg.setEncoding(charset);
+//
+//		inboundMsg.setUdh(udh);
 
 		return inboundMsg;
 

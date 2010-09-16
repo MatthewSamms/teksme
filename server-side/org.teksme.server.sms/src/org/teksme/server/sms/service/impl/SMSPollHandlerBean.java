@@ -27,9 +27,9 @@ import org.teksme.server.sms.service.SMSPollHandler;
  * Session Bean implementation class CreatePollBean
  */
 
-//@Local({ SMSPollHandlerBeanLocal.class })
-//@Remote({ SMSPollHandler.class })
-//@Stateless(name = "CreatePoll", mappedName = SMSPollHandler.JNDI_NAME)
+// @Local({ SMSPollHandlerBeanLocal.class })
+// @Remote({ SMSPollHandler.class })
+// @Stateless(name = "CreatePoll", mappedName = SMSPollHandler.JNDI_NAME)
 public class SMSPollHandlerBean implements SMSPollHandler {
 
 	Logger logger = Logger.getLogger(SMSPollHandlerBean.class.getName());
@@ -45,7 +45,7 @@ public class SMSPollHandlerBean implements SMSPollHandler {
 		// TODO Auto-generated constructor stub
 	}
 
-//	@PostConstruct
+	// @PostConstruct
 	public static void setResourceSet() {
 		TeksPackageImpl.init();
 	}

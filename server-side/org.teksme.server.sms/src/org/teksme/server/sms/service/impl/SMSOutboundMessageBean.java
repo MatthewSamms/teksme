@@ -31,9 +31,6 @@ import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 import org.teksme.server.common.TeksModelHelper;
 import org.teksme.server.sms.service.SMSOutboundMessage;
 
-//@Local({ SMSOutboundMessageLocal.class })
-//@Remote({ SMSOutboundMessage.class })
-//@Stateless(name = "SMSOutboundMessage", mappedName = SMSOutboundMessage.JNDI_NAME)
 public class SMSOutboundMessageBean implements SMSOutboundMessage {
 
 	private Logger logger = Logger.getLogger(SMSOutboundMessageBean.class.getName());
@@ -58,11 +55,12 @@ public class SMSOutboundMessageBean implements SMSOutboundMessage {
 
 	public void sendMessage(OutboundTextMessage message) throws Exception {
 
-//		OutboundMessage msg = new OutboundMessage(message.getRecipient(0), message.getTextMessage().getText());
-//
-//		TeksSMSGateway.getInstance().sendMessage(msg);
-//
-//		logger.info(msg.toString());
+		// OutboundMessage msg = new OutboundMessage(message.getRecipient(0),
+		// message.getTextMessage().getText());
+		//
+		// TeksSMSGateway.getInstance().sendMessage(msg);
+		//
+		// logger.info(msg.toString());
 
 	}
 
@@ -80,12 +78,11 @@ public class SMSOutboundMessageBean implements SMSOutboundMessage {
 		OutboundTextMessage outMsg = teksObj.getOutboundMessage(0);
 		outMsg.setId(UUID.randomUUID().toString());
 
-		logger.info(outMsg.getTextMessage().getText());
+		logger.info(outMsg.getMessage().getText());
 
 		return teksObj;
 
 	}
-
 
 	public void persistOutboundMessage(Teks teksObj) throws IOException {
 
