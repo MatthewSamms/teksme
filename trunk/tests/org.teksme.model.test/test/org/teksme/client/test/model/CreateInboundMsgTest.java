@@ -84,19 +84,19 @@ public class CreateInboundMsgTest {
 
 		InboundTextMessage inboundMsg = factory.createInboundTextMessage();
 
-		inboundMsg.setMoMsgId(moMsgId);
-		inboundMsg.setOriginator(from);
-		inboundMsg.setTo(to);
-		inboundMsg.setTimestamp(new Date());
-
-		TextMessage textMsg = factory.createTextMessage();
-		textMsg.setText(text);
-
-		inboundMsg.setTextMessage(textMsg);
-
-		inboundMsg.setEncoding(charset);
-
-		inboundMsg.setUdh(udh);
+//		inboundMsg.setMoMsgId(moMsgId);
+//		inboundMsg.setOriginator(from);
+//		inboundMsg.setTo(to);
+//		inboundMsg.setTimestamp(new Date());
+//
+//		TextMessage textMsg = factory.createTextMessage();
+//		textMsg.setText(text);
+//
+//		inboundMsg.setTextMessage(textMsg);
+//
+//		inboundMsg.setEncoding(charset);
+//
+//		inboundMsg.setUdh(udh);
 
 	}
 
