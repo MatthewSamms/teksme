@@ -34,25 +34,18 @@ import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
-import org.teksme.server.jms.queues.JMSMsgQueueSender;
 import org.teksme.server.sms.service.SMSOutboundMessage;
 
 @SuppressWarnings("serial")
 public class SendMessageServlet extends HttpServlet {
 
-	private static final String FROM = "+1202172638716";
-
 	private static String message = "Error during Servlet processing";
-
-	// @EJB(mappedName = JMSMsgQueueSender.JNDI_NAME)
-	private JMSMsgQueueSender outboundMsgQueueSender;
-
-	// @EJB(mappedName = SMSOutboundMessage.JNDI_NAME)
-	private SMSOutboundMessage outboundMsg;
 
 	public SendMessageServlet() {
 		super();
 	}
+
+	private SMSOutboundMessage outboundMsg;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
@@ -67,6 +60,7 @@ public class SendMessageServlet extends HttpServlet {
 		String apiId = request.getParameter("api_id");
 		String to = request.getParameter("to");
 		String text = request.getParameter("text");
+		String from = request.getParameter("from");
 
 		System.out.println("Developer #ID: " + devId);
 
@@ -84,19 +78,18 @@ public class SendMessageServlet extends HttpServlet {
 
 		OutboundTextMessage outMsg = factory.createOutboundTextMessage();
 		outMsg.setCommunicationChannel(new ChannelKind[] { ChannelKind.SMS });
-		outMsg.setFrom(FROM);
+		outMsg.setFrom(0, from);
 		outMsg.setRecipient(new String[] { to });
-		outMsg.setStatusReport(false);
 		outMsg.setTimestamp(new Date());
 
 		TextMessage textMsg = factory.createTextMessage();
 		textMsg.setText(text);
 
-		outMsg.setTextMessage(textMsg);
+		outMsg.setMessage(textMsg);
 		outMsg.setTeksRef(teksModel);
 		teksModel.setOutboundMessage(0, outMsg);
 
-		outboundMsgQueueSender.send(outMsg);
+		// outboundMsgQueueSender.send(outMsg);
 
 	}
 
@@ -126,8 +119,6 @@ public class SendMessageServlet extends HttpServlet {
 			Teks teksModel = outboundMsg.createOutboundMsgModelFromXml(xmlBuff
 					.toString());
 
-			outboundMsg.persistOutboundMessage(teksModel);
-
 			if (!gotNessage) {
 				outStream.println("Got no message");
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -135,6 +126,12 @@ public class SendMessageServlet extends HttpServlet {
 				response.getWriter().close();
 				return;
 			}
+
+			OutboundTextMessage outMsg = teksModel.getOutboundMessage(0);
+
+			// outboundMsgQueueSender.send(outMsg);
+
+			outboundMsg.persistOutboundMessage(teksModel);
 
 			outStream
 					.println("getContentLength: " + request.getContentLength());
