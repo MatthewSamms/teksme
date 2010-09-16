@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="ASCII"?>
 <teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks" appId="128552450490126">
-  <userProfile id="56f3d45cb6f14af22fee33245bf53b8e"/>
-  <outboundMessage timestamp="2010-07-09T00:45:14.816-0400" from="+1202172638716">
+  <developer id="56f3d45cb6f14af22fee33245bf53b8e"/>
+  <outboundMessage timestamp="2010-09-16T01:20:47.280-0400" smsGateway="MOVISTAR_PERU" retryCount="2">
     <communicationChannel>SMS</communicationChannel>
     <communicationChannel>Twitter</communicationChannel>
     <communicationChannel>Email</communicationChannel>
-    <textMessage text="Hello from TeksMe!"/>
+    <message text="Hello from TeksMe!"/>
     <recipient>+12028125643</recipient>
+    <from>1202172638716</from>
+    <deliveryDelayTime>10</deliveryDelayTime>
+    <validityTimeframe>11</validityTimeframe>
+    <clientMsgId>889dd1aa-8301-4ee1-acf7-268af58b198b</clientMsgId>
+    <deliveryQueuePriority>1</deliveryQueuePriority>
+    <deliveryAck>true</deliveryAck>
+    <callbackCode>1</callbackCode>
+    <concatenated>1</concatenated>
+    <deliveryScheduledTime>2010-09-16T01:20:47.492-0400</deliveryScheduledTime>
   </outboundMessage>
 </teks:Teks>

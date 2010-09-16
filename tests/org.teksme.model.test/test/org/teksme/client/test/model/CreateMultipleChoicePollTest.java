@@ -67,7 +67,7 @@ public class CreateMultipleChoicePollTest extends TeksModelTest {
 		firstAnswer.setText("magazines and radio");
 		firstAnswer.setKeyword(key);
 		firstAnswer.setQuestionRef(question);
-		firstAnswer.setId("12398719");
+		//firstAnswer.setId("12398719");
 		
 		key = factory.createKeyword();
 		key.setAutoKeyword(false);
@@ -77,7 +77,7 @@ public class CreateMultipleChoicePollTest extends TeksModelTest {
 		secondAnswer.setText("radio and newspapers");
 		secondAnswer.setKeyword(key);
 		secondAnswer.setQuestionRef(question);
-		secondAnswer.setId("12568719");
+		//secondAnswer.setId("12568719");
 
 		key = factory.createKeyword();
 		key.setAutoKeyword(false);
@@ -87,7 +87,7 @@ public class CreateMultipleChoicePollTest extends TeksModelTest {
 		thirdAnswer.setText("newspapers and radio");
 		thirdAnswer.setKeyword(key);
 		thirdAnswer.setQuestionRef(question);
-		thirdAnswer.setId("12568979");
+		//thirdAnswer.setId("12568979");
 
 		key = factory.createKeyword();
 		key.setAutoKeyword(false);
@@ -97,7 +97,7 @@ public class CreateMultipleChoicePollTest extends TeksModelTest {
 		fourthAnswer.setText("newspapers and television");
 		fourthAnswer.setKeyword(key);
 		fourthAnswer.setQuestionRef(question);
-		fourthAnswer.setId("45668979");
+		//fourthAnswer.setId("45668979");
 
 		question.setAnswer(0, firstAnswer);
 		question.setAnswer(1, secondAnswer);
