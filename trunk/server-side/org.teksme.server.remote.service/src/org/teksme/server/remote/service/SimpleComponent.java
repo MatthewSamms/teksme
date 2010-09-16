@@ -18,7 +18,6 @@ public class SimpleComponent {
 	public void setHttpService(HttpService httpService) {
 		this.httpService = httpService;
 	}
-
 	private SMSOutboundMessage outboundMsg;
 
 	// Method will be used by DS to set the quote service
