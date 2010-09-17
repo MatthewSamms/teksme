@@ -49,7 +49,7 @@ public class SendMessageServlet extends HttpServlet {
 		outboundMsg = outMsg;
 	}
 
-	private static SMSOutboundMessage outboundMsg;
+	private SMSOutboundMessage outboundMsg;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
