@@ -45,6 +45,10 @@ public class SendMessageServlet extends HttpServlet {
 		super();
 	}
 
+	public void registerRequiredService(SMSOutboundMessage outboundMsg) {
+		this.outboundMsg = outboundMsg;
+	}
+
 	private SMSOutboundMessage outboundMsg;
 
 	protected void doGet(HttpServletRequest request,
@@ -129,7 +133,7 @@ public class SendMessageServlet extends HttpServlet {
 
 			OutboundTextMessage outMsg = teksModel.getOutboundMessage(0);
 
-			// outboundMsgQueueSender.send(outMsg);
+			//outboundMsgQueueSender.send(outMsg);
 
 			outboundMsg.persistOutboundMessage(teksModel);
 
