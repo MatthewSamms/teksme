@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TeksMe Digicel SMS Gateway Plugin
+Bundle-SymbolicName: org.teksme.server.sms.digicel
+Bundle-Version: 0.5.0
+Bundle-Vendor: TeksMe Inc.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Require-Bundle: org.smslib;bundle-version="3.4.6"
+Export-Package: org.teksme.server.sms.digicel
