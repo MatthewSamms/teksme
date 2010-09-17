@@ -45,11 +45,11 @@ public class SendMessageServlet extends HttpServlet {
 		super();
 	}
 
-	public void registerRequiredService(SMSOutboundMessage outboundMsg) {
-		this.outboundMsg = outboundMsg;
+	public void setOutMsgService(final SMSOutboundMessage outMsg) {
+		outboundMsg = outMsg;
 	}
 
-	private SMSOutboundMessage outboundMsg;
+	private static SMSOutboundMessage outboundMsg;
 
 	protected void doGet(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
