@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: TeksMe SMS Modem Gateway Plugin
+Bundle-SymbolicName: org.teksme.server.sms.modem
+Bundle-Version: 0.5.0
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: TeksMe Inc.
+Require-Bundle: org.smslib;bundle-version="3.4.6"
