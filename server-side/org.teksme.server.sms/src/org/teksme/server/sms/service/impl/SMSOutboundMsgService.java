@@ -31,15 +31,15 @@ import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 import org.teksme.server.common.TeksModelHelper;
 import org.teksme.server.sms.service.SMSOutboundMessage;
 
-public class SMSOutboundMessageBean implements SMSOutboundMessage {
+public class SMSOutboundMsgService implements SMSOutboundMessage {
 
-	private Logger logger = Logger.getLogger(SMSOutboundMessageBean.class.getName());
+	private Logger logger = Logger.getLogger(SMSOutboundMsgService.class.getName());
 
 	private static final String MODEL_FILE = "/Users/fabianocruz/teks_outmsg.xml";
 
 	private static ResourceSet resourceSet = null;
 
-	public SMSOutboundMessageBean() {
+	public SMSOutboundMsgService() {
 	}
 
 	// @PostConstruct

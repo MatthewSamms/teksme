@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.teksme.server.sms">
-   <implementation class="org.teksme.server.sms.Component"/>
+   <implementation class="org.teksme.server.sms.service.impl.SMSOutboundMsgService"/>
    <service>
       <provide interface="org.teksme.server.sms.service.SMSOutboundMessage"/>
    </service>
