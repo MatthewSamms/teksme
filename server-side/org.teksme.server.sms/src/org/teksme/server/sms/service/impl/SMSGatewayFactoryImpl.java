@@ -29,7 +29,6 @@ import org.smslib.http.BulkSmsHTTPGateway;
 import org.smslib.http.ClickatellHTTPGateway;
 import org.smslib.modem.SerialModemGateway;
 import org.teksme.server.sms.Configuration;
-import org.teksme.server.sms.digicel.DigicelHTTPGateway;
 import org.teksme.server.sms.modem.CallNotification;
 import org.teksme.server.sms.modem.GatewayStatusNotification;
 import org.teksme.server.sms.modem.InboundNotification;
@@ -169,18 +168,10 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 		}
 	}
 
-
 	public BulkSmsHTTPGateway createBulkSmsHTTPGateway() {
 		// BulkSmsHTTPGateway bulkSmsHTTPGateway = new BulkSmsHTTPGateway();
 		return null;
 	}
-
-
-	public DigicelHTTPGateway createDigicelHTTPGateway() {
-		// BulkSmsHTTPGateway bulkSmsHTTPGateway = new BulkSmsHTTPGateway();
-		return null;
-	}
-
 
 	public ClickatellHTTPGateway createClickatellHTTPGateway() {
 		ClickatellHTTPGateway clickatellGateway = (ClickatellHTTPGateway) registry.get(ClickatellHTTPGateway.class.getSimpleName());
@@ -245,7 +236,7 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 		case CLICKATELL_HTTP_GATEWAY:
 			return createClickatellHTTPGateway();
 		case DIGICEL_HTTP_GATEWAY:
-			return createDigicelHTTPGateway();
+			// return createDigicelHTTPGateway();
 		default:
 			throw new IllegalArgumentException("The class '" + smsGateway.getName() + "' is not a valid classifier");
 		}

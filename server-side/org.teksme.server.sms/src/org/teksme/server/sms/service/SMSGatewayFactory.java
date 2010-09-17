@@ -22,7 +22,6 @@ import org.smslib.TimeoutException;
 import org.smslib.http.BulkSmsHTTPGateway;
 import org.smslib.http.ClickatellHTTPGateway;
 import org.smslib.modem.SerialModemGateway;
-import org.teksme.server.sms.digicel.DigicelHTTPGateway;
 import org.teksme.server.sms.service.impl.SMSGatewayFactoryImpl;
 
 public interface SMSGatewayFactory {
@@ -35,7 +34,7 @@ public interface SMSGatewayFactory {
 
 	ClickatellHTTPGateway createClickatellHTTPGateway();
 
-	DigicelHTTPGateway createDigicelHTTPGateway();
+	// DigicelHTTPGateway createDigicelHTTPGateway();
 
 	SMSGatewayKind getDefaultSMSGatewayClazz();
 

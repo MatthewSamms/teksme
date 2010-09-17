@@ -43,7 +43,7 @@ public class SMSOutboundMsgService implements SMSOutboundMessage {
 	}
 
 	// @PostConstruct
-	public static void setResourceSet() {
+	public void setResourceSet() {
 		// create resource set and resource
 		resourceSet = new ResourceSetImpl();
 
@@ -67,6 +67,8 @@ public class SMSOutboundMsgService implements SMSOutboundMessage {
 	public Teks createOutboundMsgModelFromXml(String xmlInput) throws IOException {
 
 		logger.info("XML: " + xmlInput);
+
+		this.setResourceSet();
 
 		InputStream is = new ByteArrayInputStream(xmlInput.getBytes("ASCII"));
 
