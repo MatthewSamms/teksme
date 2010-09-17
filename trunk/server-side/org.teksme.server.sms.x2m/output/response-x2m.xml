@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<methodResponse>
+	<params>
+		<param>
+			<value>
+				<array>
+					<data>
+						<value>0</value>
+						<value>OK</value>
+					</data>
+				</array>
+			</value>
+		</param>
+	</params>
+</methodResponse>
