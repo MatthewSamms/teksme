@@ -5,47 +5,39 @@ import javax.servlet.ServletException;
 import org.osgi.service.http.HttpService;
 import org.osgi.service.http.NamespaceException;
 import org.teksme.server.remote.service.http.SendMessageServlet;
-import org.teksme.server.remote.service.http.SimpleServlet;
 import org.teksme.server.sms.service.SMSOutboundMessage;
 
-public class SimpleComponent {
+public class WebComponent {
 
-	private static final String SERVLET_ALIAS = "/hellods";
 	private static final String SEND_MSG_SERVLET_ALIAS = "/sendmsg";
 
 	private SMSOutboundMessage outboundMsg;
 	private HttpService httpService;
 
-	public void bind(HttpService httpService) {
+	public synchronized void bind(HttpService httpService) {
 		this.httpService = httpService;
 	}
-	
-	public void bind(SMSOutboundMessage outboundMsg) {
+
+	public synchronized void bind(SMSOutboundMessage outboundMsg) {
 		this.outboundMsg = outboundMsg;
 
 	}
-	
-	public void unbind(HttpService httpService) {
+
+	public synchronized void unbind(HttpService httpService) {
 		this.httpService = null;
 	}
-	
-	public void unbind(SMSOutboundMessage outboundMsg) {
+
+	public synchronized void unbind(SMSOutboundMessage outboundMsg) {
 		this.outboundMsg = null;
 
 	}
 
-
-	// Method will be used by DS to set the quote service
-	public synchronized void setOutMessage(SMSOutboundMessage outboundMsg) {
-	}
-
 	protected void activate() {
 		try {
-			System.out.println("Staring up sevlet at " + SERVLET_ALIAS);
-			SimpleServlet servlet = new SimpleServlet();
-			httpService.registerServlet(SERVLET_ALIAS, servlet, null, null);
-			System.out.println("Staring up sevlet at " + SERVLET_ALIAS);
+			System.out
+					.println("Staring up sevlet at " + SEND_MSG_SERVLET_ALIAS);
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
+			sendMsgServlet.registerRequiredService(outboundMsg);
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet,
 					null, null);
 
@@ -57,7 +49,7 @@ public class SimpleComponent {
 	}
 
 	protected void deactivate() {
-		httpService.unregister(SERVLET_ALIAS);
+		httpService.unregister(SEND_MSG_SERVLET_ALIAS);
 	}
 
 }
