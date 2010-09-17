@@ -1,10 +1,10 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: %pluginName
+Bundle-Name: TeksMe Open Model Plugin
 Bundle-SymbolicName: org.teksme.model;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 0.5.0
 Bundle-ClassPath: .
-Bundle-Vendor: %providerName
+Bundle-Vendor: TeksMe Inc.
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: org.teksme.model.teks,
  org.teksme.model.teks.impl,
