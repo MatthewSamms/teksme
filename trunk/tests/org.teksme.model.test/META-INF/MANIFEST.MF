@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Test
+Bundle-Name: TeksMe Test Plugin
 Bundle-SymbolicName: org.teksme.model.test;singleton:=true
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 0.5.0
 Bundle-ClassPath: test.jar,
  lib/org.eclipse.emf.common_2.5.0.v200906151043.jar,
  lib/org.eclipse.emf.ecore_2.5.0.v200906151043.jar,
@@ -17,5 +17,6 @@ Require-Bundle: org.eclipse.core.runtime,
  org.dom4j,
  org.hsqldb,
  com.mysql.jdbc,
- org.teksme.model;bundle-version="1.0.0"
+ org.teksme.model;bundle-version="0.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-Vendor: TeksMe Inc.
