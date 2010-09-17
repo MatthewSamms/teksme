@@ -14,20 +14,20 @@ public class WebComponent {
 	private SMSOutboundMessage outboundMsg;
 	private HttpService httpService;
 
-	public synchronized void bind(HttpService httpService) {
+	public void bind(HttpService httpService) {
 		this.httpService = httpService;
 	}
 
-	public synchronized void bind(SMSOutboundMessage outboundMsg) {
-		this.outboundMsg = outboundMsg;
-
+	public void bind(SMSOutboundMessage outMsg) {
+		this.outboundMsg = outMsg;
+		System.out.println("Binding outboundMsg service: "+outboundMsg);
 	}
 
-	public synchronized void unbind(HttpService httpService) {
+	public void unbind(HttpService httpService) {
 		this.httpService = null;
 	}
 
-	public synchronized void unbind(SMSOutboundMessage outboundMsg) {
+	public void unbind(SMSOutboundMessage outboundMsg) {
 		this.outboundMsg = null;
 
 	}
@@ -37,7 +37,7 @@ public class WebComponent {
 			System.out
 					.println("Staring up sevlet at " + SEND_MSG_SERVLET_ALIAS);
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
-			sendMsgServlet.registerRequiredService(outboundMsg);
+			sendMsgServlet.setOutMsgService(outboundMsg);
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet,
 					null, null);
 
