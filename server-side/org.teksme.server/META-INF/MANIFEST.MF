@@ -10,6 +10,12 @@ Import-Package: org.osgi.framework;version="1.3.0",
  org.teksme.model.teks,
  org.teksme.model.teks.util
 Require-Bundle: org.teksme.server.common;bundle-version="0.5.0",
+ org.eclipse.core.runtime,
+ org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2",
+ org.hibernate;bundle-version="3.3.2",
+ org.eclipse.emf.ecore.change,
+ org.teksme.model;bundle-version="0.5.0",
  org.eclipse.emf.ecore;bundle-version="2.6.0",
  org.teksme.server.sms;bundle-version="0.5.0"
 Export-Package: org.teksme.server.jms.queues

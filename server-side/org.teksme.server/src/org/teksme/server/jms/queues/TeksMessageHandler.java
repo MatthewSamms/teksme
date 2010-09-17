@@ -68,7 +68,6 @@ public abstract class TeksMessageHandler{//<T> implements MessageListener {
 //		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void invokeConsume(final Object obj) {
 		//consume((T) obj);
 	}
