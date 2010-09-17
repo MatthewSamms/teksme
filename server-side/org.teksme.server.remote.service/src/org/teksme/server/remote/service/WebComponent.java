@@ -1,5 +1,7 @@
 package org.teksme.server.remote.service;
 
+import java.util.logging.Logger;
+
 import javax.servlet.ServletException;
 
 import org.osgi.service.http.HttpService;
@@ -11,6 +13,9 @@ public class WebComponent {
 
 	private static final String SEND_MSG_SERVLET_ALIAS = "/sendmsg";
 
+	private static Logger logger = Logger.getLogger(WebComponent.class
+			.getName());
+
 	private SMSOutboundMessage outboundMsg;
 	private HttpService httpService;
 
@@ -20,7 +25,6 @@ public class WebComponent {
 
 	public void bind(SMSOutboundMessage outMsg) {
 		this.outboundMsg = outMsg;
-		System.out.println("Binding outboundMsg service: "+outboundMsg);
 	}
 
 	public void unbind(HttpService httpService) {
@@ -34,8 +38,7 @@ public class WebComponent {
 
 	protected void activate() {
 		try {
-			System.out
-					.println("Staring up sevlet at " + SEND_MSG_SERVLET_ALIAS);
+			logger.info("Starting up sevlet at " + SEND_MSG_SERVLET_ALIAS);
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
 			sendMsgServlet.setOutMsgService(outboundMsg);
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet,
