@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import org.teksme.model.teks.Poll;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.impl.TeksPackageImpl;
-import org.teksme.server.common.TeksModelHelper;
+import org.teksme.server.common.helper.TeksModelHelper;
 import org.teksme.server.sms.service.SMSPollHandler;
 
 /**
