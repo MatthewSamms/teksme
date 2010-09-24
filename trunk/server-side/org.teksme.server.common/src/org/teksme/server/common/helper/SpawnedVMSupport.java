@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.common;
+package org.teksme.server.common.helper;
 
 import java.io.BufferedReader;
 import java.io.File;
