@@ -28,7 +28,7 @@ import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
-import org.teksme.server.common.TeksModelHelper;
+import org.teksme.server.common.helper.TeksModelHelper;
 import org.teksme.server.sms.service.SMSOutboundMessage;
 
 public class SMSOutboundMsgService implements SMSOutboundMessage {
