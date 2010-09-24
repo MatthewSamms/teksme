@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="activate" deactivate="deactivate" name="org.teksme.server">
+   <implementation class="org.teksme.server.jms.queues.impl.JMSMsgQueueSenderBean"/>
+   <service>
+      <provide interface="org.teksme.server.jms.queues.JMSMsgQueueSender"/>
+   </service>
+</scr:component>
