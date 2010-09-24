@@ -13,8 +13,6 @@
 
 package org.teksme.server.jms.queues.impl;
 
-import org.teksme.model.teks.Message;
-import org.teksme.server.jms.queues.TeksMessageHandler;
 
 /*
  @MessageDriven(name = "MailQueueHandler", activationConfig = {
@@ -32,7 +30,7 @@ import org.teksme.server.jms.queues.TeksMessageHandler;
  @TransactionAttribute(value = TransactionAttributeType.REQUIRED)
  @ResourceAdapter("mail-ra.rar")
  */
-public class MailQueueHandlerBean extends TeksMessageHandler {
+public class MailQueueHandlerBean {//extends TeksMessageHandler {
 
 //	@Resource(mappedName = "java:/TransactionManager")
 //	private TransactionManager tm;
