@@ -17,6 +17,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.logging.Logger;
 
 import org.teksme.model.teks.Message;
+import org.teksme.server.jms.queues.DeadLetterHandler;
 
 public abstract class TeksMessageHandler{//<T> implements MessageListener {
 
