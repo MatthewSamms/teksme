@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.teksme.model.teks.InboundTextMessage;
+import org.teksme.server.queue.sender.JMSMsgQueueSender;
+import org.teksme.server.sms.service.SMSInboundMessage;
 import org.xml.sax.SAXException;
 
 /**
@@ -26,11 +28,10 @@ public class ClickatellCallbackServlet extends HttpServlet {
 
 	private static String message = "Error during Servlet processing";
 
-//	@EJB(mappedName = SMSInboundMessage.JNDI_NAME)
-//	private SMSInboundMessage smsInboundMessage;
-
-	// @EJB(mappedName = JMSMsgQueueSender.JNDI_NAME)
-	// private JMSMsgQueueSender outboundMsgQueueSender;
+	// TODO Inject the service
+	SMSInboundMessage smsInboundMessage;
+	// TODO Inject the service
+	JMSMsgQueueSender outboundMsgQueueSender;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -44,8 +45,7 @@ public class ClickatellCallbackServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -53,12 +53,10 @@ public class ClickatellCallbackServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(
-					request.getInputStream()));
+			BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 
 			final ServletOutputStream outStream = response.getOutputStream();
 
@@ -89,17 +87,15 @@ public class ClickatellCallbackServlet extends HttpServlet {
 			logger.info("getContentLength: " + request.getContentLength());
 			logger.info("getContentType: " + request.getContentType());
 
-//			InboundTextMessage inboundMsg = smsInboundMessage
-//					.createInboundMsgModelFromXml(xmlBuff.toString());
-//
-//			logger.info("MO: "+inboundMsg.getOriginator());
-//			
-//			outboundMsgQueueSender.send(inboundMsg);
-			
+			InboundTextMessage inboundMsg = smsInboundMessage.createInboundMsgModelFromXml(xmlBuff.toString());
+
+			logger.info("MO: " + inboundMsg.getOriginator());
+
+			outboundMsgQueueSender.send(inboundMsg);
+
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);
-			OutputStreamWriter writer = new OutputStreamWriter(
-					response.getOutputStream());
+			OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
 			writer.write("Result");
 			writer.flush();
 			writer.close();
@@ -111,14 +107,13 @@ public class ClickatellCallbackServlet extends HttpServlet {
 				response.getWriter().close();
 			} catch (IOException ioe) {
 			}
-		} 
-//		catch (SAXException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (ParserConfigurationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 
