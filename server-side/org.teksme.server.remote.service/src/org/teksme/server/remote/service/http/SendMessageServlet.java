@@ -49,16 +49,15 @@ public class SendMessageServlet extends HttpServlet {
 		outboundMsg = outMsg;
 	}
 
+	// TODO Inject the service
 	private SMSOutboundMessage outboundMsg;
 
-	protected void doGet(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		execute(request, response);
 	}
 
-	private void execute(HttpServletRequest request,
-			HttpServletResponse response) {
+	private void execute(HttpServletRequest request, HttpServletResponse response) {
 
 		String devId = request.getParameter("dev_id");
 		String apiId = request.getParameter("api_id");
@@ -101,12 +100,10 @@ public class SendMessageServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
 			final ServletInputStream in = request.getInputStream();
-			final BufferedReader reader = new BufferedReader(
-					new InputStreamReader(in));
+			final BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			final ServletOutputStream outStream = response.getOutputStream();
 			outStream.println("OK, got you");
 			String inXMLString = null;
@@ -120,8 +117,7 @@ public class SendMessageServlet extends HttpServlet {
 			}
 			reader.close();
 			// logger.info("XML Buff: " + xmlBuff.toString());
-			Teks teksModel = outboundMsg.createOutboundMsgModelFromXml(xmlBuff
-					.toString());
+			Teks teksModel = outboundMsg.createOutboundMsgModelFromXml(xmlBuff.toString());
 
 			if (!gotNessage) {
 				outStream.println("Got no message");
@@ -133,18 +129,16 @@ public class SendMessageServlet extends HttpServlet {
 
 			OutboundTextMessage outMsg = teksModel.getOutboundMessage(0);
 
-			//outboundMsgQueueSender.send(outMsg);
+			// outboundMsgQueueSender.send(outMsg);
 
 			outboundMsg.persistOutboundMessage(teksModel);
 
-			outStream
-					.println("getContentLength: " + request.getContentLength());
+			outStream.println("getContentLength: " + request.getContentLength());
 			outStream.println("getContentType: " + request.getContentType());
 
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);
-			OutputStreamWriter writer = new OutputStreamWriter(
-					response.getOutputStream());
+			OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
 
 			writer.write(xmlBuff.toString());
 			writer.flush();
