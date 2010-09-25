@@ -1,0 +1,13 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Client
+Bundle-SymbolicName: com.rabbitmq.client
+Bundle-Version: 1.5.0.beta
+Bundle-Vendor: RabbitMQ
+Export-Package: com.rabbitmq.client,
+ com.rabbitmq.client.impl,
+ com.rabbitmq.tools,
+ com.rabbitmq.tools.json,
+ com.rabbitmq.tools.jsonrpc,
+ com.rabbitmq.utility
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
