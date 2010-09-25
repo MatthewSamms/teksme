@@ -18,7 +18,7 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.service.cm.ManagedServiceFactory;
-import org.teksme.server.common.jms.connection.ConnectionServiceFactory;
+import org.teksme.server.common.jms.ConnectionServiceFactory;
 
 /**
  * 

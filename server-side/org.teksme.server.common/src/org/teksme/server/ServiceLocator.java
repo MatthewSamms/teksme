@@ -34,10 +34,6 @@ public class ServiceLocator {
 
 	private Map<String, Object> cache;
 
-	private static Properties dbProps = new Properties();
-
-	private static final String DB_NAME = "teksme";
-
 	private static ServiceLocator me;
 
 	// Returns the instance of ServiceLocator class
@@ -85,18 +81,6 @@ public class ServiceLocator {
 
 			//this.initialContext = getInitialContext();
 			this.cache = Collections.synchronizedMap(new HashMap<String, Object>());
-
-			dbProps.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
-			dbProps.setProperty(Environment.USER, "teksmeuser");
-			dbProps.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:8889/" + DB_NAME);
-			dbProps.setProperty(Environment.PASS, "teks");
-			dbProps.setProperty(Environment.DIALECT, org.hibernate.dialect.MySQLInnoDBDialect.class.getName());
-
-			// set a specific option
-			// see this page
-			// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
-			// for all the available options
-			dbProps.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, "REFRESH,PERSIST,MERGE");
 
 //		} catch (NamingException ex) {
 //			System.err.printf("Error in CTX looking up %s because of %s while %s", ex.getRemainingName(), ex.getCause(),
@@ -165,13 +149,5 @@ public class ServiceLocator {
 	// return queue;
 	// }
 	//
-	public HbDataStore getHbDataStore() {
-		HbDataStore dataStore = (HbDataStore) HbHelper.INSTANCE.createRegisterDataStore(DB_NAME);
-
-		// set the properties
-		dataStore.setProperties(dbProps);
-
-		return dataStore;
-	}
 
 }
