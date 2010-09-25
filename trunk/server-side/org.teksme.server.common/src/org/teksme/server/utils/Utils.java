@@ -26,7 +26,7 @@ public final class Utils {
 		return INSTANCE;
 	}
 
-	public String convertXMLFileToString(String fileName) {
+	public static String convertXMLFileToString(String fileName) {
 		try {
 			DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory
 					.newInstance();

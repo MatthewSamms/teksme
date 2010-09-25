@@ -10,7 +10,7 @@
  * implied.  See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package org.teksme.server.common.jms.connection;
+package org.teksme.server.common.jms;
 
 import java.io.IOException;
 import java.util.Dictionary;
@@ -22,7 +22,6 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.cm.ManagedServiceFactory;
-import org.teksme.server.common.jms.PropertiesMQ;
 
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
