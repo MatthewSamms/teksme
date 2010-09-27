@@ -10,7 +10,7 @@
  * implied.  See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package org.teksme.server.common.jms;
+package org.teksme.server.common.messaging;
 
 import java.io.IOException;
 import java.util.Dictionary;
@@ -24,46 +24,39 @@ import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.cm.ManagedServiceFactory;
 
 import com.rabbitmq.client.Connection;
-import com.rabbitmq.client.ConnectionFactory;
-import com.rabbitmq.client.ConnectionParameters;
 
 /**
  * 
  * @since 0.5
- *
+ * 
  */
-public class ConnectionServiceFactory implements ManagedServiceFactory {
+public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
-	private final Map<String, PairMap<Connection, ServiceRegistration>> map = new HashMap<String, PairMap<Connection, ServiceRegistration>>();
+	private final Map<String, AMQPServiceRegistry<Connection, ServiceRegistration>> map = new HashMap<String, AMQPServiceRegistry<Connection, ServiceRegistration>>();
 	private final BundleContext context;
 
-	public void updated(String pid, Dictionary props) throws ConfigurationException {
+	public void updated(String pid, @SuppressWarnings("rawtypes") Dictionary props) throws ConfigurationException {
 
-		String host = PropertiesMQ.PROP_HOST;
-		String name= PropertiesMQ.PROP_NAME;
-		Integer portObj = PropertiesMQ.PROP_PORT;
-
-		ConnectionParameters params = new ConnectionParameters();
-		params.setUsername(PropertiesMQ.PROP_USERNAME);
-		params.setPassword(PropertiesMQ.PROP_PASSWORD);
-		params.setVirtualHost(PropertiesMQ.PROP_VIRTUAL_HOST);
-
-		PairMap<Connection, ServiceRegistration> connPair = null;
+		AMQPServiceRegistry<Connection, ServiceRegistration> connPair = null;
 		try {
-			ConnectionFactory connFactory = new ConnectionFactory(params);
-			Connection conn = connFactory.newConnection(host, portObj == null ? -1 : portObj.intValue());
+
+			String host = AMQPBrokerParameters.PROP_HOST;
+			String name = AMQPBrokerParameters.PROP_NAME;
 
 			Properties svcProps = new Properties();
-			svcProps.put(PropertiesMQ.CONNECTION_NAME, name);
-			svcProps.put(PropertiesMQ.CONNECTION_HOST, host);
+			svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, name);
+			svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, host);
+
+			Connection conn = new AMQPBrokerConnection().connect();
+
 			ServiceRegistration reg = context.registerService(Connection.class.getName(), conn, svcProps);
 
-			connPair = new PairMap<Connection, ServiceRegistration>(conn, reg);
+			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
 		} catch (IOException e) {
 			throw new ConfigurationException(null, "Error connecting to broker", e);
 		}
 
-		PairMap<Connection, ServiceRegistration> old = null;
+		AMQPServiceRegistry<Connection, ServiceRegistration> old = null;
 		synchronized (map) {
 			old = map.put(pid, connPair);
 		}
@@ -78,12 +71,12 @@ public class ConnectionServiceFactory implements ManagedServiceFactory {
 		}
 	}
 
-	public ConnectionServiceFactory(BundleContext context) {
+	public AMQPConnectionServiceFactory(BundleContext context) {
 		this.context = context;
 	}
 
 	public void deleted(String pid) {
-		PairMap<Connection, ServiceRegistration> pair = null;
+		AMQPServiceRegistry<Connection, ServiceRegistration> pair = null;
 		synchronized (map) {
 			pair = map.remove(pid);
 		}
