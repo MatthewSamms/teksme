@@ -18,7 +18,7 @@ import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.service.cm.ManagedServiceFactory;
-import org.teksme.server.common.jms.ConnectionServiceFactory;
+import org.teksme.server.common.messaging.AMQPConnectionServiceFactory;
 
 /**
  * 
@@ -47,7 +47,7 @@ public class Activator implements BundleActivator {
 		props.put(Constants.SERVICE_PID, "rabbitmq.connections");
 
 		//FIXME change to DS
-		context.registerService(ManagedServiceFactory.class.getName(), new ConnectionServiceFactory(context), props);
+		context.registerService(ManagedServiceFactory.class.getName(), new AMQPConnectionServiceFactory(context), props);
 	}
 
 	/*

@@ -10,13 +10,13 @@
  * implied.  See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package org.teksme.server.common.jms;
+package org.teksme.server.common.messaging;
 
-public class PairMap<A, B> {
+public class AMQPServiceRegistry<A, B> {
 	private final A fst;
 	private final B sender;
 
-	public PairMap(A fst, B snd) {
+	public AMQPServiceRegistry(A fst, B snd) {
 		this.fst = fst;
 		this.sender = snd;
 	}
@@ -44,7 +44,7 @@ public class PairMap<A, B> {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		PairMap<?,?> other = (PairMap<?,?>) obj;
+		AMQPServiceRegistry<?,?> other = (AMQPServiceRegistry<?,?>) obj;
 		if (fst == null) {
 			if (other.fst != null)
 				return false;

@@ -29,7 +29,7 @@ import org.teksme.server.common.TeksResourceBundle;
 import org.teksme.server.common.persistence.PersistenceException;
 import org.teksme.server.common.persistence.PersistenceManager;
 
-public class PersistenceManagerImpl implements PersistenceManager {
+public class HbPersistenceManagerImpl implements PersistenceManager {
 
 	private static final String DB_NAME = TeksResourceBundle.getString("datasource.name");
 
