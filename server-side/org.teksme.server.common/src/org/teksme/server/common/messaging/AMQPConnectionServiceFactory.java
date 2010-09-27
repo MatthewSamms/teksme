@@ -47,8 +47,12 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 			svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, name);
 			svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, host);
 
-			Connection conn = new AMQPBrokerConnection().connect();
+			AMQPBrokerManager msgBroker = new AMQPBrokerManager();
+			
+			Connection conn = msgBroker.connect();
 
+			msgBroker.declareQueueing(conn);
+			
 			ServiceRegistration reg = context.registerService(Connection.class.getName(), conn, svcProps);
 
 			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
@@ -91,7 +95,7 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 	}
 
 	public String getName() {
-		return "Channel Factory";
+		return "AMQP Connection Factory";
 	}
 
 }

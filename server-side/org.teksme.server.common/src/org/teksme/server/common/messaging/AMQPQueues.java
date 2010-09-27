@@ -17,18 +17,18 @@ import org.teksme.server.common.TeksResourceBundle;
 
 public final class AMQPQueues {
 
-	// public static final String OUTBOUND_QUEUE = "queue/outboundPrimaryQueue";
-
-	// public static final String INBOUND_QUEUE = "queue/inboundPrimaryQueue";
-
 	// public static final String DLQ = "/queue/DLQ";
 
-	public static final String QUEUE_NAME_INBOUND = TeksResourceBundle.getString("mq.queue.name.inbound");
+	public static final String INBOUND_QUEUE = TeksResourceBundle.getString("mq.queue.inbound");
 
-	public static final String QUEUE_NAME_OUTBOUND = TeksResourceBundle.getString("mq.queue.name.outbound");
+	public static final String INBOUND_SMS_ROUTING_KEY = TeksResourceBundle.getString("mq.queue.sms.inbound.routing.key");
 
-	public static final String EXCHANGE_NAME_INBOUND = TeksResourceBundle.getString("mq.queue.name.exchange.name.inbound");
+	public static final String OUTBOUND_QUEUE = TeksResourceBundle.getString("mq.queue.outbound");
 
-	public static final String EXCHANGE_NAME_OUTBOUND = TeksResourceBundle.getString("mq.queue.name.exchange.name.outbound");
+	public static final String OUTBOUND_SMS_ROUTING_KEY = TeksResourceBundle.getString("mq.queue.sms.outbound.routing.key");
+
+	public static final String INBOUND_EXCHANGE = TeksResourceBundle.getString("mq.queue.exchange.inbound");
+
+	public static final String OUTBOUND_EXCHANGE = TeksResourceBundle.getString("mq.queue.exchange.outbound");
 
 }

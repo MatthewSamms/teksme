@@ -18,7 +18,7 @@ import java.util.PropertyResourceBundle;
 import java.util.ResourceBundle;
 
 public class TeksResourceBundle {
-	private static final String BUNDLE_NAME = "org.teksme.server.common.ServerProps"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.teksme.server.common.teksme-server"; //$NON-NLS-1$
 
 	private static final ResourceBundle RESOURCE_BUNDLE = PropertyResourceBundle.getBundle(BUNDLE_NAME);
 
