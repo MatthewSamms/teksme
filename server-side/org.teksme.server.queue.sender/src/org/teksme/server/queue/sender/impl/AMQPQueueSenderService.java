@@ -12,26 +12,27 @@ import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.server.common.messaging.AMQPBrokerParameters;
 import org.teksme.server.common.messaging.AMQPQueues;
-import org.teksme.server.queue.sender.AMQPSender;
 import org.teksme.server.queue.sender.Activator;
+import org.teksme.server.queue.sender.MessageQueueSender;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
-public class AMQPSenderService implements AMQPSender {
-
-	private static final Integer PERSISTENT = 2;
+public class AMQPQueueSenderService implements MessageQueueSender {
 
 	public void publishMessage(OutboundTextMessage outboundMsg) {
 
-		Connection lConnection = getAMQPConnServiceReference();
+		Channel lChannel = null;
+		Connection lConnection = null;
 
 		try {
 
-			Channel lChannel = lConnection.createChannel();
+			lConnection = getAMQPConnServiceReference();
 
-			byte[] data = toBytes(outboundMsg);
+			lChannel = lConnection.createChannel();
+
+			byte[] data = convertToSend(outboundMsg);
 
 			// Parameters to constructor for new AMQP.BasicProperties are:
 			// (contentType, contentEncoding, headers, deliveryMode, priority,
@@ -40,22 +41,35 @@ public class AMQPSenderService implements AMQPSender {
 			// http://www.rabbitmq.com/releases/rabbitmq-java-client/v2.1.0/rabbitmq-java-client-javadoc-2.1.0/
 
 			final String contentType = "text/plain";
-			final String contentEncoding = outboundMsg.getEncoding(0);
+			final String contentEncoding = null;//outboundMsg.getEncoding(0);
+			final Integer PERSISTENT = 2;
 			final Integer deliveryMode = PERSISTENT;
 			final Integer priority = outboundMsg.getDeliveryQueuePriority(0);
 			final String replyTo = outboundMsg.getFrom(0);
+			final String expiration = outboundMsg.getValidityTimeframe(0).toString();
 			final String messageId = outboundMsg.getId();
 			final Date timestamp = outboundMsg.getTimestamp();
 
-			AMQP.BasicProperties messageProperties = new AMQP.BasicProperties(contentType, contentEncoding, null, deliveryMode, priority,
-					null, replyTo, null, messageId, timestamp, null, null, null, null);
+			AMQP.BasicProperties messageProps = new AMQP.BasicProperties(contentType, contentEncoding, null, deliveryMode, priority, null,
+					replyTo, expiration, messageId, timestamp, null, null, null, null);
 
-			lChannel.basicPublish(AMQPQueues.OUTBOUND_EXCHANGE, AMQPQueues.OUTBOUND_QUEUE, messageProperties, data);
-			lChannel.close();
-			lConnection.close();
+			lChannel.basicPublish(AMQPQueues.OUTBOUND_EXCHANGE, AMQPQueues.OUTBOUND_SMS_ROUTING_KEY, messageProps, data);
 
+		} catch (InvalidSyntaxException e) {
+			// Shouldn't happen
+			e.printStackTrace();
 		} catch (Exception lIoException) {
 			throw new RuntimeException(lIoException);
+		} finally {
+			try {
+				if (lChannel != null)
+					lChannel.close();
+				if (lConnection != null)
+					lConnection.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 	}
@@ -68,7 +82,7 @@ public class AMQPSenderService implements AMQPSender {
 
 			Channel lChannel = lConnection.createChannel();
 
-			byte[] data = toBytes(inboundMsg);
+			byte[] data = convertToSend(inboundMsg);
 
 			// Parameters to constructor for new AMQP.BasicProperties are:
 			// (contentType, contentEncoding, headers, deliveryMode, priority,
@@ -87,7 +101,7 @@ public class AMQPSenderService implements AMQPSender {
 
 	}
 
-	private byte[] toBytes(Object message) throws IOException {
+	private byte[] convertToSend(Object message) throws IOException {
 		ByteArrayOutputStream bos = new ByteArrayOutputStream();
 		ObjectOutputStream oos = new ObjectOutputStream(bos);
 		oos.writeObject(message);
@@ -98,20 +112,15 @@ public class AMQPSenderService implements AMQPSender {
 		return data;
 	}
 
-	private Connection getAMQPConnServiceReference() {
+	private Connection getAMQPConnServiceReference() throws InvalidSyntaxException {
 
 		BundleContext bundleContext = Activator.getContext();
 
 		ServiceReference result = null;
-		try {
-			ServiceReference[] refs = bundleContext.getServiceReferences(Connection.class.getName(),
-					String.format("(%s=%s)", AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME));
-			if (refs != null && refs.length > 0) {
-				result = refs[0];
-			}
-		} catch (InvalidSyntaxException e) {
-			// Shouldn't happen
-			e.printStackTrace();
+		ServiceReference[] refs = bundleContext.getServiceReferences(Connection.class.getName(),
+				String.format("(%s=%s)", AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME));
+		if (refs != null && refs.length > 0) {
+			result = refs[0];
 		}
 
 		Connection lConnection = (Connection) bundleContext.getService(result);
