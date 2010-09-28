@@ -2,9 +2,6 @@
 <teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks" appId="128552450490126">
   <developer id="56f3d45cb6f14af22fee33245bf53b8e"/>
   <outboundMessage timestamp="2010-09-16T01:20:47.280-0400" smsGateway="MOVISTAR_PERU" retryCount="2">
-    <communicationChannel>SMS</communicationChannel>
-    <communicationChannel>Twitter</communicationChannel>
-    <communicationChannel>Email</communicationChannel>
     <message text="Hello from TeksMe!"/>
     <recipient>+12028125643</recipient>
     <from>1202172638716</from>

@@ -1,0 +1,11 @@
+<input name="data" type="text" value='
+	<clickAPI>
+		<sendMsg>
+			<api_id>3260322</api_id>
+			<user>teksmeinc</user>
+			<password>IDB2009!</password>
+			<to>552288186194</to>
+			<text>Hello from TeksMe!</text>
+		</sendMsg>
+	</clickAPI>
+	'>
