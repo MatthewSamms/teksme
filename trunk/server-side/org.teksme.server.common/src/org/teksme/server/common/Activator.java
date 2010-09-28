@@ -23,7 +23,7 @@ import org.teksme.server.common.messaging.AMQPConnectionServiceFactory;
 /**
  * 
  * @since 0.5
- *
+ * 
  */
 public class Activator implements BundleActivator {
 
@@ -46,7 +46,7 @@ public class Activator implements BundleActivator {
 		Properties props = new Properties();
 		props.put(Constants.SERVICE_PID, "rabbitmq.connections");
 
-		//FIXME change to DS
+		// FIXME change to DS
 		context.registerService(ManagedServiceFactory.class.getName(), new AMQPConnectionServiceFactory(context), props);
 	}
 
