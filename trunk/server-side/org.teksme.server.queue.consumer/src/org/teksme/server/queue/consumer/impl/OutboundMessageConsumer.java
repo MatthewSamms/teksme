@@ -11,12 +11,15 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.queue.consumer;
+package org.teksme.server.queue.consumer.impl;
 
 import java.io.IOException;
 
+import org.teksme.model.teks.Message;
 import org.teksme.model.teks.OutboundTextMessage;
-import org.teksme.server.sms.service.SMSOutboundMessage;
+import org.teksme.server.common.messaging.AMQPQueues;
+import org.teksme.server.queue.consumer.MessageEventSource;
+import org.teksme.server.queue.consumer.MessageListener;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
@@ -26,31 +29,42 @@ import com.rabbitmq.client.Envelope;
 /**
  * 
  * @since 0.5
- *
+ * 
  */
-public class SMSOutboundConsumer extends DefaultConsumer {
+public class OutboundMessageConsumer extends DefaultConsumer implements MessageEventSource<Message> {
 
-	private SMSOutboundMessage outboundMessage;
-	
-	public SMSOutboundConsumer(Channel channel) {
+	private final MessageEventDispatcher<Message> dispatcher = new MessageEventDispatcher<Message>();
+
+	public OutboundMessageConsumer(Channel channel) {
 		super(channel);
 	}
 
 	@Override
 	public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
-		long deliveryTag = envelope.getDeliveryTag();
 
-		OutboundTextMessage message = null;
 		try {
-			message = (OutboundTextMessage)new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body)).readObject();
-			outboundMessage.sendMessage(message);
+
+			String routingKey = envelope.getRoutingKey();
+			// String contentType = properties.contentType;
+			long deliveryTag = envelope.getDeliveryTag();
+
+			// TODO implement a better messaging handler
+			if (AMQPQueues.OUTBOUND_SMS_ROUTING_KEY.equals(routingKey)) {
+				OutboundTextMessage outMsg = (OutboundTextMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body)).readObject();
+				dispatcher.fire(outMsg);
+			}
+
+			getChannel().basicAck(deliveryTag, false);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		getChannel().basicAck(deliveryTag, false);
+	}
+
+	public void addMessageListener(MessageListener<Message> listener) {
+		dispatcher.addListener(listener);
 	}
 
 }

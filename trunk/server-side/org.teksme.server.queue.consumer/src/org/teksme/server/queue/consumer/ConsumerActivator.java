@@ -15,12 +15,12 @@ package org.teksme.server.queue.consumer;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.teksme.server.common.jms.PropertiesMQ;
+import org.teksme.server.common.messaging.AMQPQueues;
 
 /**
  * 
  * @since 0.5
- *
+ * 
  */
 public class ConsumerActivator implements BundleActivator {
 
@@ -28,8 +28,8 @@ public class ConsumerActivator implements BundleActivator {
 	private ChannelOutboundTracker outboundTracker;
 
 	public void start(BundleContext context) throws Exception {
-		inboundTracker = new ChannelInboundTracker(context, PropertiesMQ.QUEUE_NAME_INBOUND);
-		outboundTracker = new ChannelOutboundTracker(context, PropertiesMQ.QUEUE_NAME_OUTBOUND);
+		inboundTracker = new ChannelInboundTracker(context, AMQPQueues.INBOUND_QUEUE);
+		outboundTracker = new ChannelOutboundTracker(context, AMQPQueues.OUTBOUND_QUEUE);
 		inboundTracker.open();
 		outboundTracker.open();
 	}

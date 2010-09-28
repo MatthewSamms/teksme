@@ -18,7 +18,9 @@ import java.io.IOException;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
-import org.teksme.server.common.jms.connection.PairMap;
+import org.teksme.server.common.messaging.AMQPQueues;
+import org.teksme.server.common.messaging.AMQPServiceRegistry;
+import org.teksme.server.queue.consumer.impl.InboundConsumer;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -26,41 +28,51 @@ import com.rabbitmq.client.Connection;
 /**
  * 
  * @since 0.5
- *
+ * 
  */
 public class ChannelInboundTracker extends ServiceTracker {
-	
+
 	private final String queueName;
 
 	public ChannelInboundTracker(BundleContext context, String queueName) {
 		super(context, Connection.class.getName(), null);
 		this.queueName = queueName;
 	}
-	
+
 	@Override
 	public Object addingService(ServiceReference reference) {
 		Connection conn = (Connection) context.getService(reference);
 		String consumerTag = null;
-		
+
 		Channel channel = null;
 		try {
+
+			final boolean durable = Boolean.getBoolean(AMQPQueues.CHANNEL.DURABLE);
+			final boolean autoDelete = Boolean.getBoolean(AMQPQueues.CHANNEL.AUTO_DELETE);
+			final boolean exclusive = Boolean.getBoolean(AMQPQueues.CHANNEL.EXCLUSIVE);
+
 			channel = conn.createChannel();
-			SMSInboundConsumer consumer = new SMSInboundConsumer(channel);
-			channel.queueDeclare(queueName);
+
+			InboundConsumer consumer = new InboundConsumer(channel);
+
+			channel.queueDeclare(queueName, durable, exclusive, autoDelete, null);
+
 			consumerTag = channel.basicConsume(queueName, false, consumer);
-			return new PairMap<Channel,String>(channel, consumerTag);
+
+			return new AMQPServiceRegistry<Channel, String>(channel, consumerTag);
+
 		} catch (IOException e) {
 			System.err.println("Error subscribing consumer");
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
+
 	@Override
 	public void removedService(ServiceReference reference, Object service) {
 		@SuppressWarnings("unchecked")
-		PairMap<Channel,String> pair = (PairMap<Channel, String>) service;
-		
+		AMQPServiceRegistry<Channel, String> pair = (AMQPServiceRegistry<Channel, String>) service;
+
 		try {
 			pair.getFst().basicCancel(pair.getSender());
 			pair.getFst().close();
@@ -68,7 +80,7 @@ public class ChannelInboundTracker extends ServiceTracker {
 			System.err.println("Error unsubscribing consumer");
 			e.printStackTrace();
 		}
-		
+
 		context.ungetService(reference);
 	}
 }
