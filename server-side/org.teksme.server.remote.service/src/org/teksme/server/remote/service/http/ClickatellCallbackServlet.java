@@ -14,7 +14,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.ParserConfigurationException;
 
 import org.teksme.model.teks.InboundTextMessage;
-import org.teksme.server.queue.sender.JMSMsgQueueSender;
 import org.teksme.server.sms.service.SMSInboundMessage;
 import org.xml.sax.SAXException;
 
@@ -31,7 +30,7 @@ public class ClickatellCallbackServlet extends HttpServlet {
 	// TODO Inject the service
 	SMSInboundMessage smsInboundMessage;
 	// TODO Inject the service
-	JMSMsgQueueSender outboundMsgQueueSender;
+	//JMSMsgQueueSender outboundMsgQueueSender;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -91,7 +90,7 @@ public class ClickatellCallbackServlet extends HttpServlet {
 
 			logger.info("MO: " + inboundMsg.getOriginator());
 
-			outboundMsgQueueSender.send(inboundMsg);
+			//outboundMsgQueueSender.send(inboundMsg);
 
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);
