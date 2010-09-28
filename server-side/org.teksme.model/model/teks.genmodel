@@ -3,10 +3,12 @@
     xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
     xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" copyrightText="Copyright 2010 TèksMe, Inc.&#xA;TèksMe licenses this file to you under the Apache License, version &#xA;2.0 (the &quot;License&quot;); you may not use this file except in compliance&#xA;with the License.  You may obtain a copy of the License at&#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;Unless required by applicable law or agreed to in writing, software&#xA;distributed under the License is distributed on an &quot;AS IS&quot; BASIS,&#xA;WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or&#xA;implied.  See the License for the specific language governing&#xA;permissions and limitations under the License.&#xA;"
     modelDirectory="/org.teksme.model/src" creationIcons="false" modelPluginID="org.teksme.model"
-    templateDirectory="" runtimeJar="true" forceOverwrite="true" modelName="Teks"
-    codeFormatting="true" importerID="org.eclipse.emf.importer.ecore" containmentProxies="true"
-    arrayAccessors="true" complianceLevel="5.0" copyrightFields="false" language=""
-    interfaceNamePattern="" classNamePattern="">
+    templateDirectory="/org.teksme.model/templates" runtimeJar="true" redirection=""
+    forceOverwrite="true" modelName="Teks" rootExtendsInterface="org.teksme.model.TeksObject"
+    rootExtendsClass="org.teksme.model.impl.TeksObjectImpl" codeFormatting="true"
+    importerID="org.eclipse.emf.importer.ecore" containmentProxies="true" arrayAccessors="true"
+    complianceLevel="5.0" copyrightFields="false" language="" interfaceNamePattern=""
+    classNamePattern="">
   <foreignModel>teks.ecore</foreignModel>
   <genPackages prefix="Teks" basePackage="org.teksme.model" resource="XML" disposableProviderFactory="true"
       fileExtensions="teks" ecorePackage="teks.ecore#/">
@@ -195,9 +197,9 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/id"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/timestamp"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/communicationChannel"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Message/message"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/smsGateway"/>
     </genClasses>
+    <genClasses ecoreClass="teks.ecore#//ObjectMessage"/>
     <genClasses ecoreClass="teks.ecore#//AnswerRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference teks.ecore#//AnswerRef/choiceRef"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference teks.ecore#//AnswerRef/answerRef"/>
@@ -209,6 +211,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundTextMessage/messageType"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundTextMessage/originator"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundTextMessage/smscNumber"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//InboundTextMessage/message"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//OutboundTextMessage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/retryCount"/>
@@ -228,6 +231,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/failureCause"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/encoding"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/deliveryScheduledTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//OutboundTextMessage/message"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//TextMessage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//TextMessage/text"/>

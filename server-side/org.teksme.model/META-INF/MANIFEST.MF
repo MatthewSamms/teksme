@@ -6,7 +6,9 @@ Bundle-Version: 0.5.0
 Bundle-ClassPath: .
 Bundle-Vendor: TeksMe Inc.
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Export-Package: org.teksme.model.teks,
+Export-Package: org.teksme.model,
+ org.teksme.model.impl,
+ org.teksme.model.teks,
  org.teksme.model.teks.impl,
  org.teksme.model.teks.util
 Require-Bundle: org.eclipse.core.runtime,
