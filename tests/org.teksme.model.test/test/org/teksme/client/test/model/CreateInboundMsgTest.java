@@ -2,7 +2,6 @@ package org.teksme.client.test.model;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -12,7 +11,6 @@ import org.teksme.client.test.TestUtils;
 import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
-import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -84,19 +82,19 @@ public class CreateInboundMsgTest {
 
 		InboundTextMessage inboundMsg = factory.createInboundTextMessage();
 
-//		inboundMsg.setMoMsgId(moMsgId);
-//		inboundMsg.setOriginator(from);
-//		inboundMsg.setTo(to);
-//		inboundMsg.setTimestamp(new Date());
-//
-//		TextMessage textMsg = factory.createTextMessage();
-//		textMsg.setText(text);
-//
-//		inboundMsg.setTextMessage(textMsg);
-//
-//		inboundMsg.setEncoding(charset);
-//
-//		inboundMsg.setUdh(udh);
+		// inboundMsg.setMoMsgId(moMsgId);
+		// inboundMsg.setOriginator(from);
+		// inboundMsg.setTo(to);
+		// inboundMsg.setTimestamp(new Date());
+		//
+		// TextMessage textMsg = factory.createTextMessage();
+		// textMsg.setText(text);
+		//
+		// inboundMsg.setTextMessage(textMsg);
+		//
+		// inboundMsg.setEncoding(charset);
+		//
+		// inboundMsg.setUdh(udh);
 
 	}
 
@@ -105,9 +103,9 @@ public class CreateInboundMsgTest {
 				.getChildNodes();
 		Node nValue = (Node) nlList.item(0);
 
-		if(nValue == null)
+		if (nValue == null)
 			return null;
-		
+
 		return nValue.getNodeValue();
 	}
 }

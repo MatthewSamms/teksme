@@ -27,7 +27,7 @@ import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 
 public class ReadCompositePollTest {
 
-	private static final String MODEL_FILE = "output/teks.xml";
+	private static final String MODEL_FILE = "output/teks_outmsg.xml";
 
 	@Test
 	public void readModel() throws IOException {

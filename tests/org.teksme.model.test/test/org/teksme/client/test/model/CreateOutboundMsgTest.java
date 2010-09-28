@@ -89,19 +89,19 @@ public class CreateOutboundMsgTest extends TeksModelTest {
 		// on the callback value set in the original post
 		outMsg.setCallbackCode(0, 1);
 
-		//send messages longer than a standard message
+		// send messages longer than a standard message
 		outMsg.setConcatenated(0, 1);
-		
-		//Specify when a message gets delivered.
+
+		// Specify when a message gets delivered.
 		outMsg.setDeliveryScheduledTime(0, new Date());
-		
+
 		TextMessage text = factory.createTextMessage();
 		text.setText("Hello from TeksMe!");
 
 		outMsg.setMessage(text);
-		
+
 		outMsg.setTeksRef(teksModel);
-		
+
 		teksModel.setOutboundMessage(0, outMsg);
 
 		Resource resource = resourceSet.createResource(URI
