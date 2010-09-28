@@ -17,6 +17,7 @@ import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
@@ -33,29 +34,30 @@ import com.rabbitmq.client.Connection;
 public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
 	private final Map<String, AMQPServiceRegistry<Connection, ServiceRegistration>> map = new HashMap<String, AMQPServiceRegistry<Connection, ServiceRegistration>>();
+
+	AMQPServiceRegistry<Connection, ServiceRegistration> connPair = null;
+	ServiceRegistration reg = null;
+
 	private final BundleContext context;
+
+	private static Logger logger = Logger.getLogger(AMQPConnectionServiceFactory.class.getName());
 
 	public void updated(String pid, @SuppressWarnings("rawtypes") Dictionary props) throws ConfigurationException {
 
-		AMQPServiceRegistry<Connection, ServiceRegistration> connPair = null;
+		logger.info("AMQPConnectionServiceFactory.updated()");
+
 		try {
 
-			String host = AMQPBrokerParameters.PROP_HOST;
-			String name = AMQPBrokerParameters.PROP_NAME;
-
 			Properties svcProps = new Properties();
-			svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, name);
-			svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, host);
+			svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
+			svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
 
-			AMQPBrokerManager msgBroker = new AMQPBrokerManager();
-			
-			Connection conn = msgBroker.connect();
+			Connection conn = init();
 
-			msgBroker.declareQueueing(conn);
-			
-			ServiceRegistration reg = context.registerService(Connection.class.getName(), conn, svcProps);
+			reg = context.registerService(Connection.class.getName(), conn, svcProps);
 
 			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
+
 		} catch (IOException e) {
 			throw new ConfigurationException(null, "Error connecting to broker", e);
 		}
@@ -76,7 +78,25 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 	}
 
 	public AMQPConnectionServiceFactory(BundleContext context) {
+
 		this.context = context;
+
+		Connection conn = null;
+		try {
+			conn = init();
+
+			Properties svcProps = new Properties();
+			svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
+			svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
+
+			reg = context.registerService(Connection.class.getName(), conn, svcProps);
+
+			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void deleted(String pid) {
@@ -96,6 +116,26 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
 	public String getName() {
 		return "AMQP Connection Factory";
+	}
+
+	private Connection init() throws IOException {
+
+		logger.info("AMQPConnectionServiceFactory.init()");
+
+		String host = AMQPBrokerParameters.PROP_HOST;
+		String name = AMQPBrokerParameters.PROP_NAME;
+
+		Properties svcProps = new Properties();
+		svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, name);
+		svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, host);
+
+		AMQPBrokerManager msgBroker = new AMQPBrokerManager();
+
+		Connection conn = msgBroker.connect();
+
+		msgBroker.declareQueueing(conn);
+
+		return conn;
 	}
 
 }

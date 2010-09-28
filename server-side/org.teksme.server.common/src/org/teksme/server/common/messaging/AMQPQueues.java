@@ -31,4 +31,16 @@ public final class AMQPQueues {
 
 	public static final String OUTBOUND_EXCHANGE = TeksResourceBundle.getString("mq.queue.exchange.outbound");
 
+	public static interface CHANNEL {
+
+		public static final String DURABLE = TeksResourceBundle.getString("mq.channel.durable");
+
+		public static final String AUTO_DELETE = TeksResourceBundle.getString("mq.channel.autoDelete");
+		
+		public static final String EXCLUSIVE = TeksResourceBundle.getString("mq.channel.exclusive");
+		
+		public static final String TYPE = TeksResourceBundle.getString("mq.channel.type");
+
+	}
+
 }
