@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.queue.consumer;
+package org.teksme.server.queue.consumer.impl;
 
 import java.io.IOException;
 
@@ -28,11 +28,11 @@ import com.rabbitmq.client.AMQP.BasicProperties;
  * @since 0.5
  *
  */
-public class SMSInboundConsumer extends DefaultConsumer {
+public class InboundConsumer extends DefaultConsumer {
 
 	private SMSInboundMessage inbound;
 	
-	public SMSInboundConsumer(Channel channel) {
+	public InboundConsumer(Channel channel) {
 		super(channel);
 	}
 

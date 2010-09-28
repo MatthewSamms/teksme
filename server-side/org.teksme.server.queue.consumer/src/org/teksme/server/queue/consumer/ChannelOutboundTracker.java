@@ -18,7 +18,8 @@ import java.io.IOException;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
-import org.teksme.server.common.jms.connection.PairMap;
+import org.teksme.server.common.messaging.AMQPServiceRegistry;
+import org.teksme.server.queue.consumer.impl.OutboundMessageConsumer;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -26,41 +27,44 @@ import com.rabbitmq.client.Connection;
 /**
  * 
  * @since 0.5
- *
+ * 
  */
 public class ChannelOutboundTracker extends ServiceTracker {
-	
+
 	private final String queueName;
 
 	public ChannelOutboundTracker(BundleContext context, String queueName) {
 		super(context, Connection.class.getName(), null);
 		this.queueName = queueName;
 	}
-	
+
 	@Override
 	public Object addingService(ServiceReference reference) {
 		Connection conn = (Connection) context.getService(reference);
 		String consumerTag = null;
-		
+
 		Channel channel = null;
 		try {
+
 			channel = conn.createChannel();
-			SMSOutboundConsumer consumer = new SMSOutboundConsumer(channel);
-			channel.queueDeclare(queueName);
+			OutboundMessageConsumer consumer = new OutboundMessageConsumer(channel);
+			// channel.queueDeclare(queueName);
 			consumerTag = channel.basicConsume(queueName, false, consumer);
-			return new PairMap<Channel,String>(channel, consumerTag);
+		
+			return new AMQPServiceRegistry<Channel, String>(channel, consumerTag);
+
 		} catch (IOException e) {
 			System.err.println("Error subscribing consumer");
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
+
 	@Override
 	public void removedService(ServiceReference reference, Object service) {
 		@SuppressWarnings("unchecked")
-		PairMap<Channel,String> pair = (PairMap<Channel, String>) service;
-		
+		AMQPServiceRegistry<Channel, String> pair = (AMQPServiceRegistry<Channel, String>) service;
+
 		try {
 			pair.getFst().basicCancel(pair.getSender());
 			pair.getFst().close();
@@ -68,7 +72,7 @@ public class ChannelOutboundTracker extends ServiceTracker {
 			System.err.println("Error unsubscribing consumer");
 			e.printStackTrace();
 		}
-		
+
 		context.ungetService(reference);
 	}
 }
