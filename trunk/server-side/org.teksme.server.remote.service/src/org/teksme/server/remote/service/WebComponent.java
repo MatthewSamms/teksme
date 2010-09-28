@@ -6,33 +6,32 @@ import javax.servlet.ServletException;
 
 import org.osgi.service.http.HttpService;
 import org.osgi.service.http.NamespaceException;
+import org.teksme.server.queue.sender.MessageQueueSender;
 import org.teksme.server.remote.service.http.SendMessageServlet;
-import org.teksme.server.sms.service.SMSOutboundMessage;
 
 public class WebComponent {
 
 	private static final String SEND_MSG_SERVLET_ALIAS = "/sendmsg";
 
-	private static Logger logger = Logger.getLogger(WebComponent.class
-			.getName());
+	private static Logger logger = Logger.getLogger(WebComponent.class.getName());
 
-	private SMSOutboundMessage outboundMsg;
+	private MessageQueueSender queueSender;
 	private HttpService httpService;
 
 	public void bind(HttpService httpService) {
 		this.httpService = httpService;
 	}
 
-	public void bind(SMSOutboundMessage outMsg) {
-		this.outboundMsg = outMsg;
+	public void bind(MessageQueueSender queueSender) {
+		this.queueSender = queueSender;
 	}
 
 	public void unbind(HttpService httpService) {
 		this.httpService = null;
 	}
 
-	public void unbind(SMSOutboundMessage outboundMsg) {
-		this.outboundMsg = null;
+	public void unbind(MessageQueueSender queueSender) {
+		this.queueSender = null;
 
 	}
 
@@ -40,9 +39,8 @@ public class WebComponent {
 		try {
 			logger.info("Starting up sevlet at " + SEND_MSG_SERVLET_ALIAS);
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
-			sendMsgServlet.setOutMsgService(outboundMsg);
-			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet,
-					null, null);
+			sendMsgServlet.setMessageQueueSenderService(queueSender);
+			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet, null, null);
 
 		} catch (ServletException e) {
 			e.printStackTrace();

@@ -19,6 +19,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.ServletInputStream;
@@ -34,23 +36,24 @@ import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
-import org.teksme.server.sms.service.SMSOutboundMessage;
+import org.teksme.server.common.persistence.PersistenceException;
+import org.teksme.server.common.persistence.PersistenceManager;
+import org.teksme.server.common.persistence.PersistenceManagerFactory;
+import org.teksme.server.common.utils.TeksModelHelper;
+import org.teksme.server.queue.sender.MessageQueueSender;
 
 @SuppressWarnings("serial")
 public class SendMessageServlet extends HttpServlet {
 
 	private static String message = "Error during Servlet processing";
 
+	private static Logger logger = Logger.getLogger(SendMessageServlet.class.getName());
+
+	private MessageQueueSender queueSender;
+
 	public SendMessageServlet() {
 		super();
 	}
-
-	public void setOutMsgService(final SMSOutboundMessage outMsg) {
-		outboundMsg = outMsg;
-	}
-
-	// TODO Inject the service
-	private SMSOutboundMessage outboundMsg;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -64,8 +67,6 @@ public class SendMessageServlet extends HttpServlet {
 		String to = request.getParameter("to");
 		String text = request.getParameter("text");
 		String from = request.getParameter("from");
-
-		System.out.println("Developer #ID: " + devId);
 
 		TeksPackageImpl.init();
 		// Retrieve the default factory singleton
@@ -116,8 +117,6 @@ public class SendMessageServlet extends HttpServlet {
 				gotNessage = true;
 			}
 			reader.close();
-			// logger.info("XML Buff: " + xmlBuff.toString());
-			Teks teksModel = outboundMsg.createOutboundMsgModelFromXml(xmlBuff.toString());
 
 			if (!gotNessage) {
 				outStream.println("Got no message");
@@ -127,11 +126,27 @@ public class SendMessageServlet extends HttpServlet {
 				return;
 			}
 
+			PersistenceManagerFactory pFactory = PersistenceManagerFactory.INSTANCE;
+			PersistenceManager pm = pFactory.getPersistenceManager();
+
+			// logger.info("XML Buff: " + xmlBuff.toString());
+			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(xmlBuff.toString());
+
 			OutboundTextMessage outMsg = teksModel.getOutboundMessage(0);
+			outMsg.setId(UUID.randomUUID().toString());
 
-			// outboundMsgQueueSender.send(outMsg);
+			logger.info(outMsg.getMessage().getText());
 
-			outboundMsg.persistOutboundMessage(teksModel);
+			try {
+
+				pm.makePersistent(teksModel);
+
+			} catch (PersistenceException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			queueSender.publishMessage(outMsg);
 
 			outStream.println("getContentLength: " + request.getContentLength());
 			outStream.println("getContentType: " + request.getContentType());
@@ -184,6 +199,10 @@ public class SendMessageServlet extends HttpServlet {
 			this.value = myValue;
 			this.unicode = myUnicode;
 		}
+	}
+
+	public void setMessageQueueSenderService(final MessageQueueSender queueSender) {
+		this.queueSender = queueSender;
 	}
 
 }
