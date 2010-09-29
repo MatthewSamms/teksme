@@ -20,6 +20,7 @@ import java.io.OutputStreamWriter;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -102,24 +103,27 @@ public class SendMessageServlet extends HttpServlet {
 	 *      response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		try {
+
 			final ServletInputStream in = request.getInputStream();
 			final BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			final ServletOutputStream outStream = response.getOutputStream();
-			outStream.println("OK, got you");
+
+			logger.info("OK, got you");
+
 			String inXMLString = null;
 			StringBuffer xmlBuff = new StringBuffer();
+
 			boolean gotNessage = false;
 			while ((inXMLString = reader.readLine()) != null) {
-				// outStream.println();
-				// logger.info("Read " + message);
 				xmlBuff.append(inXMLString);
 				gotNessage = true;
 			}
 			reader.close();
 
 			if (!gotNessage) {
-				outStream.println("Got no message");
+				logger.log(Level.WARNING, "Got no message!");
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
 				response.getWriter().print(message);
 				response.getWriter().close();
