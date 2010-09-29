@@ -4,6 +4,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
@@ -20,6 +21,8 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 
 public class AMQPQueueSenderService implements MessageQueueSender {
+
+	Logger logger = Logger.getLogger(AMQPQueueSenderService.class.getName());
 
 	public void publishMessage(OutboundTextMessage outboundMsg) {
 
@@ -40,8 +43,8 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			// type, userId, appId, clusterId)
 			// http://www.rabbitmq.com/releases/rabbitmq-java-client/v2.1.0/rabbitmq-java-client-javadoc-2.1.0/
 
-			final String contentType = "text/plain";
-			final String contentEncoding = null;//outboundMsg.getEncoding(0);
+			final String contentType = "text/xml";
+			final String contentEncoding = null;// outboundMsg.getEncoding(0);
 			final Integer PERSISTENT = 2;
 			final Integer deliveryMode = PERSISTENT;
 			final Integer priority = outboundMsg.getDeliveryQueuePriority(0);
@@ -53,6 +56,9 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			AMQP.BasicProperties messageProps = new AMQP.BasicProperties(contentType, contentEncoding, null, deliveryMode, priority, null,
 					replyTo, expiration, messageId, timestamp, null, null, null, null);
 
+			logger.info("Publishing message to queue " + AMQPQueues.OUTBOUND_EXCHANGE + " with routing key "
+					+ AMQPQueues.OUTBOUND_SMS_ROUTING_KEY + "...");
+
 			lChannel.basicPublish(AMQPQueues.OUTBOUND_EXCHANGE, AMQPQueues.OUTBOUND_SMS_ROUTING_KEY, messageProps, data);
 
 		} catch (InvalidSyntaxException e) {
@@ -62,16 +68,20 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			throw new RuntimeException(lIoException);
 		} finally {
 			try {
-				if (lChannel != null)
-					lChannel.close();
-				if (lConnection != null)
-					lConnection.close();
+				closeChannel(lChannel);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 
+	}
+
+	public void closeChannel(Channel channel) throws IOException {
+		if (channel != null) {
+			channel.abort();
+			channel = null;
+		}
 	}
 
 	public void publishMessage(InboundTextMessage inboundMsg) {
@@ -94,7 +104,7 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 
 			lChannel.basicPublish(AMQPQueues.INBOUND_EXCHANGE, AMQPQueues.INBOUND_QUEUE, messageProperties, data);
 			lChannel.close();
-			lConnection.close();
+			// lConnection.close();
 		} catch (Exception lIoException) {
 			throw new RuntimeException(lIoException);
 		}
