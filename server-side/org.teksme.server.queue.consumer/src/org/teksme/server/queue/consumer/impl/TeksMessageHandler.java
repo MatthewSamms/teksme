@@ -22,7 +22,7 @@ import org.teksme.model.teks.TextMessage;
 import org.teksme.server.queue.consumer.DeadLetterQueueHandler;
 import org.teksme.server.queue.consumer.MessageListener;
 
-public class TeksMessageHandler<T> implements MessageListener<Message> {
+public abstract class TeksMessageHandler<T> implements MessageListener<Message> {
 
 	private static Logger logger = Logger.getLogger(TeksMessageHandler.class.getName());
 
@@ -76,6 +76,6 @@ public class TeksMessageHandler<T> implements MessageListener<Message> {
 		consume((T) obj);
 	}
 
-	protected void consume(T obj) { }
+	protected abstract void consume(T obj);
 
 }

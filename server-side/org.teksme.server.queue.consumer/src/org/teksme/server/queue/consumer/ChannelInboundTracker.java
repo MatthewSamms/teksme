@@ -53,6 +53,9 @@ public class ChannelInboundTracker extends ServiceTracker {
 
 			channel = conn.createChannel();
 
+			//ensure you never have more than 100 messages queued up in your QueueingConsumer
+			channel.basicQos(100);
+
 			InboundConsumer consumer = new InboundConsumer(channel);
 
 			channel.queueDeclare(queueName, durable, exclusive, autoDelete, null);

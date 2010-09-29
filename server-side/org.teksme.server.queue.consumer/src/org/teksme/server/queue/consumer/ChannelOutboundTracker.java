@@ -14,12 +14,15 @@
 package org.teksme.server.queue.consumer;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
+import org.teksme.server.common.messaging.AMQPQueues;
 import org.teksme.server.common.messaging.AMQPServiceRegistry;
 import org.teksme.server.queue.consumer.impl.OutboundMessageConsumer;
+import org.teksme.server.queue.consumer.impl.OutboundSMSHandler;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -32,6 +35,8 @@ import com.rabbitmq.client.Connection;
 public class ChannelOutboundTracker extends ServiceTracker {
 
 	private final String queueName;
+
+	private static Logger logger = Logger.getLogger(ChannelOutboundTracker.class.getName());
 
 	public ChannelOutboundTracker(BundleContext context, String queueName) {
 		super(context, Connection.class.getName(), null);
@@ -46,11 +51,23 @@ public class ChannelOutboundTracker extends ServiceTracker {
 		Channel channel = null;
 		try {
 
+			final boolean durable = Boolean.getBoolean(AMQPQueues.CHANNEL.DURABLE);
+			final boolean autoDelete = Boolean.getBoolean(AMQPQueues.CHANNEL.AUTO_DELETE);
+			final boolean exclusive = Boolean.getBoolean(AMQPQueues.CHANNEL.EXCLUSIVE);
+
 			channel = conn.createChannel();
+
+			// ensure you never have more than 100 messages queued up in your
+			// QueueingConsumer
+			channel.basicQos(100);
+
+			channel.queueDeclare(queueName, durable, exclusive, autoDelete, null);
+
 			OutboundMessageConsumer consumer = new OutboundMessageConsumer(channel);
-			// channel.queueDeclare(queueName);
+			consumer.addMessageListener(new OutboundSMSHandler());
+
 			consumerTag = channel.basicConsume(queueName, false, consumer);
-		
+
 			return new AMQPServiceRegistry<Channel, String>(channel, consumerTag);
 
 		} catch (IOException e) {
