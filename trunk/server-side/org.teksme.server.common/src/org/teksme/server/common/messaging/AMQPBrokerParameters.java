@@ -22,20 +22,20 @@ import org.teksme.server.common.TeksResourceBundle;
  */
 public interface AMQPBrokerParameters {
 
-	public static final String PROP_NAME = TeksResourceBundle.getString("mq.prop.name");
+	public static final String PROP_NAME = TeksResourceBundle.getString("mq.prop.name").trim();
 
-	public static final String PROP_HOST = TeksResourceBundle.getString("mq.prop.host");
+	public static final String PROP_HOST = TeksResourceBundle.getString("mq.prop.host").trim();
 
-	public static final Integer PROP_PORT = Integer.valueOf(TeksResourceBundle.getString("mq.prop.port"));
+	public static final Integer PROP_PORT = Integer.valueOf(TeksResourceBundle.getString("mq.prop.port").trim());
 
-	public static final String PROP_USERNAME = TeksResourceBundle.getString("mq.prop.username");
+	public static final String PROP_USERNAME = TeksResourceBundle.getString("mq.prop.username").trim();
 
-	public static final String PROP_PASSWORD = TeksResourceBundle.getString("mq.prop.passwd");
+	public static final String PROP_PASSWORD = TeksResourceBundle.getString("mq.prop.passwd").trim();
 
-	public static final String PROP_VIRTUAL_HOST = TeksResourceBundle.getString("mq.prop.virtual.host");
+	public static final String PROP_VIRTUAL_HOST = TeksResourceBundle.getString("mq.prop.virtual.host").trim();
 
-	public static final String CONNECTION_NAME = TeksResourceBundle.getString("mq.connection.name");
+	public static final String CONNECTION_NAME = TeksResourceBundle.getString("mq.connection.name").trim();
 
-	public static final String CONNECTION_HOST = TeksResourceBundle.getString("mq.connection.host");
+	public static final String CONNECTION_HOST = TeksResourceBundle.getString("mq.connection.host").trim();
 
 }
