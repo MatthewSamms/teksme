@@ -14,6 +14,7 @@
 package org.teksme.server.queue.consumer.impl;
 
 import java.io.IOException;
+import java.util.logging.Logger;
 
 import org.teksme.model.teks.Message;
 import org.teksme.model.teks.OutboundTextMessage;
@@ -25,6 +26,7 @@ import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
+import com.rabbitmq.client.ShutdownSignalException;
 
 /**
  * 
@@ -34,6 +36,8 @@ import com.rabbitmq.client.Envelope;
 public class OutboundMessageConsumer extends DefaultConsumer implements MessageEventSource<Message> {
 
 	private final MessageEventDispatcher<Message> dispatcher = new MessageEventDispatcher<Message>();
+
+	Logger logger = Logger.getLogger(OutboundMessageConsumer.class.getName());
 
 	public OutboundMessageConsumer(Channel channel) {
 		super(channel);
@@ -50,7 +54,9 @@ public class OutboundMessageConsumer extends DefaultConsumer implements MessageE
 
 			// TODO implement a better messaging handler
 			if (AMQPQueues.OUTBOUND_SMS_ROUTING_KEY.equals(routingKey)) {
-				OutboundTextMessage outMsg = (OutboundTextMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body)).readObject();
+				logger.info("Partial matching based on the message key: " + AMQPQueues.OUTBOUND_SMS_ROUTING_KEY);
+				OutboundTextMessage outMsg = (OutboundTextMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body))
+						.readObject();
 				dispatcher.fire(outMsg);
 			}
 
@@ -65,6 +71,24 @@ public class OutboundMessageConsumer extends DefaultConsumer implements MessageE
 
 	public void addMessageListener(MessageListener<Message> listener) {
 		dispatcher.addListener(listener);
+	}
+
+	@Override
+	public void handleConsumeOk(String c) {
+		logger.info(this + ".handleConsumeOk(" + c + ")");
+		super.handleConsumeOk(c);
+	}
+
+	@Override
+	public void handleCancelOk(String c) {
+		logger.info(this + ".handleCancelOk(" + c + ")");
+		super.handleCancelOk(c);
+	}
+
+	@Override
+	public void handleShutdownSignal(String c, ShutdownSignalException sig) {
+		logger.info(this + ".handleShutdownSignal(" + c + ", " + sig + ")");
+		super.handleShutdownSignal(c, sig);
 	}
 
 }

@@ -13,6 +13,8 @@
 
 package org.teksme.server.queue.consumer;
 
+import java.util.logging.Logger;
+
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
 import org.teksme.server.common.messaging.AMQPQueues;
@@ -25,17 +27,28 @@ import org.teksme.server.common.messaging.AMQPQueues;
 public class ConsumerActivator implements BundleActivator {
 
 	private ChannelInboundTracker inboundTracker;
+
 	private ChannelOutboundTracker outboundTracker;
 
+	private static Logger logger = Logger.getLogger(ConsumerActivator.class.getName());
+
 	public void start(BundleContext context) throws Exception {
+
+		logger.info("Starting message consumer bundle...");
+		
 		inboundTracker = new ChannelInboundTracker(context, AMQPQueues.INBOUND_QUEUE);
+		
 		outboundTracker = new ChannelOutboundTracker(context, AMQPQueues.OUTBOUND_QUEUE);
+		
 		inboundTracker.open();
+		
 		outboundTracker.open();
 	}
 
 	public void stop(BundleContext context) throws Exception {
+		
 		inboundTracker.close();
+		
 		outboundTracker.close();
 	}
 
