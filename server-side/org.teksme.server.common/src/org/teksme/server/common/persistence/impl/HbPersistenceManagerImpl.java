@@ -9,6 +9,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -35,6 +36,8 @@ public class HbPersistenceManagerImpl implements PersistenceManager {
 
 	private static final String XML_SERIALIZATION_PATH = TeksResourceBundle.getString("xml.serialization.path");
 
+	private static Logger logger = Logger.getLogger(HbPersistenceManagerImpl.class.getName());
+
 	// persist your objects into the datastore
 	public void makePersistent(Teks teksObj) throws PersistenceException {
 
@@ -57,12 +60,17 @@ public class HbPersistenceManagerImpl implements PersistenceManager {
 				// Start a transaction, create a library and make it persistent
 				tx.begin();
 
+				logger.info("Persisting the object model in the database...");
+				
 				session.save(teksObj);
 
 				// at commit the objects will be present in the database
 				tx.commit();
 				// and close of, this should actually be done in a finally block
 				session.close();
+
+				logger.info("The object was successfully persisted into the database!");
+
 			}
 		} catch (ClassNotFoundException e) {
 			throw new PersistenceException(e);
@@ -81,7 +89,6 @@ public class HbPersistenceManagerImpl implements PersistenceManager {
 	public void serializeXMLData(Teks teksObj) throws IOException {
 		// create resource set and resource
 		ResourceSet resourceSet = new ResourceSetImpl();
-
 		// Register XML resource factory
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml", new TeksResourceFactoryImpl());
 		Resource resource = resourceSet.createResource(URI.createFileURI(XML_SERIALIZATION_PATH));

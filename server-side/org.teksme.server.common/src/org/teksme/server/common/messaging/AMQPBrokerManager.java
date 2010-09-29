@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Command;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.ShutdownListener;
@@ -29,7 +30,10 @@ public final class AMQPBrokerManager implements ShutdownListener {
 		connFactory.setPassword(AMQPBrokerParameters.PROP_PASSWORD);
 		connFactory.setVirtualHost(AMQPBrokerParameters.PROP_VIRTUAL_HOST);
 		connFactory.setHost(host);
+		connFactory.setRequestedHeartbeat(0);
 		connFactory.setPort(portObj == null ? AMQP.PROTOCOL.PORT : portObj.intValue());
+
+		toString(connFactory);
 
 		Connection conn = connFactory.newConnection();
 
@@ -61,22 +65,36 @@ public final class AMQPBrokerManager implements ShutdownListener {
 
 	}
 
-	public void shutdownCompleted(ShutdownSignalException cause) {
+	protected void deleteExchange(Channel channel, String exchange) throws IOException {
+		channel.exchangeDelete(exchange);
+	}
+
+	protected void deleteQueue(Channel channel, String queue) throws IOException {
+		channel.queueDelete(queue);
+	}
+
+	public void shutdownCompleted(ShutdownSignalException sse) {
 		// TODO Auto-generated method stub
 
-		Connection conn = (Connection) cause.getReference();
-		if (cause.isHardError()) {
-			if (!cause.isInitiatedByApplication()) {
-				Object reason = cause.getReason();
-				logger.log(Level.SEVERE, "Connection host [" + conn.getHost() + "] closed. Shutdown reason: " + reason);
+		Connection conn = (Connection) sse.getReference();
+		Command closeCommand = (Command) sse.getReason();
+		if (sse.isHardError()) {
+			if (!sse.isInitiatedByApplication()) {
+				AMQP.Connection.Close closeMethod = (AMQP.Connection.Close) closeCommand.getMethod();
+				logger.log(Level.SEVERE, "Connection host [" + conn.getHost() + "] closed. Shutdown reason: " + closeMethod.getReplyCode());
 			}
 		} else {
-			Channel ch = (Channel) cause.getReference();
+			Channel ch = (Channel) sse.getReference();
 			logger.info("Connection host [" + conn.getHost() + "] closed. Shutdown reason: " + ch.getCloseReason());
 		}
 
 		logger.info("RabbitMQ AMQP broker shutdown completed!");
 
+	}
+
+	private void toString(ConnectionFactory connFactory) {
+		logger.info("[Username: " + connFactory.getUsername() + " | Password: " + connFactory.getPassword() + " | Virtual Host: "
+				+ connFactory.getVirtualHost() + " | Host: " + connFactory.getHost() + " | Port: " + connFactory.getPort() + " ]");
 	}
 
 }

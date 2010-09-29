@@ -32,16 +32,12 @@ public class TeksModelHelper {
 
 	Logger logger = Logger.getLogger(TeksModelHelper.class.getName());
 
-	private TeksModelHelper() {
-
-	}
+	private TeksModelHelper() { }
 
 	private static TeksModelHelper init() {
-
 		if (INSTANCE == null) {
 			INSTANCE = new TeksModelHelper();
 		}
-
 		return INSTANCE;
 	}
 
