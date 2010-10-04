@@ -16,7 +16,7 @@ package org.teksme.server.queue.consumer.impl;
 import java.io.IOException;
 
 import org.teksme.model.teks.InboundTextMessage;
-import org.teksme.server.sms.service.SMSInboundMessage;
+import org.teksme.server.provider.sms.service.SMSInboundMessage;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
