@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.sms;
+package org.teksme.server.provider.sms.impl;
 
 import java.io.IOException;
 import java.util.Collection;
@@ -28,21 +28,17 @@ import org.smslib.SMSLibException;
 import org.smslib.Service;
 import org.smslib.TimeoutException;
 import org.smslib.notify.InboundMessageNotification;
-import org.teksme.server.sms.service.SMSGatewayFactory;
+import org.teksme.server.provider.sms.service.SMSGatewayFactory;
 
 public class TeksSMSGateway {
 
-	private static TeksSMSGateway INSTANCE = null;
-
 	private Thread incomingMessagesThread = null;
 
-	private SMSGatewayFactory smsGtwFactory = SMSGatewayFactory.INSTANCE;
+	private SMSGatewayFactory smsGtwFactory = null;// SMSGatewayFactory.INSTANCE;
 
 	private int refCounter = 0;
 
 	private int counter = 0;
-
-	private int failCycle;
 
 	private Service srv = null;
 
@@ -50,29 +46,20 @@ public class TeksSMSGateway {
 	 * After how much sent messages next one should fail setting to 2 makes two
 	 * messages sent, and then one failed.
 	 */
+	private int failCycle;
 
 	/**
 	 * Duration between incoming messages in milliseconds
 	 */
 	private int receiveCycle;
 
-	public static TeksSMSGateway getInstance() throws IOException,
-			InterruptedException, SMSLibException {
-		if (INSTANCE == null) {
-			INSTANCE = new TeksSMSGateway();
-		}
-		return INSTANCE;
-	}
-
-	private TeksSMSGateway() throws IOException, InterruptedException,
-			SMSLibException {
-		srv = smsGtwFactory.startSMSGateway();
+	private TeksSMSGateway() throws IOException, InterruptedException, SMSLibException {
+		// srv = smsGtwFactory.startSMSGateway();
 		setFailCycle(30);
 		this.receiveCycle = 10000;
 	}
 
-	public void readMessage() throws TimeoutException, GatewayException,
-			IOException, InterruptedException {
+	public void readMessage() throws TimeoutException, GatewayException, IOException, InterruptedException {
 
 		this.incomingMessagesThread = new Thread(new Runnable() {
 			// Run thread to fake incoming messages
@@ -80,24 +67,18 @@ public class TeksSMSGateway {
 				while (!TeksSMSGateway.this.incomingMessagesThread.isInterrupted()) {
 					synchronized (TeksSMSGateway.this.incomingMessagesThread) {
 						try {
-							TeksSMSGateway.this.incomingMessagesThread
-									.wait(TeksSMSGateway.this.receiveCycle);
+							TeksSMSGateway.this.incomingMessagesThread.wait(TeksSMSGateway.this.receiveCycle);
 						} catch (InterruptedException e) {
 							// NOOP
 							break;
 						}
 					}
-					if (!TeksSMSGateway.this.incomingMessagesThread
-							.isInterrupted()) {
-						getService().getLogger().logInfo(
-								"Detecting incoming message", null,
-								getDefaultGateway().getGatewayId());
+					if (!TeksSMSGateway.this.incomingMessagesThread.isInterrupted()) {
+						getService().getLogger().logInfo("Detecting incoming message", null, getDefaultGateway().getGatewayId());
 						getService()
 								.getNotifyQueueManager()
 								.getNotifyQueue()
-								.add(new InboundMessageNotification(
-										getDefaultGateway().getMyself(),
-										MessageTypes.INBOUND,
+								.add(new InboundMessageNotification(getDefaultGateway().getMyself(), MessageTypes.INBOUND,
 										generateIncomingMessage()));
 					}
 				}
@@ -106,25 +87,22 @@ public class TeksSMSGateway {
 		this.incomingMessagesThread.start();
 	}
 
-	public boolean deleteMessage(InboundMessage msg) throws TimeoutException,
-			GatewayException, IOException, InterruptedException {
+	public boolean deleteMessage(InboundMessage msg) throws TimeoutException, GatewayException, IOException, InterruptedException {
 		// NOOP
 		return true;
 	}
 
-	public void stopGateway() throws IOException, InterruptedException,
-			SMSLibException {
+	public void stopGateway() throws IOException, InterruptedException, SMSLibException {
 		getDefaultGateway().stopGateway();
 		if (this.incomingMessagesThread != null) {
 			synchronized (this.incomingMessagesThread) {
 				this.incomingMessagesThread.interrupt();
 			}
 		}
-		smsGtwFactory.stopSMSGateway();
+		// smsGtwFactory.stopSMSGateway();
 	}
 
-	public InboundMessage readMessage(String memLoc, int memIndex)
-			throws TimeoutException, GatewayException, IOException,
+	public InboundMessage readMessage(String memLoc, int memIndex) throws TimeoutException, GatewayException, IOException,
 			InterruptedException {
 		// Return a new generated message
 		this.counter++;
@@ -135,21 +113,17 @@ public class TeksSMSGateway {
 		return generateIncomingMessage();
 	}
 
-	public void readMessages(Collection<InboundMessage> msgList,
-			MessageClasses msgClass) throws TimeoutException, GatewayException,
+	public void readMessages(Collection<InboundMessage> msgList, MessageClasses msgClass) throws TimeoutException, GatewayException,
 			IOException, InterruptedException {
 		// Return a new generated message
 		msgList.add(generateIncomingMessage());
 	}
 
-	public boolean sendMessage(OutboundMessage msg) throws TimeoutException,
-			GatewayException, IOException, InterruptedException {
+	public boolean sendMessage(OutboundMessage msg) throws TimeoutException, GatewayException, IOException, InterruptedException {
 		// if (getGatewayId().equalsIgnoreCase("Test3")) throw new
 		// IOException("Dummy Exception!!!");
 		// simulate delay
-		getService().getLogger().logInfo(
-				"Sending to: " + msg.getRecipient() + " via: "
-						+ msg.getGatewayId(), null,
+		getService().getLogger().logInfo("Sending to: " + msg.getRecipient() + " via: " + msg.getGatewayId(), null,
 				getDefaultGateway().getGatewayId());
 		this.counter++;
 		if ((this.failCycle > 0) && (this.counter >= this.failCycle)) {
@@ -166,12 +140,18 @@ public class TeksSMSGateway {
 		msg.setMessageStatus(MessageStatuses.SENT);
 		msg.setRefNo(Integer.toString(++this.refCounter));
 		msg.setGatewayId(getDefaultGateway().getGatewayId());
-		getService().getLogger().logInfo(
-				"Sent to: " + msg.getRecipient() + " via: "
-						+ msg.getGatewayId(), null,
+		getService().getLogger().logInfo("Sent to: " + msg.getRecipient() + " via: " + msg.getGatewayId(), null,
 				getDefaultGateway().getGatewayId());
 		getDefaultGateway().incOutboundMessageCount();
 		return true;
+	}
+
+	InboundMessage generateIncomingMessage() {
+		getDefaultGateway().incInboundMessageCount();
+		InboundMessage msg = new InboundMessage(new java.util.Date(), "+1234567890", "Hello World! #"
+				+ getDefaultGateway().getInboundMessageCount(), 0, null);
+		msg.setGatewayId(getDefaultGateway().getGatewayId());
+		return msg;
 	}
 
 	protected int getFailCycle() {
@@ -201,14 +181,6 @@ public class TeksSMSGateway {
 		return this.srv.getGateway(smsGtwFactory.getSMSGatewayId());
 	}
 
-	InboundMessage generateIncomingMessage() {
-		getDefaultGateway().incInboundMessageCount();
-		InboundMessage msg = new InboundMessage(new java.util.Date(),
-				"+1234567890", "Hello World! #"
-						+ getDefaultGateway().getInboundMessageCount(), 0, null);
-		msg.setGatewayId(getDefaultGateway().getGatewayId());
-		return msg;
-	}
 	protected int getReceiveCycle() {
 		return receiveCycle;
 	}

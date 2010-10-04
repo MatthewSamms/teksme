@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.sms.service.impl;
+package org.teksme.server.provider.sms.impl;
 
 import java.io.IOException;
 import java.io.StringReader;
@@ -28,8 +28,7 @@ import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
-import org.teksme.server.sms.TeksSMSGateway;
-import org.teksme.server.sms.service.SMSInboundMessage;
+import org.teksme.server.provider.sms.service.SMSInboundMessage;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

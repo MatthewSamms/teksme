@@ -11,28 +11,16 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.sms;
+package org.teksme.server.provider.sms.service;
 
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
+import org.smslib.AGateway;
+import org.smslib.AGateway.GatewayStatuses;
+import org.smslib.IGatewayStatusNotification;
 
-public class Configuration {
-	private static final String BUNDLE_NAME = "org.teksme.server.sms.impl.gateway"; //$NON-NLS-1$
+public abstract class GatewayStatusNotification implements IGatewayStatusNotification {
 
-	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
-			.getBundle(BUNDLE_NAME);
-
-	private Configuration() {
+	public void process(AGateway gateway, GatewayStatuses oldStatus, GatewayStatuses newStatus) {
+		System.out.println(">>> Gateway Status change for " + gateway.getGatewayId() + ", OLD: " + oldStatus + " -> NEW: " + newStatus);
 	}
 
-	public static String getString(String key) {
-		try {
-			return RESOURCE_BUNDLE.getString(key);
-		} catch (MissingResourceException e) {
-			return '!' + key + '!';
-		}
-	}
-
-	public static void main(String[] args) {
-	}
 }
