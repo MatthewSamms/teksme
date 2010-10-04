@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.sms.service.impl;
+package org.teksme.server.provider.sms.impl;
 
 import java.io.IOException;
 import java.util.UUID;
@@ -20,8 +20,8 @@ import java.util.logging.Logger;
 import org.teksme.model.teks.Poll;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.impl.TeksPackageImpl;
-import org.teksme.server.common.helper.TeksModelHelper;
-import org.teksme.server.sms.service.SMSPollHandler;
+import org.teksme.server.common.utils.TeksModelHelper;
+import org.teksme.server.provider.sms.service.SMSPollHandler;
 
 /**
  * Session Bean implementation class CreatePollBean
@@ -57,7 +57,7 @@ public class SMSPollHandlerBean implements SMSPollHandler {
 		Poll poll = teksObj.getPoll();
 		poll.setId(UUID.randomUUID().toString());
 
-		TeksModelHelper.INSTANCE.serializeTeksModelXMLData(teksObj, MODEL_FILE);
+		//TeksModelHelper.INSTANCE.serializeTeksModelXMLData(teksObj, MODEL_FILE);
 
 		persistPoll(teksObj);
 
@@ -67,7 +67,7 @@ public class SMSPollHandlerBean implements SMSPollHandler {
 
 	public void persistPoll(Teks teksInquiry) {
 
-		TeksModelHelper.INSTANCE.persistPoll(teksInquiry);
+		//TeksModelHelper.INSTANCE.persistPoll(teksInquiry);
 
 	}
 }
