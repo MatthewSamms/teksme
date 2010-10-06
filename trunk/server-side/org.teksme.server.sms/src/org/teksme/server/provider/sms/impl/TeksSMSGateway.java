@@ -28,13 +28,13 @@ import org.smslib.SMSLibException;
 import org.smslib.Service;
 import org.smslib.TimeoutException;
 import org.smslib.notify.InboundMessageNotification;
-import org.teksme.server.provider.sms.service.SMSGatewayFactory;
+import org.teksme.server.provider.sms.service.SMSConnectionServiceFactory;
 
 public class TeksSMSGateway {
 
 	private Thread incomingMessagesThread = null;
 
-	private SMSGatewayFactory smsGtwFactory = null;// SMSGatewayFactory.INSTANCE;
+	private SMSConnectionServiceFactory smsGtwFactory = null;// SMSGatewayFactory.INSTANCE;
 
 	private int refCounter = 0;
 

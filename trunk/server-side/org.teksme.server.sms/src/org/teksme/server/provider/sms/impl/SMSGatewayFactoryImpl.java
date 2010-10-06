@@ -31,9 +31,9 @@ import org.teksme.server.provider.sms.service.GatewayStatusNotification;
 import org.teksme.server.provider.sms.service.InboundNotification;
 import org.teksme.server.provider.sms.service.OrphanedMessageNotification;
 import org.teksme.server.provider.sms.service.OutboundNotification;
-import org.teksme.server.provider.sms.service.SMSGatewayFactory;
+import org.teksme.server.provider.sms.service.SMSConnectionServiceFactory;
 
-public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
+public class SMSGatewayFactoryImpl implements SMSConnectionServiceFactory {
 
 	private String gatewayId = null;
 
@@ -41,7 +41,7 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 
 	public static Map<String, Object> registry = Collections.synchronizedMap(new HashMap<String, Object>());
 
-	public void stopSMSGateway() throws TimeoutException, GatewayException, SMSLibException, IOException, InterruptedException {
+	public void stopSMSService() throws TimeoutException, GatewayException, SMSLibException, IOException, InterruptedException {
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 		if (srv != null) {
 			logger.info("Stoping TeksMe SMS broker...");
@@ -53,13 +53,31 @@ public class SMSGatewayFactoryImpl implements SMSGatewayFactory {
 	public void addSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException {
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 		if (httpGateway != null) {
-			logger.info("Adding SMS gateway >> Id: "+httpGateway.getGatewayId());
+			logger.info("Adding SMS gateway >> Id: " + httpGateway.getGatewayId());
 			srv.addGateway(httpGateway);
 			srv.startService();
 		}
 	}
 
-	public Service startSMSGateway() throws IOException, InterruptedException, SMSLibException {
+	public AGateway getSMSGateway(String gatewayId) throws IOException, InterruptedException, SMSLibException {
+		Service srv = (Service) registry.get(Service.class.getSimpleName());
+		if (gatewayId != null) {
+			return srv.getGateway(gatewayId);
+		}
+		return null;
+	}
+
+	public void stopSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException {
+		Service srv = (Service) registry.get(Service.class.getSimpleName());
+		if (httpGateway != null) {
+			logger.info("Adding SMS gateway >> Id: " + httpGateway.getGatewayId());
+			srv.stopService();
+			srv.removeGateway(httpGateway);
+			srv.startService();
+		}
+	}
+
+	public Service startSMSService() throws IOException, InterruptedException, SMSLibException {
 		logger.info("Starting TeksMe SMS broker...");
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 		if (srv != null) {

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="sms.service.SMSGatewayService">
+   <implementation class="org.teksme.server.provider.sms.impl.SMSGatewayServiceImpl"/>
+   <service>
+      <provide interface="org.teksme.server.provider.sms.service.SMSGatewayService"/>
+   </service>
+   <reference bind="bind" cardinality="1..1" interface="org.teksme.server.provider.sms.service.SMSConnectionServiceFactory" name="SMSConnectionServiceFactory" policy="static" unbind="unbind"/>
+</scr:component>
