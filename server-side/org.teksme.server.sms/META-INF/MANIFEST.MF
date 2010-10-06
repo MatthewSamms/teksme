@@ -16,4 +16,5 @@ Require-Bundle: org.teksme.server.common;bundle-version="0.5.0",
 Export-Package: org.teksme.server.provider.sms,
  org.teksme.server.provider.sms.service
 Bundle-Vendor: TeksMe Inc.
-Service-Component: OSGI-INF/sms-gateway-component.xml
+Service-Component: OSGI-INF/sms-conn-service.xml, OSGI-INF/sms-gateway-service.xml
+Bundle-Activator: org.teksme.server.provider.sms.Activator
