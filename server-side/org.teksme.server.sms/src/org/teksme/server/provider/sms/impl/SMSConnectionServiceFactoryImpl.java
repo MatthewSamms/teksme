@@ -33,11 +33,11 @@ import org.teksme.server.provider.sms.service.OrphanedMessageNotification;
 import org.teksme.server.provider.sms.service.OutboundNotification;
 import org.teksme.server.provider.sms.service.SMSConnectionServiceFactory;
 
-public class SMSGatewayFactoryImpl implements SMSConnectionServiceFactory {
+public class SMSConnectionServiceFactoryImpl implements SMSConnectionServiceFactory {
 
 	private String gatewayId = null;
 
-	private static Logger logger = Logger.getLogger(SMSGatewayFactoryImpl.class.getName());
+	private static Logger logger = Logger.getLogger(SMSConnectionServiceFactoryImpl.class.getName());
 
 	public static Map<String, Object> registry = Collections.synchronizedMap(new HashMap<String, Object>());
 
@@ -67,7 +67,7 @@ public class SMSGatewayFactoryImpl implements SMSConnectionServiceFactory {
 		return null;
 	}
 
-	public void stopSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException {
+	public void removeSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException {
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 		if (httpGateway != null) {
 			logger.info("Adding SMS gateway >> Id: " + httpGateway.getGatewayId());

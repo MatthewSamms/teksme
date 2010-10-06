@@ -27,7 +27,7 @@ public interface SMSConnectionServiceFactory {
 
 	void stopSMSService() throws TimeoutException, GatewayException, SMSLibException, IOException, InterruptedException;
 
-	void stopSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException;
+	void removeSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException;
 
 	void addSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException;
 
