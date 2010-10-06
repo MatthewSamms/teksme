@@ -5,3 +5,9 @@ Bundle-SymbolicName: org.teksme.server.sms.clickatell
 Bundle-Version: 0.5.0
 Bundle-Vendor: TeksMe Inc.
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: org.smslib,
+ org.smslib.http,
+ org.teksme.model.teks
+Require-Bundle: org.teksme.server.sms;bundle-version="0.5.0",
+ org.smslib;bundle-version="3.4.6"
+Service-Component: OSGI-INF/sms-conn-service-client.xml
