@@ -11,12 +11,11 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.queue.consumer.impl;
+package org.teksme.server.queue.consumer;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
-import org.teksme.server.queue.consumer.MessageListener;
 
 
 public class MessageEventDispatcher<M> {

@@ -38,7 +38,7 @@ public abstract class TeksMessageHandler<T> implements MessageListener<Message> 
 	public void onMessage(final Message message) {
 
 		logger.info("Handling queue message...");
-		
+
 		if (matchesExpectedType(message)) {
 			invokeConsume(message);
 		} else {

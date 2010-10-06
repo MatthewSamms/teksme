@@ -16,22 +16,21 @@ package org.teksme.server.queue.consumer.impl;
 import java.io.IOException;
 
 import org.teksme.model.teks.InboundTextMessage;
-import org.teksme.server.provider.sms.service.SMSInboundMessage;
 
+import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
-import com.rabbitmq.client.AMQP.BasicProperties;
 
 /**
  * 
  * @since 0.5
- *
+ * 
  */
 public class InboundConsumer extends DefaultConsumer {
 
-	private SMSInboundMessage inbound;
-	
+	// private SMSInboundMessage inbound;
+
 	public InboundConsumer(Channel channel) {
 		super(channel);
 	}
@@ -42,15 +41,15 @@ public class InboundConsumer extends DefaultConsumer {
 
 		InboundTextMessage message = null;
 		try {
-			message = (InboundTextMessage)new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body)).readObject();
-			inbound.readMessage(message);
+			message = (InboundTextMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body)).readObject();
+			// inbound.readMessage(message);
 		} catch (java.io.IOException ioe) {
 			System.err.println(ioe.getMessage());
 		} catch (java.lang.ClassNotFoundException cnfe) {
 			System.err.println(cnfe.getMessage());
 		}
 		// TODO: implement HTTP callback to client application
-		
+
 		getChannel().basicAck(deliveryTag, false);
 	}
 }

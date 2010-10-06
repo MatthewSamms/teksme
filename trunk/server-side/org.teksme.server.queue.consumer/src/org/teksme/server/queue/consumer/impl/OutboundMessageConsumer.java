@@ -19,6 +19,7 @@ import java.util.logging.Logger;
 import org.teksme.model.teks.Message;
 import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.server.common.messaging.AMQPQueues;
+import org.teksme.server.queue.consumer.MessageEventDispatcher;
 import org.teksme.server.queue.consumer.MessageEventSource;
 import org.teksme.server.queue.consumer.MessageListener;
 
