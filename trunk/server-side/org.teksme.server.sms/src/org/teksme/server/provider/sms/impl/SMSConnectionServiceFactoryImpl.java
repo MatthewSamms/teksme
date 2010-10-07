@@ -21,12 +21,13 @@ import java.util.logging.Logger;
 
 import org.smslib.AGateway;
 import org.smslib.GatewayException;
+import org.smslib.Library;
 import org.smslib.SMSLibException;
 import org.smslib.Service;
 import org.smslib.TimeoutException;
+import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.server.provider.sms.Configuration;
 import org.teksme.server.provider.sms.service.CallNotification;
-import org.teksme.server.provider.sms.service.GatewayKind;
 import org.teksme.server.provider.sms.service.GatewayStatusNotification;
 import org.teksme.server.provider.sms.service.InboundNotification;
 import org.teksme.server.provider.sms.service.OrphanedMessageNotification;
@@ -50,27 +51,40 @@ public class SMSConnectionServiceFactoryImpl implements SMSConnectionServiceFact
 		}
 	}
 
+	public AGateway getSMSGateway(String gatewayId) throws TimeoutException, GatewayException, SMSLibException, IOException,
+			InterruptedException {
+		Service srv = (Service) registry.get(Service.class.getSimpleName());
+		AGateway gateway = null;
+		if (srv != null) {
+			logger.info("Retrieving Gateway Id >> " + gatewayId);
+			gateway = srv.getGateway(gatewayId);
+		}
+		return gateway;
+	}
+
+	public void stopSMSGateway(AGateway httpGateway) throws TimeoutException, GatewayException, SMSLibException, IOException,
+			InterruptedException {
+		Service srv = (Service) registry.get(Service.class.getSimpleName());
+		if (srv != null) {
+			logger.info("Stoping SMS gateway >> Id: " + httpGateway.getGatewayId());
+			httpGateway.stopGateway();
+		}
+	}
+
 	public void addSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException {
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 		if (httpGateway != null) {
+			srv.stopService();
 			logger.info("Adding SMS gateway >> Id: " + httpGateway.getGatewayId());
 			srv.addGateway(httpGateway);
 			srv.startService();
 		}
 	}
 
-	public AGateway getSMSGateway(String gatewayId) throws IOException, InterruptedException, SMSLibException {
-		Service srv = (Service) registry.get(Service.class.getSimpleName());
-		if (gatewayId != null) {
-			return srv.getGateway(gatewayId);
-		}
-		return null;
-	}
-
 	public void removeSMSGateway(AGateway httpGateway) throws IOException, InterruptedException, SMSLibException {
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 		if (httpGateway != null) {
-			logger.info("Adding SMS gateway >> Id: " + httpGateway.getGatewayId());
+			logger.info("Removing SMS gateway >> Id: " + httpGateway.getGatewayId());
 			srv.stopService();
 			srv.removeGateway(httpGateway);
 			srv.startService();
@@ -78,19 +92,20 @@ public class SMSConnectionServiceFactoryImpl implements SMSConnectionServiceFact
 	}
 
 	public Service startSMSService() throws IOException, InterruptedException, SMSLibException {
-		logger.info("Starting TeksMe SMS broker...");
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
 		if (srv != null) {
 			return srv;
 		} else {
+			logger.info("Starting TeksMe SMS broker...");
+			logger.info("Provider: " + Library.getLibraryDescription());
+			logger.info("Version: " + Library.getLibraryVersion());
 			srv = new Service();
 		}
 		registry.put(Service.class.getSimpleName(), srv);
 		return srv;
 	}
 
-	// Create the notification callback method for inbound & status
-	// report
+	// Create the notification callback method for inbound & status report
 	// messages.
 	public void setInboundMessageNotification(InboundNotification inboundNotification) {
 		Service srv = (Service) registry.get(Service.class.getSimpleName());
@@ -122,8 +137,8 @@ public class SMSConnectionServiceFactoryImpl implements SMSConnectionServiceFact
 
 	}
 
-	public GatewayKind getDefaultSMSGatewayClazz() {
-		return GatewayKind.getByName(Configuration.getString("gateway.default.class"));
+	public SMSGatewayKind getDefaultSMSGatewayClazz() {
+		return SMSGatewayKind.getByName(Configuration.getString("gateway.default.class"));
 	}
 
 	public String getSMSGatewayId() {
