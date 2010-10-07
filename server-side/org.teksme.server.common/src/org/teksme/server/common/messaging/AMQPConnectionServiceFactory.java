@@ -77,7 +77,7 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 		}
 	}
 
-	public AMQPConnectionServiceFactory(BundleContext context) {
+	public AMQPConnectionServiceFactory(BundleContext context) throws AMQPBrokerException {
 
 		this.context = context;
 
@@ -94,8 +94,7 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
 
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new AMQPBrokerException("Internal RabbitMQ messaging broker error: " + e.getMessage());
 		}
 	}
 
