@@ -13,8 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.teksme.model.teks.InboundTextMessage;
-import org.teksme.server.sms.service.SMSInboundMessage;
 import org.xml.sax.SAXException;
 
 /**
@@ -28,9 +26,9 @@ public class ClickatellCallbackServlet extends HttpServlet {
 	private static String message = "Error during Servlet processing";
 
 	// TODO Inject the service
-	SMSInboundMessage smsInboundMessage;
+	// SMSInboundMessage smsInboundMessage;
 	// TODO Inject the service
-	//JMSMsgQueueSender outboundMsgQueueSender;
+	// JMSMsgQueueSender outboundMsgQueueSender;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -54,7 +52,7 @@ public class ClickatellCallbackServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		try {
+		//try {
 			BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
 
 			final ServletOutputStream outStream = response.getOutputStream();
@@ -86,11 +84,12 @@ public class ClickatellCallbackServlet extends HttpServlet {
 			logger.info("getContentLength: " + request.getContentLength());
 			logger.info("getContentType: " + request.getContentType());
 
-			InboundTextMessage inboundMsg = smsInboundMessage.createInboundMsgModelFromXml(xmlBuff.toString());
+			// InboundTextMessage inboundMsg =
+			// smsInboundMessage.createInboundMsgModelFromXml(xmlBuff.toString());
 
-			logger.info("MO: " + inboundMsg.getOriginator());
+			// logger.info("MO: " + inboundMsg.getOriginator());
 
-			//outboundMsgQueueSender.send(inboundMsg);
+			// outboundMsgQueueSender.send(inboundMsg);
 
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);
@@ -99,6 +98,7 @@ public class ClickatellCallbackServlet extends HttpServlet {
 			writer.flush();
 			writer.close();
 
+			/*
 		} catch (IOException e) {
 			try {
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -112,7 +112,7 @@ public class ClickatellCallbackServlet extends HttpServlet {
 		} catch (ParserConfigurationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 
 	}
 
