@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import org.smslib.AGateway;
 import org.smslib.SMSLibException;
 import org.smslib.http.ClickatellHTTPGateway;
-import org.teksme.server.provider.sms.service.GatewayKind;
+import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.server.provider.sms.service.SMSConnectionServiceFactory;
 
 public class ClickatellSMSGateway {
@@ -32,11 +32,10 @@ public class ClickatellSMSGateway {
 	private SMSConnectionServiceFactory smsConnServiceFactory = null;
 
 	public void startGateway() {
-
 		try {
-			logger.info("Starting Clickatell SMS gateway...");
 			smsConnServiceFactory.startSMSService();
 			httpGateway = createClickatellHTTPGateway();
+			logger.info("Starting Clickatell SMS gateway...");
 			smsConnServiceFactory.addSMSGateway(httpGateway);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -49,21 +48,22 @@ public class ClickatellSMSGateway {
 
 	private ClickatellHTTPGateway createClickatellHTTPGateway() {
 
-		final String id = GatewayKind.CLICKATELL_HTTP_GATEWAY.getName();
+		final String id = SMSGatewayKind.CLICKATELL.getName();
 		// BundleConfig.getString("http.gateway.id");
 		// this.setSMSGatewayId(id);
 
-		final String appId = BundleConfig.getString("http.gateway.appid");
-		final String username = BundleConfig.getString("http.gateway.username");
-		final String passwd = BundleConfig.getString("http.gateway.passwd");
+		final String appId = Configuration.getString("http.gateway.appid");
+		final String username = Configuration
+				.getString("http.gateway.username");
+		final String passwd = Configuration.getString("http.gateway.passwd");
 
 		ClickatellHTTPGateway clickatellGateway = new ClickatellHTTPGateway(id,
 				appId, username, passwd);
 
-		final Boolean inbound = Boolean.valueOf(BundleConfig
+		final Boolean inbound = Boolean.valueOf(Configuration
 				.getString("http.gateway.inbound"));
 
-		final Boolean outbound = Boolean.valueOf(BundleConfig
+		final Boolean outbound = Boolean.valueOf(Configuration
 				.getString("http.gateway.outbound"));
 
 		clickatellGateway.setInbound(inbound);

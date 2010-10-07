@@ -16,13 +16,13 @@ package org.teksme.server.sms.clickatell;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
-public class BundleConfig {
+public class Configuration {
 	private static final String BUNDLE_NAME = "org.teksme.server.sms.clickatell.gateway"; //$NON-NLS-1$
 
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle
 			.getBundle(BUNDLE_NAME);
 
-	private BundleConfig() {
+	private Configuration() {
 	}
 
 	public static String getString(String key) {
