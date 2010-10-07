@@ -19,7 +19,6 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.teksme.model.teks.OutboundTextMessage;
-import org.teksme.server.provider.sms.service.GatewayKind;
 import org.teksme.server.provider.sms.service.SMSGatewayService;
 
 public class OutboundSMSHandler extends TeksMessageHandler<OutboundTextMessage> {
@@ -52,14 +51,13 @@ public class OutboundSMSHandler extends TeksMessageHandler<OutboundTextMessage> 
 		logger.info("Message received");
 
 		SMSGatewayService smsGateway = (SMSGatewayService) registry.get(SMSGatewayService.class.getSimpleName());
-		System.out.println("OutboundSMSHandler.consume()" + smsGateway);
 
 		try {
-			smsGateway.sendMessage(message, GatewayKind.CLICKATELL_HTTP_GATEWAY);
+			smsGateway.sendMessage(message);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
 	}
+
 }
