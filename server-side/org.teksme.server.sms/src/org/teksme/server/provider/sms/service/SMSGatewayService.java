@@ -4,6 +4,6 @@ import org.teksme.model.teks.OutboundTextMessage;
 
 public interface SMSGatewayService {
 
-	void sendMessage(OutboundTextMessage message, GatewayKind gatewayType) throws Exception;
+	void sendMessage(OutboundTextMessage message) throws Exception;
 
 }

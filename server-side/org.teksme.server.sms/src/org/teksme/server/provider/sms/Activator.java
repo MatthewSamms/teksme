@@ -9,8 +9,14 @@ public class Activator implements BundleActivator {
 
 	private static Logger logger = Logger.getLogger(Activator.class.getName());
 
+	private static BundleContext context;
+
+	public static BundleContext getContext() {
+		return context;
+	}
+
 	public void start(BundleContext context) throws Exception {
-		logger.info("Starting TeksMe SMS gateway...");
+		logger.info("Starting TeksMe SMS bundle...");
 		// TODO Auto-generated method stub
 
 	}

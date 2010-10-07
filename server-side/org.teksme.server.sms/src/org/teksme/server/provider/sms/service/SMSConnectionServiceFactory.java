@@ -20,6 +20,7 @@ import org.smslib.GatewayException;
 import org.smslib.SMSLibException;
 import org.smslib.Service;
 import org.smslib.TimeoutException;
+import org.teksme.model.teks.SMSGatewayKind;
 
 public interface SMSConnectionServiceFactory {
 
@@ -45,7 +46,7 @@ public interface SMSConnectionServiceFactory {
 
 	void setOutboundMessageNotification(OutboundNotification outboundNotification);
 
-	GatewayKind getDefaultSMSGatewayClazz();
+	SMSGatewayKind getDefaultSMSGatewayClazz();
 
 	String getSMSGatewayId();
 
