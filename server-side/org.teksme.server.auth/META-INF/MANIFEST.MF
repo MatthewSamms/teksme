@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Authenticator
+Bundle-SymbolicName: org.teksme.server.auth
+Bundle-Version: 0.5
+Bundle-Activator: org.teksme.server.auth.Activator
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-Vendor: TeksMe Inc.
