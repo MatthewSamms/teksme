@@ -12,12 +12,13 @@
  */
 package org.teksme.server.common.persistence.impl;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.Properties;
 import java.util.logging.Logger;
 
+import org.osgi.framework.BundleContext;
+import org.osgi.framework.ServiceRegistration;
 import org.teksme.server.common.TeksResourceBundle;
+import org.teksme.server.common.persistence.PersistenceException;
 import org.teksme.server.common.persistence.PersistenceManager;
 import org.teksme.server.common.persistence.PersistenceManagerFactory;
 
@@ -25,49 +26,35 @@ public class PersistenceManagerFactoryImpl implements PersistenceManagerFactory 
 
 	private static Logger logger = Logger.getLogger(PersistenceManagerFactoryImpl.class.getName());
 
-	private static Map<String, Object> registry = Collections.synchronizedMap(new HashMap<String, Object>());
+	ServiceRegistration reg = null;
 
-	private static PersistenceManagerFactoryImpl INSTANCE = null;
+	private final BundleContext context;
 
-	public static PersistenceManagerFactory init() {
+	public PersistenceManagerFactoryImpl(BundleContext context) {
+		this.context = context;
+
+		Test persistenceMgr = null;
 		try {
 
-			if (registry.containsKey(PersistenceManagerFactory.class.getSimpleName())) {
-				PersistenceManagerFactory thePersistenceManagerFactory = (PersistenceManagerFactory) registry
-						.get(PersistenceManagerFactory.class.getSimpleName());
+			logger.info("Initializing datasource using hibernate...");
 
-				if (thePersistenceManagerFactory != null) {
-					return thePersistenceManagerFactory;
-				}
-			}
+			persistenceMgr = new Test();
+			persistenceMgr.initialize();
 
-			INSTANCE = new PersistenceManagerFactoryImpl();
-			registry.put(PersistenceManagerFactory.class.getSimpleName(), INSTANCE);
+			Properties svcProps = new Properties();
+			svcProps.put("default.persistence.manager", TeksResourceBundle.getString("default.persistence.manager"));
 
-		} catch (Exception exception) {
-			logger.severe(exception.getMessage());
-			exception.printStackTrace();
+			//reg = context.registerService(PersistenceManager.class.getName(), persistenceMgr, svcProps);
+
+		} catch (PersistenceException e) {
+			e.printStackTrace();
+			// logger.log(Level.SEVERE,
+			// "Internal persistence manager factory error: " + e.getMessage());
 		}
-		return INSTANCE;
 	}
 
 	public PersistenceManager getPersistenceManager() {
-		Object obj = null;
-		try {
-			final String dfPersistenceManager = TeksResourceBundle.getString("default.persistence.manager");
-			Class<?> persistenceClazz = Class.forName(dfPersistenceManager);
-			obj = persistenceClazz.newInstance();
-			if (PersistenceManager.class.isInstance(obj)) {
-				return (PersistenceManager) obj;
-			}
-
-		} catch (InstantiationException e) {
-			System.out.println(e);
-		} catch (IllegalAccessException e) {
-			System.out.println(e);
-		} catch (ClassNotFoundException e) {
-			System.out.println(e);
-		}
+		// TODO Auto-generated method stub
 		return null;
 	}
 

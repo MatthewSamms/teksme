@@ -19,6 +19,8 @@ import org.osgi.framework.BundleContext;
 import org.osgi.framework.Constants;
 import org.osgi.service.cm.ManagedServiceFactory;
 import org.teksme.server.common.messaging.AMQPConnectionServiceFactory;
+import org.teksme.server.common.persistence.PersistenceManagerFactory;
+import org.teksme.server.common.persistence.impl.PersistenceManagerFactoryImpl;
 
 /**
  * 
@@ -48,6 +50,12 @@ public class Activator implements BundleActivator {
 
 		// FIXME change to DS
 		context.registerService(ManagedServiceFactory.class.getName(), new AMQPConnectionServiceFactory(context), props);
+
+		props = new Properties();
+		props.put(Constants.SERVICE_PID, "persistence.manager");
+
+		context.registerService(PersistenceManagerFactory.class.getName(), new PersistenceManagerFactoryImpl(context), props);
+
 	}
 
 	/*

@@ -30,4 +30,8 @@ public class PersistenceException extends Exception {
 		// TODO Auto-generated constructor stub
 	}
 
+	public PersistenceException(String message) {
+		// TODO Auto-generated constructor stub
+	}
+
 }

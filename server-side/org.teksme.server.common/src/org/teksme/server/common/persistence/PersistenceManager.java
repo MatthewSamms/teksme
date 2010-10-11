@@ -26,4 +26,6 @@ public interface PersistenceManager {
 	public String getObjectId(Object obj);
 
 	public void serializeXMLData(String xmlInput) throws IOException;
+
+	void initialize() throws PersistenceException;
 }

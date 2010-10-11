@@ -21,6 +21,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -50,43 +51,41 @@ public class HbPersistenceManagerImpl implements PersistenceManager {
 
 	private static Logger logger = Logger.getLogger(HbPersistenceManagerImpl.class.getName());
 
+	private HbDataStore dataStore = null;
+
 	// persist your objects into the datastore
 	public void makePersistent(Teks teksObj) throws PersistenceException {
 
-		HbDataStore dataStore;
-		try {
-			dataStore = getHibernateDataStore();
+		final SessionFactory sessionFactory = dataStore.getSessionFactory();
+		{
+			// Create a session and a transaction
+			final Session session = sessionFactory.openSession();
+			Transaction tx = session.getTransaction();
 
-			// sets its epackages stored in this datastore
-			dataStore.setEPackages(new EPackage[] { TeksPackage.eINSTANCE });
+			// Start a transaction, create a library and make it persistent
+			tx.begin();
 
-			// initialize, also creates the database tables
-			dataStore.initialize();
+			logger.info("Persisting the object model in the database...");
 
-			final SessionFactory sessionFactory = dataStore.getSessionFactory();
-			{
-				// Create a session and a transaction
-				final Session session = sessionFactory.openSession();
-				Transaction tx = session.getTransaction();
+			session.save(teksObj);
 
-				// Start a transaction, create a library and make it persistent
-				tx.begin();
+			// at commit the objects will be present in the database
+			tx.commit();
+			// and close of, this should actually be done in a finally block
+			session.close();
 
-				logger.info("Persisting the object model in the database...");
-				
-				session.save(teksObj);
+			logger.info("The object was successfully persisted into the database!");
 
-				// at commit the objects will be present in the database
-				tx.commit();
-				// and close of, this should actually be done in a finally block
-				session.close();
-
-				logger.info("The object was successfully persisted into the database!");
-
-			}
-		} catch (ClassNotFoundException e) {
-			throw new PersistenceException(e);
 		}
+	}
+
+	public void initialize() throws PersistenceException {
+		logger.info("initialize() :: Initializing datasource...");
+//		dataStore = getHibernateDataStore();
+//		// sets its epackages stored in this datastore
+//		dataStore.setEPackages(new EPackage[] { TeksPackage.eINSTANCE });
+//		// initialize, also creates the database tables
+//		dataStore.initialize();
 	}
 
 	// Retrieves the object
@@ -129,35 +128,40 @@ public class HbPersistenceManagerImpl implements PersistenceManager {
 
 	}
 
-	private HbDataStore getHibernateDataStore() throws ClassNotFoundException {
+	private HbDataStore getHibernateDataStore() throws PersistenceException {
 		HbDataStore dataStore = (HbDataStore) HbHelper.INSTANCE.createRegisterDataStore(DB_NAME);
-
 		// set the properties
 		dataStore.setProperties(getHibernateDataStoreProperties());
-
 		return dataStore;
 	}
 
-	private Properties getHibernateDataStoreProperties() throws ClassNotFoundException {
-		// Set the database information, Environment is
-		// org.hibernate.cfg.Environment
-		final Properties dbProps = new Properties();
-		final String dialect = TeksResourceBundle.getString("datasource.dialect");
-		Class<?> dsDialect = Class.forName(dialect);
+	private Properties getHibernateDataStoreProperties() throws PersistenceException {
+		try {
 
-		dbProps.setProperty(Environment.DRIVER, TeksResourceBundle.getString("datasource.driver"));
-		dbProps.setProperty(Environment.USER, TeksResourceBundle.getString("datasource.user"));
-		dbProps.setProperty(Environment.URL, TeksResourceBundle.getString("datasource.url"));
-		dbProps.setProperty(Environment.PASS, TeksResourceBundle.getString("datasource.passwd"));
-		dbProps.setProperty(Environment.DIALECT, dsDialect.getName());
+			// Set the database information, Environment is
+			// org.hibernate.cfg.Environment
+			final Properties dbProps = new Properties();
+			final String dialect = TeksResourceBundle.getString("datasource.dialect");
+			Class<?> dsDialect = Class.forName(dialect);
 
-		// set a specific option
-		// see this page
-		// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
-		// for all the available options
-		dbProps.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, TeksResourceBundle.getString("datasource.cascade.policy"));
+			dbProps.setProperty(Environment.DRIVER, TeksResourceBundle.getString("datasource.driver"));
+			dbProps.setProperty(Environment.USER, TeksResourceBundle.getString("datasource.user"));
+			dbProps.setProperty(Environment.URL, TeksResourceBundle.getString("datasource.url"));
+			dbProps.setProperty(Environment.PASS, TeksResourceBundle.getString("datasource.passwd"));
+			dbProps.setProperty(Environment.DIALECT, dsDialect.getName());
 
-		return dbProps;
+			// set a specific option
+			// see this page
+			// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
+			// for all the available options
+			dbProps.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
+					TeksResourceBundle.getString("datasource.cascade.policy"));
+
+			return dbProps;
+		} catch (ClassNotFoundException e) {
+			logger.log(Level.SEVERE, "Problem initializing datastore: " + e.getMessage());
+			throw new PersistenceException("Problem initializing datastore: " + e.getMessage());
+		}
 
 	}
 
