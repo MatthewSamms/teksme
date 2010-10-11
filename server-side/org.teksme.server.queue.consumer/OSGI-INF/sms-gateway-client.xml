@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.teksme.server.queue.consumer">
    <implementation class="org.teksme.server.queue.consumer.impl.OutboundSMSHandler"/>
-   <reference bind="bind" cardinality="1..1" interface="org.teksme.server.provider.sms.service.SMSGatewayService" name="SMSGatewayService" policy="dynamic" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="org.teksme.server.provider.sms.service.SMSGatewayService" name="SMSGatewayService" policy="static" unbind="unbind"/>
 </scr:component>
