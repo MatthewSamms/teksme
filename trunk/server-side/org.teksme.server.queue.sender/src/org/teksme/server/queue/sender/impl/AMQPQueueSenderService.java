@@ -25,7 +25,7 @@ import org.osgi.framework.ServiceReference;
 import org.teksme.model.teks.InboundTextMessage;
 import org.teksme.model.teks.OutboundTextMessage;
 import org.teksme.server.common.messaging.AMQPBrokerParameters;
-import org.teksme.server.common.messaging.AMQPQueues;
+import org.teksme.server.common.messaging.AMQPQueueType;
 import org.teksme.server.queue.sender.Activator;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
@@ -69,10 +69,10 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			AMQP.BasicProperties messageProps = new AMQP.BasicProperties(contentType, contentEncoding, null, deliveryMode, priority, null,
 					replyTo, expiration, messageId, timestamp, null, null, null, null);
 
-			logger.info("Publishing message to queue " + AMQPQueues.OUTBOUND_EXCHANGE + " with routing key "
-					+ AMQPQueues.OUTBOUND_SMS_ROUTING_KEY + "...");
+			logger.info("Publishing message to queue " + AMQPQueueType.OUTBOUND_QUEUE.getQueue() + " with routing key "
+					+ AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey() + "...");
 
-			lChannel.basicPublish(AMQPQueues.OUTBOUND_EXCHANGE, AMQPQueues.OUTBOUND_SMS_ROUTING_KEY, messageProps, data);
+			lChannel.basicPublish(AMQPQueueType.OUTBOUND_QUEUE.getQueue(), AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey(), messageProps, data);
 
 		} catch (InvalidSyntaxException e) {
 			// Shouldn't happen
@@ -115,7 +115,7 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			AMQP.BasicProperties messageProperties = new AMQP.BasicProperties(null, null, null, new Integer(2), null, null, null, null,
 					null, null, null, null, null, null);
 
-			lChannel.basicPublish(AMQPQueues.INBOUND_EXCHANGE, AMQPQueues.INBOUND_QUEUE, messageProperties, data);
+			lChannel.basicPublish(AMQPQueueType.INBOUND_QUEUE.getQueue(), AMQPQueueType.INBOUND_QUEUE.getQueue(), messageProperties, data);
 			lChannel.close();
 			// lConnection.close();
 		} catch (Exception lIoException) {

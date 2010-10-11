@@ -37,5 +37,13 @@ public interface AMQPBrokerParameters {
 	public static final String CONNECTION_NAME = TeksResourceBundle.getString("mq.connection.name").trim();
 
 	public static final String CONNECTION_HOST = TeksResourceBundle.getString("mq.connection.host").trim();
+	
+	public static final String DURABLE = TeksResourceBundle.getString("mq.channel.durable").trim();
+
+	public static final String AUTO_DELETE = TeksResourceBundle.getString("mq.channel.autoDelete").trim();
+	
+	public static final String EXCLUSIVE = TeksResourceBundle.getString("mq.channel.exclusive").trim();
+	
+	public static final String TYPE = TeksResourceBundle.getString("mq.channel.type").trim();
 
 }
