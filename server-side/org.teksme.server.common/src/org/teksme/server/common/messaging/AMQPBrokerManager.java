@@ -56,16 +56,16 @@ public final class AMQPBrokerManager implements ShutdownListener {
 		return conn;
 	}
 
-	protected void declareQueueing(Connection conn) throws IOException {
+	protected void declareQueueing(Connection conn, AMQPQueueType queueType) throws IOException {
 
-		final boolean durable = Boolean.getBoolean(AMQPQueues.CHANNEL.DURABLE);
-		final boolean autoDelete = Boolean.getBoolean(AMQPQueues.CHANNEL.AUTO_DELETE);
-		final boolean exclusive = Boolean.getBoolean(AMQPQueues.CHANNEL.EXCLUSIVE);
-		final String type = AMQPQueues.CHANNEL.TYPE;
+		final boolean durable = Boolean.getBoolean(AMQPBrokerParameters.DURABLE);
+		final boolean autoDelete = Boolean.getBoolean(AMQPBrokerParameters.AUTO_DELETE);
+		final boolean exclusive = Boolean.getBoolean(AMQPBrokerParameters.EXCLUSIVE);
+		final String type = AMQPBrokerParameters.TYPE;
 
-		final String routingKey = AMQPQueues.OUTBOUND_SMS_ROUTING_KEY;
-		String exchangeName = AMQPQueues.OUTBOUND_EXCHANGE;
-		String queueName = AMQPQueues.OUTBOUND_QUEUE;
+		final String routingKey = queueType.getSmsRoutingKey();
+		String exchangeName = queueType.getExchange();
+		String queueName = queueType.getQueue();
 
 		Channel channel = conn.createChannel();
 

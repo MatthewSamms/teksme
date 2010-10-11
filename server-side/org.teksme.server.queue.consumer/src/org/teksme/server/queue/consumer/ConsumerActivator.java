@@ -17,7 +17,8 @@ import java.util.logging.Logger;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
-import org.teksme.server.common.messaging.AMQPQueues;
+import org.teksme.server.common.messaging.AMQPQueueType;
+
 
 /**
  * 
@@ -36,9 +37,9 @@ public class ConsumerActivator implements BundleActivator {
 
 		logger.info("Starting message consumer bundle...");
 		
-		inboundTracker = new ChannelInboundTracker(context, AMQPQueues.INBOUND_QUEUE);
+		inboundTracker = new ChannelInboundTracker(context, AMQPQueueType.INBOUND_QUEUE.getQueue());
 		
-		outboundTracker = new ChannelOutboundTracker(context, AMQPQueues.OUTBOUND_QUEUE);
+		outboundTracker = new ChannelOutboundTracker(context, AMQPQueueType.OUTBOUND_QUEUE.getQueue());
 		
 		inboundTracker.open();
 		

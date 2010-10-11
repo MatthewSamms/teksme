@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 import org.teksme.model.teks.Message;
 import org.teksme.model.teks.OutboundTextMessage;
-import org.teksme.server.common.messaging.AMQPQueues;
+import org.teksme.server.common.messaging.AMQPQueueType;
 import org.teksme.server.queue.consumer.MessageEventDispatcher;
 import org.teksme.server.queue.consumer.MessageEventSource;
 import org.teksme.server.queue.consumer.MessageListener;
@@ -54,8 +54,8 @@ public class OutboundMessageConsumer extends DefaultConsumer implements MessageE
 			long deliveryTag = envelope.getDeliveryTag();
 
 			// TODO implement a better messaging handler
-			if (AMQPQueues.OUTBOUND_SMS_ROUTING_KEY.equals(routingKey)) {
-				logger.info("Partial matching based on the message key: " + AMQPQueues.OUTBOUND_SMS_ROUTING_KEY);
+			if (AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey().equals(routingKey)) {
+				logger.info("Partial matching based on the message key: " + AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey());
 				OutboundTextMessage outMsg = (OutboundTextMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body))
 						.readObject();
 				dispatcher.fire(outMsg);
