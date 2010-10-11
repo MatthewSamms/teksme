@@ -132,7 +132,8 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
 		Connection conn = msgBroker.connect();
 
-		msgBroker.declareQueueing(conn);
+		//FIXME
+		msgBroker.declareQueueing(conn, AMQPQueueType.OUTBOUND_QUEUE);
 
 		return conn;
 	}
