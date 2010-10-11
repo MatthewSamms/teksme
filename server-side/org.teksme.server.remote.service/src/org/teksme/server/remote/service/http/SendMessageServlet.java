@@ -39,7 +39,6 @@ import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.PersistenceException;
 import org.teksme.server.common.persistence.PersistenceManager;
-import org.teksme.server.common.persistence.PersistenceManagerFactory;
 import org.teksme.server.common.utils.TeksModelHelper;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
@@ -51,6 +50,8 @@ public class SendMessageServlet extends HttpServlet {
 	private static Logger logger = Logger.getLogger(SendMessageServlet.class.getName());
 
 	private MessageQueueSender queueSender;
+
+	private PersistenceManager persistenceMgr;
 
 	public SendMessageServlet() {
 		super();
@@ -130,8 +131,8 @@ public class SendMessageServlet extends HttpServlet {
 				return;
 			}
 
-			PersistenceManagerFactory pFactory = PersistenceManagerFactory.INSTANCE;
-			PersistenceManager pm = pFactory.getPersistenceManager();
+			// PersistenceManager pm =
+			// persistenceMgrFactory.getPersistenceManager();
 
 			// logger.info("XML Buff: " + xmlBuff.toString());
 			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(xmlBuff.toString());
@@ -141,15 +142,16 @@ public class SendMessageServlet extends HttpServlet {
 
 			logger.info(outMsg.getMessage().getText());
 
-			try {
+			if (persistenceMgr != null) {
+				try {
 
-				pm.makePersistent(teksModel);
+					persistenceMgr.makePersistent(teksModel);
 
-			} catch (PersistenceException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				} catch (PersistenceException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
-
 			queueSender.publishMessage(outMsg);
 
 			outStream.println("getContentLength: " + request.getContentLength());
@@ -207,6 +209,10 @@ public class SendMessageServlet extends HttpServlet {
 
 	public void setMessageQueueSenderService(final MessageQueueSender queueSender) {
 		this.queueSender = queueSender;
+	}
+
+	public void setPersistenceMgr(PersistenceManager persistenceMgr) {
+		this.persistenceMgr = persistenceMgr;
 	}
 
 }
