@@ -2796,22 +2796,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 
 		// Create resource
 		createResource(eNS_URI);
-
-		// Create annotations
-		// teneo.jpa
-		createTeneoAnnotations();
-	}
-
-	/**
-	 * Initializes the annotations for <b>teneo.jpa</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void createTeneoAnnotations() {
-		String source = "teneo.jpa";
-		addAnnotation(getOutboundTextMessage_From(), source, new String[] {
-				"appinfo", "@OneToMany(indexed=false unique=false)" });
 	}
 
 } //TeksPackageImpl

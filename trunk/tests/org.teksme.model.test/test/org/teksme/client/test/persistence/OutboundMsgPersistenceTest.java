@@ -39,8 +39,8 @@ public class OutboundMsgPersistenceTest {
 		// load resource
 		Resource res = resourceSet.getResource(URI.createURI(MODEL_FILE), true);
 
-		PersistenceManagerFactory pFactory = PersistenceManagerFactory.INSTANCE;
-		PersistenceManager pm = pFactory.getPersistenceManager();
+		//PersistenceManagerFactory pFactory = PersistenceManagerFactory.INSTANCE;
+		PersistenceManager pm = null;//pFactory.getPersistenceManager();
 
 		Teks teksModel = (Teks) res.getContents().get(0);
 

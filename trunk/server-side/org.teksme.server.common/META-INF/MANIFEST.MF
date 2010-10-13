@@ -1,32 +1,32 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: TeksMe Common Server Components
-Bundle-SymbolicName: org.teksme.server.common
+Bundle-SymbolicName: org.teksme.server.common;singleton:=true
 Bundle-Version: 0.5.0
 Bundle-Activator: org.teksme.server.common.Activator
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.hibernate,
  org.hibernate.cfg,
  org.hibernate.dialect,
+ org.hibernate.mapping,
  org.osgi.framework;version="1.3.0",
  org.osgi.service.cm,
  org.teksme.model.teks
 Export-Package: org.teksme.server.common;uses:="org.osgi.framework",
  org.teksme.server.common.messaging;uses:="com.rabbitmq.client,org.osgi.framework,org.osgi.service.cm",
  org.teksme.server.common.persistence;uses:="javax.naming,org.teksme.model.teks",
+ org.teksme.server.common.persistence.impl,
  org.teksme.server.common.utils;uses:="org.teksme.model.teks"
-Require-Bundle: org.eclipse.equinox.cm;bundle-version="1.0.0",
+Require-Bundle: org.hibernate;bundle-version="3.5.2",
+ org.eclipse.equinox.cm;bundle-version="1.0.0",
  org.eclipse.core.runtime,
- org.eclipse.emf.ecore;visibility:=reexport,
- org.eclipse.emf.ecore.xmi;visibility:=reexport,
+ org.eclipse.emf.ecore.xmi,
  org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2",
- net.iocanel.hibernate.all;bundle-version="3.5.2",
- org.eclipse.emf.ecore.change,
  org.apache.commons.logging,
- org.dom4j,
  com.mysql.jdbc,
  org.teksme.model;bundle-version="0.5.0",
  com.rabbitmq.client;bundle-version="2.1.0"
 Bundle-Vendor: TeksMe Inc.
 Bundle-ClassPath: .,
  lib/mysql-connector-java-5.1.13-bin.jar
+Eclipse-RegisterBuddy: org.hibernate;bundle-version="3.5.2.Final", org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2"

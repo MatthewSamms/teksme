@@ -12,7 +12,8 @@ Import-Package: org.eclipse.emf.ecore.resource,
  org.teksme.model.teks.impl,
  org.teksme.model.teks.util
 Require-Bundle: org.teksme.server.common;bundle-version="0.5.0",
- org.smslib;bundle-version="3.4.6"
+ org.smslib;bundle-version="3.4.6",
+ org.teksme.model;bundle-version="0.5.0"
 Export-Package: org.teksme.server.provider.sms,
  org.teksme.server.provider.sms.service
 Bundle-Vendor: TeksMe Inc.
