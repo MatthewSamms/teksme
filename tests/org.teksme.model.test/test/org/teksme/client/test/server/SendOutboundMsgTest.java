@@ -24,7 +24,6 @@ public class SendOutboundMsgTest extends HttpTestcase {
 					.convertXMLFileToString(MODEL_FILE);
 
 			out.write(xmlInput);
-
 			out.flush();
 			connection.connect();
 			out.close();

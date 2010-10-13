@@ -229,7 +229,6 @@ public interface OutboundTextMessage extends Message {
 	 * @return the value of the '<em>From</em>' attribute list.
 	 * @see org.teksme.model.teks.TeksPackage#getOutboundTextMessage_From()
 	 * @model unique="false"
-	 *        annotation="teneo.jpa appinfo='@OneToMany(indexed=false unique=false)'"
 	 * @generated
 	 */
 	EList<String> getFromList();

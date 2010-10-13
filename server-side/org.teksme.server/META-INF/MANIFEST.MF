@@ -10,5 +10,6 @@ Import-Package: org.osgi.framework;version="1.3.0",
  org.teksme.model.teks
 Require-Bundle: org.eclipse.core.runtime,
  org.teksme.model;bundle-version="0.5.0"
-Export-Package: org.teksme.server.jms.queues
+Export-Package: org.teksme.server;uses:="org.osgi.framework",
+ org.teksme.server.jms.queues;uses:="org.teksme.model.teks"
 Bundle-Vendor: TeksMe Inc.

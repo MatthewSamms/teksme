@@ -21,7 +21,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.util.Properties;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -80,12 +79,23 @@ public class HbPersistenceManagerImpl implements PersistenceManager {
 	}
 
 	public void initialize() throws PersistenceException {
-		logger.info("initialize() :: Initializing datasource...");
-//		dataStore = getHibernateDataStore();
-//		// sets its epackages stored in this datastore
-//		dataStore.setEPackages(new EPackage[] { TeksPackage.eINSTANCE });
-//		// initialize, also creates the database tables
-//		dataStore.initialize();
+		try {
+			dataStore = (HbDataStore) HbHelper.INSTANCE.createRegisterDataStore(DB_NAME);
+			// set the properties
+			// dataStore.setProperties(getHibernateDataStoreProperties());
+			// // sets its epackages stored in this datastore
+			dataStore.setEPackages(new EPackage[] { TeksPackage.eINSTANCE });
+			logger.info("Initializing datasource using hibernate...");
+			// // initialize, also creates the database tables
+			dataStore.initialize();
+			logger.info("Extension manager:: " + dataStore.getExtensionManager());
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+			throw new PersistenceException("Persistence manager internal error: " + e.getMessage());
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new PersistenceException("Persistence manager internal error: " + e.getMessage());
+		}
 	}
 
 	// Retrieves the object
@@ -128,40 +138,27 @@ public class HbPersistenceManagerImpl implements PersistenceManager {
 
 	}
 
-	private HbDataStore getHibernateDataStore() throws PersistenceException {
-		HbDataStore dataStore = (HbDataStore) HbHelper.INSTANCE.createRegisterDataStore(DB_NAME);
-		// set the properties
-		dataStore.setProperties(getHibernateDataStoreProperties());
-		return dataStore;
-	}
+	private Properties getHibernateDataStoreProperties() {
 
-	private Properties getHibernateDataStoreProperties() throws PersistenceException {
-		try {
+		// Set the database information, Environment is
+		// org.hibernate.cfg.Environment
+		final Properties dbProps = new Properties();
 
-			// Set the database information, Environment is
-			// org.hibernate.cfg.Environment
-			final Properties dbProps = new Properties();
-			final String dialect = TeksResourceBundle.getString("datasource.dialect");
-			Class<?> dsDialect = Class.forName(dialect);
+		dbProps.setProperty(Environment.DRIVER, TeksResourceBundle.getString("datasource.driver"));
+		dbProps.setProperty(Environment.USER, TeksResourceBundle.getString("datasource.user"));
+		dbProps.setProperty(Environment.URL, TeksResourceBundle.getString("datasource.url"));
+		dbProps.setProperty(Environment.PASS, TeksResourceBundle.getString("datasource.passwd"));
+		dbProps.setProperty(Environment.DIALECT, TeksResourceBundle.getString("datasource.dialect"));
 
-			dbProps.setProperty(Environment.DRIVER, TeksResourceBundle.getString("datasource.driver"));
-			dbProps.setProperty(Environment.USER, TeksResourceBundle.getString("datasource.user"));
-			dbProps.setProperty(Environment.URL, TeksResourceBundle.getString("datasource.url"));
-			dbProps.setProperty(Environment.PASS, TeksResourceBundle.getString("datasource.passwd"));
-			dbProps.setProperty(Environment.DIALECT, dsDialect.getName());
+		// set a specific option
+		// see this page
+		// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
+		// for all the available options
+		dbProps.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT, TeksResourceBundle.getString("datasource.cascade.policy"));
+		dbProps.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
+		dbProps.setProperty(PersistenceOptions.SET_PROXY, "true");
 
-			// set a specific option
-			// see this page
-			// http://wiki.eclipse.org/Teneo/Hibernate/Configuration_Options
-			// for all the available options
-			dbProps.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
-					TeksResourceBundle.getString("datasource.cascade.policy"));
-
-			return dbProps;
-		} catch (ClassNotFoundException e) {
-			logger.log(Level.SEVERE, "Problem initializing datastore: " + e.getMessage());
-			throw new PersistenceException("Problem initializing datastore: " + e.getMessage());
-		}
+		return dbProps;
 
 	}
 

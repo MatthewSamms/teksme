@@ -7,11 +7,12 @@ Bundle-Activator: org.teksme.server.queue.consumer.ConsumerActivator
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.osgi.framework;version="1.3.0",
  org.osgi.util.tracker,
+ org.teksme.server.common.messaging,
  org.teksme.server.provider.sms.service
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.osgi,
- org.teksme.model;bundle-version="0.5.0",
  com.rabbitmq.client;bundle-version="2.1.0",
+ org.teksme.model;bundle-version="0.5.0",
  org.teksme.server.common;bundle-version="0.5.0"
 Bundle-Vendor: TeksMe Inc.
 Service-Component: OSGI-INF/sms-gateway-client.xml

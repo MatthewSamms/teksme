@@ -13,6 +13,7 @@
 package org.teksme.server.common.persistence.impl;
 
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.osgi.framework.BundleContext;
@@ -33,23 +34,20 @@ public class PersistenceManagerFactoryImpl implements PersistenceManagerFactory 
 	public PersistenceManagerFactoryImpl(BundleContext context) {
 		this.context = context;
 
-		Test persistenceMgr = null;
+		PersistenceManager persistenceMgr = null;
 		try {
 
-			logger.info("Initializing datasource using hibernate...");
-
-			persistenceMgr = new Test();
+			persistenceMgr = new HbPersistenceManagerImpl();
 			persistenceMgr.initialize();
 
 			Properties svcProps = new Properties();
 			svcProps.put("default.persistence.manager", TeksResourceBundle.getString("default.persistence.manager"));
 
-			//reg = context.registerService(PersistenceManager.class.getName(), persistenceMgr, svcProps);
+			reg = context.registerService(PersistenceManager.class.getName(), persistenceMgr, svcProps);
 
 		} catch (PersistenceException e) {
 			e.printStackTrace();
-			// logger.log(Level.SEVERE,
-			// "Internal persistence manager factory error: " + e.getMessage());
+			logger.log(Level.SEVERE, "Internal persistence manager factory error: " + e.getMessage());
 		}
 	}
 

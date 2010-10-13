@@ -13,6 +13,7 @@
 package org.teksme.server.common;
 
 import java.util.Properties;
+import java.util.logging.Logger;
 
 import org.osgi.framework.BundleActivator;
 import org.osgi.framework.BundleContext;
@@ -31,6 +32,8 @@ public class Activator implements BundleActivator {
 
 	private static BundleContext context;
 
+	private static Logger logger = Logger.getLogger(Activator.class.getName());
+
 	static BundleContext getContext() {
 		return context;
 	}
@@ -43,6 +46,8 @@ public class Activator implements BundleActivator {
 	 * )
 	 */
 	public void start(BundleContext bundleContext) throws Exception {
+		logger.info("Starting TeksMe Common bundle...");
+		
 		Activator.context = bundleContext;
 
 		Properties props = new Properties();

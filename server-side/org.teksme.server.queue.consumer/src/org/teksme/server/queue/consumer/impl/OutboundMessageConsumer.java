@@ -53,6 +53,8 @@ public class OutboundMessageConsumer extends DefaultConsumer implements MessageE
 			// String contentType = properties.contentType;
 			long deliveryTag = envelope.getDeliveryTag();
 
+			logger.info("Oubound message consumer invoked to handle routing key: "+routingKey);
+			
 			// TODO implement a better messaging handler
 			if (AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey().equals(routingKey)) {
 				logger.info("Partial matching based on the message key: " + AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey());
