@@ -59,11 +59,11 @@ public class WebComponent {
 			logger.info("Starting up sevlet at " + SEND_MSG_SERVLET_ALIAS);
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
 			sendMsgServlet.setMessageQueueSenderService(queueSender);
-			sendMsgServlet.setPersistenceMgr(getPersistenceMgrReference());
+			//sendMsgServlet.setPersistenceMgr(getPersistenceMgrReference());
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet, null, null);
 
-		} catch (PersistenceException e) {
-			e.printStackTrace();
+//		} catch (PersistenceException e) {
+//			e.printStackTrace();
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (NamespaceException e) {
