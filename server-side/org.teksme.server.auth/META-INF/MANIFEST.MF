@@ -6,5 +6,23 @@ Bundle-Version: 0.5
 Bundle-Activator: org.teksme.server.auth.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: org.osgi.framework;version="1.3.0"
+Import-Package: org.apache.commons.codec.binary,
+ org.apache.commons.codec.digest,
+ org.osgi.framework;version="1.3.0",
+ org.osgi.util.tracker
 Bundle-Vendor: TeksMe Inc.
+Require-Bundle: javax.servlet;bundle-version="2.5.0",
+ org.eclipse.equinox.http.jetty;bundle-version="2.0.0",
+ org.eclipse.equinox.http.servlet;bundle-version="1.1.0",
+ org.eclipse.equinox.http.registry;bundle-version="1.1.0",
+ org.eclipse.osgi.services;bundle-version="3.2.100"
+Bundle-ClassPath: lib/commons-httpclient-3.1.jar,
+ lib/commons-logging-1.1.jar,
+ lib/oauth-20100601.jar,
+ lib/oauth-consumer-20100601.jar,
+ lib/oauth-httpclient3-20100601.jar,
+ lib/oauth-httpclient4-20100601.jar,
+ lib/oauth-provider-20100601.jar,
+ .
+Export-Package: org.teksme.server.auth.service,
+ org.teksme.server.auth.util
