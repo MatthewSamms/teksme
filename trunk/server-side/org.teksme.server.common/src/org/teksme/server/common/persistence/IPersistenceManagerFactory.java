@@ -12,8 +12,32 @@
  */
 package org.teksme.server.common.persistence;
 
-public interface PersistenceManagerFactory {
+import java.util.Properties;
 
-	public PersistenceManager getPersistenceManager();
+public interface IPersistenceManagerFactory {
+
+	IPersistenceManager getPersistenceManager() throws PersistenceException;
+
+	void setProperties(Properties properties);
+
+	void setConnectionUserName(String userName);
+
+	void setConnectionPassword(String password);
+
+	void setConnectionURL(String URL);
+
+	void setConnectionDriverName(String driverName);
+
+	IPersistenceManager getPersistenceManager(Properties properties);
+
+	String getConnectionDriverName();
+
+	String getConnectionURL();
+
+	String getConnectionUserName();
+
+	String getConnectionPassword();
+
+	Properties getProperties();
 
 }

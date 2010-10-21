@@ -105,7 +105,7 @@ public final class AMQPBrokerManager implements ShutdownListener {
 	}
 
 	private void toString(ConnectionFactory connFactory) {
-		logger.info("[ Username: " + connFactory.getUsername() + " | Password: ******** | Virtual Host: " + connFactory.getVirtualHost()
+		logger.info("[ Username: " + connFactory.getUsername() + " | Password: ****** | Virtual Host: " + connFactory.getVirtualHost()
 				+ " | Host: " + connFactory.getHost() + " | Port: " + connFactory.getPort() + " ]");
 	}
 
