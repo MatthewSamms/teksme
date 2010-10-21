@@ -4,20 +4,19 @@ Bundle-Name: TeksMe Remote Services Plugin
 Bundle-SymbolicName: org.teksme.server.remote.service
 Bundle-Version: 0.5.0
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: javax.servlet.http;version="2.5.0",
- org.osgi.framework;version="1.5.0",
- org.osgi.service.http;version="1.2.1",
+Import-Package:  javax.servlet,
+ javax.servlet.http,
+ org.osgi.framework,
+ org.osgi.service.http,
  org.teksme.model.teks,
  org.teksme.model.teks.impl,
  org.teksme.server.common.persistence,
  org.teksme.server.common.utils,
  org.teksme.server.provider.sms.service
-Require-Bundle: javax.servlet,
- org.teksme.server.common;bundle-version="0.5.0",
+Require-Bundle: org.teksme.server.common;bundle-version="0.5.0",
  org.teksme.model;bundle-version="0.5.0",
  org.teksme.server.queue.sender;bundle-version="0.5.0"
 Service-Component: OSGI-INF/web-component.xml
 Bundle-Vendor: TeksMe Inc.
-Export-Package: org.teksme.server.remote.service
-Bundle-ClassPath: lib/net.iocanel.hibernate.all-3.5.2.Final.jar,
- .
+Export-Package: org.teksme.server.remote.service,
+ org.teksme.server.remote.service.http

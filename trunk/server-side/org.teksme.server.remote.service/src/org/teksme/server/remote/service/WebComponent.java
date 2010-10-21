@@ -17,15 +17,11 @@ import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 
-import org.osgi.framework.BundleContext;
-import org.osgi.framework.InvalidSyntaxException;
-import org.osgi.framework.ServiceReference;
 import org.osgi.service.http.HttpService;
 import org.osgi.service.http.NamespaceException;
-import org.teksme.server.common.TeksResourceBundle;
+import org.teksme.server.common.persistence.IPersistenceManager;
+import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
-import org.teksme.server.common.persistence.PersistenceManager;
-import org.teksme.server.queue.sender.Activator;
 import org.teksme.server.queue.sender.MessageQueueSender;
 import org.teksme.server.remote.service.http.SendMessageServlet;
 
@@ -37,6 +33,7 @@ public class WebComponent {
 
 	private MessageQueueSender queueSender;
 	private HttpService httpService;
+	private IPersistenceManagerFactory persistenceMgrFactory;
 
 	public void bind(HttpService httpService) {
 		this.httpService = httpService;
@@ -44,6 +41,10 @@ public class WebComponent {
 
 	public void bind(MessageQueueSender queueSender) {
 		this.queueSender = queueSender;
+	}
+
+	public void bind(IPersistenceManagerFactory persistenceMgrFactory) {
+		this.persistenceMgrFactory = persistenceMgrFactory;
 	}
 
 	public void unbind(HttpService httpService) {
@@ -54,16 +55,22 @@ public class WebComponent {
 		this.queueSender = null;
 	}
 
-	protected void activate() {
+	public void unbind(IPersistenceManagerFactory persistenceMgrFactory) {
+		this.persistenceMgrFactory = null;
+	}
+
+	public void activate() {
 		try {
+			IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
 			logger.info("Starting up sevlet at " + SEND_MSG_SERVLET_ALIAS);
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
 			sendMsgServlet.setMessageQueueSenderService(queueSender);
-			//sendMsgServlet.setPersistenceMgr(getPersistenceMgrReference());
+			sendMsgServlet.setPersistenceManagerFactory(persistenceMgrFactory);
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet, null, null);
 
-//		} catch (PersistenceException e) {
-//			e.printStackTrace();
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (NamespaceException e) {
@@ -71,28 +78,8 @@ public class WebComponent {
 		}
 	}
 
-	protected void deactivate() {
+	public void deactivate() {
 		httpService.unregister(SEND_MSG_SERVLET_ALIAS);
 	}
 
-	private PersistenceManager getPersistenceMgrReference() throws PersistenceException {
-
-		BundleContext bundleContext = Activator.getContext();
-
-		ServiceReference result = null;
-		ServiceReference[] refs;
-		try {
-			refs = bundleContext.getServiceReferences(PersistenceManager.class.getName(),
-					String.format("(%s=%s)", "default.persistence.manager", TeksResourceBundle.getString("default.persistence.manager")));
-		} catch (InvalidSyntaxException e) {
-			throw new PersistenceException("Error retrieving persistence manager: " + e.getMessage());
-		}
-		if (refs != null && refs.length > 0) {
-			result = refs[0];
-		}
-
-		PersistenceManager persistenceMgr = (PersistenceManager) bundleContext.getService(result);
-
-		return persistenceMgr;
-	}
 }

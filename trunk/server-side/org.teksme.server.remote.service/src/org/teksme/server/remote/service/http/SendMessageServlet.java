@@ -37,8 +37,9 @@ import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
+import org.teksme.server.common.persistence.IPersistenceManager;
+import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
-import org.teksme.server.common.persistence.PersistenceManager;
 import org.teksme.server.common.utils.TeksModelHelper;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
@@ -51,14 +52,13 @@ public class SendMessageServlet extends HttpServlet {
 
 	private MessageQueueSender queueSender;
 
-	private PersistenceManager persistenceMgr;
+	private IPersistenceManagerFactory persistenceMgrFactory;
 
 	public SendMessageServlet() {
 		super();
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 		execute(request, response);
 	}
 
@@ -131,8 +131,7 @@ public class SendMessageServlet extends HttpServlet {
 				return;
 			}
 
-			// PersistenceManager pm =
-			// persistenceMgrFactory.getPersistenceManager();
+			IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
 
 			// logger.info("XML Buff: " + xmlBuff.toString());
 			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(xmlBuff.toString());
@@ -142,16 +141,7 @@ public class SendMessageServlet extends HttpServlet {
 
 			logger.info(outMsg.getMessage().getText());
 
-			if (persistenceMgr != null) {
-				try {
-
-					persistenceMgr.makePersistent(teksModel);
-
-				} catch (PersistenceException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
+			persistenceMgr.makePersistent(teksModel);
 			queueSender.publishMessage(outMsg);
 
 			outStream.println("getContentLength: " + request.getContentLength());
@@ -165,6 +155,8 @@ public class SendMessageServlet extends HttpServlet {
 			writer.flush();
 			writer.close();
 
+		} catch (PersistenceException e) {
+			e.printStackTrace();
 		} catch (IOException e) {
 			try {
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -211,8 +203,8 @@ public class SendMessageServlet extends HttpServlet {
 		this.queueSender = queueSender;
 	}
 
-	public void setPersistenceMgr(PersistenceManager persistenceMgr) {
-		this.persistenceMgr = persistenceMgr;
+	public void setPersistenceManagerFactory(IPersistenceManagerFactory persistenceMgrFactory) {
+		this.persistenceMgrFactory = persistenceMgrFactory;
 	}
 
 }
