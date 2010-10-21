@@ -6,25 +6,24 @@ Bundle-Version: 0.5.0
 Bundle-Activator: org.teksme.server.common.Activator
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.naming,
- org.osgi.framework;version="1.3.0",
+ org.osgi.framework,
  org.osgi.service.cm,
  org.teksme.model.teks
-Export-Package: org.teksme.server.common;uses:="org.osgi.framework",
- org.teksme.server.common.messaging;uses:="com.rabbitmq.client,org.osgi.framework,org.osgi.service.cm",
- org.teksme.server.common.persistence;uses:="javax.naming,org.teksme.model.teks",
- org.teksme.server.common.persistence.impl,
- org.teksme.server.common.utils;uses:="org.teksme.model.teks"
-Require-Bundle: org.eclipse.equinox.cm;bundle-version="1.0.0",
- com.rabbitmq.client;bundle-version="2.1.0",
+Export-Package: org.teksme.server.common,
+ org.teksme.server.common.messaging,
+ org.teksme.server.common.persistence,
+ org.teksme.server.common.utils
+Require-Bundle: com.rabbitmq.client;bundle-version="2.1.0",
  org.teksme.model;bundle-version="0.5.0",
  org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
- com.springsource.org.hibernate;bundle-version="3.2.6",
  com.springsource.org.apache.commons.logging;bundle-version="1.1.1",
  com.springsource.org.dom4j;bundle-version="1.6.1",
  com.springsource.org.apache.commons.collections;bundle-version="3.2.0",
  com.springsource.javax.transaction;bundle-version="1.1.0",
- com.springsource.antlr;bundle-version="2.7.7"
+ com.springsource.antlr;bundle-version="2.7.7",
+ com.springsource.org.hibernate;bundle-version="3.3.2"
 Bundle-Vendor: TeksMe Inc.
 Bundle-ClassPath: .,
  lib/mysql-connector-java-5.1.13-bin.jar
+Service-Component: OSGI-INF/persistence-mgr-factory.xml

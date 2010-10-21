@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="org.teksme.server.common">
+   <implementation class="org.teksme.server.common.persistence.impl.PersistenceManagerFactoryImpl"/>
+   <service>
+      <provide interface="org.teksme.server.common.persistence.IPersistenceManagerFactory"/>
+   </service>
+</scr:component>
