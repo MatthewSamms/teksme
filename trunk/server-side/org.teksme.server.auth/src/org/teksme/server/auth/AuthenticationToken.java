@@ -31,6 +31,7 @@ import net.oauth.server.OAuthServlet;
 
 import org.apache.commons.codec.binary.Base64;
 import org.teksme.server.auth.provider.TeksmeOAuthProvider;
+import org.teksme.server.common.persistence.IPersistenceManager;
 
 /**
  * 
@@ -44,6 +45,7 @@ public class AuthenticationToken extends HttpServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = -4712860526093888675L;
+	private IPersistenceManager persistenceMgr;
 	
 	@Override
 	public void init(ServletConfig config) throws ServletException {
@@ -131,6 +133,12 @@ public class AuthenticationToken extends HttpServlet {
 			TeksmeOAuthProvider.handleException(e, request, response, true);
 		}
 
+	}
+
+
+	public void setPersistenceManagerFactory(IPersistenceManager persistenceMgr) {
+		this.persistenceMgr = persistenceMgr;
+		
 	}
 
 }
