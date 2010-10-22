@@ -293,5 +293,6 @@
     <eLiterals name="DIGICEL" value="1"/>
     <eLiterals name="MOVISTAR_PERU" value="2"/>
     <eLiterals name="MODEM" value="3"/>
+    <eLiterals name="BULKSMS" value="4"/>
   </eClassifiers>
 </ecore:EPackage>

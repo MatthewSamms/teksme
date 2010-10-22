@@ -19,3 +19,4 @@ Export-Package: org.teksme.server.provider.sms,
 Bundle-Vendor: TeksMe Inc.
 Service-Component: OSGI-INF/sms-conn-service.xml, OSGI-INF/sms-gateway-service.xml
 Bundle-Activator: org.teksme.server.provider.sms.Activator
+Bundle-ClassPath: .

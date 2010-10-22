@@ -6,6 +6,7 @@ import org.smslib.AGateway;
 import org.smslib.OutboundMessage;
 import org.smslib.Service;
 import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.server.provider.sms.service.SMSConnectionServiceFactory;
 import org.teksme.server.provider.sms.service.SMSGatewayService;
 
@@ -34,7 +35,8 @@ public class SMSGatewayServiceImpl implements SMSGatewayService {
 
 		logger.info("SMS gateway status: " + gateway.getStatus());
 
-		logger.info("Is recipient's network covered? : " + gateway.queryCoverage(msg));
+		if (SMSGatewayKind.CLICKATELL.getName().equals(gateway.getGatewayId()))
+			logger.info("Is recipient's network covered? : " + gateway.queryCoverage(msg));
 
 		srv.sendMessage(msg, gatewayId);
 
