@@ -19,8 +19,12 @@ import net.oauth.OAuthAccessor;
 import net.oauth.OAuthMessage;
 import net.oauth.server.OAuthServlet;
 
+import org.teksme.model.teks.User;
 import org.teksme.server.auth.provider.TeksmeOAuthProvider;
 import org.teksme.server.auth.service.IAuth;
+import org.teksme.server.common.persistence.IPersistenceManager;
+import org.teksme.server.common.persistence.IPersistenceManagerFactory;
+import org.teksme.server.common.persistence.PersistenceException;
 
 /**
  * 
@@ -29,6 +33,29 @@ import org.teksme.server.auth.service.IAuth;
  */
 public class AuthImpl implements IAuth {
 
+	private IPersistenceManager pm;
+	private IPersistenceManagerFactory persistenceMgrFactory;
+	
+	
+	public void bind(IPersistenceManagerFactory persistenceMgrFactory) {
+		this.persistenceMgrFactory = persistenceMgrFactory;
+	}
+
+
+	public void unbind(IPersistenceManagerFactory persistenceMgrFactory) {
+		this.persistenceMgrFactory = null;
+	}
+
+	public void activate() {
+		try {
+			pm = persistenceMgrFactory.getPersistenceManager();
+		} catch (PersistenceException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	
 	public boolean isValidToken(HttpServletRequest request) {
 		try {
 			OAuthMessage requestMessage = OAuthServlet.getMessage(request, null);
@@ -47,9 +74,9 @@ public class AuthImpl implements IAuth {
 		}
 	}
 
-	public boolean isValidUser(String usedID, String pwd) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean isValidUser(String userID, String pwd) {
+		User user = pm.getUser(userID, pwd);
+		return user == null?false:true;
 	}
 
 }
