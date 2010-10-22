@@ -155,7 +155,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setRecipient(String[] newRecipient);
 
@@ -213,7 +212,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setFrom(int index, String element);
 
@@ -264,7 +262,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setDeliveryDelayTime(int index, Integer element);
 
@@ -315,7 +312,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setValidityTimeframe(int index, Integer element);
 
@@ -366,7 +362,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setClientMsgId(int index, String element);
 
@@ -417,7 +412,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setDeliveryQueuePriority(int index, Integer element);
 
@@ -468,7 +462,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setDeliveryAck(int index, Boolean element);
 
@@ -519,7 +512,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setCallbackCode(int index, Integer element);
 
@@ -570,7 +562,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setConcatenated(int index, Integer element);
 
@@ -829,7 +820,6 @@ public interface OutboundTextMessage extends Message {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	void setDeliveryScheduledTime(int index, Date element);
 

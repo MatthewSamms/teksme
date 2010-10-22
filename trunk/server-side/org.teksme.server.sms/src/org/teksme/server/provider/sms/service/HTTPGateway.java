@@ -30,6 +30,7 @@ import java.net.URLConnection;
 import java.net.URLEncoder;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -97,7 +98,7 @@ public class HTTPGateway extends AGateway {
 		return responseList;
 	}
 
-	String ExpandHttpHeaders(List<HttpHeader> httpHeaderList) {
+	public String ExpandHttpHeaders(List<HttpHeader> httpHeaderList) {
 		StringBuffer buffer = new StringBuffer();
 		for (HttpHeader h : httpHeaderList) {
 			buffer.append(h.key);
@@ -155,6 +156,11 @@ public class HTTPGateway extends AGateway {
 	@Override
 	public int getQueueSchedulingInterval() {
 		return 500;
+	}
+
+	public String formatDate(String pattern, Date date) {
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		return format.format(date);
 	}
 
 	public String formatDateUTC(Date d) {

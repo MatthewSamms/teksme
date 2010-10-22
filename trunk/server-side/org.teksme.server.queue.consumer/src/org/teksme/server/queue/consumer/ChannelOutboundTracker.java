@@ -51,9 +51,9 @@ public class ChannelOutboundTracker extends ServiceTracker {
 		Channel channel = null;
 		try {
 
-			final boolean durable = Boolean.getBoolean(AMQPBrokerParameters.DURABLE);
-			final boolean autoDelete = Boolean.getBoolean(AMQPBrokerParameters.AUTO_DELETE);
-			final boolean exclusive = Boolean.getBoolean(AMQPBrokerParameters.EXCLUSIVE);
+//			final boolean durable = Boolean.getBoolean(AMQPBrokerParameters.DURABLE);
+//			final boolean autoDelete = Boolean.getBoolean(AMQPBrokerParameters.AUTO_DELETE);
+//			final boolean exclusive = Boolean.getBoolean(AMQPBrokerParameters.EXCLUSIVE);
 
 			channel = conn.createChannel();
 
@@ -61,12 +61,14 @@ public class ChannelOutboundTracker extends ServiceTracker {
 			// QueueingConsumer
 			channel.basicQos(100);
 
-			channel.queueDeclare(queueName, durable, exclusive, autoDelete, null);
+			// channel.queueDeclare(queueName, durable, exclusive, autoDelete,
+			// null);
+
+			logger.info("Declaring basic MQ consumer for queue: " + queueName);
 
 			OutboundMessageConsumer consumer = new OutboundMessageConsumer(channel);
 			consumer.addMessageListener(new OutboundSMSHandler());
-
-			consumerTag = channel.basicConsume(queueName, false, consumer);
+			consumerTag = channel.basicConsume(queueName, consumer);
 
 			return new AMQPServiceRegistry<Channel, String>(channel, consumerTag);
 

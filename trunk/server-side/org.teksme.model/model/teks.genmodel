@@ -68,6 +68,7 @@
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//SMSGatewayKind/DIGICEL"/>
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//SMSGatewayKind/MOVISTAR_PERU"/>
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//SMSGatewayKind/MODEM"/>
+      <genEnumLiterals ecoreEnumLiteral="teks.ecore#//SMSGatewayKind/BULKSMS"/>
     </genEnums>
     <genClasses ecoreClass="teks.ecore#//Teks">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Teks/appId"/>

@@ -2793,6 +2793,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		addEEnumLiteral(smsGatewayKindEEnum, SMSGatewayKind.DIGICEL);
 		addEEnumLiteral(smsGatewayKindEEnum, SMSGatewayKind.MOVISTAR_PERU);
 		addEEnumLiteral(smsGatewayKindEEnum, SMSGatewayKind.MODEM);
+		addEEnumLiteral(smsGatewayKindEEnum, SMSGatewayKind.BULKSMS);
 
 		// Create resource
 		createResource(eNS_URI);

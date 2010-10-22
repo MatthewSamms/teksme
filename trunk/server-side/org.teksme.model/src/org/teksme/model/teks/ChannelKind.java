@@ -13,6 +13,7 @@
  */
 package org.teksme.model.teks;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -23,15 +24,16 @@ import org.eclipse.emf.common.util.Enumerator;
  * <!-- begin-user-doc --> A representation of the literals of the enumeration '
  * <em><b>Channel Kind</b></em>', and utility methods for working with them.
  * <!-- end-user-doc -->
+ * 
  * @see org.teksme.model.teks.TeksPackage#getChannelKind()
  * @model
  * @generated
  */
-public enum ChannelKind implements Enumerator {
+public enum ChannelKind implements Serializable, Enumerator {
 	/**
-	 * The '<em><b>SMS</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>SMS</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #SMS_VALUE
 	 * @generated
 	 * @ordered
@@ -39,9 +41,9 @@ public enum ChannelKind implements Enumerator {
 	SMS(0, "SMS", "SMS"),
 
 	/**
-	 * The '<em><b>EMAIL</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>EMAIL</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #EMAIL_VALUE
 	 * @generated
 	 * @ordered
@@ -49,9 +51,9 @@ public enum ChannelKind implements Enumerator {
 	EMAIL(1, "EMAIL", "Email"),
 
 	/**
-	 * The '<em><b>WEB</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>WEB</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #WEB_VALUE
 	 * @generated
 	 * @ordered
@@ -59,9 +61,9 @@ public enum ChannelKind implements Enumerator {
 	WEB(2, "WEB", "Web"),
 
 	/**
-	 * The '<em><b>TWITTER</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>TWITTER</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #TWITTER_VALUE
 	 * @generated
 	 * @ordered
@@ -69,9 +71,9 @@ public enum ChannelKind implements Enumerator {
 	TWITTER(3, "TWITTER", "Twitter"),
 
 	/**
-	 * The '<em><b>WEB WIDGET</b></em>' literal object.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>WEB WIDGET</b></em>' literal object. <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #WEB_WIDGET_VALUE
 	 * @generated
 	 * @ordered
@@ -79,9 +81,9 @@ public enum ChannelKind implements Enumerator {
 	WEB_WIDGET(4, "WEB_WIDGET", "Web Widget"),
 
 	/**
-	 * The '<em><b>IVR</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>IVR</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #IVR_VALUE
 	 * @generated
 	 * @ordered
@@ -89,9 +91,9 @@ public enum ChannelKind implements Enumerator {
 	IVR(5, "IVR", "IVR"),
 
 	/**
-	 * The '<em><b>MMS</b></em>' literal object.
-	 * <!-- begin-user-doc --> <!--
+	 * The '<em><b>MMS</b></em>' literal object. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @see #MMS_VALUE
 	 * @generated
 	 * @ordered
@@ -99,13 +101,13 @@ public enum ChannelKind implements Enumerator {
 	MMS(6, "MMS", "MMS");
 
 	/**
-	 * The '<em><b>SMS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>SMS</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>SMS</b></em>' literal object isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #SMS
 	 * @model
 	 * @generated
@@ -114,13 +116,13 @@ public enum ChannelKind implements Enumerator {
 	public static final int SMS_VALUE = 0;
 
 	/**
-	 * The '<em><b>EMAIL</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>EMAIL</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>EMAIL</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #EMAIL
 	 * @model literal="Email"
 	 * @generated
@@ -129,13 +131,13 @@ public enum ChannelKind implements Enumerator {
 	public static final int EMAIL_VALUE = 1;
 
 	/**
-	 * The '<em><b>WEB</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>WEB</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>WEB</b></em>' literal object isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #WEB
 	 * @model literal="Web"
 	 * @generated
@@ -144,13 +146,13 @@ public enum ChannelKind implements Enumerator {
 	public static final int WEB_VALUE = 2;
 
 	/**
-	 * The '<em><b>TWITTER</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>TWITTER</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>TWITTER</b></em>' literal object isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #TWITTER
 	 * @model literal="Twitter"
 	 * @generated
@@ -159,13 +161,13 @@ public enum ChannelKind implements Enumerator {
 	public static final int TWITTER_VALUE = 3;
 
 	/**
-	 * The '<em><b>WEB WIDGET</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>WEB WIDGET</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>WEB WIDGET</b></em>' literal object isn't
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #WEB_WIDGET
 	 * @model literal="Web Widget"
 	 * @generated
@@ -174,13 +176,13 @@ public enum ChannelKind implements Enumerator {
 	public static final int WEB_WIDGET_VALUE = 4;
 
 	/**
-	 * The '<em><b>IVR</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>IVR</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>IVR</b></em>' literal object isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #IVR
 	 * @model
 	 * @generated
@@ -189,13 +191,13 @@ public enum ChannelKind implements Enumerator {
 	public static final int IVR_VALUE = 5;
 
 	/**
-	 * The '<em><b>MMS</b></em>' literal value.
-	 * <!-- begin-user-doc -->
+	 * The '<em><b>MMS</b></em>' literal value. <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of '<em><b>MMS</b></em>' literal object isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @see #MMS
 	 * @model
 	 * @generated
@@ -213,16 +215,18 @@ public enum ChannelKind implements Enumerator {
 			EMAIL, WEB, TWITTER, WEB_WIDGET, IVR, MMS, };
 
 	/**
-	 * A public read-only list of all the '<em><b>Channel Kind</b></em>' enumerators.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * A public read-only list of all the '<em><b>Channel Kind</b></em>'
+	 * enumerators. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static final List<ChannelKind> VALUES = Collections
 			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Channel Kind</b></em>' literal with the specified literal value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Channel Kind</b></em>' literal with the specified
+	 * literal value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ChannelKind get(String literal) {
@@ -236,8 +240,9 @@ public enum ChannelKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Channel Kind</b></em>' literal with the specified name.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Channel Kind</b></em>' literal with the specified
+	 * name. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ChannelKind getByName(String name) {
@@ -251,8 +256,9 @@ public enum ChannelKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Channel Kind</b></em>' literal with the specified integer value.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the '<em><b>Channel Kind</b></em>' literal with the specified
+	 * integer value. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public static ChannelKind get(int value) {
@@ -277,26 +283,29 @@ public enum ChannelKind implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final int value;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String name;
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private final String literal;
 
 	/**
-	 * Only this class can construct instances.
-	 * <!-- begin-user-doc --> <!--
+	 * Only this class can construct instances. <!-- begin-user-doc --> <!--
 	 * end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	private ChannelKind(int value, String name, String literal) {
@@ -307,6 +316,7 @@ public enum ChannelKind implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public int getValue() {
@@ -315,6 +325,7 @@ public enum ChannelKind implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getName() {
@@ -323,6 +334,7 @@ public enum ChannelKind implements Enumerator {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	public String getLiteral() {
@@ -330,8 +342,9 @@ public enum ChannelKind implements Enumerator {
 	}
 
 	/**
-	 * Returns the literal value of the enumerator, which is its string representation.
-	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * Returns the literal value of the enumerator, which is its string
+	 * representation. <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @generated
 	 */
 	@Override

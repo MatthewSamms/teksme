@@ -72,7 +72,8 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			logger.info("Publishing message to queue " + AMQPQueueType.OUTBOUND_QUEUE.getQueue() + " with routing key "
 					+ AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey() + "...");
 
-			lChannel.basicPublish(AMQPQueueType.OUTBOUND_QUEUE.getQueue(), AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey(), messageProps, data);
+			lChannel.basicPublish(AMQPQueueType.OUTBOUND_QUEUE.getExchange(), AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey(),
+					messageProps, data);
 
 		} catch (InvalidSyntaxException e) {
 			// Shouldn't happen

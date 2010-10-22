@@ -67,7 +67,15 @@ public enum SMSGatewayKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MODEM(3, "MODEM", "MODEM");
+	MODEM(3, "MODEM", "MODEM"), /**
+								 * The '<em><b>BULKSMS</b></em>' literal object.
+								 * <!-- begin-user-doc -->
+								 * <!-- end-user-doc -->
+								 * @see #BULKSMS_VALUE
+								 * @generated
+								 * @ordered
+								 */
+	BULKSMS(4, "BULKSMS", "BULKSMS");
 
 	/**
 	 * The '<em><b>CLICKATELL</b></em>' literal value.
@@ -130,13 +138,28 @@ public enum SMSGatewayKind implements Enumerator {
 	public static final int MODEM_VALUE = 3;
 
 	/**
+	 * The '<em><b>BULKSMS</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>BULKSMS</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #BULKSMS
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int BULKSMS_VALUE = 4;
+
+	/**
 	 * An array of all the '<em><b>SMS Gateway Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static final SMSGatewayKind[] VALUES_ARRAY = new SMSGatewayKind[] {
-			CLICKATELL, DIGICEL, MOVISTAR_PERU, MODEM, };
+			CLICKATELL, DIGICEL, MOVISTAR_PERU, MODEM, BULKSMS, };
 
 	/**
 	 * A public read-only list of all the '<em><b>SMS Gateway Kind</b></em>' enumerators.
@@ -195,6 +218,8 @@ public enum SMSGatewayKind implements Enumerator {
 			return MOVISTAR_PERU;
 		case MODEM_VALUE:
 			return MODEM;
+		case BULKSMS_VALUE:
+			return BULKSMS;
 		}
 		return null;
 	}

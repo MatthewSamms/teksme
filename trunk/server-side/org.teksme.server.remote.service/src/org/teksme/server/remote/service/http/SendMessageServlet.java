@@ -111,7 +111,7 @@ public class SendMessageServlet extends HttpServlet {
 			final BufferedReader reader = new BufferedReader(new InputStreamReader(in));
 			final ServletOutputStream outStream = response.getOutputStream();
 
-			logger.info("OK, got you");
+			logger.info("OK, just got a new message via HTTP!");
 
 			String inXMLString = null;
 			StringBuffer xmlBuff = new StringBuffer();
@@ -131,8 +131,6 @@ public class SendMessageServlet extends HttpServlet {
 				return;
 			}
 
-			IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
-
 			// logger.info("XML Buff: " + xmlBuff.toString());
 			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(xmlBuff.toString());
 
@@ -140,12 +138,15 @@ public class SendMessageServlet extends HttpServlet {
 			outMsg.setId(UUID.randomUUID().toString());
 
 			logger.info(outMsg.getMessage().getText());
-
-			persistenceMgr.makePersistent(teksModel);
+			logger.info("Pls send this message to "+outMsg.getSmsGateway().getName()+" gateway.");
+			
 			queueSender.publishMessage(outMsg);
 
 			outStream.println("getContentLength: " + request.getContentLength());
 			outStream.println("getContentType: " + request.getContentType());
+
+			IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
+			persistenceMgr.makePersistent(teksModel);
 
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);

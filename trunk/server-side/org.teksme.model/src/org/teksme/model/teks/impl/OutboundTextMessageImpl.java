@@ -631,10 +631,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setFrom(int index, String element) {
-		getFromList().set(index, element);
+		getFromList().add(index, element);
 	}
 
 	/**
@@ -694,10 +693,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setDeliveryDelayTime(int index, Integer element) {
-		getDeliveryDelayTimeList().set(index, element);
+		getDeliveryDelayTimeList().add(index, element);
 	}
 
 	/**
@@ -758,10 +756,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setValidityTimeframe(int index, Integer element) {
-		getValidityTimeframeList().set(index, element);
+		getValidityTimeframeList().add(index, element);
 	}
 
 	/**
@@ -822,10 +819,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setClientMsgId(int index, String element) {
-		getClientMsgIdList().set(index, element);
+		getClientMsgIdList().add(index, element);
 	}
 
 	/**
@@ -885,10 +881,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setDeliveryQueuePriority(int index, Integer element) {
-		getDeliveryQueuePriorityList().set(index, element);
+		getDeliveryQueuePriorityList().add(index, element);
 	}
 
 	/**
@@ -949,10 +944,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setDeliveryAck(int index, Boolean element) {
-		getDeliveryAckList().set(index, element);
+		getDeliveryAckList().add(index, element);
 	}
 
 	/**
@@ -1012,10 +1006,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setCallbackCode(int index, Integer element) {
-		getCallbackCodeList().set(index, element);
+		getCallbackCodeList().add(index, element);
 	}
 
 	/**
@@ -1075,10 +1068,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setConcatenated(int index, Integer element) {
-		getConcatenatedList().set(index, element);
+		getConcatenatedList().add(index, element);
 	}
 
 	/**
@@ -1392,10 +1384,9 @@ public class OutboundTextMessageImpl extends MessageImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
 	 */
 	public void setDeliveryScheduledTime(int index, Date element) {
-		getDeliveryScheduledTimeList().set(index, element);
+		getDeliveryScheduledTimeList().add(index, element);
 	}
 
 	/**

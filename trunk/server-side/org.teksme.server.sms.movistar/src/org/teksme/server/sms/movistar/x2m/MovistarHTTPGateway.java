@@ -54,6 +54,8 @@ public class MovistarHTTPGateway extends HTTPGateway {
 
 	private Object sessionId;
 
+	private String GTW_DATE_PATTERN = "yyyy-MM-dd HH:mm";
+
 	private boolean secure;
 
 	private Object SYNC_Commander;
@@ -212,7 +214,7 @@ public class MovistarHTTPGateway extends HTTPGateway {
 				Hashtable<String, String> ht1 = new Hashtable<String, String>();
 				ht1.put("celular", msg.getRecipient());
 				ht1.put("texto", msg.getText());
-				ht1.put("fecha", formatDateUTC(new Date()));
+				ht1.put("fecha", formatDate(GTW_DATE_PATTERN, msg.getDate()));
 				data.add(ht1);
 
 				Vector<Vector<Hashtable<String, String>>> vec = new Vector<Vector<Hashtable<String, String>>>();
@@ -226,10 +228,13 @@ public class MovistarHTTPGateway extends HTTPGateway {
 				}
 
 				for (Object object : result) {
-					System.out.println(object.toString());
+					//System.out.println(object.toString());
 					response.add(object.toString());
 				}
 			}
+
+			logger.info("Response at index(0) : " + response.get(0));
+			logger.info("Response at index(1) : " + response.get(1));
 			if (response.get(1).contains("err")) {
 				switch (Integer.parseInt(response.get(0))) {
 				case HttpURLConnection.HTTP_INTERNAL_ERROR:
@@ -243,13 +248,24 @@ public class MovistarHTTPGateway extends HTTPGateway {
 				msg.setDispatchDate(null);
 				msg.setMessageStatus(MessageStatuses.FAILED);
 				ok = false;
-			} else if (response.get(0).indexOf("ID:") == 0) {
+			} else if (response.get(1).contains("Invalid phone format")) {
+				msg.setFailureCause(FailureCauses.BAD_NUMBER);
+				msg.setRefNo(null);
+				msg.setDispatchDate(null);
+				msg.setMessageStatus(MessageStatuses.FAILED);
+				ok = false;
+			} else if (response.get(1).contains("OK")) {
 				// msg.setRefNo(response.get(0).substring(4));
 				msg.setDispatchDate(new Date());
 				msg.setGatewayId(getGatewayId());
 				msg.setMessageStatus(MessageStatuses.SENT);
 				incOutboundMessageCount();
 				ok = true;
+			} else{
+				msg.setFailureCause(FailureCauses.UNKNOWN);
+				msg.setRefNo(null);
+				msg.setDispatchDate(null);
+				msg.setMessageStatus(MessageStatuses.FAILED);
 			}
 
 		} catch (XmlRpcException e) {
