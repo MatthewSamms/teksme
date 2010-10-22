@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.util.List;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
@@ -28,6 +29,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.teneo.DataStore;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -175,7 +177,17 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 	
 
 	public User getUser(String userID, String pwd){
-		return null;
+		final SessionFactory sessionFactory = dataStore.getSessionFactory();
+		final Session session = sessionFactory.openSession();
+		
+		Query query = session.createQuery("SELECT user FROM User user WHERE user.username = "+userID+" and user.password="+pwd);
+		List list = query.list();
+		if(list.isEmpty())
+			return null;
+		
+		User user = (User) list.get(0);
+		session.close();
+		return user;
 	}
 
 }// class PersistenceManagerImpl
