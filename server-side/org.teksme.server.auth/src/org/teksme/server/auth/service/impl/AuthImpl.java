@@ -29,7 +29,7 @@ import org.teksme.server.auth.service.IAuth;
  */
 public class AuthImpl implements IAuth {
 
-	public boolean isValidToke(HttpServletRequest request) {
+	public boolean isValidToken(HttpServletRequest request) {
 		try {
 			OAuthMessage requestMessage = OAuthServlet.getMessage(request, null);
 
@@ -45,6 +45,11 @@ public class AuthImpl implements IAuth {
 			e.printStackTrace();
 			return false;
 		}
+	}
+
+	public boolean isValidUser(String usedID, String pwd) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

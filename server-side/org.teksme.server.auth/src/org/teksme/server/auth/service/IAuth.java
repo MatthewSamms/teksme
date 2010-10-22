@@ -22,6 +22,18 @@ import javax.servlet.http.HttpServletRequest;
  */
 public interface IAuth {
 
-	//TODO check if request is the best solution
-	public boolean isValidToke(HttpServletRequest request);
+	/**
+	 * Check if it is a valid token
+	 * @param request
+	 * @return
+	 */
+	public boolean isValidToken(HttpServletRequest request);
+	
+	/**
+	 * Check if it is a valid user.
+	 * @param usedID
+	 * @param pwd
+	 * @return
+	 */
+	public boolean isValidUser(String usedID, String pwd);
 }
