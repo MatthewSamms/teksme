@@ -30,6 +30,7 @@ import net.oauth.OAuthProblemException;
 import net.oauth.server.OAuthServlet;
 
 import org.apache.commons.codec.binary.Base64;
+import org.teksme.model.teks.User;
 import org.teksme.server.auth.provider.TeksmeOAuthProvider;
 import org.teksme.server.common.persistence.IPersistenceManager;
 
@@ -75,31 +76,29 @@ public class AuthenticationToken extends HttpServlet {
 
 			boolean valid = false;
 
-			String authHeader = request.getHeader("Authorization");
+			String authHeader = request.getHeader(Messages.AuthenticationToken_auth);
 			if (authHeader != null) {
 				StringTokenizer st = new StringTokenizer(authHeader);
 				if (st.hasMoreTokens()) {
 					String basic = st.nextToken();
 
 					// We only handle HTTP Basic authentication
-					if (basic.equalsIgnoreCase("BASIC")) {
+					if (basic.equalsIgnoreCase(Messages.AuthenticationToken_basic)) {
 						String credentials = st.nextToken();
 
 						byte b[] = Base64.decodeBase64(credentials.getBytes());
 						String userPass = new String(b);
 
-						int p = userPass.indexOf(":");
+						int p = userPass.indexOf(":"); //$NON-NLS-1$
 						if (p != -1) {
 							userID = userPass.substring(0, p);
 							password = userPass.substring(p + 1);
 
-							if ((!userID.trim().equals("")) && (!password.trim().equals(""))) {
+							if ((!userID.trim().equals("")) && (!password.trim().equals(""))) { //$NON-NLS-1$ //$NON-NLS-2$
 								valid = true;
-
-								// TODO
-//								if (!persistence.validUser(userID, password)) {
-//									valid = false;
-//								}
+								if (!validUser(userID, password)) {
+									valid = false;
+								}
 
 							}
 						}
@@ -108,7 +107,7 @@ public class AuthenticationToken extends HttpServlet {
 			}
 
 			if (!valid) {
-				OAuthProblemException problem = new OAuthProblemException("permission_denied");
+				OAuthProblemException problem = new OAuthProblemException(Messages.AuthenticationToken_permission_denied);
 				throw problem;
 			} else {
 
@@ -117,14 +116,14 @@ public class AuthenticationToken extends HttpServlet {
 
 				OAuthAccessor accessor = new OAuthAccessor(consumer);
 
-				accessor.setProperty("authorized", true);				
+				accessor.setProperty(Messages.AuthenticationToken_authorized, true);				
 				// generate secret token
 				TeksmeOAuthProvider.generateAccessToken(accessor);
 				// set userId in accessor and mark it as authorized
 				TeksmeOAuthProvider.markAsAuthorized(accessor, userID);
-				response.setContentType("text/plain");
+				response.setContentType(Messages.AuthenticationToken_text);
 				OutputStream out = response.getOutputStream();
-				OAuth.formEncode(OAuth.newList("oauth_token", accessor.accessToken), out);
+				OAuth.formEncode(OAuth.newList(Messages.AuthenticationToken_token, accessor.accessToken), out);
 				out.close();
 
 			}
@@ -133,6 +132,13 @@ public class AuthenticationToken extends HttpServlet {
 			TeksmeOAuthProvider.handleException(e, request, response, true);
 		}
 
+	}
+
+
+	private boolean validUser(String userID, String password) {
+
+		User user = persistenceMgr.getUser(userID, password);
+		return user == null?false:true;
 	}
 
 
