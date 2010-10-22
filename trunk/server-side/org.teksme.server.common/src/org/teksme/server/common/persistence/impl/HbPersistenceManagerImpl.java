@@ -47,7 +47,7 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 	private IPersistenceManagerFactory persistenceMgrFactory;
 
 	HbPersistenceManagerImpl() {
-		System.out.println("HbPersistenceManagerImpl");
+
 	}
 
 	public String getObjectId(Object obj) {

@@ -64,8 +64,8 @@ public final class AMQPBrokerManager implements ShutdownListener {
 		final String type = AMQPBrokerParameters.TYPE;
 
 		final String routingKey = queueType.getSmsRoutingKey();
-		String exchangeName = queueType.getExchange();
-		String queueName = queueType.getQueue();
+		final String exchangeName = queueType.getExchange();
+		final String queueName = queueType.getQueue();
 
 		Channel channel = conn.createChannel();
 
