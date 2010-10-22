@@ -13,6 +13,7 @@
 package org.teksme.server.common.persistence;
 
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.teksme.model.teks.User;
 
 public interface IPersistenceManager {
 
@@ -97,5 +98,13 @@ public interface IPersistenceManager {
 	void setPersistenceManagerFactory(IPersistenceManagerFactory persistenceMgrFactory);
 
 	void setDataSource(HbDataStore dataStore);
+
+	/**
+	 * Return User
+	 * @param userID
+	 * @param pwd
+	 * @return
+	 */
+	public User getUser(String userID, String pwd);
 
 }

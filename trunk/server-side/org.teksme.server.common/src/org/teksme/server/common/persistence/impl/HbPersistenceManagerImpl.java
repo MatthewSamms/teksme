@@ -32,6 +32,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.teksme.model.teks.Teks;
+import org.teksme.model.teks.User;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
@@ -170,6 +171,11 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 	 */
 	public DataStore getDataStore() {
 		return this.dataStore;
+	}
+	
+
+	public User getUser(String userID, String pwd){
+		return null;
 	}
 
 }// class PersistenceManagerImpl
