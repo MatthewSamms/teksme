@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.teksme.server.core_0.5.0.qualifier.jar" id="org.teksme.server.core" version="0.5.0.qualifier">
+      <category name="teks.me"/>
+   </feature>
+   <category-def name="teks.me" label="TeksMe platform SDK"/>
+</site>
