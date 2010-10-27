@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" version="0.5.0.qualifier" useFeatures="true" includeLaunchers="false">
+<product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" version="0.5.0" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
-      <macosx>/org.teksme.platform-feature/configuration.files/configuration/config.ini</macosx>
+      <linux>/org.teksme.platform/configuration.files/configuration/config.ini</linux>
+      <macosx>/org.teksme.platform/configuration.files/configuration/config.ini</macosx>
+      <solaris>/org.teksme.platform/configuration.files/configuration/config.ini</solaris>
+      <win32>/org.teksme.platform/configuration.files/configuration/config.ini</win32>
    </configIni>
 
    <launcherArgs>
-      <programArgsMac>-eclipse.ignoreApp=true -os macosx -ws cocoa -arch x86 -consoleLog -console</programArgsMac>
-      <vmArgsMac>-Xms256m -Xmx2048m -XX:PermSize=64m -XX:MaxPermSize=256m -Xss1M</vmArgsMac>
    </launcherArgs>
+
+   <windowImages/>
 
    <launcher name="Teksme">
       <solaris/>
