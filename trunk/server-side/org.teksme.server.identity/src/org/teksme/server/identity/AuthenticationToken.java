@@ -10,7 +10,7 @@
  * implied.  See the License for the specific language governing
  * permissions and limitations under the License.
  */
-package org.teksme.server.auth;
+package org.teksme.server.identity;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -31,8 +31,8 @@ import net.oauth.server.OAuthServlet;
 
 import org.apache.commons.codec.binary.Base64;
 import org.teksme.model.teks.User;
-import org.teksme.server.auth.provider.TeksmeOAuthProvider;
 import org.teksme.server.common.persistence.IPersistenceManager;
+import org.teksme.server.identity.provider.TeksmeOAuthProvider;
 
 /**
  * 

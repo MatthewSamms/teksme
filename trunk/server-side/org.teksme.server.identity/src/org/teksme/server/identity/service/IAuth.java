@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.auth.service;
+package org.teksme.server.identity.service;
 
 import javax.servlet.http.HttpServletRequest;
 

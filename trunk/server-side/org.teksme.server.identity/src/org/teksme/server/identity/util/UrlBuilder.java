@@ -1,5 +1,5 @@
 
-package org.teksme.server.auth.util;
+package org.teksme.server.identity.util;
 
 import java.net.MalformedURLException;
 import java.net.URL;
