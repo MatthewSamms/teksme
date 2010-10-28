@@ -1,4 +1,4 @@
-package org.teksme.server.auth;
+package org.teksme.server.identity;
 
 import org.eclipse.osgi.util.NLS;
 

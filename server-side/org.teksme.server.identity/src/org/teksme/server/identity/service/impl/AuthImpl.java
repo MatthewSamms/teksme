@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.auth.service.impl;
+package org.teksme.server.identity.service.impl;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,11 +20,11 @@ import net.oauth.OAuthMessage;
 import net.oauth.server.OAuthServlet;
 
 import org.teksme.model.teks.User;
-import org.teksme.server.auth.provider.TeksmeOAuthProvider;
-import org.teksme.server.auth.service.IAuth;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
+import org.teksme.server.identity.provider.TeksmeOAuthProvider;
+import org.teksme.server.identity.service.IAuth;
 
 /**
  * 

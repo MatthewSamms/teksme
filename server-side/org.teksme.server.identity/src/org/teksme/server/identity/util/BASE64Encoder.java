@@ -1,4 +1,4 @@
-package org.teksme.server.auth.util;
+package org.teksme.server.identity.util;
 
 public class BASE64Encoder {
     private static final char last2byte = (char) Integer.parseInt("00000011", 2);

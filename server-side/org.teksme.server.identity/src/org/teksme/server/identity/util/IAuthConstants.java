@@ -1,4 +1,4 @@
-package org.teksme.server.auth.util;
+package org.teksme.server.identity.util;
 
 public interface IAuthConstants {
 

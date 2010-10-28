@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Authenticator
-Bundle-SymbolicName: org.teksme.server.auth
+Bundle-Name: Identity
+Bundle-SymbolicName: org.teksme.server.identity
 Bundle-Version: 0.5
-Bundle-Activator: org.teksme.server.auth.Activator
+Bundle-Activator: org.teksme.server.identity.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: org.apache.commons.codec.binary,
@@ -26,6 +26,6 @@ Bundle-ClassPath: lib/commons-httpclient-3.1.jar,
  lib/oauth-httpclient4-20100601.jar,
  lib/oauth-provider-20100601.jar,
  .
-Export-Package: org.teksme.server.auth.service,
- org.teksme.server.auth.util
+Export-Package: org.teksme.server.identity.service,
+ org.teksme.server.identity.util
 Service-Component: OSGI-INF/web-component.xml
