@@ -20,8 +20,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 import org.junit.Test;
-import org.teksme.server.auth.util.BASE64Encoder;
-import org.teksme.server.auth.util.UrlBuilder;
+import org.teksme.server.identity.util.BASE64Encoder;
+import org.teksme.server.identity.util.UrlBuilder;
 
 public class AuthTest{
 
@@ -29,7 +29,7 @@ public class AuthTest{
 	public void testAuthAccessToken() {
 		try {
 
-			BASE64Encoder encoder = new org.teksme.server.auth.util.BASE64Encoder();
+			BASE64Encoder encoder = new BASE64Encoder();
 	        String userId = "teksme";
 			String password="test";
 			
