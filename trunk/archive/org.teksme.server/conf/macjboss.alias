@@ -1,5 +1,0 @@
-alias jbbin='cd /Users/fabianocruz/Dev/jboss-5.1.0.GA/bin'
-alias jbdpl='cd /Users/fabianocruz/Dev/jboss-5.1.0.GA/default-with-hornetq/deploy'
-alias jblog='cd /Users/fabianocruz/Dev/jboss-5.1.0.GA/default-with-hornetq/log'
-alias jboss_log='tail -1500f /Users/fabianocruz/Dev/jboss-5.1.0.GA/default-with-hornetq/log/server.log'
-alias jbtmp='cd /Users/fabianocruz/Dev/jboss-5.1.0.GA/default-with-hornetq/tmp'
