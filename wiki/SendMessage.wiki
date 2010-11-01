@@ -17,7 +17,7 @@
 
 {{{
 
-<?xml version="1.0" encoding="ASCII"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
 	<accountSID>ACc4836ef31bb2d557bf9d5fd5f050cd93</accountSID>
 	<outboundMessage>
