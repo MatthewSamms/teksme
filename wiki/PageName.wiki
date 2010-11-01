@@ -1,0 +1,35 @@
+
+
+|| *Field* || *Short description* || 
+|| *accountSID* || Account Security Identifier (commonly abbreviated SID) is a unique ID string that is assigned to each account. ||  
+|| *id* || For tracking purpose, thrid-party applications can define a message ID. Up to 34 alphanumeric characters with no spaces. || 
+|| *from* || The source/sender address that the message will appear to come from in E.164 format (a.k.a “Sender ID”). ||
+|| *to* || The number of the handset that will receive the message. The number should be in E.164 format. ||
+|| *channel* || This allows for engaging your users via text-based communication channels such as SMS, GTalk, Twitter, Yahoo, and nearly every IM network. For IM clients, you need to supply the appropriate credentials. ||
+|| *shout* || The text content of the message. Note that the maximum individual short message sizes of 160 7-bit characters, 140 8-bit characters, or 70 16-bit characters (including spaces). ||
+|| *stopOnError* || Stop execution upon first error. || 
+|| *schedule* || Specify, in seconds, when a message gets delivered. ||
+|| *timeout* || The validity period, in minutes. The message will not be delivered if it is still queued on our gateway after this time period. ||
+|| *delay* || Delays, in minutes, the delivery of a message. || 
+|| *callback* || Enables your application to receive message delivery statuses via an HTTP, SOAP or XML callback which is posted to a URL of yours using the GET or POST method. This is done every time a message status is updated. ||
+|| *concatenated* || It will span long messages across `<N>` messages where applicable. A maximum of 3 is recommended. One SMS will be sent for every 160 characters or 140 bytes. ||
+
+{{{
+
+<?xml version="1.0" encoding="ASCII"?>
+<teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+	<accountSID>ACc4836ef31bb2d557bf9d5fd5f050cd93</accountSID>
+	<outboundMessage>
+		<id>56f3d45cb6f14af22fee33245bf53b8e</id>
+		<from>+12023567865</from>
+		<to>+12028754532</to>
+		<channel>SMS, GTALK, Twitter</channel>
+		<shout this="Hello from TeksMe Cloud!" />
+		<stopOnError>false</stopOnError>
+		<schedule>Wed, 02 Oct 2010 15:00:00 +0200</schedule>
+		<concatenated>false</concatenated>
+	</outboundMessage>
+</teks:Teks>
+
+
+}}}
