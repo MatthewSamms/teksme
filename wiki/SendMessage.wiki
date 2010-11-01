@@ -12,8 +12,16 @@
 || *schedule* || Specify, in seconds, when a message gets delivered. ||
 || *timeout* || The validity period, in minutes. The message will not be delivered if it is still queued on our gateway after this time period. ||
 || *delay* || Delays, in minutes, the delivery of a message. || 
-|| *callback* || Enables your application to receive message delivery statuses via an HTTP, SOAP or XML callback which is posted to a URL of yours using the GET or POST method. This is done every time a message status is updated. ||
+|| *callback* || A relative or absolute URL. It enables your application to receive message delivery statuses via an HTTP, SOAP or XML callback which is posted to a URL of yours using the GET or POST method. This is done every time a message status is updated. ||
 || *concatenated* || It will span long messages across `<N>` messages where applicable. A maximum of 3 is recommended. One SMS will be sent for every 160 characters or 140 bytes. ||
+
+=== Endpoint URL ===
+
+{{{
+http://api.teks.me/p/{profileId}/sendmsg
+}}}
+
+===Code sample===
 
 {{{
 
