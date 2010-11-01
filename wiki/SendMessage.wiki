@@ -3,7 +3,7 @@
 || *Field* || *Short description* || 
 || *accountSID* || Account Security Identifier (commonly abbreviated SID) is a unique ID string that is assigned to each account. ||  
 || *id* || For tracking purpose, thrid-party applications can define a message ID. Up to 34 alphanumeric characters with no spaces. || 
-|| *date* || The date and time of the request. ||
+|| *date* || The date and time of the request, in RFC 2822 format. ||
 || *from* || The source/sender address (a.k.a “Sender ID”), in E.164 format, that the message will appear to come from. ||
 || *to* || The number of the handset that will receive the message. The number should be in E.164 format. ||
 || *channel* || This allows for engaging your users via text-based communication channels such as SMS, GTalk, Twitter, Yahoo, and nearly every IM network. For IM clients, you need to supply the appropriate credentials. ||
