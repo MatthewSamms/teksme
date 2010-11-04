@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.teksme.platform.feature_0.5.0.201011032310.jar" id="org.teksme.platform.feature" version="0.5.0.201011032310"/>
+   <feature url="features/org.teksme.server.core.feature_0.5.0.201011032310.jar" id="org.teksme.server.core.feature" version="0.5.0.201011032310"/>
+   <feature url="features/org.teksme.server.remote.service.feature_0.5.0.201011032310.jar" id="org.teksme.server.remote.service.feature" version="0.5.0.201011032310"/>
+   <feature url="features/org.teksme.server.sms.feature_0.5.0.201011032310.jar" id="org.teksme.server.sms.feature" version="0.5.0.201011032310"/>
+</site>
