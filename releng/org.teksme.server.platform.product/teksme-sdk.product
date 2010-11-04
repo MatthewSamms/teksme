@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?pde version="3.5"?>
+
+<product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" version="0.5.0" useFeatures="true" includeLaunchers="true">
+
+   <configIni use="default">
+      <linux>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</linux>
+      <macosx>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</macosx>
+      <solaris>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</solaris>
+      <win32>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</win32>
+   </configIni>
+
+   <launcherArgs>
+   </launcherArgs>
+
+   <windowImages/>
+
+   <launcher name="Teksme">
+      <solaris/>
+      <win useIco="false">
+         <bmp/>
+      </win>
+   </launcher>
+
+   <vm>
+   </vm>
+
+   <plugins>
+   </plugins>
+
+   <features>
+      <feature id="org.teksme.platform.feature" version="0.5.0.qualifier"/>
+      <feature id="org.teksme.server.core.feature" version="0.5.0.qualifier"/>
+      <feature id="org.teksme.server.remote.service.feature" version="0.5.0.qualifier"/>
+      <feature id="org.teksme.server.sms.feature" version="0.5.0.qualifier"/>
+   </features>
+
+   <configurations>
+      <plugin id="ch.qos.logback.classic" autoStart="true" startLevel="0" />
+      <plugin id="ch.qos.logback.core" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.core.runtime" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.ecf" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.ecf.filetransfer" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.ecf.provider.filetransfer" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.app" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.common" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.equinox.ds" autoStart="true" startLevel="2" />
+      <plugin id="org.eclipse.equinox.frameworkadmin" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.frameworkadmin.equinox" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.http.jetty" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.http.registry" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.http.servlet" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.p2.console" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.p2.director" autoStart="true" startLevel="3" />
+      <plugin id="org.eclipse.equinox.registry" autoStart="true" startLevel="0" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.simpleconfigurator.manipulator" autoStart="true" startLevel="4" />
+      <plugin id="org.eclipse.equinox.util" autoStart="true" startLevel="1" />
+      <plugin id="org.eclipse.osgi.services" autoStart="true" startLevel="1" />
+      <plugin id="org.mortbay.jetty.server" autoStart="true" startLevel="3" />
+      <plugin id="org.mortbay.jetty.util" autoStart="true" startLevel="3" />
+      <plugin id="org.sat4j.core" autoStart="true" startLevel="2" />
+      <plugin id="org.sat4j.pb" autoStart="true" startLevel="2" />
+      <plugin id="org.slf4j.api" autoStart="true" startLevel="1" />
+      <plugin id="org.teksme.model" autoStart="true" startLevel="0" />
+      <plugin id="org.teksme.server" autoStart="true" startLevel="0" />
+      <plugin id="org.teksme.server.common" autoStart="true" startLevel="0" />
+      <plugin id="org.teksme.server.queue.consumer" autoStart="true" startLevel="0" />
+      <plugin id="org.teksme.server.queue.sender" autoStart="true" startLevel="0" />
+      <plugin id="org.teksme.server.remote.service" autoStart="true" startLevel="0" />
+      <plugin id="org.teksme.server.sms" autoStart="true" startLevel="0" />
+      <plugin id="org.teksme.server.sms.bulksms" autoStart="true" startLevel="0" />
+   </configurations>
+
+</product>
