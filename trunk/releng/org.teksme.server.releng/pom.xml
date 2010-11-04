@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.teksme.server</groupId>
+	<artifactId>org.teksme.server.releng_parent</artifactId>
+	<version>0.5.0-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<properties>
+		<tycho-version>0.10.0</tycho-version>
+		<osgi.os>macosx</osgi.os>
+		<osgi.ws>cocoa</osgi.ws>
+		<osgi.arch>x86</osgi.arch>
+	</properties>
+
+	<modules>
+		<module>../org.teksme.server-updatesite</module>
+		<module>../org.teksme.platform-feature</module>
+		<module>../org.teksme.server.core-feature</module>
+		<module>../org.teksme.server.remote.service-feature</module>
+		<module>../org.teksme.server.sms-feature</module>
+		<module>../org.teksme.server.platform.product</module>
+		<module>../org.teksme.server.p2-repository</module>
+	</modules>
+
+	<profiles>
+		<profile>
+			<id>e35</id>
+			<repositories>
+				<repository>
+					<id>update35</id>
+					<url>http://download.eclipse.org/eclipse/updates/3.5</url>
+					<layout>p2</layout>
+				</repository>
+			</repositories>
+		</profile>
+		<profile>
+			<id>e36</id>
+			<repositories>
+				<repository>
+					<id>update36</id>
+					<url>http://download.eclipse.org/eclipse/updates/3.6-I-builds</url>
+					<layout>p2</layout>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.teksme.server</groupId>
+				<artifactId>org.teksme.model</artifactId>
+				<version>0.5.0-SNAPSHOT</version>
+				<type>eclipse-plugin</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.teksme.server</groupId>
+				<artifactId>org.teksme.library.target</artifactId>
+				<version>0.5.0-SNAPSHOT</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
+	<developers>
+		<developer>
+			<id>fabiano</id>
+			<name>Fabiano Cruz</name>
+			<email>fabianoc@acm.org</email>
+			<organization>Inter-American Development Bank</organization>
+			<organizationUrl>www.iadb.org</organizationUrl>
+			<timezone>UTC/GMT -5 hours</timezone>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>mayworm</id>
+			<name>Marcelo Mayworm</name>
+			<email>mayworm@ieee.org</email>
+			<organization>NYSE, New York Stock Exchange</organization>
+			<timezone>UTC/GMT -5 hours</timezone>
+			<roles>
+				<role>Developer</role>
+			</roles>
+		</developer>
+	</developers>
+	<build>
+		<resources>
+			<resource>
+				<directory>src</directory>
+			</resource>
+			<resource>
+				<directory>test</directory>
+			</resource>
+		</resources>
+
+		<plugins>
+
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>tycho-p2-publisher-director</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<enablePackAndSign>true</enablePackAndSign>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>maven-osgi-packaging-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<environments>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<resolver>p2</resolver>
+					<environments>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>carbon</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86</arch>
+						</environment>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.sonatype.tycho</groupId>
+				<artifactId>tycho-p2-publisher-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<configuration>
+					<publishArtifacts>true</publishArtifacts>
+				</configuration>
+			</plugin>
+		</plugins>
+		<extensions>
+			<extension>
+				<groupId>org.apache.maven.wagon</groupId>
+				<artifactId>wagon-ssh-external</artifactId>
+				<version>1.0-beta-6</version>
+			</extension>
+		</extensions>
+	</build>
+
+	<repositories>
+		<repository>
+			<id>p2.eclipse.helios</id>
+			<url>http://download.eclipse.org/releases/helios</url>
+			<layout>p2</layout>
+		</repository>
+		<repository>
+			<id>p2.teksme</id>
+			<url>file:///Users/fabianocruz/Documents/27-TeksMe/repository</url>
+			<layout>p2</layout>
+		</repository>
+	</repositories>
+
+	<pluginRepositories>
+		<!-- At the moment the TeksMe cloud is only available as snapshot -->
+		<pluginRepository>
+			<id>teksme-snapshots</id>
+			<url>/Users/fabianocruz/Documents/27-TeksMe/repository</url>
+			<layout>p2</layout>
+			<releases>
+				<enabled>false</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- Enabling the use of FTP -->
+	<distributionManagement>
+		<repository>
+			<id>update-site</id>
+			<url>sftp://your/url</url>
+		</repository>
+	</distributionManagement>
+
+</project>
