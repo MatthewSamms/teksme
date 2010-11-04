@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<units size='2'>
+  <unit id='org.teksme.platform.feature.feature.group' version='0.5.0.201011032310' singleton='false'>
+    <update id='org.teksme.platform.feature.feature.group' range='[0.0.0,0.5.0.201011032310)' severity='0'/>
+    <properties size='13'>
+      <property name='org.eclipse.equinox.p2.name' value='%featureName'/>
+      <property name='org.eclipse.equinox.p2.description' value='%description'/>
+      <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      <property name='org.eclipse.equinox.p2.type.group' value='true'/>
+      <property name='maven-groupId' value='org.teksme.server'/>
+      <property name='maven-artifactId' value='org.teksme.platform.feature'/>
+      <property name='maven-version' value='0.5.0-SNAPSHOT'/>
+      <property name='df_LT.featureName' value='TèksMe Platform'/>
+      <property name='df_LT.providerName' value='Tèks.me'/>
+      <property name='df_LT.description' value='Common OS-independent base of the TèksMe platform. (Binary runtime and user documentation.)'/>
+      <property name='df_LT.copyright' value='Copyright (c) 2010 TèksMe, Inc. and others. &#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Apache v2.0 which accompanies&#xA;this distribution, and is available at &#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Contributors:&#xA;TèksMe - initial API and implementation&#xA;'/>
+      <property name='df_LT.license' value='TèksMe Software User Agreement&#xA;April 14, 2010&#xA;&#xA;Usage Of Content&#xA;&#xA;THE TEKSME INC. MAKES AVAILABLE SOFTWARE, DOCUMENTATION, INFORMATION AND/OR&#xA;OTHER MATERIALS FOR OPEN SOURCE PROJECTS (COLLECTIVELY &quot;CONTENT&quot;).&#xA;USE OF THE CONTENT IS GOVERNED BY THE TERMS AND CONDITIONS OF THIS&#xA;AGREEMENT AND/OR THE TERMS AND CONDITIONS OF LICENSE AGREEMENTS OR&#xA;NOTICES INDICATED OR REFERENCED BELOW.  BY USING THE CONTENT, YOU&#xA;AGREE THAT YOUR USE OF THE CONTENT IS GOVERNED BY THIS AGREEMENT&#xA;AND/OR THE TERMS AND CONDITIONS OF ANY APPLICABLE LICENSE AGREEMENTS&#xA;OR NOTICES INDICATED OR REFERENCED BELOW.  IF YOU DO NOT AGREE TO THE&#xA;TERMS AND CONDITIONS OF THIS AGREEMENT AND THE TERMS AND CONDITIONS&#xA;OF ANY APPLICABLE LICENSE AGREEMENTS OR NOTICES INDICATED OR REFERENCED&#xA;BELOW, THEN YOU MAY NOT USE THE CONTENT.&#xA;&#xA;Applicable Licenses&#xA;&#xA;Unless otherwise indicated, all Content made available by the&#xA;TèksMe Inc. is provided to you under the terms and conditions of&#xA;the Apache Software License 2.0. A copy of the license is&#xA;provided with this Content and is also available at http://www.teks.me/legal/apache-v2.html.&#xA;For purposes of the EPL, &quot;Program&quot; will mean the Content.&#xA;&#xA;Content includes, but is not limited to, source code, object code,&#xA;documentation and other files maintained in the Eclipse Foundation source code&#xA;repository (&quot;Repository&quot;) in software modules (&quot;Modules&quot;) and made available&#xA;as downloadable archives (&quot;Downloads&quot;).&#xA;&#xA;- Content may be structured and packaged into modules to facilitate delivering,&#xA;extending, and upgrading the Content. Typical modules may include plug-ins (&quot;Plug-ins&quot;),&#xA;plug-in fragments (&quot;Fragments&quot;), and features (&quot;Features&quot;).&#xA;- Each Plug-in or Fragment may be packaged as a sub-directory or JAR (Java(TM) ARchive)&#xA;in a directory named &quot;plugins&quot;.&#xA;- A Feature is a bundle of one or more Plug-ins and/or Fragments and associated material.&#xA;Each Feature may be packaged as a sub-directory in a directory named &quot;features&quot;.&#xA;Within a Feature, files named &quot;feature.xml&quot; may contain a list of the names and version&#xA;numbers of the Plug-ins and/or Fragments associated with that Feature.&#xA;- Features may also include other Features (&quot;Included Features&quot;). Within a Feature, files&#xA;named &quot;feature.xml&quot; may contain a list of the names and version numbers of Included Features.&#xA;&#xA;The terms and conditions governing Plug-ins and Fragments should be&#xA;contained in files named &quot;about.html&quot; (&quot;Abouts&quot;). The terms and&#xA;conditions governing Features and Included Features should be contained&#xA;in files named &quot;license.html&quot; (&quot;Feature Licenses&quot;). Abouts and Feature&#xA;Licenses may be located in any directory of a Download or Module&#xA;including, but not limited to the following locations:&#xA;&#xA;- The top-level (root) directory&#xA;- Plug-in and Fragment directories&#xA;- Inside Plug-ins and Fragments packaged as JARs&#xA;- Sub-directories of the directory named &quot;src&quot; of certain Plug-ins&#xA;- Feature directories&#xA;&#xA;Note: if a Feature made available by the Eclipse Foundation is installed using the&#xA;Provisioning Technology (as defined below), you must agree to a license (&quot;Feature &#xA;Update License&quot;) during the installation process. If the Feature contains&#xA;Included Features, the Feature Update License should either provide you&#xA;with the terms and conditions governing the Included Features or inform&#xA;you where you can locate them. Feature Update Licenses may be found in&#xA;the &quot;license&quot; property of files named &quot;feature.properties&quot; found within a Feature.&#xA;Such Abouts, Feature Licenses, and Feature Update Licenses contain the&#xA;terms and conditions (or references to such terms and conditions) that&#xA;govern your use of the associated Content in that directory.&#xA;&#xA;THE ABOUTS, FEATURE LICENSES, AND FEATURE UPDATE LICENSES MAY REFER&#xA;TO THE EPL OR OTHER LICENSE AGREEMENTS, NOTICES OR TERMS AND CONDITIONS.&#xA;SOME OF THESE OTHER LICENSE AGREEMENTS MAY INCLUDE (BUT ARE NOT LIMITED TO):&#xA;&#xA;- Common Public License Version 1.0 (available at http://www.eclipse.org/legal/cpl-v10.html)&#xA;- Apache Software License 1.1 (available at http://www.apache.org/licenses/LICENSE)&#xA;- Apache Software License 2.0 (available at http://www.apache.org/licenses/LICENSE-2.0)&#xA;- Metro Link Public License 1.00 (available at http://www.opengroup.org/openmotif/supporters/metrolink/license.html)&#xA;- Mozilla Public License Version 1.1 (available at http://www.mozilla.org/MPL/MPL-1.1.html)&#xA;&#xA;IT IS YOUR OBLIGATION TO READ AND ACCEPT ALL SUCH TERMS AND CONDITIONS PRIOR&#xA;TO USE OF THE CONTENT. If no About, Feature License, or Feature Update License&#xA;is provided, please contact the Eclipse Foundation to determine what terms and conditions&#xA;govern that particular Content.&#xA;&#xA;&#xA;Use of Provisioning Technology&#xA;&#xA;The Eclipse Foundation makes available provisioning software, examples of which include,&#xA;but are not limited to, p2 and the Eclipse Update Manager (&quot;Provisioning Technology&quot;) for&#xA;the purpose of allowing users to install software, documentation, information and/or&#xA;other materials (collectively &quot;Installable Software&quot;). This capability is provided with&#xA;the intent of allowing such users to install, extend and update Eclipse-based products.&#xA;Information about packaging Installable Software is available at&#xA;http://eclipse.org/equinox/p2/repository_packaging.html (&quot;Specification&quot;).&#xA;&#xA;You may use Provisioning Technology to allow other parties to install Installable Software.&#xA;You shall be responsible for enabling the applicable license agreements relating to the&#xA;Installable Software to be presented to, and accepted by, the users of the Provisioning Technology&#xA;in accordance with the Specification. By using Provisioning Technology in such a manner and&#xA;making it available in accordance with the Specification, you further acknowledge your&#xA;agreement to, and the acquisition of all necessary rights to permit the following:&#xA;&#xA;1. A series of actions may occur (&quot;Provisioning Process&quot;) in which a user may execute&#xA;the Provisioning Technology on a machine (&quot;Target Machine&quot;) with the intent of installing,&#xA;extending or updating the functionality of an Eclipse-based product.&#xA;2. During the Provisioning Process, the Provisioning Technology may cause third party&#xA;Installable Software or a portion thereof to be accessed and copied to the Target Machine.&#xA;3. Pursuant to the Specification, you will provide to the user the terms and conditions that&#xA;govern the use of the Installable Software (&quot;Installable Software Agreement&quot;) and such&#xA;Installable Software Agreement shall be accessed from the Target Machine in accordance&#xA;with the Specification. Such Installable Software Agreement must inform the user of the&#xA;terms and conditions that govern the Installable Software and must solicit acceptance by&#xA;the end user in the manner prescribed in such Installable Software Agreement. Upon such&#xA;indication of agreement by the user, the provisioning Technology will complete installation&#xA;of the Installable Software.&#xA;&#xA;Cryptography&#xA;&#xA;Content may contain encryption software. The country in which you are&#xA;currently may have restrictions on the import, possession, and use,&#xA;and/or re-export to another country, of encryption software. BEFORE&#xA;using any encryption software, please check the country&apos;s laws,&#xA;regulations and policies concerning the import, possession, or use, and&#xA;re-export of encryption software, to see if this is permitted.&#xA;&#xA;Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.&#xA;'/>
+    </properties>
+    <provides size='2'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.teksme.platform.feature.feature.group' version='0.5.0.201011032310'/>
+      <provided namespace='org.eclipse.equinox.p2.localization' name='df_LT' version='1.0.0'/>
+    </provides>
+    <requires size='110'>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.slf4j.api' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.net4j.jms.api' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.common' range='[3.2.0,4.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.net' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.provider.filetransfer' range='2.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.registry' range='[3.4.0,4.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.frameworkadmin' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.common' range='[3.5.0,4.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.metadata.repository' range='1.0.100'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.jobs' range='[3.4.0,4.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.repository' range='[2.0.0,2.1.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.metadata' range='[2.0.0,2.1.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.core' range='[2.0.0,2.1.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.osgi' range='[3.4.0,4.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.common' range='3.3.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.core' range='[2.0.0,3.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.filetransfer' range='2.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.common' range='3.5.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.common' range='[3.3.0,4.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.sat4j.core' range='[2.2.0,2.3.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.sat4j.pb' range='[2.2.0,2.3.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.jobs' range='[3.3.0,4.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.metadata' range='[2.0.0,3.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.registry' range='3.3.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.provider.filetransfer' range='3.0.1'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.publisher' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.jasper.glassfish' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.lang' range='[2.0.0,3.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.logging' range='[1.0.0,2.0.0)'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.xml.stream' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ant.core' range='[3.2.200.v20100427,3.2.200.v20100427]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.contenttype' range='[3.4.100.v20100505-1235,3.4.100.v20100505-1235]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.expressions' range='[3.4.200.v20100505,3.4.200.v20100505]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.filesystem' range='[1.3.1.R36x_v20100727-0745,1.3.1.R36x_v20100727-0745]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.net' range='[1.2.100.I20100511-0800,1.2.100.I20100511-0800]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.resources' range='[3.6.0.v20100526-0737,3.6.0.v20100526-0737]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime.compatibility.auth' range='[3.2.200.v20100517,3.2.200.v20100517]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.runtime' range='[3.6.0.v20100505,3.6.0.v20100505]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.variables' range='[3.2.400.v20100505,3.2.400.v20100505]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.frameworkadmin' range='[2.0.0.v20100503,2.0.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.publisher' range='[1.1.2.v20100824-2220,1.1.2.v20100824-2220]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.net4j.jms.api' range='[3.0.0.v20100618-1451,3.0.0.v20100618-1451]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.slf4j.api' range='[1.5.11.v20100519-1910,1.5.11.v20100519-1910]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.activation' range='[1.1.0.v201005080500,1.1.0.v201005080500]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.el' range='[2.1.0.v201004190952,2.1.0.v201004190952]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.persistence' range='[2.0.1.v201006031150,2.0.1.v201006031150]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='ch.qos.logback.classic' range='[0.9.19.v20100519-1505,0.9.19.v20100519-1505]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='ch.qos.logback.core' range='[0.9.19.v20100419-1216,0.9.19.v20100419-1216]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.launcher' range='[1.1.0.v20100507,1.1.0.v20100507]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='com.ibm.icu' range='[4.2.1.v20100412,4.2.1.v20100412]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.core.jobs' range='[3.5.1.R36x_v20100824,3.5.1.R36x_v20100824]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf' range='[3.1.0.v20100529-0735,3.1.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.ssl' range='[1.0.0.v20100529-0735,1.0.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.filetransfer' range='[4.0.0.v20100529-0735,4.0.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.identity' range='[3.1.0.v20100529-0735,3.1.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.provider.filetransfer' range='[3.1.0.v20100529-0735,3.1.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.provider.filetransfer.ssl' range='[1.0.0.v20100529-0735,1.0.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.app' range='[1.3.1.R36x_v20100803,1.3.1.R36x_v20100803]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.common' range='[3.6.0.v20100503,3.6.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.frameworkadmin.equinox' range='[1.0.200.v20100505,1.0.200.v20100505]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.util' range='[1.0.200.v20100503,1.0.200.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.artifact.repository' range='[1.1.1.R36x_v20100901,1.1.1.R36x_v20100901]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.core' range='[2.0.2.R36x_v20100804,2.0.2.R36x_v20100804]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.engine' range='[2.0.0.v20100606,2.0.0.v20100606]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.garbagecollector' range='[1.0.100.v20100503,1.0.100.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.jarprocessor' range='[1.0.200.v20100503a,1.0.200.v20100503a]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.metadata' range='[2.0.0.v20100601,2.0.0.v20100601]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.metadata.repository' range='[1.1.0.v20100513,1.1.0.v20100513]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.preferences' range='[3.3.0.v20100503,3.3.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.registry' range='[3.5.0.v20100503,3.5.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.security' range='[1.0.200.v20100503,1.0.200.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.osgi' range='[3.6.1.R36x_v20100806,3.6.1.R36x_v20100806]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.osgi.services' range='[3.2.100.v20100503,3.2.100.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.sat4j.core' range='[2.2.0.v20100429,2.2.0.v20100429]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.sat4j.pb' range='[2.2.0.v20100429,2.2.0.v20100429]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.http.registry' range='[1.1.0.v20100503,1.1.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.servlet' range='[2.5.0.v200910301333,2.5.0.v200910301333]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.console' range='[1.0.200.v20100601,1.0.200.v20100601]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.simpleconfigurator' range='[1.0.200.v20100503,1.0.200.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.simpleconfigurator.manipulator' range='[2.0.0.v20100503,2.0.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.codec' range='[1.3.0.v20100518-1140,1.3.0.v20100518-1140]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.httpclient' range='[3.1.0.v201005080502,3.1.0.v201005080502]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.logging' range='[1.1.1.v201005080502,1.1.1.v201005080502]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.log4j' range='[1.2.16.201005082216,1.2.16.201005082216]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.provider.filetransfer.httpclient' range='[4.0.0.v20100529-0735,4.0.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.ecf.provider.filetransfer.httpclient.ssl' range='[1.0.0.v20100529-0735,1.0.0.v20100529-0735]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.metadata.generator' range='[1.0.200.v20100503a,1.0.200.v20100503a]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.concurrent' range='[1.0.100.v20100503,1.0.100.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.ds' range='[1.2.1.R36x_v20100803,1.2.1.R36x_v20100803]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.util' range='0.0.0'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.http.servlet' range='[1.1.0.v20100503,1.1.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.touchpoint.natives' range='[1.0.200.v20100503a,1.0.200.v20100503a]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.director' range='[2.0.2.R36x_v20100823,2.0.2.R36x_v20100823]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.repository' range='[2.0.1.R36x_v20100823,2.0.1.R36x_v20100823]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.p2.touchpoint.eclipse' range='[2.0.2.R36x_v20100823,2.0.2.R36x_v20100823]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.transaction' range='[1.1.1.v201006150915,1.1.1.v201006150915]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.eclipse.equinox.http.jetty' range='[2.0.0.v20100503,2.0.0.v20100503]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mortbay.jetty.util' range='[6.1.23.v201004211559,6.1.23.v201004211559]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.mortbay.jetty.server' range='[6.1.23.v201004211559,6.1.23.v201004211559]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.servlet.jsp.jstl' range='[1.2.0.v201004190952,1.2.0.v201004190952]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.servlet.jsp' range='[2.1.0.v201004190952,2.1.0.v201004190952]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.lang' range='[2.4.0.v201005080502,2.4.0.v201005080502]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.cli' range='[1.0.0.v20080604-1500,1.0.0.v20080604-1500]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.xml.bind' range='[2.2.0.v201005080402,2.2.0.v201005080402]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.apache.commons.collections' range='[3.2.0.v201005080500,3.2.0.v201005080500]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.xml' range='[1.3.4.v201005080400,1.3.4.v201005080400]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='javax.mail.glassfish' range='[1.4.1.v201005082020,1.4.1.v201005082020]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.dom4j' range='[1.6.1.201005082216,1.6.1.201005082216]'/>
+      <required namespace='org.eclipse.equinox.p2.iu' name='org.teksme.platform.feature.feature.jar' range='[0.5.0.201011032310,0.5.0.201011032310]'>
+        <filter>
+          (org.eclipse.update.install.features=true)
+        </filter>
+      </required>
+    </requires>
+    <touchpoint id='null' version='0.0.0'/>
+    <licenses size='1'>
+      <license uri='%25licenseURL' url='%25licenseURL'>
+        %license
+      </license>
+    </licenses>
+    <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+      %copyright
+    </copyright>
+  </unit>
+  <unit id='org.teksme.platform.feature.feature.jar' version='0.5.0.201011032310'>
+    <properties size='12'>
+      <property name='org.eclipse.equinox.p2.name' value='%featureName'/>
+      <property name='org.eclipse.equinox.p2.description' value='%description'/>
+      <property name='org.eclipse.equinox.p2.description.url' value='http://www.example.com/description'/>
+      <property name='org.eclipse.equinox.p2.provider' value='%providerName'/>
+      <property name='df_LT.featureName' value='TèksMe Platform'/>
+      <property name='df_LT.providerName' value='Tèks.me'/>
+      <property name='df_LT.description' value='Common OS-independent base of the TèksMe platform. (Binary runtime and user documentation.)'/>
+      <property name='df_LT.copyright' value='Copyright (c) 2010 TèksMe, Inc. and others. &#xA;All rights reserved. This program and the accompanying materials&#xA;are made available under the terms of the Apache v2.0 which accompanies&#xA;this distribution, and is available at &#xA;http://www.apache.org/licenses/LICENSE-2.0&#xA;&#xA;Contributors:&#xA;TèksMe - initial API and implementation&#xA;'/>
+      <property name='df_LT.license' value='TèksMe Software User Agreement&#xA;April 14, 2010&#xA;&#xA;Usage Of Content&#xA;&#xA;THE TEKSME INC. MAKES AVAILABLE SOFTWARE, DOCUMENTATION, INFORMATION AND/OR&#xA;OTHER MATERIALS FOR OPEN SOURCE PROJECTS (COLLECTIVELY &quot;CONTENT&quot;).&#xA;USE OF THE CONTENT IS GOVERNED BY THE TERMS AND CONDITIONS OF THIS&#xA;AGREEMENT AND/OR THE TERMS AND CONDITIONS OF LICENSE AGREEMENTS OR&#xA;NOTICES INDICATED OR REFERENCED BELOW.  BY USING THE CONTENT, YOU&#xA;AGREE THAT YOUR USE OF THE CONTENT IS GOVERNED BY THIS AGREEMENT&#xA;AND/OR THE TERMS AND CONDITIONS OF ANY APPLICABLE LICENSE AGREEMENTS&#xA;OR NOTICES INDICATED OR REFERENCED BELOW.  IF YOU DO NOT AGREE TO THE&#xA;TERMS AND CONDITIONS OF THIS AGREEMENT AND THE TERMS AND CONDITIONS&#xA;OF ANY APPLICABLE LICENSE AGREEMENTS OR NOTICES INDICATED OR REFERENCED&#xA;BELOW, THEN YOU MAY NOT USE THE CONTENT.&#xA;&#xA;Applicable Licenses&#xA;&#xA;Unless otherwise indicated, all Content made available by the&#xA;TèksMe Inc. is provided to you under the terms and conditions of&#xA;the Apache Software License 2.0. A copy of the license is&#xA;provided with this Content and is also available at http://www.teks.me/legal/apache-v2.html.&#xA;For purposes of the EPL, &quot;Program&quot; will mean the Content.&#xA;&#xA;Content includes, but is not limited to, source code, object code,&#xA;documentation and other files maintained in the Eclipse Foundation source code&#xA;repository (&quot;Repository&quot;) in software modules (&quot;Modules&quot;) and made available&#xA;as downloadable archives (&quot;Downloads&quot;).&#xA;&#xA;- Content may be structured and packaged into modules to facilitate delivering,&#xA;extending, and upgrading the Content. Typical modules may include plug-ins (&quot;Plug-ins&quot;),&#xA;plug-in fragments (&quot;Fragments&quot;), and features (&quot;Features&quot;).&#xA;- Each Plug-in or Fragment may be packaged as a sub-directory or JAR (Java(TM) ARchive)&#xA;in a directory named &quot;plugins&quot;.&#xA;- A Feature is a bundle of one or more Plug-ins and/or Fragments and associated material.&#xA;Each Feature may be packaged as a sub-directory in a directory named &quot;features&quot;.&#xA;Within a Feature, files named &quot;feature.xml&quot; may contain a list of the names and version&#xA;numbers of the Plug-ins and/or Fragments associated with that Feature.&#xA;- Features may also include other Features (&quot;Included Features&quot;). Within a Feature, files&#xA;named &quot;feature.xml&quot; may contain a list of the names and version numbers of Included Features.&#xA;&#xA;The terms and conditions governing Plug-ins and Fragments should be&#xA;contained in files named &quot;about.html&quot; (&quot;Abouts&quot;). The terms and&#xA;conditions governing Features and Included Features should be contained&#xA;in files named &quot;license.html&quot; (&quot;Feature Licenses&quot;). Abouts and Feature&#xA;Licenses may be located in any directory of a Download or Module&#xA;including, but not limited to the following locations:&#xA;&#xA;- The top-level (root) directory&#xA;- Plug-in and Fragment directories&#xA;- Inside Plug-ins and Fragments packaged as JARs&#xA;- Sub-directories of the directory named &quot;src&quot; of certain Plug-ins&#xA;- Feature directories&#xA;&#xA;Note: if a Feature made available by the Eclipse Foundation is installed using the&#xA;Provisioning Technology (as defined below), you must agree to a license (&quot;Feature &#xA;Update License&quot;) during the installation process. If the Feature contains&#xA;Included Features, the Feature Update License should either provide you&#xA;with the terms and conditions governing the Included Features or inform&#xA;you where you can locate them. Feature Update Licenses may be found in&#xA;the &quot;license&quot; property of files named &quot;feature.properties&quot; found within a Feature.&#xA;Such Abouts, Feature Licenses, and Feature Update Licenses contain the&#xA;terms and conditions (or references to such terms and conditions) that&#xA;govern your use of the associated Content in that directory.&#xA;&#xA;THE ABOUTS, FEATURE LICENSES, AND FEATURE UPDATE LICENSES MAY REFER&#xA;TO THE EPL OR OTHER LICENSE AGREEMENTS, NOTICES OR TERMS AND CONDITIONS.&#xA;SOME OF THESE OTHER LICENSE AGREEMENTS MAY INCLUDE (BUT ARE NOT LIMITED TO):&#xA;&#xA;- Common Public License Version 1.0 (available at http://www.eclipse.org/legal/cpl-v10.html)&#xA;- Apache Software License 1.1 (available at http://www.apache.org/licenses/LICENSE)&#xA;- Apache Software License 2.0 (available at http://www.apache.org/licenses/LICENSE-2.0)&#xA;- Metro Link Public License 1.00 (available at http://www.opengroup.org/openmotif/supporters/metrolink/license.html)&#xA;- Mozilla Public License Version 1.1 (available at http://www.mozilla.org/MPL/MPL-1.1.html)&#xA;&#xA;IT IS YOUR OBLIGATION TO READ AND ACCEPT ALL SUCH TERMS AND CONDITIONS PRIOR&#xA;TO USE OF THE CONTENT. If no About, Feature License, or Feature Update License&#xA;is provided, please contact the Eclipse Foundation to determine what terms and conditions&#xA;govern that particular Content.&#xA;&#xA;&#xA;Use of Provisioning Technology&#xA;&#xA;The Eclipse Foundation makes available provisioning software, examples of which include,&#xA;but are not limited to, p2 and the Eclipse Update Manager (&quot;Provisioning Technology&quot;) for&#xA;the purpose of allowing users to install software, documentation, information and/or&#xA;other materials (collectively &quot;Installable Software&quot;). This capability is provided with&#xA;the intent of allowing such users to install, extend and update Eclipse-based products.&#xA;Information about packaging Installable Software is available at&#xA;http://eclipse.org/equinox/p2/repository_packaging.html (&quot;Specification&quot;).&#xA;&#xA;You may use Provisioning Technology to allow other parties to install Installable Software.&#xA;You shall be responsible for enabling the applicable license agreements relating to the&#xA;Installable Software to be presented to, and accepted by, the users of the Provisioning Technology&#xA;in accordance with the Specification. By using Provisioning Technology in such a manner and&#xA;making it available in accordance with the Specification, you further acknowledge your&#xA;agreement to, and the acquisition of all necessary rights to permit the following:&#xA;&#xA;1. A series of actions may occur (&quot;Provisioning Process&quot;) in which a user may execute&#xA;the Provisioning Technology on a machine (&quot;Target Machine&quot;) with the intent of installing,&#xA;extending or updating the functionality of an Eclipse-based product.&#xA;2. During the Provisioning Process, the Provisioning Technology may cause third party&#xA;Installable Software or a portion thereof to be accessed and copied to the Target Machine.&#xA;3. Pursuant to the Specification, you will provide to the user the terms and conditions that&#xA;govern the use of the Installable Software (&quot;Installable Software Agreement&quot;) and such&#xA;Installable Software Agreement shall be accessed from the Target Machine in accordance&#xA;with the Specification. Such Installable Software Agreement must inform the user of the&#xA;terms and conditions that govern the Installable Software and must solicit acceptance by&#xA;the end user in the manner prescribed in such Installable Software Agreement. Upon such&#xA;indication of agreement by the user, the provisioning Technology will complete installation&#xA;of the Installable Software.&#xA;&#xA;Cryptography&#xA;&#xA;Content may contain encryption software. The country in which you are&#xA;currently may have restrictions on the import, possession, and use,&#xA;and/or re-export to another country, of encryption software. BEFORE&#xA;using any encryption software, please check the country&apos;s laws,&#xA;regulations and policies concerning the import, possession, or use, and&#xA;re-export of encryption software, to see if this is permitted.&#xA;&#xA;Java and all Java-based trademarks are trademarks of Oracle Corporation in the United States, other countries, or both.&#xA;'/>
+      <property name='maven-groupId' value='org.teksme.server'/>
+      <property name='maven-artifactId' value='org.teksme.platform.feature'/>
+      <property name='maven-version' value='0.5.0-SNAPSHOT'/>
+    </properties>
+    <provides size='3'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.teksme.platform.feature.feature.jar' version='0.5.0.201011032310'/>
+      <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='feature' version='1.0.0'/>
+      <provided namespace='org.eclipse.update.feature' name='org.teksme.platform.feature' version='0.5.0.201011032310'/>
+    </provides>
+    <filter>
+      (org.eclipse.update.install.features=true)
+    </filter>
+    <artifacts size='1'>
+      <artifact classifier='org.eclipse.update.feature' id='org.teksme.platform.feature' version='0.5.0.201011032310'/>
+    </artifacts>
+    <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
+    <touchpointData size='1'>
+      <instructions size='1'>
+        <instruction key='zipped'>
+          true
+        </instruction>
+      </instructions>
+    </touchpointData>
+    <licenses size='1'>
+      <license uri='%25licenseURL' url='%25licenseURL'>
+        %license
+      </license>
+    </licenses>
+    <copyright uri='http://www.example.com/copyright' url='http://www.example.com/copyright'>
+      %copyright
+    </copyright>
+  </unit>
+</units>
