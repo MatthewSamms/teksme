@@ -2,7 +2,7 @@
 <feature
       id="org.teksme.server.core.feature"
       label="TèksMe Platform Target Components"
-      version="0.5.0.qualifier"
+      version="0.5.0.201011032310"
       provider-name="%providerName">
 
    <description url="http://www.example.com/description">
@@ -52,23 +52,23 @@
 
    <plugin
          id="org.apache.ws.commons.util"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="42"
+         install-size="76"
+         version="1.0.0.v20100518-1135"
          unpack="false"/>
 
    <plugin
          id="org.apache.xmlrpc"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="223"
+         install-size="420"
+         version="3.0.0.v20100427-1100"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="206"
+         install-size="421"
+         version="2.6.0.v20100914-1218"
          unpack="false"/>
 
    <plugin
@@ -80,113 +80,113 @@
 
    <plugin
          id="org.eclipse.emf.ecore"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="1202"
+         install-size="3241"
+         version="2.6.1.v20100914-1218"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.ecore.xmi"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="214"
+         install-size="460"
+         version="2.5.0.v20100521-1846"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.teneo"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="253"
+         install-size="603"
+         version="1.1.2.v201006151458"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.teneo.annotations"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="295"
+         install-size="799"
+         version="1.1.2.v201006151458"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.teneo.hibernate"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="287"
+         install-size="679"
+         version="1.1.2.v201006151458"
          unpack="false"/>
 
    <plugin
          id="org.eclipse.emf.teneo.hibernate.mapper"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="336"
+         install-size="900"
+         version="1.1.2.v201006151458"
          unpack="false"/>
 
    <plugin
          id="com.springsource.org.apache.commons.io"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="107"
+         install-size="205"
+         version="1.4.0"
          unpack="false"/>
 
    <plugin
          id="com.springsource.antlr"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="435"
+         install-size="862"
+         version="2.7.7"
          unpack="false"/>
 
    <plugin
          id="org.hibernate"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"/>
+         download-size="7253"
+         install-size="7962"
+         version="3.3.2.201005082216"/>
 
    <plugin
          id="org.teksme.model"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="509"
+         install-size="1456"
+         version="0.5.0"
          unpack="false"/>
 
    <plugin
          id="org.teksme.server"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="11"
+         install-size="13"
+         version="0.5.0"
          unpack="false"/>
 
    <plugin
          id="org.teksme.server.common"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="887"
+         install-size="1100"
+         version="0.5.0"
          unpack="false"/>
 
    <plugin
          id="org.smslib"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="374"
+         install-size="675"
+         version="3.4.6"
          unpack="false"/>
 
    <plugin
          id="org.teksme.server.queue.consumer"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="35"
+         install-size="55"
+         version="0.5.0"
          unpack="false"/>
 
    <plugin
          id="org.teksme.server.queue.sender"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="26"
+         install-size="40"
+         version="0.5.0"
          unpack="false"/>
 
    <plugin
          id="com.rabbitmq.client"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
+         download-size="247"
+         install-size="492"
+         version="2.1.0"
          unpack="false"/>
 
 </feature>
