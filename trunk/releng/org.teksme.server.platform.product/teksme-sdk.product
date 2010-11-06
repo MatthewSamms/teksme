@@ -4,10 +4,10 @@
 <product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" version="0.5.0" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
-      <linux>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</linux>
-      <macosx>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</macosx>
-      <solaris>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</solaris>
-      <win32>/org.teksme.server.platform.product/configuration.files/configuration/config.ini</win32>
+      <linux>./configuration.files/configuration/config.ini</linux>
+      <macosx>./configuration.files/configuration/config.ini</macosx>
+      <solaris>./configuration.files/configuration/config.ini</solaris>
+      <win32>./configuration.files/configuration/config.ini</win32>
    </configIni>
 
    <launcherArgs>
