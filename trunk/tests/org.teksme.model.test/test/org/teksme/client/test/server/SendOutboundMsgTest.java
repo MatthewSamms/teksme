@@ -11,7 +11,9 @@ import org.teksme.client.test.TestUtils;
 
 public class SendOutboundMsgTest extends HttpTestcase {
 
-	public static final String SERVICE_URL = "http://localhost:8080/sendmsg";
+	 public static final String SERVICE_URL = "http://localhost:8080/sendmsg";
+
+	//public static final String SERVICE_URL = "http://97.107.129.138:8080/sendmsg";
 
 	private static final String MODEL_FILE = "output/teks_outmsg.xml";
 
@@ -56,5 +58,4 @@ public class SendOutboundMsgTest extends HttpTestcase {
 		return SERVICE_URL;
 	}
 
-	
 }

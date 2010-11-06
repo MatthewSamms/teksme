@@ -42,7 +42,6 @@ public class CreateMultipleChoicePollTest extends TeksModelTest {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 		Teks eduTeks = factory.createTeks();
-		eduTeks.setAppId(APPID);
 
 		Developer developerProfile = factory.createDeveloper();
 		developerProfile.setId(DEVELOPER_PROFILE_ID);

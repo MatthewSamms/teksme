@@ -8,7 +8,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.junit.Test;
 import org.teksme.client.test.TestUtils;
-import org.teksme.model.teks.InboundTextMessage;
+import org.teksme.model.teks.InboundMessage;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.impl.TeksPackageImpl;
@@ -78,9 +78,8 @@ public class CreateInboundMsgTest {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 		Teks teksModel = factory.createTeks();
-		teksModel.setAppId(APPID);
 
-		InboundTextMessage inboundMsg = factory.createInboundTextMessage();
+		InboundMessage inboundMsg = factory.createInboundMessage();
 
 		// inboundMsg.setMoMsgId(moMsgId);
 		// inboundMsg.setOriginator(from);

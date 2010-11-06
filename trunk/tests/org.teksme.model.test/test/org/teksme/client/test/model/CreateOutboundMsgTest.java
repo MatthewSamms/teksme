@@ -14,27 +14,24 @@
 package org.teksme.client.test.model;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.UUID;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.junit.Test;
+import org.teksme.model.teks.Channel;
 import org.teksme.model.teks.ChannelKind;
-import org.teksme.model.teks.Developer;
-import org.teksme.model.teks.OutboundTextMessage;
-import org.teksme.model.teks.SMSGatewayKind;
+import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.Shout;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
-import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 
 public class CreateOutboundMsgTest extends TeksModelTest {
 
-	private static final String APPID = "128552450490126";
-	private static final String DEVELOPER_PROFILE_ID = "56f3d45cb6f14af22fee33245bf53b8e";
 	private static final String MODEL_FILE = "output/teks_outmsg.xml";
-	private static final String FROM = "1202172638716";
 
 	@Test
 	public void createOutboundMsg() {
@@ -43,64 +40,43 @@ public class CreateOutboundMsgTest extends TeksModelTest {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 		Teks teksModel = factory.createTeks();
-		teksModel.setAppId(APPID);
+		teksModel.setAccountSID("BAa4836gh31bb2d557bf9d5fd5f050ef93");
 
-		Developer developerProfile = factory.createDeveloper();
-		developerProfile.setId(DEVELOPER_PROFILE_ID);
+		OutboundMessage outMsg = factory.createOutboundMessage();
 
-		teksModel.setDeveloper(developerProfile);
-
-		OutboundTextMessage outMsg = factory.createOutboundTextMessage();
-
-		outMsg.setTimestamp(new Date());
-
-		outMsg.setCommunicationChannel(new ChannelKind[] { ChannelKind.SMS,
-				ChannelKind.TWITTER, ChannelKind.EMAIL });
-
-		outMsg.setSmsGateway(SMSGatewayKind.MOVISTAR_PERU);
-
-		outMsg.setRetryCount(2);
+		outMsg.setId(UUID.randomUUID().toString());
 
 		// The source/sender address that the message will appear to come from
 		// also known as ÒSender IDÓ
-		outMsg.setFrom(0, FROM);
+		outMsg.setFrom("+12023567865");
 
 		// The number of the handset to which the message must be delivered
-		outMsg.setRecipient(new String[] { "+12028125643" });
+		outMsg.setTo(new String[] { "+12028125643" });
 
-		// Delays delivery of SMS to mobile device in minutes
-		outMsg.setDeliveryDelayTime(0, 10);
+		outMsg.setCallback("http://www.www.com");
 
-		// The validity period in minutes
-		outMsg.setValidityTimeframe(0, 11);
+		Channel channel = factory.createChannel();
+		channel.setChannel(new String[] { ChannelKind.SMS.getLiteral(),
+				ChannelKind.GTALK.getLiteral(), ChannelKind.TWITTER.getLiteral() });
+		
+		outMsg.setChannels(channel);
+		
+		Shout shout = factory.createShout();
+		shout.setThis("Hello from TeksMe Cloud!");
 
-		// Client message ID defined by user for message tracking.
-		outMsg.setClientMsgId(0, UUID.randomUUID().toString());
+		outMsg.setShout(shout);
 
-		// Messages in the highest priority queue will be delivered first
-		// (range: 1-3).
-		outMsg.setDeliveryQueuePriority(0, 1);
-
-		// callback which is posted to a user URL using the GET or POST
-		// method. This is done every time a message status is updated
-		outMsg.setDeliveryAck(0, true);
-
-		// Final or intermediary statuses are passed back by the API depending
-		// on the callback value set in the original post
-		outMsg.setCallbackCode(0, 1);
-
-		// send messages longer than a standard message
-		outMsg.setConcatenated(0, 1);
-
-		// Specify when a message gets delivered.
-		outMsg.setDeliveryScheduledTime(0, new Date());
-
-		TextMessage text = factory.createTextMessage();
-		text.setText("Hello from TeksMe!");
-
-		outMsg.setMessage(text);
+		outMsg.setStopOnError(false);
 
 		outMsg.setTeksRef(teksModel);
+
+		Calendar calendar = Calendar.getInstance();
+		calendar.add(Calendar.DAY_OF_YEAR, 1);
+		Date tomorrow = calendar.getTime();
+
+		outMsg.setSchedule(tomorrow);
+
+		outMsg.setConcatenated(false);
 
 		teksModel.setOutboundMessage(0, outMsg);
 

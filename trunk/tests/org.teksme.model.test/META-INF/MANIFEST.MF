@@ -17,7 +17,7 @@ Require-Bundle: org.eclipse.core.runtime,
  org.dom4j,
  org.hsqldb,
  com.mysql.jdbc,
- org.teksme.model;bundle-version="0.5.0"
+ org.teksme.model;bundle-version="0.5.0",
+ org.teksme.server.common;bundle-version="0.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: TeksMe Inc.
-Import-Package: org.teksme.server.common.persistence
