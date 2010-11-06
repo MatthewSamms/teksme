@@ -4,25 +4,24 @@ Bundle-Name: TeksMe Common Server Components
 Bundle-SymbolicName: org.teksme.server.common
 Bundle-Version: 0.5.0
 Bundle-Activator: org.teksme.server.common.Activator
-Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: javax.naming,
  org.osgi.framework,
- org.osgi.service.cm,
- org.teksme.model.teks
+ org.osgi.service.cm
 Export-Package: org.teksme.server.common,
  org.teksme.server.common.messaging,
  org.teksme.server.common.persistence,
  org.teksme.server.common.utils
 Require-Bundle: org.teksme.model;bundle-version="0.5.0",
  org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2",
- com.springsource.org.hibernate;bundle-version="3.3.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
- com.springsource.org.apache.commons.logging;bundle-version="1.1.1",
- com.springsource.org.dom4j;bundle-version="1.6.1",
- com.springsource.org.apache.commons.collections;bundle-version="3.2.0",
- com.springsource.javax.transaction;bundle-version="1.1.0",
  com.springsource.antlr;bundle-version="2.7.7",
- com.rabbitmq.client;bundle-version="2.1.0"
+ com.rabbitmq.client;bundle-version="2.1.0",
+ org.apache.commons.logging;bundle-version="1.1.1",
+ org.dom4j;bundle-version="1.6.1",
+ org.apache.commons.collections;bundle-version="3.2.0",
+ org.hibernate;bundle-version="3.3.2",
+ org.slf4j.api;bundle-version="1.5.11"
 Bundle-Vendor: TeksMe Inc.
 Bundle-ClassPath: .,
  lib/mysql-connector-java-5.1.13-bin.jar

@@ -58,7 +58,7 @@ public class TeksModelHelper {
 		load_resource.load(is, null);
 
 		Teks teksObj = (Teks) load_resource.getContents().get(0);
-
+		
 		return teksObj;
 
 	}
