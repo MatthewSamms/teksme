@@ -24,6 +24,8 @@
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//ChannelKind/WEB_WIDGET"/>
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//ChannelKind/IVR"/>
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//ChannelKind/MMS"/>
+      <genEnumLiterals ecoreEnumLiteral="teks.ecore#//ChannelKind/GTALK"/>
+      <genEnumLiterals ecoreEnumLiteral="teks.ecore#//ChannelKind/MSN"/>
     </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="teks.ecore#//RestrictionKind">
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//RestrictionKind/EVERYONE"/>
@@ -71,12 +73,12 @@
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//SMSGatewayKind/BULKSMS"/>
     </genEnums>
     <genClasses ecoreClass="teks.ecore#//Teks">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Teks/appId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Teks/accountSID"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/outboundMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/developer"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/poll"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/survey"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/responses"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/outboundMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/inboundMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/account"/>
     </genClasses>
@@ -194,12 +196,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//ResponseDetail/rawMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//ResponseDetail/setValue"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="teks.ecore#//Message">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/timestamp"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/communicationChannel"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/smsGateway"/>
-    </genClasses>
     <genClasses ecoreClass="teks.ecore#//ObjectMessage"/>
     <genClasses ecoreClass="teks.ecore#//AnswerRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference teks.ecore#//AnswerRef/choiceRef"/>
@@ -207,39 +203,42 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//AnswerRef/value"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//AnswerRef/id"/>
     </genClasses>
-    <genClasses ecoreClass="teks.ecore#//InboundTextMessage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundTextMessage/partNumber"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundTextMessage/messageType"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundTextMessage/originator"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundTextMessage/smscNumber"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//InboundTextMessage/message"/>
+    <genClasses image="false" ecoreClass="teks.ecore#//Message">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/id"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/routing"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Message/channels"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/to"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Message/shout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/stopOnError"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/attempts"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/encoding"/>
     </genClasses>
-    <genClasses ecoreClass="teks.ecore#//OutboundTextMessage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/retryCount"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/refNo"/>
-      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference teks.ecore#//OutboundTextMessage/teksRef"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/recipient"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/from"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/deliveryDelayTime"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/validityTimeframe"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/clientMsgId"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/deliveryQueuePriority"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/deliveryAck"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/callbackCode"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/concatenated"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/messageStatus"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/mobileOriginated"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/failureCause"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/encoding"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundTextMessage/deliveryScheduledTime"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//OutboundTextMessage/message"/>
+    <genClasses ecoreClass="teks.ecore#//InboundMessage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundMessage/partNumber"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundMessage/messageType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundMessage/originator"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundMessage/smscNumber"/>
     </genClasses>
-    <genClasses ecoreClass="teks.ecore#//TextMessage">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//TextMessage/text"/>
+    <genClasses ecoreClass="teks.ecore#//OutboundMessage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/schedule"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/timeout"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/delay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/callback"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/concatenated"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference teks.ecore#//OutboundMessage/teksRef"/>
+    </genClasses>
+    <genClasses ecoreClass="teks.ecore#//Channel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Channel/channel"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//Report">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Report/hideResults"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Report/percentageOnly"/>
+    </genClasses>
+    <genClasses ecoreClass="teks.ecore#//Shout">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Shout/this"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Shout/voice"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//Command">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Command/defaultHandler"/>
