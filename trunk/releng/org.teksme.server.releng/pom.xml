@@ -23,6 +23,7 @@
 		<module>../org.teksme.server.sms-feature</module>
 		<module>../org.teksme.server.platform.product</module>
 		<module>../org.teksme.server.p2-repository</module>
+		<module>../org.teksme.server.identity-feature</module>
 	</modules>
 
 	<profiles>
