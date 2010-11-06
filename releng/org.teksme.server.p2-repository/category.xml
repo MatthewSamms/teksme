@@ -12,5 +12,8 @@
    <feature url="features/org.teksme.server.sms.feature_0.5.0.qualifier.jar" id="org.teksme.server.sms.feature" version="0.5.0.qualifier">
       <category name="teksme"/>
    </feature>
+   <feature url="features/org.teksme.server.identity.feature_0.5.0.qualifier.jar" id="org.teksme.server.identity.feature" version="0.5.0.qualifier">
+      <category name="teksme"/>
+   </feature>
    <category-def name="teksme" label="Teksme Platform"/>
 </site>
