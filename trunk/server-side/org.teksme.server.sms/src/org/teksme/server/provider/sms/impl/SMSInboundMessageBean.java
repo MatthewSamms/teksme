@@ -15,7 +15,6 @@ package org.teksme.server.provider.sms.impl;
 
 import java.io.IOException;
 import java.io.StringReader;
-import java.util.Date;
 import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -23,9 +22,9 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
-import org.teksme.model.teks.InboundTextMessage;
+import org.smslib.SMSLibException;
+import org.teksme.model.teks.InboundMessage;
 import org.teksme.model.teks.TeksFactory;
-import org.teksme.model.teks.TextMessage;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 import org.teksme.server.provider.sms.service.SMSInboundMessage;
@@ -36,23 +35,21 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-public class SMSInboundMessageBean implements SMSInboundMessage{
+public class SMSInboundMessageBean implements SMSInboundMessage {
 
-	private Logger logger = Logger.getLogger(SMSInboundMessageBean.class
-			.getName());
+	private Logger logger = Logger.getLogger(SMSInboundMessageBean.class.getName());
 
 	private TeksSMSGateway smsGateway = null;
 
 	private static ResourceSet resourceSet = null;
 
-//	@PostConstruct
+	// @PostConstruct
 	public static void setResource() {
 		// create resource set and resource
 		resourceSet = new ResourceSetImpl();
 
 		// Register XML resource factory
-		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap()
-				.put("xml", new TeksResourceFactoryImpl());
+		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml", new TeksResourceFactoryImpl());
 
 		TeksPackageImpl.init();
 
@@ -65,18 +62,18 @@ public class SMSInboundMessageBean implements SMSInboundMessage{
 	 * @throws InterruptedException
 	 * @throws IOException
 	 */
-	public SMSInboundMessageBean() throws IOException, InterruptedException{//,	SMSLibException {
-//		smsGateway = TeksSMSGateway.getInstance();
-//		smsGateway.setReceiveCycle(10000);
+	public SMSInboundMessageBean() throws IOException, InterruptedException {// ,
+																				// SMSLibException
+																				// {
+	// smsGateway = TeksSMSGateway.getInstance();
+	// smsGateway.setReceiveCycle(10000);
 	}
 
-
-	public void readMessage(InboundTextMessage inboundMessage) {
+	public void readMessage(InboundMessage inboundMessage) {
 
 	}
 
-
-	public InboundTextMessage createInboundMsgModelFromXml(String xmlInput)	throws IOException, SAXException, ParserConfigurationException {
+	public InboundMessage createInboundMsgModelFromXml(String xmlInput) throws IOException, SAXException, ParserConfigurationException {
 
 		DocumentBuilderFactory f = DocumentBuilderFactory.newInstance();
 		f.setValidating(false);
@@ -119,39 +116,36 @@ public class SMSInboundMessageBean implements SMSInboundMessage{
 			}
 		}
 
-		logger.info("[apiId = " + apiId + " | moMsgId = " + moMsgId
-				+ " | from = " + from + " | to " + to + " | timestamp = "
-				+ timestamp + " | text = " + text + " | charset = " + charset
-				+ " | udh = " + udh + "]");
+		logger.info("[apiId = " + apiId + " | moMsgId = " + moMsgId + " | from = " + from + " | to " + to + " | timestamp = " + timestamp
+				+ " | text = " + text + " | charset = " + charset + " | udh = " + udh + "]");
 
 		TeksPackageImpl.init();
 		// Retrieve the default factory singleton
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 
-		InboundTextMessage inboundMsg = factory.createInboundTextMessage();
+		InboundMessage inboundMsg = factory.createInboundMessage();
 
-//		inboundMsg.setMoMsgId(moMsgId);
-//		inboundMsg.setOriginator(from);
-//		inboundMsg.setTo(to);
-//		inboundMsg.setTimestamp(new Date());
-//
-//		TextMessage textMsg = factory.createTextMessage();
-//		textMsg.setText(text);
-//
-//		inboundMsg.setTextMessage(textMsg);
-//
-//		inboundMsg.setEncoding(charset);
-//
-//		inboundMsg.setUdh(udh);
+		// inboundMsg.setMoMsgId(moMsgId);
+		// inboundMsg.setOriginator(from);
+		// inboundMsg.setTo(to);
+		// inboundMsg.setTimestamp(new Date());
+		//
+		// TextMessage textMsg = factory.createTextMessage();
+		// textMsg.setText(text);
+		//
+		// inboundMsg.setTextMessage(textMsg);
+		//
+		// inboundMsg.setEncoding(charset);
+		//
+		// inboundMsg.setUdh(udh);
 
 		return inboundMsg;
 
 	}
 
 	private static String getTagValue(String sTag, Element eElement) {
-		NodeList nlList = eElement.getElementsByTagName(sTag).item(0)
-				.getChildNodes();
+		NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
 		Node nValue = (Node) nlList.item(0);
 
 		if (nValue == null)
@@ -161,7 +155,7 @@ public class SMSInboundMessageBean implements SMSInboundMessage{
 	}
 
 	public void setReceiveCycle(int receiveCycle) {
-	//	smsGateway.setReceiveCycle(receiveCycle);
+		// smsGateway.setReceiveCycle(receiveCycle);
 	}
 
 }
