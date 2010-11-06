@@ -4,7 +4,15 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="teks"
     nsURI="http://teksme.org/meta/1.0.0/teks" nsPrefix="teks">
   <eClassifiers xsi:type="ecore:EClass" name="Teks">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="appId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="accountSID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="accountSID"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outboundMessage" upperBound="-1"
+        eType="#//OutboundMessage" containment="true" eOpposite="#//OutboundMessage/teksRef"
+        eKeys="#//Message/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="developer" eType="#//Developer"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="poll" eType="#//Poll" containment="true"/>
@@ -12,11 +20,8 @@
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="responses" eType="#//Response"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="outboundMessage" upperBound="-1"
-        eType="#//OutboundTextMessage" containment="true" eOpposite="#//OutboundTextMessage/teksRef"
-        eKeys="#//Message/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inboundMessage" upperBound="-1"
-        eType="#//InboundTextMessage" containment="true" eKeys="#//Message/id"/>
+        eType="#//InboundMessage" containment="true" eKeys="#//Message/id"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="account" eType="#//User"
         containment="true"/>
   </eClassifiers>
@@ -90,7 +95,7 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="replyMessage" eType="#//ReplyMessage"
         containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="advertiseIt" eType="#//OutboundTextMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="advertiseIt" eType="#//OutboundMessage"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="folderID" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sharing" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -103,7 +108,7 @@
         eType="#//ReplyMessage" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultMessage" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="customMessage" eType="#//OutboundTextMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="customMessage" eType="#//OutboundMessage"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Response">
@@ -161,18 +166,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResponseDetail">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dateTime" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="rawMessage" eType="#//InboundTextMessage"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="rawMessage" eType="#//InboundMessage"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="setValue" upperBound="-1"
         eType="#//AnswerRef" containment="true" eKeys="#//AnswerRef/id"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Message" abstract="true">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
-        iD="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="communicationChannel" upperBound="-1"
-        eType="#//ChannelKind"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="smsGateway" eType="#//SMSGatewayKind"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ObjectMessage" eSuperTypes="#//Message"/>
   <eClassifiers xsi:type="ecore:EClass" name="AnswerRef">
@@ -181,56 +178,107 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InboundTextMessage" eSuperTypes="#//Message">
+  <eClassifiers xsi:type="ecore:EClass" name="Message" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="id"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="date"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="routing" eType="#//SMSGatewayKind">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="routing"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="from"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channels" lowerBound="1"
+        eType="#//Channel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="shout" lowerBound="1" eType="#//Shout"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stopOnError" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="stopOnError"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attempts" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="attempts"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="encoding"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InboundMessage" eSuperTypes="#//Message">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="partNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="originator" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="smscNumber" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="#//TextMessage"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OutboundTextMessage" eSuperTypes="#//Message">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="retryCount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="refNo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutboundMessage" eSuperTypes="#//Message">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="schedule" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="schedule"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeout" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="timeout"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="delay" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="delay"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="callback" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="callback"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concatenated" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="concatenated"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="teksRef" eType="#//Teks"
         eOpposite="#//Teks/outboundMessage"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="recipient" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="from" unique="false" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryDelayTime" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="validityTimeframe" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="clientMsgId" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryQueuePriority"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryAck" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="callbackCode" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="concatenated" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="messageStatus" upperBound="-1"
-        eType="#//MessageStatuses"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="mobileOriginated" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="failureCause" upperBound="-1"
-        eType="#//FailureCauses"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="encoding" upperBound="-1"
-        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deliveryScheduledTime"
-        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="message" eType="#//TextMessage"
-        containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TextMessage">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="text" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channel" lowerBound="1"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Report">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="hideResults" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="percentageOnly" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Shout">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="this" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="voice" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Command">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultHandler" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -249,6 +297,8 @@
     <eLiterals name="WEB_WIDGET" value="4" literal="Web Widget"/>
     <eLiterals name="IVR" value="5"/>
     <eLiterals name="MMS" value="6"/>
+    <eLiterals name="GTALK" value="7" literal="GTalk"/>
+    <eLiterals name="MSN" value="8"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="RestrictionKind">
     <eLiterals name="EVERYONE" literal="Everyone"/>
