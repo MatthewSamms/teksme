@@ -17,7 +17,6 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
@@ -30,13 +29,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.teksme.model.teks.ChannelKind;
-import org.teksme.model.teks.Developer;
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.OutboundMessage;
 import org.teksme.model.teks.Teks;
-import org.teksme.model.teks.TeksFactory;
-import org.teksme.model.teks.TextMessage;
-import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
@@ -63,39 +57,6 @@ public class SendMessageServlet extends HttpServlet {
 	}
 
 	private void execute(HttpServletRequest request, HttpServletResponse response) {
-
-		String devId = request.getParameter("dev_id");
-		String apiId = request.getParameter("api_id");
-		String to = request.getParameter("to");
-		String text = request.getParameter("text");
-		String from = request.getParameter("from");
-
-		TeksPackageImpl.init();
-		// Retrieve the default factory singleton
-		TeksFactory factory = TeksFactory.eINSTANCE;
-
-		Teks teksModel = factory.createTeks();
-		teksModel.setAppId(apiId);
-
-		Developer developerProfile = factory.createDeveloper();
-		developerProfile.setId(devId);
-
-		teksModel.setDeveloper(developerProfile);
-
-		OutboundTextMessage outMsg = factory.createOutboundTextMessage();
-		outMsg.setCommunicationChannel(new ChannelKind[] { ChannelKind.SMS });
-		outMsg.setFrom(0, from);
-		outMsg.setRecipient(new String[] { to });
-		outMsg.setTimestamp(new Date());
-
-		TextMessage textMsg = factory.createTextMessage();
-		textMsg.setText(text);
-
-		outMsg.setMessage(textMsg);
-		outMsg.setTeksRef(teksModel);
-		teksModel.setOutboundMessage(0, outMsg);
-
-		// outboundMsgQueueSender.send(outMsg);
 
 	}
 
@@ -134,12 +95,12 @@ public class SendMessageServlet extends HttpServlet {
 			// logger.info("XML Buff: " + xmlBuff.toString());
 			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(xmlBuff.toString());
 
-			OutboundTextMessage outMsg = teksModel.getOutboundMessage(0);
+			OutboundMessage outMsg = teksModel.getOutboundMessage(0);
 			outMsg.setId(UUID.randomUUID().toString());
 
-			logger.info(outMsg.getMessage().getText());
-			logger.info("Pls send this message to "+outMsg.getSmsGateway().getName()+" gateway.");
-			
+			logger.info(outMsg.getShout().getThis());
+			logger.info("Pls send this message to " + outMsg.getRouting().getLiteral() + " gateway.");
+
 			queueSender.publishMessage(outMsg);
 
 			outStream.println("getContentLength: " + request.getContentLength());
