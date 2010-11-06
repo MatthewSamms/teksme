@@ -13,13 +13,13 @@
 
 package org.teksme.server.queue.sender;
 
-import org.teksme.model.teks.InboundTextMessage;
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.InboundMessage;
+import org.teksme.model.teks.OutboundMessage;
 
 public interface MessageQueueSender {
 
-	void publishMessage(OutboundTextMessage outboundMsg);
+	void publishMessage(OutboundMessage outboundMsg);
 
-	void publishMessage(InboundTextMessage inboundMsg);
+	void publishMessage(InboundMessage inboundMsg);
 
 }
