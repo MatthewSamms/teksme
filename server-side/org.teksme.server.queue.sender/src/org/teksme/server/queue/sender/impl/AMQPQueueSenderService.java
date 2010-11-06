@@ -22,8 +22,8 @@ import java.util.logging.Logger;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.InvalidSyntaxException;
 import org.osgi.framework.ServiceReference;
-import org.teksme.model.teks.InboundTextMessage;
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.InboundMessage;
+import org.teksme.model.teks.OutboundMessage;
 import org.teksme.server.common.messaging.AMQPBrokerParameters;
 import org.teksme.server.common.messaging.AMQPQueueType;
 import org.teksme.server.queue.sender.Activator;
@@ -37,7 +37,7 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 
 	Logger logger = Logger.getLogger(AMQPQueueSenderService.class.getName());
 
-	public void publishMessage(OutboundTextMessage outboundMsg) {
+	public void publishMessage(OutboundMessage outboundMsg) {
 
 		Channel lChannel = null;
 		Connection lConnection = null;
@@ -60,11 +60,11 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			final String contentEncoding = null;// outboundMsg.getEncoding(0);
 			final Integer PERSISTENT = 2;
 			final Integer deliveryMode = PERSISTENT;
-			final Integer priority = outboundMsg.getDeliveryQueuePriority(0);
-			final String replyTo = outboundMsg.getFrom(0);
-			final String expiration = outboundMsg.getValidityTimeframe(0).toString();
+			final Integer priority = null; // outboundMsg.getDeliveryQueuePriority(0);
+			final String replyTo = outboundMsg.getFrom();
+			final String expiration = Float.toString(outboundMsg.getTimeout());
 			final String messageId = outboundMsg.getId();
-			final Date timestamp = outboundMsg.getTimestamp();
+			final Date timestamp = outboundMsg.getDate();
 
 			AMQP.BasicProperties messageProps = new AMQP.BasicProperties(contentType, contentEncoding, null, deliveryMode, priority, null,
 					replyTo, expiration, messageId, timestamp, null, null, null, null);
@@ -74,6 +74,8 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 
 			lChannel.basicPublish(AMQPQueueType.OUTBOUND_QUEUE.getExchange(), AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey(),
 					messageProps, data);
+
+			//new Test().run();
 
 		} catch (InvalidSyntaxException e) {
 			// Shouldn't happen
@@ -98,7 +100,7 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 		}
 	}
 
-	public void publishMessage(InboundTextMessage inboundMsg) {
+	public void publishMessage(InboundMessage inboundMsg) {
 
 		try {
 
