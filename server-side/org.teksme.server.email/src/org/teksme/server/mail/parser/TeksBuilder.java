@@ -4,7 +4,6 @@ import java.io.IOException;
 
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
-import org.teksme.model.teks.impl.TeksPackageImpl;
 
 public abstract class TeksBuilder {
 
@@ -15,7 +14,7 @@ public abstract class TeksBuilder {
 	}
 
 	public void createNewTeksModel() {
-		TeksPackageImpl.init();
+		// TeksPackageImpl.init();
 		// Retrieve the default factory singleton
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks

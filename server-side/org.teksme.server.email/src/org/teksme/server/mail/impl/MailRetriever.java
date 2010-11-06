@@ -6,7 +6,10 @@ package org.teksme.server.mail.impl;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.mail.FetchProfile;
 import javax.mail.Flags;
@@ -36,6 +39,9 @@ public class MailRetriever {
 	private int newMessagesCount;
 	private int unreadMessageCount;
 
+	public static Map<String, Object> cache = Collections
+			.synchronizedMap(new HashMap<String, Object>());
+
 	public MailRetriever(String emailuser, String emailpassword,
 			String mailServer) {
 		this.emailuser = emailuser;
@@ -45,10 +51,14 @@ public class MailRetriever {
 
 	public void connect(MailConnectionType mailConnType) {
 		try {
-			if (null == store) {
+			if (null == store && cache.get(Store.class.getSimpleName()) == null) {
 				logger.info("Connecting to email server...");
 				store = MailHelper.INSTANCE.connect(mailConnType, emailuser,
 						emailpassword, mailServer);
+				cache.put(Store.class.getSimpleName(), store);
+				logger.info("Successfully connected and authenticated to email server.");
+			} else {
+				store = (Store) cache.get(Store.class.getSimpleName());
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -57,12 +67,11 @@ public class MailRetriever {
 
 	public void getMailMessages() throws Exception {
 
-		inboxfolder = MailHelper.INSTANCE.openFolder(MessagesBundle
-				.getString("INBOX_FOLDER")); //$NON-NLS-1$
+		inboxfolder = openFolder(MessagesBundle.getString("INBOX_FOLDER")); //$NON-NLS-1$
 
-		totalMessagesCount = MailHelper.INSTANCE.getMessageCount();
-		newMessagesCount = MailHelper.INSTANCE.getNewMessageCount();
-		unreadMessageCount = MailHelper.INSTANCE.getUnreadMessageCount();
+		totalMessagesCount = getMessageCount();
+		newMessagesCount = getNewMessageCount();
+		unreadMessageCount = getUnreadMessageCount();
 
 		if (unreadMessageCount > 0) {
 			logger.debug("Total messages = " + totalMessagesCount); //$NON-NLS-1$
@@ -101,9 +110,7 @@ public class MailRetriever {
 		} finally {
 			try {
 				if (inboxfolder != null)
-					MailHelper.INSTANCE.closeFolder();
-				if (store != null)
-					MailHelper.INSTANCE.disconnect();
+					closeFolder();
 			} catch (MessagingException ex) {
 				ex.printStackTrace();
 			} catch (Exception e) {
@@ -149,8 +156,51 @@ public class MailRetriever {
 		return renderable;
 	}
 
+	public Folder openFolder(String folderName) throws Exception {
+		// Open the Folder
+		Folder folder = getStore().getDefaultFolder();
+		folder = folder.getFolder(folderName);
+		if (folder == null) {
+			throw new Exception(MessagesBundle.getString("INVALID_FOLDER_MSG")); //$NON-NLS-1$
+		}
+
+		// try to open read/write and if that fails try read-only
+		try {
+			folder.open(Folder.READ_WRITE);
+		} catch (MessagingException ex) {
+			ex.printStackTrace();
+			// folder.open(Folder.READ_ONLY);
+		}
+		return folder;
+	}
+
+	private Store getStore() {
+		return (Store) cache.get(Store.class.getSimpleName());
+	}
+
 	public List<Renderable> getUnreadMessages() {
 		return unreadMessages;
+	}
+
+	public void closeFolder() throws Exception {
+		if (inboxfolder.isOpen())
+			inboxfolder.close(false);
+	}
+
+	public int getMessageCount() throws Exception {
+		return inboxfolder.getMessageCount();
+	}
+
+	public int getNewMessageCount() throws Exception {
+		return inboxfolder.getNewMessageCount();
+	}
+
+	public void disconnect() throws Exception {
+		getStore().close();
+	}
+
+	public int getUnreadMessageCount() throws MessagingException {
+		return inboxfolder.getUnreadMessageCount();
 	}
 
 }// MailRetriever class
