@@ -13,10 +13,10 @@
 
 package org.teksme.server.provider.sms.service;
 
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.OutboundMessage;
 
 public interface SMSOutboundMessage {
 
-	public void sendMessage(OutboundTextMessage message) throws Exception;
+	public void sendMessage(OutboundMessage message) throws Exception;
 
 }

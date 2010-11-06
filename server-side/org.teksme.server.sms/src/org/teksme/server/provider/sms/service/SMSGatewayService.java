@@ -1,9 +1,9 @@
 package org.teksme.server.provider.sms.service;
 
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.OutboundMessage;
 
 public interface SMSGatewayService {
 
-	void sendMessage(OutboundTextMessage message) throws Exception;
+	void sendMessage(OutboundMessage message) throws Exception;
 
 }

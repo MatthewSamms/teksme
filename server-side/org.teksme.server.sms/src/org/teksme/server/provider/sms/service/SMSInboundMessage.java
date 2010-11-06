@@ -17,9 +17,8 @@ import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.teksme.model.teks.InboundTextMessage;
+import org.teksme.model.teks.InboundMessage;
 import org.xml.sax.SAXException;
-
 
 public interface SMSInboundMessage {
 
@@ -27,9 +26,8 @@ public interface SMSInboundMessage {
 
 	void setReceiveCycle(int receiveCycle);
 
-	void readMessage(InboundTextMessage inboundMessage);
+	void readMessage(InboundMessage inboundMessage);
 
-	InboundTextMessage createInboundMsgModelFromXml(String xmlInput)
-			throws IOException, SAXException, ParserConfigurationException;
+	InboundMessage createInboundMsgModelFromXml(String xmlInput) throws IOException, SAXException, ParserConfigurationException;
 
 }

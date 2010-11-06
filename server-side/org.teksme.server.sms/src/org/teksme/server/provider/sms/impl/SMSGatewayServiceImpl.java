@@ -3,9 +3,8 @@ package org.teksme.server.provider.sms.impl;
 import java.util.logging.Logger;
 
 import org.smslib.AGateway;
-import org.smslib.OutboundMessage;
 import org.smslib.Service;
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.OutboundMessage;
 import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.server.provider.sms.service.SMSConnectionServiceFactory;
 import org.teksme.server.provider.sms.service.SMSGatewayService;
@@ -24,11 +23,11 @@ public class SMSGatewayServiceImpl implements SMSGatewayService {
 		this.smsConnServiceFactory = null;
 	}
 
-	public void sendMessage(OutboundTextMessage message) throws Exception {
+	public void sendMessage(OutboundMessage message) throws Exception {
 		Service srv = smsConnServiceFactory.startSMSService();
 		// TODO adapter Teksme outbound message to SMSlib outbound message
-		OutboundMessage msg = adapt(message);
-		final String gatewayId = message.getSmsGateway().getName();
+		org.smslib.OutboundMessage msg = adapt(message);
+		final String gatewayId = message.getRouting().getName();
 		AGateway gateway = smsConnServiceFactory.getSMSGateway(gatewayId);
 
 		msg.setGatewayId(gatewayId);
@@ -43,9 +42,9 @@ public class SMSGatewayServiceImpl implements SMSGatewayService {
 		logger.info(msg.toString());
 	}
 
-	private OutboundMessage adapt(OutboundTextMessage teksOutMsg) {
+	private org.smslib.OutboundMessage adapt(OutboundMessage teksOutMsg) {
 
-		OutboundMessage msg = new OutboundMessage(teksOutMsg.getRecipient(0), teksOutMsg.getMessage().getText());
+		org.smslib.OutboundMessage msg = new org.smslib.OutboundMessage(teksOutMsg.getTo(0), teksOutMsg.getShout().getThis());
 
 		// msg.setDate(teksOutMsg.getTimestamp());
 
@@ -66,12 +65,12 @@ public class SMSGatewayServiceImpl implements SMSGatewayService {
 		// msg.setRecipient(teksOutMsg.getRecipient(0));
 		// msg.setDispatchDate(teksOutMsg.getDeliveryScheduledTime(0));
 		// msg.setValidityPeriod(teksOutMsg.getValidityTimeframe(0).intValue());
-		msg.setStatusReport(teksOutMsg.getDeliveryAck(0));
+		// msg.setStatusReport(teksOutMsg.getDeliveryAck(0));
 
 		// TODO teksOutMsg getFlashSms
 		// msg.setFlashSms(getFlashSms());
 
-		msg.setFrom(teksOutMsg.getFrom(0));
+		msg.setFrom(teksOutMsg.getFrom());
 
 		// TODO teksOutMsg message statuses
 		// msg.setMessageStatus(getMessageStatus());
