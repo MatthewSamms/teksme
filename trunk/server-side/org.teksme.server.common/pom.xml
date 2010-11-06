@@ -1,55 +1,30 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<parent>
+		<groupId>org.teksme.server</groupId>
+		<artifactId>org.teksme.server.releng_parent</artifactId>
+		<version>0.5.0-SNAPSHOT</version>
+		<relativePath>../org.teksme.server.releng/pom.xml</relativePath>
+	</parent>
+
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.teksme</groupId>
+	<groupId>org.teksme.server</groupId>
 	<artifactId>org.teksme.server.common</artifactId>
+	<packaging>eclipse-plugin</packaging>
 	<version>0.5.0</version>
-	<name>TeksMe Platform Common</name>
-	<scm>
-		<developerConnection>fabianoc</developerConnection>
-		<url>https://teksme.googlecode.com/svn</url>
-	</scm>
-	<!-- module dependencies [2] -->
-	<dependencies>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.core</artifactId>
-			<version>4.1.0</version>
-		</dependency>
-		<dependency>
-			<groupId>org.osgi</groupId>
-			<artifactId>org.osgi.compendium</artifactId>
-			<version>4.1.0</version>
-		</dependency>
-	</dependencies>
-	<build>
-		<plugins>
-			<!-- maven-bundle-plugin [3] -->
-			<plugin>
-				<groupId>org.apache.felix</groupId>
-				<artifactId>maven-bundle-plugin</artifactId>
-				<version>2.0.1</version>
-				<extensions>true</extensions>
-				<!-- maven-bundle-plugin configuration [4] -->
-				<configuration>
-					<instructions>
-						<Export-Package />
-						<Import-Package>
-							org.osgi*
-                        </Import-Package>
-						<Bundle-Activator>
-							org.osgilab.bundles.monitoradmin.Activator
-                        </Bundle-Activator>
-						<Bundle-SymbolicName>
-							${project.groupId}.${project.artifactId};singleton:=true
-                        </Bundle-SymbolicName>
-						<Bundle-RequiredExecutionEnvironment>
-							J2SE-1.5
-                        </Bundle-RequiredExecutionEnvironment>
-					</instructions>
-				</configuration>
-			</plugin>
-			<!-- other plugins ... -->
-		</plugins>
-	</build>
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.teksme.server</groupId>
+				<artifactId>org.teksme.model</artifactId>
+				<version>0.5.0-SNAPSHOT</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	
 </project>
