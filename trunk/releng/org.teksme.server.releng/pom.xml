@@ -207,7 +207,7 @@
 		</repository>
 		<repository>
 			<id>p2.teksme</id>
-			<url>file:///Users/fabianocruz/Documents/27-TeksMe/repository</url>
+			<url>http://teks.me/p2/repo</url>
 			<layout>p2</layout>
 		</repository>
 	</repositories>
