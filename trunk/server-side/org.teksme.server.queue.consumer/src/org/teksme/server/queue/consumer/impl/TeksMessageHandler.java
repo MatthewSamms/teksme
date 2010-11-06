@@ -18,7 +18,7 @@ import java.util.logging.Logger;
 
 import org.teksme.model.teks.Message;
 import org.teksme.model.teks.ObjectMessage;
-import org.teksme.model.teks.TextMessage;
+import org.teksme.model.teks.Shout;
 import org.teksme.server.queue.consumer.DeadLetterQueueHandler;
 import org.teksme.server.queue.consumer.MessageListener;
 
@@ -63,8 +63,8 @@ public abstract class TeksMessageHandler<T> implements MessageListener<Message> 
 	private Object extractPayload(final Message message) {
 		if (message instanceof ObjectMessage) {
 			// return ((ObjectMessage) message).getObject();
-		} else if (message instanceof TextMessage) {
-			return ((TextMessage) message).getText();
+		} else if (message instanceof Shout) {
+			return ((Shout) message).getThis();
 		} else {
 			throw new IllegalStateException("Error extracting payload", new MessageHandlerException());
 		}

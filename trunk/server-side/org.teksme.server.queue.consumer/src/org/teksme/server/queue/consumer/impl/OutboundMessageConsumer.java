@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.logging.Logger;
 
 import org.teksme.model.teks.Message;
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.OutboundMessage;
 import org.teksme.server.common.messaging.AMQPQueueType;
 import org.teksme.server.queue.consumer.MessageEventDispatcher;
 import org.teksme.server.queue.consumer.MessageEventSource;
@@ -58,8 +58,10 @@ public class OutboundMessageConsumer extends DefaultConsumer implements MessageE
 			// TODO implement a better messaging handler
 			if (AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey().equals(routingKey)) {
 				logger.info("Partial matching based on the message key: " + AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey());
-				OutboundTextMessage outMsg = (OutboundTextMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body))
+				OutboundMessage outMsg = (OutboundMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body))
 						.readObject();
+				logger.info("Channel(s) : " + outMsg.getChannels());
+				logger.info("Gateway: " + outMsg.getRouting().getLiteral());
 				dispatcher.fire(outMsg);
 			}
 
