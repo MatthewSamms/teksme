@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.OutboundMessage;
 import org.teksme.model.teks.Teks;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
@@ -83,12 +83,11 @@ public class Mail2SMSProcessor {
 
 					Teks teksModel = modelDirector.getTeksModel();
 
-					OutboundTextMessage outMsg = teksModel
-							.getOutboundMessage(0);
+					OutboundMessage outMsg = teksModel.getOutboundMessage(0);
 
-					logger.info(outMsg.getMessage().getText());
+					logger.info(outMsg.getShout().getThis());
 					logger.info("Pls send this message to "
-							+ outMsg.getSmsGateway().getName() + " gateway.");
+							+ outMsg.getRouting().getName() + " gateway.");
 
 					queueSender.publishMessage(outMsg);
 

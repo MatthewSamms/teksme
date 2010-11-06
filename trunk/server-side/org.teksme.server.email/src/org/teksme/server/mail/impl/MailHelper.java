@@ -1,6 +1,9 @@
 package org.teksme.server.mail.impl;
 
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Properties;
 
 import javax.mail.Address;
@@ -24,23 +27,27 @@ public class MailHelper {
 	private static Log logger = LogFactory.getLog(MailHelper.class);
 
 	private Session session = null;
-	private static Store store = null;
+	private Store store = null;
 	private Folder folder;
-	
+
 	public static MailHelper INSTANCE = new MailHelper();
-	
-	private MailHelper(){
-		
+
+	public static Map<String, Object> cache = Collections
+			.synchronizedMap(new HashMap<String, Object>());
+
+	private MailHelper() {
+
 	}
-	
-	public Store connect(MailConnectionType mailConnType, String username, String password,
-			String mailServer) throws Exception {
+
+	public Store connect(MailConnectionType mailConnType, String username,
+			String password, String mailServer) throws Exception {
 
 		switch (mailConnType) {
 		case POP:
 			break;
 		case IMAP:
 			store = setupIMAPConnection(username, password, mailServer);
+			cache.put(Store.class.getSimpleName(), store);
 			return store;
 		default:
 			break;
@@ -48,17 +55,23 @@ public class MailHelper {
 		return null;
 	}
 
-	private Store setupIMAPConnection(String username, String password, String mailServer)
-			throws MessagingException, NoSuchProviderException {
+	private Store getStore() {
+		return (Store) cache.get(Store.class.getSimpleName());
+	}
+
+	private Store setupIMAPConnection(String username, String password,
+			String mailServer) throws MessagingException,
+			NoSuchProviderException {
 		String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory"; //$NON-NLS-1$
 
 		Properties imapProps = new Properties();
 
 		imapProps.setProperty("mail.imap.socketFactory.class", SSL_FACTORY);
 		imapProps.setProperty("mail.imap.socketFactory.fallback", "false");
-		imapProps.setProperty("mail.imap.port", MessagesBundle.getString("IMAP_PORT"));
-		imapProps
-				.setProperty("mail.imap.socketFactory.port", MessagesBundle.getString("IMAP_PORT"));
+		imapProps.setProperty("mail.imap.port",
+				MessagesBundle.getString("IMAP_PORT"));
+		imapProps.setProperty("mail.imap.socketFactory.port",
+				MessagesBundle.getString("IMAP_PORT"));
 		// imapProps.setProperty("mail.imap.partialfetch", "false");
 		imapProps.setProperty("mail.imap.rsetbeforequit", "true");
 
@@ -67,24 +80,6 @@ public class MailHelper {
 		store.connect(mailServer, username, password);
 
 		return store;
-	}
-
-	public Folder openFolder(String folderName) throws Exception {
-		// Open the Folder
-		folder = store.getDefaultFolder();
-		folder = folder.getFolder(folderName);
-		if (folder == null) {
-			throw new Exception(MessagesBundle.getString("INVALID_FOLDER_MSG")); //$NON-NLS-1$
-		}
-
-		// try to open read/write and if that fails try read-only
-		try {
-			folder.open(Folder.READ_WRITE);
-		} catch (MessagingException ex) {
-			ex.printStackTrace();
-			// folder.open(Folder.READ_ONLY);
-		}
-		return folder;
 	}
 
 	public void printMessage(int messageNo) throws Exception {
@@ -100,7 +95,7 @@ public class MailHelper {
 		}
 	}
 
-	public void printAllMessageEnvelopes() throws Exception {
+	public void printAllMessageEnvelopes(Folder folder) throws Exception {
 
 		// Attributes & Flags for all messages ..
 		Message[] msgs = folder.getMessages();
@@ -119,7 +114,7 @@ public class MailHelper {
 
 	}
 
-	public void printAllMessages() throws Exception {
+	public void printAllMessages(Folder folder) throws Exception {
 
 		// Attributes & Flags for all messages ..
 		Message[] msgs = folder.getMessages();
@@ -149,8 +144,8 @@ public class MailHelper {
 		}
 
 		/*
-		 * Using isMimeType to determine the content type avoids fetching the actual
-		 * content data until we need it.
+		 * Using isMimeType to determine the content type avoids fetching the
+		 * actual content data until we need it.
 		 */
 		if (p.isMimeType("text/plain")) { //$NON-NLS-1$
 			pr("This is plain text"); //$NON-NLS-1$
@@ -199,27 +194,6 @@ public class MailHelper {
 
 		System.out.print(indentStr.substring(0, level * 2));
 		System.out.println(s);
-	}
-
-	public void closeFolder() throws Exception {
-		if (folder.isOpen())
-			folder.close(false);
-	}
-
-	public int getMessageCount() throws Exception {
-		return folder.getMessageCount();
-	}
-
-	public int getNewMessageCount() throws Exception {
-		return folder.getNewMessageCount();
-	}
-
-	public void disconnect() throws Exception {
-		store.close();
-	}
-
-	public int getUnreadMessageCount() throws MessagingException {
-		return folder.getUnreadMessageCount();
 	}
 
 }
