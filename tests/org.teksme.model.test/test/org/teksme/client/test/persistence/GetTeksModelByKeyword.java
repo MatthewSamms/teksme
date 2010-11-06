@@ -103,8 +103,6 @@ public class GetTeksModelByKeyword {
 			List<?> libraries = query.list();
 			teksModel = (Teks) libraries.get(0);
 
-			System.out.println(teksModel.getAppId());
-
 			session.getTransaction().commit();
 
 		}

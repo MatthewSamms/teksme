@@ -30,7 +30,6 @@ import org.teksme.model.teks.impl.TeksPackageImpl;
 
 public class CreateCompositePollTest extends TeksModelTest {
 
-	private static final String APPID = "6152376517";
 	private static final String DEVELOPER_PROFILE_ID = "o318947871972892719jiasjs8198";
 	private static final String MODEL_FILE = "output/teks.xml";
 
@@ -41,7 +40,6 @@ public class CreateCompositePollTest extends TeksModelTest {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 		Teks eduTeks = factory.createTeks();
-		eduTeks.setAppId(APPID);
 
 		Developer developerProfile = factory.createDeveloper();
 		developerProfile.setId(DEVELOPER_PROFILE_ID);
