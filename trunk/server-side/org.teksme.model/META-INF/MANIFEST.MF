@@ -13,6 +13,7 @@ Bundle-ActivationPolicy: lazy
 Eclipse-BuddyPolicy: dependent
 Export-Package: org.teksme.model;uses:="org.eclipse.emf.ecore",
  org.teksme.model.teks;uses:="org.eclipse.emf.ecore,org.eclipse.emf.common.util,org.teksme.model",
+ org.teksme.model.teks.impl,
  org.teksme.model.teks.util;
   uses:="org.eclipse.emf.ecore.resource,
    org.eclipse.emf.ecore.xmi.impl,
