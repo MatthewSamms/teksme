@@ -19,7 +19,6 @@ import java.util.logging.Logger;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceReference;
 import org.osgi.util.tracker.ServiceTracker;
-import org.teksme.server.common.messaging.AMQPBrokerParameters;
 import org.teksme.server.common.messaging.AMQPServiceRegistry;
 import org.teksme.server.queue.consumer.impl.OutboundMessageConsumer;
 import org.teksme.server.queue.consumer.impl.OutboundSMSHandler;
@@ -51,9 +50,12 @@ public class ChannelOutboundTracker extends ServiceTracker {
 		Channel channel = null;
 		try {
 
-//			final boolean durable = Boolean.getBoolean(AMQPBrokerParameters.DURABLE);
-//			final boolean autoDelete = Boolean.getBoolean(AMQPBrokerParameters.AUTO_DELETE);
-//			final boolean exclusive = Boolean.getBoolean(AMQPBrokerParameters.EXCLUSIVE);
+			// final boolean durable =
+			// Boolean.getBoolean(AMQPBrokerParameters.DURABLE);
+			// final boolean autoDelete =
+			// Boolean.getBoolean(AMQPBrokerParameters.AUTO_DELETE);
+			// final boolean exclusive =
+			// Boolean.getBoolean(AMQPBrokerParameters.EXCLUSIVE);
 
 			channel = conn.createChannel();
 

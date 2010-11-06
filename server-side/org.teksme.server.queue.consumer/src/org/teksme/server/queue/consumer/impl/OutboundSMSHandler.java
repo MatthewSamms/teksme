@@ -18,10 +18,10 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.teksme.model.teks.OutboundTextMessage;
+import org.teksme.model.teks.OutboundMessage;
 import org.teksme.server.provider.sms.service.SMSGatewayService;
 
-public class OutboundSMSHandler extends TeksMessageHandler<OutboundTextMessage> {
+public class OutboundSMSHandler extends TeksMessageHandler<OutboundMessage> {
 
 	Logger logger = Logger.getLogger(OutboundSMSHandler.class.getName());
 
@@ -46,7 +46,7 @@ public class OutboundSMSHandler extends TeksMessageHandler<OutboundTextMessage> 
 	}
 
 	@Override
-	public void consume(final OutboundTextMessage message) {
+	public void consume(final OutboundMessage message) {
 
 		logger.info("Message received");
 

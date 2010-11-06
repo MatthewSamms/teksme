@@ -15,7 +15,7 @@ package org.teksme.server.queue.consumer.impl;
 
 import java.io.IOException;
 
-import org.teksme.model.teks.InboundTextMessage;
+import org.teksme.model.teks.InboundMessage;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
@@ -39,9 +39,9 @@ public class InboundConsumer extends DefaultConsumer {
 	public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
 		long deliveryTag = envelope.getDeliveryTag();
 
-		InboundTextMessage message = null;
+		InboundMessage message = null;
 		try {
-			message = (InboundTextMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body)).readObject();
+			message = (InboundMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body)).readObject();
 			// inbound.readMessage(message);
 		} catch (java.io.IOException ioe) {
 			System.err.println(ioe.getMessage());
