@@ -53,10 +53,10 @@ public class TeksmeOAuthProvider {
 		Properties p = consumerProperties;
 		if (p == null) {
 			p = new Properties();
-			String resourceName = "/" + TeksmeOAuthProvider.class.getPackage().getName().replace(".", "/") + "/provider.properties";
+			String resourceName = Messages.TeksmeOAuthProvider_0 + TeksmeOAuthProvider.class.getPackage().getName().replace(Messages.TeksmeOAuthProvider_1, Messages.TeksmeOAuthProvider_2) + Messages.TeksmeOAuthProvider_3;
 			URL resource = TeksmeOAuthProvider.class.getClassLoader().getResource(resourceName);
 			if (resource == null) {
-				throw new IOException("resource not found: " + resourceName);
+				throw new IOException(Messages.TeksmeOAuthProvider_4 + resourceName);
 			}
 			InputStream stream = resource.openStream();
 			try {
@@ -71,15 +71,15 @@ public class TeksmeOAuthProvider {
 		for (Map.Entry prop : p.entrySet()) {
 			String consumer_key = (String) prop.getKey();
 			// make sure it's key not additional properties
-			if (!consumer_key.contains(".")) {
+			if (!consumer_key.contains(".")) { //$NON-NLS-1$
 				String consumer_secret = (String) prop.getValue();
 				if (consumer_secret != null) {
-					String consumer_description = (String) p.getProperty(consumer_key + ".description");
-					String consumer_callback_url = (String) p.getProperty(consumer_key + ".callbackURL");
+					String consumer_description = (String) p.getProperty(consumer_key + ".description"); //$NON-NLS-1$
+					String consumer_callback_url = (String) p.getProperty(consumer_key + ".callbackURL"); //$NON-NLS-1$
 					// Create OAuthConsumer w/ key and secret
 					OAuthConsumer consumer = new OAuthConsumer(consumer_callback_url, consumer_key, consumer_secret, null);
-					consumer.setProperty("name", consumer_key);
-					consumer.setProperty("description", consumer_description);
+					consumer.setProperty(Messages.TeksmeOAuthProvider_5, consumer_key);
+					consumer.setProperty(Messages.TeksmeOAuthProvider_9, consumer_description);
 					CONSUMERS.put(consumer_key, consumer);
 				}
 			}
@@ -96,7 +96,7 @@ public class TeksmeOAuthProvider {
 		consumer = TeksmeOAuthProvider.CONSUMERS.get(consumer_key);
 
 		if (consumer == null) {
-			OAuthProblemException problem = new OAuthProblemException("token_rejected");
+			OAuthProblemException problem = new OAuthProblemException(Messages.TeksmeOAuthProvider_10);
 			throw problem;
 		}
 
@@ -124,7 +124,7 @@ public class TeksmeOAuthProvider {
 		}
 
 		if (accessor == null) {
-			OAuthProblemException problem = new OAuthProblemException("token_expired");
+			OAuthProblemException problem = new OAuthProblemException(Messages.TeksmeOAuthProvider_11);
 			throw problem;
 		}
 
@@ -139,8 +139,8 @@ public class TeksmeOAuthProvider {
 		// first remove the accessor from cache
 		TOKENS.remove(accessor);
 
-		accessor.setProperty("user", userId);
-		accessor.setProperty("authorized", Boolean.TRUE);
+		accessor.setProperty(Messages.TeksmeOAuthProvider_12, userId);
+		accessor.setProperty(Messages.TeksmeOAuthProvider_13, Boolean.TRUE);
 
 		// update token in local cache
 		TOKENS.add(accessor);
@@ -150,7 +150,7 @@ public class TeksmeOAuthProvider {
 	public static synchronized void generateAccessToken(OAuthAccessor accessor) throws OAuthException {
 
 		// generate oauth_token and oauth_secret
-		String consumer_key = (String) accessor.consumer.getProperty("name");
+		String consumer_key = (String) accessor.consumer.getProperty(Messages.TeksmeOAuthProvider_14);
 		// generate token and secret based on consumer_key
 
 		// for now use md5 of name + current time as token
@@ -168,7 +168,7 @@ public class TeksmeOAuthProvider {
 
 	public static void handleException(Exception e, HttpServletRequest request, HttpServletResponse response, boolean sendBody)
 			throws IOException, ServletException {
-		String realm = (request.isSecure()) ? "https://" : "http://";
+		String realm = (request.isSecure()) ? "https://" : "http://"; //$NON-NLS-1$ //$NON-NLS-2$
 		realm += request.getLocalName();
 		OAuthServlet.handleException(response, e, realm, sendBody);
 	}
