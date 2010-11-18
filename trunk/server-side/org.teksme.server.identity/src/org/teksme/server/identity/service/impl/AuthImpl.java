@@ -68,7 +68,6 @@ public class AuthImpl implements IAuth {
 			return true;
 
 		} catch (Exception e) {
-			//TODO check
 			e.printStackTrace();
 			return false;
 		}
