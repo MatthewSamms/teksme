@@ -75,10 +75,10 @@
     <genClasses ecoreClass="teks.ecore#//Teks">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Teks/accountSID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/outboundMessage"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/response"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/developer"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/poll"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/survey"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/responses"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/inboundMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/account"/>
     </genClasses>
@@ -151,7 +151,10 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//ReplyMessage/customMessage"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//Response">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Response/response"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Response/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Response/message"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Response/code"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Response/moreInfo"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//ResponseRestriction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//ResponseRestriction/acceptMultipleChannels"/>

@@ -13,8 +13,6 @@
  */
 package org.teksme.model.teks;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.teksme.model.TeksObject;
 
 /**
@@ -25,7 +23,10 @@ import org.teksme.model.TeksObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.teksme.model.teks.Response#getResponseList <em>Response</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Response#getStatus <em>Status</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Response#getMessage <em>Message</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Response#getCode <em>Code</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Response#getMoreInfo <em>More Info</em>}</li>
  * </ul>
  * </p>
  *
@@ -36,54 +37,107 @@ import org.teksme.model.TeksObject;
  */
 public interface Response extends TeksObject {
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	ResponseDetail[] getResponse();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	ResponseDetail getResponse(int index);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	int getResponseLength();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	void setResponse(ResponseDetail[] newResponse);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	void setResponse(int index, ResponseDetail element);
-
-	/**
-	 * Returns the value of the '<em><b>Response</b></em>' containment reference list.
-	 * The list contents are of type {@link org.teksme.model.teks.ResponseDetail}.
+	 * Returns the value of the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Response</em>' containment reference list isn't clear,
+	 * If the meaning of the '<em>Status</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Response</em>' containment reference list.
-	 * @see org.teksme.model.teks.TeksPackage#getResponse_Response()
-	 * @model containment="true" resolveProxies="true"
+	 * @return the value of the '<em>Status</em>' attribute.
+	 * @see #setStatus(int)
+	 * @see org.teksme.model.teks.TeksPackage#getResponse_Status()
+	 * @model extendedMetaData="kind='element' name='status'"
 	 * @generated
 	 */
-	EList<ResponseDetail> getResponseList();
+	int getStatus();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Response#getStatus <em>Status</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Status</em>' attribute.
+	 * @see #getStatus()
+	 * @generated
+	 */
+	void setStatus(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.teksme.model.teks.TeksPackage#getResponse_Message()
+	 * @model extendedMetaData="kind='element' name='message'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Response#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Code</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Code</em>' attribute.
+	 * @see #setCode(int)
+	 * @see org.teksme.model.teks.TeksPackage#getResponse_Code()
+	 * @model extendedMetaData="kind='element' name='code'"
+	 * @generated
+	 */
+	int getCode();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Response#getCode <em>Code</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Code</em>' attribute.
+	 * @see #getCode()
+	 * @generated
+	 */
+	void setCode(int value);
+
+	/**
+	 * Returns the value of the '<em><b>More Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>More Info</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>More Info</em>' attribute.
+	 * @see #setMoreInfo(String)
+	 * @see org.teksme.model.teks.TeksPackage#getResponse_MoreInfo()
+	 * @model extendedMetaData="kind='element' name='moreInfo'"
+	 * @generated
+	 */
+	String getMoreInfo();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Response#getMoreInfo <em>More Info</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>More Info</em>' attribute.
+	 * @see #getMoreInfo()
+	 * @generated
+	 */
+	void setMoreInfo(String value);
 
 } // Response

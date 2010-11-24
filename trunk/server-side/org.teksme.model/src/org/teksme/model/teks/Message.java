@@ -227,7 +227,7 @@ public interface Message extends TeksObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>To</em>' attribute list.
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_To()
-	 * @model
+	 * @model required="true"
 	 * @generated
 	 */
 	EList<String> getToList();

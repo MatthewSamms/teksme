@@ -96,13 +96,22 @@ public interface TeksPackage extends EPackage {
 	int TEKS__OUTBOUND_MESSAGE = 1;
 
 	/**
+	 * The feature id for the '<em><b>Response</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEKS__RESPONSE = 2;
+
+	/**
 	 * The feature id for the '<em><b>Developer</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__DEVELOPER = 2;
+	int TEKS__DEVELOPER = 3;
 
 	/**
 	 * The feature id for the '<em><b>Poll</b></em>' containment reference.
@@ -111,7 +120,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__POLL = 3;
+	int TEKS__POLL = 4;
 
 	/**
 	 * The feature id for the '<em><b>Survey</b></em>' containment reference.
@@ -120,16 +129,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__SURVEY = 4;
-
-	/**
-	 * The feature id for the '<em><b>Responses</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEKS__RESPONSES = 5;
+	int TEKS__SURVEY = 5;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Message</b></em>' containment reference list.
@@ -790,13 +790,40 @@ public interface TeksPackage extends EPackage {
 	int RESPONSE = 10;
 
 	/**
-	 * The feature id for the '<em><b>Response</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSE__RESPONSE = 0;
+	int RESPONSE__STATUS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE__MESSAGE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE__CODE = 2;
+
+	/**
+	 * The feature id for the '<em><b>More Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE__MORE_INFO = 3;
 
 	/**
 	 * The number of structural features of the '<em>Response</em>' class.
@@ -805,7 +832,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSE_FEATURE_COUNT = 1;
+	int RESPONSE_FEATURE_COUNT = 4;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.ResponseRestrictionImpl <em>Response Restriction</em>}' class.
@@ -2188,6 +2215,17 @@ public interface TeksPackage extends EPackage {
 	EReference getTeks_OutboundMessage();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link org.teksme.model.teks.Teks#getResponse <em>Response</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Response</em>'.
+	 * @see org.teksme.model.teks.Teks#getResponse()
+	 * @see #getTeks()
+	 * @generated
+	 */
+	EReference getTeks_Response();
+
+	/**
 	 * Returns the meta object for the containment reference '{@link org.teksme.model.teks.Teks#getDeveloper <em>Developer</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2219,17 +2257,6 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getTeks_Survey();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link org.teksme.model.teks.Teks#getResponses <em>Responses</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Responses</em>'.
-	 * @see org.teksme.model.teks.Teks#getResponses()
-	 * @see #getTeks()
-	 * @generated
-	 */
-	EReference getTeks_Responses();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.teksme.model.teks.Teks#getInboundMessageList <em>Inbound Message</em>}'.
@@ -2904,15 +2931,48 @@ public interface TeksPackage extends EPackage {
 	EClass getResponse();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.teksme.model.teks.Response#getResponseList <em>Response</em>}'.
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getStatus <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Response</em>'.
-	 * @see org.teksme.model.teks.Response#getResponseList()
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see org.teksme.model.teks.Response#getStatus()
 	 * @see #getResponse()
 	 * @generated
 	 */
-	EReference getResponse_Response();
+	EAttribute getResponse_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.teksme.model.teks.Response#getMessage()
+	 * @see #getResponse()
+	 * @generated
+	 */
+	EAttribute getResponse_Message();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getCode <em>Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Code</em>'.
+	 * @see org.teksme.model.teks.Response#getCode()
+	 * @see #getResponse()
+	 * @generated
+	 */
+	EAttribute getResponse_Code();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getMoreInfo <em>More Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>More Info</em>'.
+	 * @see org.teksme.model.teks.Response#getMoreInfo()
+	 * @see #getResponse()
+	 * @generated
+	 */
+	EAttribute getResponse_MoreInfo();
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.ResponseRestriction <em>Response Restriction</em>}'.
@@ -3851,6 +3911,14 @@ public interface TeksPackage extends EPackage {
 		EReference TEKS__OUTBOUND_MESSAGE = eINSTANCE.getTeks_OutboundMessage();
 
 		/**
+		 * The meta object literal for the '<em><b>Response</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEKS__RESPONSE = eINSTANCE.getTeks_Response();
+
+		/**
 		 * The meta object literal for the '<em><b>Developer</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3873,14 +3941,6 @@ public interface TeksPackage extends EPackage {
 		 * @generated
 		 */
 		EReference TEKS__SURVEY = eINSTANCE.getTeks_Survey();
-
-		/**
-		 * The meta object literal for the '<em><b>Responses</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TEKS__RESPONSES = eINSTANCE.getTeks_Responses();
 
 		/**
 		 * The meta object literal for the '<em><b>Inbound Message</b></em>' containment reference list feature.
@@ -4416,12 +4476,36 @@ public interface TeksPackage extends EPackage {
 		EClass RESPONSE = eINSTANCE.getResponse();
 
 		/**
-		 * The meta object literal for the '<em><b>Response</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference RESPONSE__RESPONSE = eINSTANCE.getResponse_Response();
+		EAttribute RESPONSE__STATUS = eINSTANCE.getResponse_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE__MESSAGE = eINSTANCE.getResponse_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE__CODE = eINSTANCE.getResponse_Code();
+
+		/**
+		 * The meta object literal for the '<em><b>More Info</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE__MORE_INFO = eINSTANCE.getResponse_MoreInfo();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.ResponseRestrictionImpl <em>Response Restriction</em>}' class.

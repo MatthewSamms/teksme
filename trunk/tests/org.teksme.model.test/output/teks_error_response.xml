@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+  <response>
+    <status>400</status>
+    <message>Please give us the full URL, including the 'http://' or 'https://'</message>
+    <code>10003</code>
+    <moreInfo>http://api.teks.me/errors/10003</moreInfo>
+  </response>
+</teks:Teks>

@@ -52,10 +52,10 @@ import org.teksme.model.teks.User;
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getOutboundMessageList <em>Outbound Message</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getResponse <em>Response</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getDeveloper <em>Developer</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getPoll <em>Poll</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getSurvey <em>Survey</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getResponses <em>Responses</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getInboundMessageList <em>Inbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAccount <em>Account</em>}</li>
  * </ul>
@@ -67,7 +67,7 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -8344805260708464420L;
+	private static final long serialVersionUID = -3539686519347401341L;
 
 	/**
 	 * The default value of the '{@link #getAccountSID() <em>Account SID</em>}' attribute.
@@ -110,6 +110,16 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	protected static final OutboundMessage[] OUTBOUND_MESSAGE_EEMPTY_ARRAY = new OutboundMessage[0];
 
 	/**
+	 * The cached value of the '{@link #getResponse() <em>Response</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getResponse()
+	 * @generated
+	 * @ordered
+	 */
+	protected Response response;
+
+	/**
 	 * The cached value of the '{@link #getDeveloper() <em>Developer</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -138,16 +148,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	 * @ordered
 	 */
 	protected Survey survey;
-
-	/**
-	 * The cached value of the '{@link #getResponses() <em>Responses</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResponses()
-	 * @generated
-	 * @ordered
-	 */
-	protected Response responses;
 
 	/**
 	 * The cached value of the '{@link #getInboundMessageList() <em>Inbound Message</em>}' containment reference list.
@@ -283,6 +283,88 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 					TeksPackage.OUTBOUND_MESSAGE__TEKS_REF);
 		}
 		return outboundMessage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Response getResponse() {
+		if (response != null && ((EObject) response).eIsProxy()) {
+			InternalEObject oldResponse = (InternalEObject) response;
+			response = (Response) eResolveProxy(oldResponse);
+			if (response != oldResponse) {
+				InternalEObject newResponse = (InternalEObject) response;
+				NotificationChain msgs = oldResponse.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__RESPONSE,
+						null, null);
+				if (newResponse.eInternalContainer() == null) {
+					msgs = newResponse.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- TeksPackage.TEKS__RESPONSE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							TeksPackage.TEKS__RESPONSE, oldResponse, response));
+			}
+		}
+		return response;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Response basicGetResponse() {
+		return response;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetResponse(Response newResponse,
+			NotificationChain msgs) {
+		Response oldResponse = response;
+		response = newResponse;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, TeksPackage.TEKS__RESPONSE, oldResponse,
+					newResponse);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setResponse(Response newResponse) {
+		if (newResponse != response) {
+			NotificationChain msgs = null;
+			if (response != null)
+				msgs = ((InternalEObject) response).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__RESPONSE,
+						null, msgs);
+			if (newResponse != null)
+				msgs = ((InternalEObject) newResponse).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__RESPONSE,
+						null, msgs);
+			msgs = basicSetResponse(newResponse, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.TEKS__RESPONSE, newResponse, newResponse));
 	}
 
 	/**
@@ -536,90 +618,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Response getResponses() {
-		if (responses != null && ((EObject) responses).eIsProxy()) {
-			InternalEObject oldResponses = (InternalEObject) responses;
-			responses = (Response) eResolveProxy(oldResponses);
-			if (responses != oldResponses) {
-				InternalEObject newResponses = (InternalEObject) responses;
-				NotificationChain msgs = oldResponses.eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__RESPONSES,
-						null, null);
-				if (newResponses.eInternalContainer() == null) {
-					msgs = newResponses.eInverseAdd(this,
-							EOPPOSITE_FEATURE_BASE
-									- TeksPackage.TEKS__RESPONSES, null, msgs);
-				}
-				if (msgs != null)
-					msgs.dispatch();
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							TeksPackage.TEKS__RESPONSES, oldResponses,
-							responses));
-			}
-		}
-		return responses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Response basicGetResponses() {
-		return responses;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetResponses(Response newResponses,
-			NotificationChain msgs) {
-		Response oldResponses = responses;
-		responses = newResponses;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, TeksPackage.TEKS__RESPONSES,
-					oldResponses, newResponses);
-			if (msgs == null)
-				msgs = notification;
-			else
-				msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setResponses(Response newResponses) {
-		if (newResponses != responses) {
-			NotificationChain msgs = null;
-			if (responses != null)
-				msgs = ((InternalEObject) responses).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__RESPONSES,
-						null, msgs);
-			if (newResponses != null)
-				msgs = ((InternalEObject) newResponses).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE - TeksPackage.TEKS__RESPONSES,
-						null, msgs);
-			msgs = basicSetResponses(newResponses, msgs);
-			if (msgs != null)
-				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.TEKS__RESPONSES, newResponses, newResponses));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public InboundMessage[] getInboundMessage() {
 		if (inboundMessage == null || inboundMessage.isEmpty())
 			return INBOUND_MESSAGE_EEMPTY_ARRAY;
@@ -790,14 +788,14 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return ((InternalEList<?>) getOutboundMessageList()).basicRemove(
 					otherEnd, msgs);
+		case TeksPackage.TEKS__RESPONSE:
+			return basicSetResponse(null, msgs);
 		case TeksPackage.TEKS__DEVELOPER:
 			return basicSetDeveloper(null, msgs);
 		case TeksPackage.TEKS__POLL:
 			return basicSetPoll(null, msgs);
 		case TeksPackage.TEKS__SURVEY:
 			return basicSetSurvey(null, msgs);
-		case TeksPackage.TEKS__RESPONSES:
-			return basicSetResponses(null, msgs);
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			return ((InternalEList<?>) getInboundMessageList()).basicRemove(
 					otherEnd, msgs);
@@ -819,6 +817,10 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 			return getAccountSID();
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return getOutboundMessageList();
+		case TeksPackage.TEKS__RESPONSE:
+			if (resolve)
+				return getResponse();
+			return basicGetResponse();
 		case TeksPackage.TEKS__DEVELOPER:
 			if (resolve)
 				return getDeveloper();
@@ -831,10 +833,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 			if (resolve)
 				return getSurvey();
 			return basicGetSurvey();
-		case TeksPackage.TEKS__RESPONSES:
-			if (resolve)
-				return getResponses();
-			return basicGetResponses();
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			return getInboundMessageList();
 		case TeksPackage.TEKS__ACCOUNT:
@@ -862,6 +860,9 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 			getOutboundMessageList().addAll(
 					(Collection<? extends OutboundMessage>) newValue);
 			return;
+		case TeksPackage.TEKS__RESPONSE:
+			setResponse((Response) newValue);
+			return;
 		case TeksPackage.TEKS__DEVELOPER:
 			setDeveloper((Developer) newValue);
 			return;
@@ -870,9 +871,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 			return;
 		case TeksPackage.TEKS__SURVEY:
 			setSurvey((Survey) newValue);
-			return;
-		case TeksPackage.TEKS__RESPONSES:
-			setResponses((Response) newValue);
 			return;
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			getInboundMessageList().clear();
@@ -900,6 +898,9 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			getOutboundMessageList().clear();
 			return;
+		case TeksPackage.TEKS__RESPONSE:
+			setResponse((Response) null);
+			return;
 		case TeksPackage.TEKS__DEVELOPER:
 			setDeveloper((Developer) null);
 			return;
@@ -908,9 +909,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 			return;
 		case TeksPackage.TEKS__SURVEY:
 			setSurvey((Survey) null);
-			return;
-		case TeksPackage.TEKS__RESPONSES:
-			setResponses((Response) null);
 			return;
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			getInboundMessageList().clear();
@@ -935,14 +933,14 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 					: !ACCOUNT_SID_EDEFAULT.equals(accountSID);
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return outboundMessage != null && !outboundMessage.isEmpty();
+		case TeksPackage.TEKS__RESPONSE:
+			return response != null;
 		case TeksPackage.TEKS__DEVELOPER:
 			return developer != null;
 		case TeksPackage.TEKS__POLL:
 			return poll != null;
 		case TeksPackage.TEKS__SURVEY:
 			return survey != null;
-		case TeksPackage.TEKS__RESPONSES:
-			return responses != null;
 		case TeksPackage.TEKS__INBOUND_MESSAGE:
 			return inboundMessage != null && !inboundMessage.isEmpty();
 		case TeksPackage.TEKS__ACCOUNT:

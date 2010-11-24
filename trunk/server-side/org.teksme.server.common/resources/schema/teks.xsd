@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:teks="http://teksme.org/meta/1.0.0/teks" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ecore:nsPrefix="teks" ecore:package="org.teksme.model.teks" targetNamespace="http://teksme.org/meta/1.0.0/teks">
+  <xsd:import namespace="http://www.eclipse.org/emf/2002/Ecore" schemaLocation="platform:/plugin/org.eclipse.emf.ecore/model/Ecore.xsd"/>
+  <xsd:element ecore:ignore="true" name="Teks" type="teks:Teks"/>
+  <xsd:element ecore:ignore="true" name="Comment" type="teks:Comment"/>
+  <xsd:element ecore:ignore="true" name="Annotation" type="teks:Annotation"/>
+  <xsd:element ecore:ignore="true" name="AnnotationMapEntry" type="teks:AnnotationMapEntry"/>
+  <xsd:element ecore:ignore="true" name="User" type="teks:User"/>
+  <xsd:element ecore:ignore="true" name="Developer" type="teks:Developer"/>
+  <xsd:element ecore:ignore="true" name="Poll" type="teks:Poll"/>
+  <xsd:element ecore:ignore="true" name="Survey" type="teks:Survey"/>
+  <xsd:element ecore:ignore="true" name="PollSettings" type="teks:PollSettings"/>
+  <xsd:element ecore:ignore="true" name="ReplyMessage" type="teks:ReplyMessage"/>
+  <xsd:element ecore:ignore="true" name="Response" type="teks:Response"/>
+  <xsd:element ecore:ignore="true" name="ResponseRestriction" type="teks:ResponseRestriction"/>
+  <xsd:element ecore:ignore="true" name="PollQuestion" type="teks:PollQuestion"/>
+  <xsd:element ecore:ignore="true" name="PlainText" type="teks:PlainText"/>
+  <xsd:element ecore:ignore="true" name="Keyword" type="teks:Keyword"/>
+  <xsd:element ecore:ignore="true" name="FreeText" type="teks:FreeText"/>
+  <xsd:element ecore:ignore="true" name="SecureText" type="teks:SecureText"/>
+  <xsd:element ecore:ignore="true" name="MultipleChoice" type="teks:MultipleChoice"/>
+  <xsd:element ecore:ignore="true" name="Answer" type="teks:Answer"/>
+  <xsd:element ecore:ignore="true" name="ResponseDetail" type="teks:ResponseDetail"/>
+  <xsd:element ecore:ignore="true" name="ObjectMessage" type="teks:ObjectMessage"/>
+  <xsd:element ecore:ignore="true" name="AnswerRef" type="teks:AnswerRef"/>
+  <xsd:element ecore:ignore="true" name="Message" type="teks:Message"/>
+  <xsd:element ecore:ignore="true" name="InboundMessage" type="teks:InboundMessage"/>
+  <xsd:element ecore:ignore="true" name="OutboundMessage" type="teks:OutboundMessage"/>
+  <xsd:element ecore:ignore="true" name="Channel" type="teks:Channel"/>
+  <xsd:element ecore:ignore="true" name="Report" type="teks:Report"/>
+  <xsd:element ecore:ignore="true" name="Shout" type="teks:Shout"/>
+  <xsd:element ecore:ignore="true" name="Command" type="teks:Command"/>
+  <xsd:complexType name="Teks">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="accountSID" type="ecore:EString"/>
+      <xsd:element ecore:keys="id" ecore:opposite="teksRef" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="outboundMessage" type="teks:OutboundMessage"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="response" type="teks:Response"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="developer" type="teks:Developer"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="poll" type="teks:Poll"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="survey" type="teks:Survey"/>
+      <xsd:element ecore:keys="id" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="inboundMessage" type="teks:InboundMessage"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="account" type="teks:User"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Comment">
+    <xsd:attribute name="id" type="ecore:EString"/>
+    <xsd:attribute name="body" type="ecore:EString"/>
+    <xsd:attribute name="dateTime" type="ecore:EDate"/>
+  </xsd:complexType>
+  <xsd:complexType name="Annotation">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="entry" type="teks:AnnotationMapEntry"/>
+    </xsd:sequence>
+    <xsd:attribute name="annotation" type="ecore:EString"/>
+    <xsd:attribute name="source" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:complexType name="AnnotationMapEntry">
+    <xsd:attribute name="key" type="ecore:EString"/>
+    <xsd:attribute name="value" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:complexType name="User">
+    <xsd:attribute name="userName" type="ecore:EString"/>
+    <xsd:attribute name="firstName" type="ecore:EString"/>
+    <xsd:attribute name="lastName" type="ecore:EString"/>
+    <xsd:attribute name="email" type="ecore:EString"/>
+    <xsd:attribute name="password" type="ecore:EString"/>
+    <xsd:attribute name="country" type="ecore:EString"/>
+    <xsd:attribute ecore:unsettable="false" name="yearOfBirth" type="ecore:EInt"/>
+    <xsd:attribute name="gender" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:complexType name="Developer">
+    <xsd:attribute name="id" type="ecore:EString"/>
+    <xsd:attribute name="websiteURL" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:complexType name="Poll">
+    <xsd:sequence>
+      <xsd:element ecore:opposite="pollRef" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="question" type="teks:PollQuestion"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="settings" type="teks:PollSettings"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="replyMessage" type="teks:ReplyMessage"/>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="annotations" type="teks:Annotation"/>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="comments" type="teks:Comment"/>
+    </xsd:sequence>
+    <xsd:attribute name="title" type="ecore:EString"/>
+    <xsd:attribute name="note" type="ecore:EString"/>
+    <xsd:attribute name="author" type="ecore:EString"/>
+    <xsd:attribute name="lastModified" type="ecore:EDate"/>
+    <xsd:attribute name="id" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:complexType name="Survey">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="annotations" type="teks:Annotation"/>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="comments" type="teks:Comment"/>
+    </xsd:sequence>
+    <xsd:attribute name="title" type="ecore:EString"/>
+    <xsd:attribute name="note" type="ecore:EString"/>
+    <xsd:attribute name="author" type="ecore:EString"/>
+    <xsd:attribute name="lastModified" type="ecore:EDate"/>
+    <xsd:attribute name="id" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:complexType name="PollSettings">
+    <xsd:sequence>
+      <xsd:element ecore:unique="true" maxOccurs="unbounded" minOccurs="0" name="language" type="teks:LanguageKind"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="replyMessage" type="teks:ReplyMessage"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="advertiseIt" type="teks:OutboundMessage"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="responseRestrictions" type="teks:ResponseRestriction"/>
+    </xsd:sequence>
+    <xsd:attribute name="closeDate" type="ecore:EDate"/>
+    <xsd:attribute name="scheduleStartDate" type="ecore:EDate"/>
+    <xsd:attribute ecore:unsettable="false" name="suspendOnFailure" type="ecore:EBoolean"/>
+    <xsd:attribute default="true" ecore:unsettable="false" name="batchResponseDelivery" type="ecore:EBoolean"/>
+    <xsd:attribute default="true" ecore:unsettable="false" name="synchronousConfirmation" type="ecore:EBoolean"/>
+    <xsd:attribute name="folderID" type="ecore:EString"/>
+    <xsd:attribute ecore:unsettable="false" name="sharing" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:unsettable="false" name="shortNumber" type="ecore:EInt"/>
+  </xsd:complexType>
+  <xsd:complexType name="ReplyMessage">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="confirmation" type="teks:ReplyMessage"/>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="customMessage" type="teks:OutboundMessage"/>
+    </xsd:sequence>
+    <xsd:attribute default="false" ecore:unsettable="false" name="defaultMessage" type="ecore:EBoolean"/>
+  </xsd:complexType>
+  <xsd:complexType name="Response">
+    <xsd:sequence>
+      <xsd:element ecore:unsettable="false" minOccurs="0" name="status" type="ecore:EInt"/>
+      <xsd:element minOccurs="0" name="message" type="ecore:EString"/>
+      <xsd:element ecore:unsettable="false" minOccurs="0" name="code" type="ecore:EInt"/>
+      <xsd:element minOccurs="0" name="moreInfo" type="ecore:EString"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseRestriction">
+    <xsd:sequence>
+      <xsd:element ecore:unique="true" maxOccurs="unbounded" minOccurs="0" name="communicationChannel" type="teks:ChannelKind"/>
+    </xsd:sequence>
+    <xsd:attribute ecore:unsettable="false" name="acceptMultipleChannels" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:unsettable="false" name="restrictionType" type="teks:RestrictionKind"/>
+    <xsd:attribute ecore:unsettable="false" name="blockRepeat" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:unsettable="false" name="moderateFirst" type="ecore:EBoolean"/>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="PollQuestion">
+    <xsd:attribute name="note" type="ecore:EString"/>
+    <xsd:attribute ecore:unsettable="false" name="required" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:opposite="question" ecore:reference="teks:Poll" name="pollRef" type="xsd:anyURI"/>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="PlainText">
+    <xsd:complexContent>
+      <xsd:extension base="teks:PollQuestion">
+        <xsd:sequence>
+          <xsd:element ecore:resolveProxies="true" minOccurs="0" name="keyword" type="teks:Keyword"/>
+        </xsd:sequence>
+        <xsd:attribute name="question" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Keyword">
+    <xsd:attribute name="key" type="ecore:EString"/>
+    <xsd:attribute default="true" ecore:unsettable="false" name="autoKeyword" type="ecore:EBoolean"/>
+  </xsd:complexType>
+  <xsd:complexType name="FreeText">
+    <xsd:complexContent>
+      <xsd:extension base="teks:PlainText"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="SecureText">
+    <xsd:complexContent>
+      <xsd:extension base="teks:PlainText">
+        <xsd:attribute name="hashAlgorithm" type="ecore:EString"/>
+        <xsd:attribute name="hashEncoding" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="MultipleChoice">
+    <xsd:complexContent>
+      <xsd:extension base="teks:PollQuestion">
+        <xsd:sequence>
+          <xsd:element ecore:opposite="questionRef" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="answer" type="teks:Answer"/>
+          <xsd:element ecore:resolveProxies="true" minOccurs="0" name="addOther" type="teks:FreeText"/>
+        </xsd:sequence>
+        <xsd:attribute name="question" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Answer">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="keyword" type="teks:Keyword"/>
+    </xsd:sequence>
+    <xsd:attribute name="text" type="ecore:EString"/>
+    <xsd:attribute ecore:id="true" ecore:unsettable="false" name="id" type="ecore:EBoolean" use="required"/>
+    <xsd:attribute name="defaultValue" type="ecore:EString"/>
+    <xsd:attribute default="false" ecore:unsettable="false" name="selected" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:opposite="answer" ecore:reference="teks:MultipleChoice" name="questionRef" type="xsd:anyURI"/>
+  </xsd:complexType>
+  <xsd:complexType name="ResponseDetail">
+    <xsd:sequence>
+      <xsd:element ecore:resolveProxies="true" minOccurs="0" name="rawMessage" type="teks:InboundMessage"/>
+      <xsd:element ecore:keys="id" ecore:resolveProxies="true" maxOccurs="unbounded" minOccurs="0" name="setValue" type="teks:AnswerRef"/>
+    </xsd:sequence>
+    <xsd:attribute name="dateTime" type="ecore:EDate"/>
+  </xsd:complexType>
+  <xsd:complexType name="ObjectMessage">
+    <xsd:complexContent>
+      <xsd:extension base="teks:Message"/>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="AnswerRef">
+    <xsd:attribute ecore:reference="teks:PollQuestion" name="choiceRef" type="xsd:anyURI"/>
+    <xsd:attribute ecore:reference="teks:Answer" name="answerRef" type="xsd:anyURI"/>
+    <xsd:attribute name="value" type="ecore:EString"/>
+    <xsd:attribute name="id" type="ecore:EString" use="required"/>
+  </xsd:complexType>
+  <xsd:complexType abstract="true" name="Message">
+    <xsd:sequence>
+      <xsd:element ecore:id="true" minOccurs="0" name="id" type="ecore:EString"/>
+      <xsd:element minOccurs="0" name="date" type="ecore:EDate"/>
+      <xsd:element ecore:unsettable="false" minOccurs="0" name="routing" type="teks:SMSGatewayKind"/>
+      <xsd:element name="from" type="ecore:EString"/>
+      <xsd:element ecore:resolveProxies="true" name="channels" type="teks:Channel"/>
+      <xsd:element ecore:unique="true" maxOccurs="unbounded" name="to" nillable="true" type="ecore:EString"/>
+      <xsd:element ecore:resolveProxies="true" name="shout" type="teks:Shout"/>
+      <xsd:element ecore:unsettable="false" minOccurs="0" name="stopOnError" type="ecore:EBoolean"/>
+      <xsd:element ecore:unsettable="false" minOccurs="0" name="attempts" type="ecore:EInt"/>
+      <xsd:element minOccurs="0" name="encoding" type="ecore:EString"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="InboundMessage">
+    <xsd:complexContent>
+      <xsd:extension base="teks:Message">
+        <xsd:attribute name="partNumber" type="ecore:EString"/>
+        <xsd:attribute name="messageType" type="ecore:EString"/>
+        <xsd:attribute name="originator" type="ecore:EString"/>
+        <xsd:attribute name="smscNumber" type="ecore:EString"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="OutboundMessage">
+    <xsd:complexContent>
+      <xsd:extension base="teks:Message">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="schedule" type="ecore:EDate"/>
+          <xsd:element ecore:unsettable="false" minOccurs="0" name="timeout" type="ecore:EFloat"/>
+          <xsd:element ecore:unsettable="false" minOccurs="0" name="delay" type="ecore:EInt"/>
+          <xsd:element minOccurs="0" name="callback" type="ecore:EString"/>
+          <xsd:element ecore:unsettable="false" minOccurs="0" name="concatenated" type="ecore:EBoolean"/>
+        </xsd:sequence>
+        <xsd:attribute ecore:opposite="outboundMessage" ecore:reference="teks:Teks" name="teksRef" type="xsd:anyURI"/>
+      </xsd:extension>
+    </xsd:complexContent>
+  </xsd:complexType>
+  <xsd:complexType name="Channel">
+    <xsd:sequence>
+      <xsd:element ecore:unique="true" maxOccurs="unbounded" name="channel" nillable="true" type="ecore:EString"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Report">
+    <xsd:attribute ecore:unsettable="false" name="hideResults" type="ecore:EBoolean"/>
+    <xsd:attribute ecore:unsettable="false" name="percentageOnly" type="ecore:EBoolean"/>
+  </xsd:complexType>
+  <xsd:complexType name="Shout">
+    <xsd:attribute name="this" type="ecore:EString"/>
+    <xsd:attribute name="voice" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:complexType name="Command">
+    <xsd:attribute name="defaultHandler" type="ecore:EString"/>
+    <xsd:attribute ecore:name="ID" name="ID" type="ecore:EString"/>
+    <xsd:attribute name="name" type="ecore:EString"/>
+  </xsd:complexType>
+  <xsd:simpleType name="LanguageKind">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration ecore:name="en_US" value="English"/>
+      <xsd:enumeration ecore:name="pt_BR" value="Portuguese"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="ChannelKind">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="SMS"/>
+      <xsd:enumeration ecore:name="EMAIL" value="Email"/>
+      <xsd:enumeration ecore:name="WEB" value="Web"/>
+      <xsd:enumeration ecore:name="TWITTER" value="Twitter"/>
+      <xsd:enumeration ecore:name="WEB_WIDGET" value="Web Widget"/>
+      <xsd:enumeration value="IVR"/>
+      <xsd:enumeration value="MMS"/>
+      <xsd:enumeration ecore:name="GTALK" value="GTalk"/>
+      <xsd:enumeration value="MSN"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="RestrictionKind">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration ecore:name="EVERYONE" value="Everyone"/>
+      <xsd:enumeration ecore:name="RIGESTERED_USER" value="Participants Only"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="StopCommandKind">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="STOP"/>
+      <xsd:enumeration value="END"/>
+      <xsd:enumeration value="CANCEL"/>
+      <xsd:enumeration value="UNSUBSCRIBE"/>
+      <xsd:enumeration value="QUIT"/>
+      <xsd:enumeration ecore:name="STOP_STOP" value="STOP STOP"/>
+      <xsd:enumeration ecore:name="STOP_ALL" value="STOP ALL"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="MessageStatuses">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration ecore:value="1" value="MSG_UNKNOWN"/>
+      <xsd:enumeration ecore:value="2" value="MSG_QUEUED"/>
+      <xsd:enumeration ecore:value="3" value="DELIVERED_GATEWAY"/>
+      <xsd:enumeration ecore:value="4" value="RECEIVED_BY_RECIPIENT"/>
+      <xsd:enumeration ecore:value="5" value="ERROR_WITH_MSG"/>
+      <xsd:enumeration ecore:value="6" value="USER_CANCELLED_MSG"/>
+      <xsd:enumeration ecore:value="7" value="ERROR_DELIVERING_MSG"/>
+      <xsd:enumeration ecore:value="8" value="SENT"/>
+      <xsd:enumeration ecore:value="9" value="ROUTING_ERROR"/>
+      <xsd:enumeration ecore:value="10" value="MSG_EXPIRED"/>
+      <xsd:enumeration ecore:value="11" value="MSG_QUEUED_FOR_LATER_DELIVERY"/>
+      <xsd:enumeration ecore:value="12" value="UNSENT"/>
+      <xsd:enumeration ecore:value="13" value="FAILED"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="FailureCauses">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="NO_ERROR"/>
+      <xsd:enumeration value="BAD_NUMBER"/>
+      <xsd:enumeration value="BAD_FORMAT"/>
+      <xsd:enumeration value="GATEWAY_FAILURE"/>
+      <xsd:enumeration value="NO_CREDIT"/>
+      <xsd:enumeration value="GATEWAY_AUTH"/>
+      <xsd:enumeration value="NO_ROUTE"/>
+      <xsd:enumeration ecore:value="6" value="UNKNOWN"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+  <xsd:simpleType name="SMSGatewayKind">
+    <xsd:restriction base="xsd:string">
+      <xsd:enumeration value="CLICKATELL"/>
+      <xsd:enumeration value="DIGICEL"/>
+      <xsd:enumeration value="MOVISTAR_PERU"/>
+      <xsd:enumeration value="MODEM"/>
+      <xsd:enumeration value="BULKSMS"/>
+    </xsd:restriction>
+  </xsd:simpleType>
+</xsd:schema>

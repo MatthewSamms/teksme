@@ -13,12 +13,12 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="outboundMessage" upperBound="-1"
         eType="#//OutboundMessage" containment="true" eOpposite="#//OutboundMessage/teksRef"
         eKeys="#//Message/id"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="response" eType="#//Response"
+        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="developer" eType="#//Developer"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="poll" eType="#//Poll" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="survey" eType="#//Survey"
-        containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="responses" eType="#//Response"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="inboundMessage" upperBound="-1"
         eType="#//InboundMessage" containment="true" eKeys="#//Message/id"/>
@@ -112,8 +112,30 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Response">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="response" upperBound="-1"
-        eType="#//ResponseDetail" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="status"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="message" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="message"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="code"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="moreInfo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="moreInfo"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="ResponseRestriction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="acceptMultipleChannels"
@@ -206,7 +228,8 @@
     </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="channels" lowerBound="1"
         eType="#//Channel" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="to" lowerBound="1" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="shout" lowerBound="1" eType="#//Shout"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="stopOnError" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">

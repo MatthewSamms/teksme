@@ -31,6 +31,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.teksme.model.teks.OutboundMessage;
 import org.teksme.model.teks.Teks;
+import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
@@ -94,7 +95,7 @@ public class SendMessageServlet extends HttpServlet {
 			}
 
 			TeksPackageImpl.init();
-
+			// Retrieve the default factory singleton
 			// logger.info("XML Buff: " + xmlBuff.toString());
 			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(xmlBuff.toString());
 
