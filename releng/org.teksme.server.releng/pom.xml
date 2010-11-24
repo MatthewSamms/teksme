@@ -13,6 +13,7 @@
 		<osgi.os>macosx</osgi.os>
 		<osgi.ws>cocoa</osgi.ws>
 		<osgi.arch>x86</osgi.arch>
+		<maven.build.timestamp.format>yyyyMMdd-HHmm</maven.build.timestamp.format>
 	</properties>
 
 	<modules>
@@ -189,6 +190,20 @@
 					<publishArtifacts>true</publishArtifacts>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<artifactId>maven-site-plugin</artifactId>
+				<version>3.0-beta-2</version>
+				<executions>
+					<execution>
+						<id>attach-descriptor</id>
+						<goals>
+							<goal>attach-descriptor</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 		<extensions>
 			<extension>
@@ -212,21 +227,6 @@
 		</repository>
 	</repositories>
 
-	<pluginRepositories>
-		<!-- At the moment the TeksMe cloud is only available as snapshot -->
-		<pluginRepository>
-			<id>teksme-snapshots</id>
-			<url>/Users/fabianocruz/Documents/27-TeksMe/repository</url>
-			<layout>p2</layout>
-			<releases>
-				<enabled>false</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<!-- Enabling the use of FTP -->
 	<distributionManagement>
 		<repository>
@@ -234,5 +234,6 @@
 			<url>sftp://your/url</url>
 		</repository>
 	</distributionManagement>
+
 
 </project>

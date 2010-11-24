@@ -27,10 +27,10 @@ import org.teksme.model.TeksObject;
  * <ul>
  *   <li>{@link org.teksme.model.teks.Teks#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getOutboundMessageList <em>Outbound Message</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Teks#getResponse <em>Response</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getDeveloper <em>Developer</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getPoll <em>Poll</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getSurvey <em>Survey</em>}</li>
- *   <li>{@link org.teksme.model.teks.Teks#getResponses <em>Responses</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getInboundMessageList <em>Inbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}</li>
  * </ul>
@@ -122,6 +122,32 @@ public interface Teks extends TeksObject {
 	EList<OutboundMessage> getOutboundMessageList();
 
 	/**
+	 * Returns the value of the '<em><b>Response</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Response</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Response</em>' containment reference.
+	 * @see #setResponse(Response)
+	 * @see org.teksme.model.teks.TeksPackage#getTeks_Response()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	Response getResponse();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getResponse <em>Response</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Response</em>' containment reference.
+	 * @see #getResponse()
+	 * @generated
+	 */
+	void setResponse(Response value);
+
+	/**
 	 * Returns the value of the '<em><b>Developer</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -198,32 +224,6 @@ public interface Teks extends TeksObject {
 	 * @generated
 	 */
 	void setSurvey(Survey value);
-
-	/**
-	 * Returns the value of the '<em><b>Responses</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Responses</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Responses</em>' containment reference.
-	 * @see #setResponses(Response)
-	 * @see org.teksme.model.teks.TeksPackage#getTeks_Responses()
-	 * @model containment="true" resolveProxies="true"
-	 * @generated
-	 */
-	Response getResponses();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getResponses <em>Responses</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Responses</em>' containment reference.
-	 * @see #getResponses()
-	 * @generated
-	 */
-	void setResponses(Response value);
 
 	/**
 	 * <!-- begin-user-doc -->

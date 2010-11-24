@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="ASCII"?>
 <teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+  <accountSID>BAa4836gh31bb2d557bf9d5fd5f050ef93</accountSID>
   <outboundMessage>
-    <channels>
-      <channel>SMS</channel>
-      <channel>GTalk</channel>
-      <channel>Twitter</channel>
-    </channels>
-    <to>+12028129412</to>
-    <shout this="Hello from TeksMe Cloud!"/>
+    <to>+12024556883</to>
     <id>fbb6cb52-e6b3-49ae-994e-6f96fa7872d7</id>
     <from>+12028129412</from>
     <schedule>2010-11-03T12:53:32.379-0400</schedule>
     <callback>http://www.www.com</callback>
     <routing>BULKSMS</routing>
+    <channels>
+      <channel>SMS</channel>
+      <channel>GTalk</channel>
+      <channel>Twitter</channel>
+    </channels>
+    <shout this="Hello from TeksMe Cloud!"/>
   </outboundMessage>
-  <accountSID>BAa4836gh31bb2d557bf9d5fd5f050ef93</accountSID>
 </teks:Teks>
