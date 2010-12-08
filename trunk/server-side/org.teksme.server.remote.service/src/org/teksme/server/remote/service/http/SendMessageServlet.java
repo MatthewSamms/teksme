@@ -31,12 +31,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.teksme.model.teks.OutboundMessage;
 import org.teksme.model.teks.Teks;
-import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
 import org.teksme.server.common.utils.TeksModelHelper;
+import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
 @SuppressWarnings("serial")
@@ -49,6 +49,8 @@ public class SendMessageServlet extends HttpServlet {
 	private MessageQueueSender queueSender;
 
 	private IPersistenceManagerFactory persistenceMgrFactory;
+
+	private IAuth auth;
 
 	public SendMessageServlet() {
 		super();
@@ -76,6 +78,12 @@ public class SendMessageServlet extends HttpServlet {
 
 			logger.info("OK, just got a new message via HTTP!");
 
+			logger.info("Checking Security");
+			boolean allOk = auth.isValidToken(request);
+			if(!allOk)
+				throw new ServletException("Security not acceptable");
+			
+			
 			String inXMLString = null;
 			StringBuffer xmlBuff = new StringBuffer();
 
@@ -171,6 +179,10 @@ public class SendMessageServlet extends HttpServlet {
 
 	public void setPersistenceManagerFactory(IPersistenceManagerFactory persistenceMgrFactory) {
 		this.persistenceMgrFactory = persistenceMgrFactory;
+	}
+	
+	public void setAuthManager(IAuth auth){
+		this.auth = auth;
 	}
 
 }
