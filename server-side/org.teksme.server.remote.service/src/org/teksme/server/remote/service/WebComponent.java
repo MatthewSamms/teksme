@@ -22,6 +22,7 @@ import org.osgi.service.http.NamespaceException;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
+import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
 import org.teksme.server.remote.service.http.SendMessageServlet;
 
@@ -34,6 +35,7 @@ public class WebComponent {
 	private MessageQueueSender queueSender;
 	private HttpService httpService;
 	private IPersistenceManagerFactory persistenceMgrFactory;
+	private IAuth auth;
 
 	public void bind(HttpService httpService) {
 		this.httpService = httpService;
@@ -47,8 +49,16 @@ public class WebComponent {
 		this.persistenceMgrFactory = persistenceMgrFactory;
 	}
 
+	public void bind(IAuth auth) {
+		this.auth = auth;
+	}
+	
 	public void unbind(HttpService httpService) {
 		this.httpService = null;
+	}
+
+	public void unbind(IAuth auth) {
+		this.auth = null;
 	}
 
 	public void unbind(MessageQueueSender queueSender) {
@@ -66,6 +76,7 @@ public class WebComponent {
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
 			sendMsgServlet.setMessageQueueSenderService(queueSender);
 			sendMsgServlet.setPersistenceManagerFactory(persistenceMgrFactory);
+			sendMsgServlet.setAuthManager(auth);
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet, null, null);
 
 		} catch (PersistenceException e) {
