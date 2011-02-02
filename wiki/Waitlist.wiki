@@ -1,4 +1,4 @@
+#summary If you with to join the invitation waiting list, sign up here.
 #labels Featured
-If you with to join the invitation waiting list, sign up here.
 
 <wiki:gadget url="http://sites.google.com/site/fabianocrave/Waitlist.xml" width="760" height="1300" border="0" />
