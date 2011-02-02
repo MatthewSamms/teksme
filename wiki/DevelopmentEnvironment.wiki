@@ -67,9 +67,9 @@ The following instructions will guide you on how to install the subversive Eclip
 Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  Eclipse will now look for all of the software packages that are available.  This step can take considerable time and you may see Pending…. or some other such message for a while in the window. Be patient. 
 
 Now, you may want to expand the “Collaboration” entry.  When that expands, scroll down and select the “Subversive SVN Team Provider” entry, and follow the next menus to install this component into Eclipse.  When done, Eclipse will suggest that you restart the IDE, so please do that.
- 
-After restart, select Help….Check for updates  and follow the instructions to install the update to the SVN plugin.  When done, Eclipse will suggest that you restart the IDE, so do that once again.
- 
+
+After restart, select Help... Check for updates and follow the instructions to install the update to the SVN plugin.  When done, Eclipse will suggest that you restart the IDE, so do that once again.
+
 The very first time you use Eclipse’s SVN explorer, you may be asked to install a “SVN Connector”. In that case, choose the most recent (highest revision number) of the SVN Kit choices that are offered to you.  These are pure Java components, so they work with any operating system or platform. Restart Eclipse, and then retry whatever you were doing.
 
 You should be ready to access your repository. Follow the http://code.google.com/p/teksme/source/checkout site instructions carefully and get help if you need it.
