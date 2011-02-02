@@ -8,7 +8,7 @@ This document describes how to set up a development environment suitable for wor
 
 *Note*: this guideline is not intended for people who just want to use these tools: the target audience are those who want to contribute to their development by adding features, fixing bugs, etc. 
 
-We assume some familiarity with SVN concepts and some experience working with the Eclipse workbench. Although one could use Yoxos http://eclipsesource.com/en/yoxos and create a custom Eclipse download, we will just use Eclipse's update feature and install things as we go.
+We assume some familiarity with SVN concepts and some experience working with the Eclipse workbench. Although one could use [http://eclipsesource.com/en/yoxos Yoxos] and create a custom Eclipse download, we will just use Eclipse's update feature and install things as we go.
 
 = Software Environment =
 
@@ -19,7 +19,9 @@ In order to develop on  components, you need Eclipse and an installed Java Runti
 
 == Installing the Eclipse Modeling package ==
 
-The first thing you'll need is the Eclipse Helios (3.6.1)  for your platform. Here is a pointer (if you don't have it yet) to the download page: http://www.eclipse.org/downloads/ Grab the Eclipse Modeling Tools (includes Incubating components) flavor at the very bottom and unpack the archive into a convenient path.
+The first thing you'll need is the Eclipse Helios (3.6.1)  for your platform. Here is a pointer (if you don't have it yet) to the download page: http://www.eclipse.org/downloads/ 
+
+Grab the Eclipse Modeling Tools (includes Incubating components) flavor at the very bottom and unpack the archive into a convenient path.
 
 == Installing the Web, XML, and Java EE Development Tools == 
 
@@ -63,4 +65,3 @@ After restart, select Help….Check for updates  and follow the instructions to 
 The very first time you use Eclipse’s SVN explorer, you may be asked to install a “SVN Connector”. In that case, choose the most recent (highest revision number) of the SVN Kit choices that are offered to you.  These are pure Java components, so they work with any operating system or platform. Restart Eclipse, and then retry whatever you were doing.
 
 You should be ready to access your repository. Follow the http://code.google.com/p/teksme/source/checkout site instructions carefully and get help if you need it.
-
