@@ -28,7 +28,14 @@ Grab the Eclipse Modeling Tools (includes Incubating components) flavor at the v
 
 Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  
 
-Now, you may want to expand the “Web, XML, and Java EE Development” entry. Select the following tools: Eclipse Java EE Developer Tools, Eclipse Web Developer Tools, including HTML, CSS, XHTML, etc, Eclipse XML Editors and Tools, and Web Page Editor; hit “Next” twice and follow the next menus to install this component into Eclipse.  When done, Eclipse will suggest that you restart the IDE, so please do that.
+Now, you may want to expand the “Web, XML, and Java EE Development” entry. Select the following tools: 
+
+  * Eclipse Java EE Developer Tools
+  * Eclipse Web Developer Tools, including HTML, CSS, XHTML, etc
+  * Eclipse XML Editors and Tools
+  * Web Page Editor
+
+Please hit “Next” twice and follow the menus to install this component into Eclipse. When done, Eclipse will suggest that you restart the IDE, so please do that.
 
 == Installing EMF (Eclipse Modeling Framework) Teneo == 
 
