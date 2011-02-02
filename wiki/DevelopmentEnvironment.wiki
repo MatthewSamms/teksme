@@ -1,0 +1,66 @@
+#summary Setting up a development environment.
+
+<wiki:toc max_depth="1" />
+
+= Introduction =
+
+This document describes how to set up a development environment suitable for working on the TèksMe components. It is also an interesting setup for working on components that make use of the TèksMe cloud communication services. 
+
+*Note*: this guideline is not intended for people who just want to use these tools: the target audience are those who want to contribute to their development by adding features, fixing bugs, etc. 
+
+We assume some familiarity with SVN concepts and some experience working with the Eclipse workbench. Although one could use Yoxos http://eclipsesource.com/en/yoxos and create a custom Eclipse download, we will just use Eclipse's update feature and install things as we go.
+
+= Software Environment =
+
+In order to develop on  components, you need Eclipse and an installed Java Runtime. We recommend installing Java 6 (also known as Java 1.6).
+
+
+= Setting up the Eclipse Workspace =
+
+== Installing the Eclipse Modeling package ==
+
+The first thing you'll need is the Eclipse Helios (3.6.1)  for your platform. Here is a pointer (if you don't have it yet) to the download page: http://www.eclipse.org/downloads/ Grab the Eclipse Modeling Tools (includes Incubating components) flavor at the very bottom and unpack the archive into a convenient path.
+
+== Installing the Web, XML, and Java EE Development Tools == 
+
+Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  
+
+Now, you may want to expand the “Web, XML, and Java EE Development” entry. Select the following tools: Eclipse Java EE Developer Tools, Eclipse Web Developer Tools, including HTML, CSS, XHTML, etc, Eclipse XML Editors and Tools, and Web Page Editor; hit “Next” twice and follow the next menus to install this component into Eclipse.  When done, Eclipse will suggest that you restart the IDE, so please do that.
+
+== Installing EMF (Eclipse Modeling Framework) Teneo == 
+
+Teneo is a Model-Relational mapping and runtime database persistence solution for the Eclipse Modeling Framework (EMF). Teneo integrates EMF with both Hibernate and EclipseLink. The EMF - Hibernate integration supports persisting of basic EObjects, ELists with 1:n, n:m, one-way, two-way and contained relations. EMF Objects can be retrieved using HQL queries.
+
+To run Teneo you need the following software:
+
+  * EMF 2.5 (Teneo 1.1.`*`) or 2.6 (Teneo 1.2.`*`)
+  * Hibernate 3.6.0 and its dependencies
+  * Apache commons logging
+  * JDBC driver
+
+Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  
+
+Now, you may want to expand the “Modeling” entry. Click on “EMF Teneo Hibernate SDK” and you are ready to go. Follow the installations steps and  when done, Eclipse will suggest that you restart the IDE, so please do that.
+
+To download and install Teneo dependencies, use the following update site:
+
+  * Hibernate and other dependencies: http://www.elver.org/eclipse/update
+
+Go to the  “Install New Software…” option in “Help” menu of Eclipse, click on the “Add...” button and in the “Add Repository” popup put the information above. Please select all entries but HSQLDB. Follow the installations steps and  when done, Eclipse will AGAIN suggest that you restart the IDE, so please do that.
+
+== Installing the Subversive Plug-in == 
+
+Subversion support is needed simply because the sources are kept in an SVN repository. Eclipse does not support SVN out of the box; a plug-in is required to make it work. Details on how to use SVN with Eclipse can be found on the Internet; here we will merely go trough the installation process. 
+
+The following instructions will guide you on how to install the subversive Eclipse plug-in http://www.eclipse.org/subversive/ (Recommended) that allows Eclipse to use SVN.  
+
+Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  Eclipse will now look for all of the software packages that are available.  This step can take considerable time and you may see Pending…. or some other such message for a while in the window. Be patient. 
+
+Now, you may want to expand the “Collaboration” entry.  When that expands, scroll down and select the “Subversive SVN Team Provider” entry, and follow the next menus to install this component into Eclipse.  When done, Eclipse will suggest that you restart the IDE, so please do that.
+ 
+After restart, select Help….Check for updates  and follow the instructions to install the update to the SVN plugin.  When done, Eclipse will suggest that you restart the IDE, so do that once again.
+ 
+The very first time you use Eclipse’s SVN explorer, you may be asked to install a “SVN Connector”. In that case, choose the most recent (highest revision number) of the SVN Kit choices that are offered to you.  These are pure Java components, so they work with any operating system or platform. Restart Eclipse, and then retry whatever you were doing.
+
+You should be ready to access your repository. Follow the http://code.google.com/p/teksme/source/checkout site instructions carefully and get help if you need it.
+
