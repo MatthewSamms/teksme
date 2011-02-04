@@ -13,14 +13,14 @@ We assume some familiarity with SVN concepts and some experience working with th
 
 = Software Environment =
 
-In order to develop on  components, you need Eclipse and an installed Java Runtime. We recommend installing Java 6 (also known as Java 1.6).
+In order to develop on components, you need Eclipse and an installed Java Runtime. We recommend installing Java 6 (also known as Java 1.6).
 
 
 = Setting up the Eclipse Workspace =
 
 == Installing the Eclipse Modeling package ==
 
-The first thing you'll need is the Eclipse Helios (3.6.1)  for your platform. Here is a pointer (if you don't have it yet) to the download page: http://www.eclipse.org/downloads/ 
+The first thing you'll need is the Eclipse Helios (3.6.1) for your platform. Here is a pointer (if you don't have it yet) to the download page: http://www.eclipse.org/downloads/ 
 
 Grab the Eclipse Modeling Tools (includes Incubating components) flavor at the very bottom and unpack the archive into a convenient path.
 
@@ -35,7 +35,7 @@ Now, you may want to expand the “Web, XML, and Java EE Development” entry. S
   * Eclipse XML Editors and Tools
   * Web Page Editor
 
-Please hit “Next” twice and follow the menus to install this component into Eclipse. When done, Eclipse will suggest that you restart the IDE, so please do that.
+Please hit “Next” twice and follow the menus to install this component into Eclipse. When done, Eclipse will suggest that you restart the IDE, so please go-ahead and do it.
 
 == Installing EMF (Eclipse Modeling Framework) Teneo == 
 
@@ -50,13 +50,13 @@ To run Teneo you need the following software:
 
 Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  
 
-Now, you may want to expand the “Modeling” entry. Click on “EMF Teneo Hibernate SDK” and you are ready to go. Follow the installations steps and  when done, Eclipse will suggest that you restart the IDE, so please do that.
+Now, you may want to expand the “Modeling” entry. Click on “EMF Teneo Hibernate SDK” and you are ready to go. Follow the installations steps and when done, Eclipse will suggest that you restart the IDE, so please do that.
 
 To download and install Teneo dependencies, use the following update site:
 
   * Hibernate and other dependencies: http://www.elver.org/eclipse/update
 
-Go to the  “Install New Software…” option in “Help” menu of Eclipse, click on the “Add...” button and in the “Add Repository” popup put the information above. Please select all entries but HSQLDB. Follow the installations steps and  when done, Eclipse will AGAIN suggest that you restart the IDE, so please do that.
+Go to the  “Install New Software…” option in “Help” menu of Eclipse, click on the “Add...” button and in the “Add Repository” popup put the information above. Please select all entries but HSQLDB. Follow the installations steps and when done, Eclipse will AGAIN suggest that you restart the IDE, so please do that.
 
 == Installing the Subversive Plug-in == 
 
@@ -73,3 +73,34 @@ After restart, select Help... Check for updates and follow the instructions to i
 The very first time you use Eclipse’s SVN explorer, you may be asked to install a “SVN Connector”. In that case, choose the most recent (highest revision number) of the SVN Kit choices that are offered to you.  These are pure Java components, so they work with any operating system or platform. Restart Eclipse, and then retry whatever you were doing.
 
 You should be ready to access your repository. Follow the http://code.google.com/p/teksme/source/checkout site instructions carefully and get help if you need it.
+
+== Installing Apache Maven plug-in ==
+
+Go to “Eclipse Marketplace…” option in “Help” menu of Eclipse . The first time you open the Eclipse Marketplace, you will be asked to select a Marketplace. Select the Eclipse Marketplace.
+
+Maven Integration for Eclipse is separated into two components: the Core of Maven Integration for Eclipse and an optional package of extra-unsupported components. To install the core component of Maven Integration for Eclipse, open the Eclipse Marketplace, select the Search tab, and search for "Maven Integration”. Click on the Install button to the right of “Maven Integration for Eclipse”. Select the required component "Maven Integration for Eclipse (Required)", and follow the next menus to install this component into Eclipse. 
+
+== Installing Maven 2 Eclipse Tycho extension ==
+
+Tycho is focused on a Maven-centric, manifest-first approach to building Eclipse plug-ins, features, update sites, RCP applications and OSGi bundles. Tycho is a set of Maven plugins and extensions for building Eclipse plugins and OSGi bundles with Maven.
+
+This Eclipse plug-in lets you import Tycho and maven-bundle-plugin projects as Maven  projects into eclipse workspace. For maven-bundle-plugin projects it  will automatically generate bundle manifest during import. 
+
+Projects get both PDE and Maven natures/builders configured, so you can  mix and match Tycho and maven-bundle-plugin as part of the same  workspace. You can also enable Maven-specific behavior, like code  generation, for Tycho projects. 
+
+To install, just go to “Install New Software…” option in “Help” menu of Eclipse and click on the “Add...” button and in the “Add Repository” popup put the following information:  
+M2E Tycho Project Configurations / https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-tycho/0.4.4/N/0.4.4.201102021112
+
+Follow the installations steps and when done, Eclipse will suggest that you restart the IDE, so please do that.
+
+
+= More information =
+
+  * Maven Integration (M2E) http://eclipse.org/m2e
+  * Apache Maven http://maven.apache.org/
+  * Tycho - Building Eclipse plug-ins with maven http://www.eclipse.org/tycho/
+  * Subversive - SVN Team Provider http://www.eclipse.org/subversive/
+
+
+
+
