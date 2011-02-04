@@ -1,7 +1,7 @@
 #summary Setting up a development environment.
 #labels Featured
 
-<wiki:toc max_depth="1" />
+<wiki:toc max_depth="2" />
 
 = Introduction =
 
@@ -100,7 +100,5 @@ Follow the installations steps and when done, Eclipse will suggest that you rest
   * Apache Maven http://maven.apache.org/
   * Tycho - Building Eclipse plug-ins with maven http://www.eclipse.org/tycho/
   * Subversive - SVN Team Provider http://www.eclipse.org/subversive/
-
-
 
 
