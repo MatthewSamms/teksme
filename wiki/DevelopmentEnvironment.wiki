@@ -111,7 +111,7 @@ Follow the installations steps and when done, Eclipse will suggest that you rest
 
 == Installing Apache Commons CLI ==
 
-The Commons CLI library is distributed as a separate plug-in “org.apache.commons.cli_1.2.0.*.jar” in the SDK distribution. To install it, go to the  http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/ , download the plugin jar and copy into the “dropins” folder located within the eclipse folder. Restart Eclipse and you are ready to go. 
+The Commons CLI library is distributed as a separate plug-in “org.apache.commons.cli_1.2.0.`*`.jar” in the SDK distribution. To install it, go to the  http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/ , download the plugin jar and copy into the “dropins” folder located within the eclipse folder. Restart Eclipse and you are ready to go. 
 
 The new dropins folder is where you can drop in extra plug-ins if you don't want to use the p2 user interface. Fore more information: http://wiki.eclipse.org/Equinox/p2/Getting_Started. 
 
