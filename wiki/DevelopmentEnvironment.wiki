@@ -17,7 +17,7 @@ In order to develop on components, you need Eclipse and an installed Java Runtim
 
 = Install Maven 3 =
 
-[maven.apache.org Download Maven 3] from Apache, unpack it and put the bin folder on your path. Check the installation by typing "mvn –version" in a shell. You should something like this:
+[http://maven.apache.org Download Maven 3] from Apache, unpack it and put the bin folder on your path. Check the installation by typing "mvn –version" in a shell. You should something like this:
 
 {{{
 
