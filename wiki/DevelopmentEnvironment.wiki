@@ -15,6 +15,20 @@ We assume some familiarity with SVN concepts and some experience working with th
 
 In order to develop on components, you need Eclipse and an installed Java Runtime. We recommend installing Java 6 (also known as Java 1.6).
 
+= Install Maven 3 =
+
+[Download Maven 3 maven.apache.org] from Apache, unpack it and put the bin folder on your path. Check the installation by typing "mvn –version" in a shell. You should something like this:
+
+{{{
+
+mvn --version
+Apache Maven 3.0 (r1004208; 2010-10-04 07:50:56-0400)
+Java version: 1.6.0_20
+Java home: /System/Library/Frameworks/JavaVM.framework/Versions/1.6.0/Home
+Default locale: en_US, platform encoding: MacRoman
+OS name: "mac os x" version: "10.6.4" arch: "x86_64" Family: "mac"
+
+}}}
 
 = Setting up the Eclipse Workspace =
 
@@ -23,6 +37,8 @@ In order to develop on components, you need Eclipse and an installed Java Runtim
 The first thing you'll need is the Eclipse Helios (3.6.1) for your platform. Here is a pointer (if you don't have it yet) to the download page: http://www.eclipse.org/downloads/ 
 
 Grab the Eclipse Modeling Tools (includes Incubating components) flavor at the very bottom and unpack the archive into a convenient path.
+
+To keep your Eclipse up-to-date, you can update plugins by software updater (help-->software updates...)
 
 == Installing the Web, XML, and Java EE Development Tools == 
 
@@ -93,6 +109,12 @@ M2E Tycho Project Configurations / https://repository.sonatype.org/content/repos
 
 Follow the installations steps and when done, Eclipse will suggest that you restart the IDE, so please do that.
 
+== Installing Apache Commons CLI ==
+
+The Commons CLI library is distributed as a separate plug-in “org.apache.commons.cli_1.2.0.*.jar” in the SDK distribution. To install it, go to the  http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/ , download the plugin jar and copy into the “dropins” folder located within the eclipse folder. Restart Eclipse and you are ready to go. 
+
+The new dropins folder is where you can drop in extra plug-ins if you don't want to use the p2 user interface. Fore more information: http://wiki.eclipse.org/Equinox/p2/Getting_Started. 
+
 
 = More information =
 
@@ -100,5 +122,3 @@ Follow the installations steps and when done, Eclipse will suggest that you rest
   * Apache Maven http://maven.apache.org/
   * Tycho - Building Eclipse plug-ins with maven http://www.eclipse.org/tycho/
   * Subversive - SVN Team Provider http://www.eclipse.org/subversive/
-
-
