@@ -1,7 +1,7 @@
 #summary Setting up a development environment.
 #labels Featured
 
-<wiki:toc max_depth="2" />
+<wiki:toc max_depth="3" />
 
 = Introduction =
 
@@ -17,7 +17,7 @@ In order to develop on components, you need Eclipse and an installed Java Runtim
 
 = Install Maven 3 =
 
-[http://maven.apache.org Download Maven 3] from Apache, unpack it and put the bin folder on your path. Check the installation by typing "mvn –version" in a shell. You should something like this:
+[http://maven.apache.org Download Maven 3] from Apache, unpack it and put the bin folder on your path. Check the installation by typing "mvn -version” in a shell. You should something like this:
 
 {{{
 
@@ -49,13 +49,26 @@ Now, you may want to expand the “Web, XML, and Java EE Development” entry. S
   * Eclipse Java EE Developer Tools
   * Eclipse Web Developer Tools, including HTML, CSS, XHTML, etc
   * Eclipse XML Editors and Tools
+  * JavaServer Faces Tools (JSF) Project
   * Web Page Editor
+
+Also, please expand the “  EclipseRT Target Platform Components” entry and select the following tools: 
+
+  * Equinox Target Components
+  * Jetty Target Components
+
+And expanding the “General Purpose Tools”, select the following:	 
+  * Jetty OSGi tooling for PDE
 
 Please hit “Next” twice and follow the menus to install this component into Eclipse. When done, Eclipse will suggest that you restart the IDE, so please go-ahead and do it.
 
 == Installing EMF (Eclipse Modeling Framework) Teneo == 
 
 Teneo is a Model-Relational mapping and runtime database persistence solution for the Eclipse Modeling Framework (EMF). Teneo integrates EMF with both Hibernate and EclipseLink. The EMF - Hibernate integration supports persisting of basic EObjects, ELists with 1:n, n:m, one-way, two-way and contained relations. EMF Objects can be retrieved using HQL queries.
+
+Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  
+
+Now, you may want to expand the “Modeling” entry. Click on “EMF Teneo Hibernate SDK” and you are ready to go. Follow the installations steps and when done, Eclipse will suggest that you restart the IDE, so please do that.
 
 To run Teneo you need the following software:
 
@@ -64,11 +77,7 @@ To run Teneo you need the following software:
   * Apache commons logging
   * JDBC driver
 
-Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  
-
-Now, you may want to expand the “Modeling” entry. Click on “EMF Teneo Hibernate SDK” and you are ready to go. Follow the installations steps and when done, Eclipse will suggest that you restart the IDE, so please do that.
-
-To download and install Teneo dependencies, use the following update site:
+To download and install these dependencies, use the following update site:
 
   * Hibernate and other dependencies: http://www.elver.org/eclipse/update
 
@@ -78,7 +87,7 @@ Go to the  “Install New Software…” option in “Help” menu of Eclipse, c
 
 Subversion support is needed simply because the sources are kept in an SVN repository. Eclipse does not support SVN out of the box; a plug-in is required to make it work. Details on how to use SVN with Eclipse can be found on the Internet; here we will merely go trough the installation process. 
 
-The following instructions will guide you on how to install the subversive Eclipse plug-in http://www.eclipse.org/subversive/ (Recommended) that allows Eclipse to use SVN.  
+The following instructions will guide you on how to install the [http://www.eclipse.org/subversive/ subversive Eclipse plug-in] that allows Eclipse to use SVN.  
 
 Just go to “Install New Software…” option in “Help” menu of Eclipse and in the drop down menu, drag down to the Helios line, which points to the site containing popular software installs for this (Helios) version of Eclipse.  Eclipse will now look for all of the software packages that are available.  This step can take considerable time and you may see Pending…. or some other such message for a while in the window. Be patient. 
 
@@ -105,15 +114,62 @@ This Eclipse plug-in lets you import Tycho and maven-bundle-plugin projects as M
 Projects get both PDE and Maven natures/builders configured, so you can  mix and match Tycho and maven-bundle-plugin as part of the same  workspace. You can also enable Maven-specific behavior, like code  generation, for Tycho projects. 
 
 To install, just go to “Install New Software…” option in “Help” menu of Eclipse and click on the “Add...” button and in the “Add Repository” popup put the following information:  
-M2E Tycho Project Configurations / https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-tycho/0.4.4/N/0.4.4.201102021112
+
+  * Name: M2E Tycho Project Configurations and Location: https://repository.sonatype.org/content/repositories/forge-sites/m2eclipse-tycho/0.4.4/N/0.4.4.201102021112
 
 Follow the installations steps and when done, Eclipse will suggest that you restart the IDE, so please do that.
 
-== Installing Apache Commons CLI ==
+== Installing Dependencies using Eclipse Orbit ==
 
-The Commons CLI library is distributed as a separate plug-in “org.apache.commons.cli_1.2.0.`*`.jar” in the SDK distribution. To install it, go to the  http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/ , download the plugin jar and copy into the “dropins” folder located within the eclipse folder. Restart Eclipse and you are ready to go. 
+This project provide a repository of bundled versions of third party libraries that are approved for use in one or more Eclipse projects. The repository will maintain old versions of such libraries to facilitate rebuilding historical output. 
 
-The new dropins folder is where you can drop in extra plug-ins if you don't want to use the p2 user interface. Fore more information: http://wiki.eclipse.org/Equinox/p2/Getting_Started. 
+=== Apache Commons and Javax.`*` dependencies ===
+
+To install it, go to the “Install New Software…” option in “Help” menu of Eclipse and click on the “Add...” button and in the “Add Repository” popup put the following information:  
+ 
+  * Name: Orbit repository and Location: http://download.eclipse.org/tools/orbit/downloads/drops/S20110124210048/repository
+
+Select the following entries from the list:
+
+  * Java XML Streaming API
+  * Java Server Pages Standard Tag Library API Bundle	
+  * Java Persistence API 
+  * geronimo Javax Transaction API 1.1.1 spec
+  * Apache Commons Collections 
+  * Apache Commons Codec Plug-in
+
+Follow the installations steps and when done, Eclipse will suggest that you restart the IDE, so please do that.
+
+= Installing RabbitMQ =
+
+RabbitMQ provides robust messaging for applications. It is easy to use, fit for purpose at cloud scale and supported on all major operating systems and developer platforms.
+
+== Mac OS X with `MacPorts` ==
+
+Users of Mac OS X who do not use MacPorts can use the Generic Unix installation instructions instead. You can find it here: http://www.rabbitmq.com/install.html#generic-unix
+
+A portfile for the RabbitMQ server is included in MacPorts. From the MacPorts home page:
+
+  * The MacPorts Project is an open-source community initiative to design an easy-to-use system for compiling, installing, and upgrading either command-line, X11 or Aqua based open-source software on the Mac OS X operating system.
+
+RabbitMQ maintains a dedicated MacPorts repository, which you should use to install the latest RabbitMQ server version via MacPorts, as officially released MacPorts packaging may not always contain the lastest released version of RabbitMQ.
+(NB It can take a very long time to install other macport updates - see {{{man port}}} for options).
+
+=== Install the Server ===
+
+Installation of the version of the RabbitMQ server distributed with MacPorts is as simple as ({{{sudo port sync}}} followed by)
+
+{{{
+sudo port install rabbitmq-server
+}}}
+
+=== Run RabbitMQ Server ===
+
+To start the server, you can either use launchctl (see the instructions emitted during the {{{sudo port install}}} step) or you can start it from the command line with {{{sudo rabbitmq-server -detached}}}.
+
+The {{{rabbitmq-server}}}, {{{rabbitmqctl}}}, and other RabbitMQ-related scripts on the path automatically (through sudo) run in the context of the rabbitmq user, so that the Erlang cookie can be read from (sudo) {{{$MACPORTS_PREFIX/var/lib/rabbitmq/.erlang.cookie}}}.
+
+See the General Linux installation section for further information.
 
 
 = More information =
@@ -122,3 +178,4 @@ The new dropins folder is where you can drop in extra plug-ins if you don't want
   * Apache Maven http://maven.apache.org/
   * Tycho - Building Eclipse plug-ins with maven http://www.eclipse.org/tycho/
   * Subversive - SVN Team Provider http://www.eclipse.org/subversive/
+  * RabbitMQ http://www.rabbitmq.com/
