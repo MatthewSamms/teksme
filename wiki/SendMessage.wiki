@@ -1,4 +1,4 @@
-#summary TèksML `<`outboundMessage`>` verb.
+#summary TèksML <outboundMessage> verb.
 #labels Featured
 
 == TèksML send a message: `<`outboundMessage`>` == 
