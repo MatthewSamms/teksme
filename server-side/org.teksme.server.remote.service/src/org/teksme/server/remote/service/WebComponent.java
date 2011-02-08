@@ -19,9 +19,8 @@ import javax.servlet.ServletException;
 
 import org.osgi.service.http.HttpService;
 import org.osgi.service.http.NamespaceException;
-import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
-import org.teksme.server.common.persistence.PersistenceException;
+import org.teksme.server.common.validator.Validator;
 import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
 import org.teksme.server.remote.service.http.SendMessageServlet;
@@ -35,7 +34,8 @@ public class WebComponent {
 	private MessageQueueSender queueSender;
 	private HttpService httpService;
 	private IPersistenceManagerFactory persistenceMgrFactory;
-	private IAuth auth;
+	private Validator requestValidation;
+	private IAuth authorization;
 
 	public void bind(HttpService httpService) {
 		this.httpService = httpService;
@@ -45,20 +45,24 @@ public class WebComponent {
 		this.queueSender = queueSender;
 	}
 
+	public void bind(Validator requestValidation) {
+		this.requestValidation = requestValidation;
+	}
+
 	public void bind(IPersistenceManagerFactory persistenceMgrFactory) {
 		this.persistenceMgrFactory = persistenceMgrFactory;
 	}
 
-	public void bind(IAuth auth) {
-		this.auth = auth;
-	}
-	
-	public void unbind(HttpService httpService) {
-		this.httpService = null;
+	public void bind(IAuth authorization) {
+		this.authorization = authorization;
 	}
 
-	public void unbind(IAuth auth) {
-		this.auth = null;
+	public void unbind(Validator requestValidation) {
+		this.requestValidation = null;
+	}
+
+	public void unbind(HttpService httpService) {
+		this.httpService = null;
 	}
 
 	public void unbind(MessageQueueSender queueSender) {
@@ -69,19 +73,20 @@ public class WebComponent {
 		this.persistenceMgrFactory = null;
 	}
 
+	public void unbind(IAuth authorization) {
+		this.authorization = null;
+	}
+
 	public void activate() {
 		try {
-			IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
 			logger.info("Starting up sevlet at " + SEND_MSG_SERVLET_ALIAS);
 			SendMessageServlet sendMsgServlet = new SendMessageServlet();
 			sendMsgServlet.setMessageQueueSenderService(queueSender);
 			sendMsgServlet.setPersistenceManagerFactory(persistenceMgrFactory);
-			sendMsgServlet.setAuthManager(auth);
+			sendMsgServlet.setRequestValidation(requestValidation);
+			sendMsgServlet.setRequestAuthorization(authorization);
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet, null, null);
 
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (NamespaceException e) {

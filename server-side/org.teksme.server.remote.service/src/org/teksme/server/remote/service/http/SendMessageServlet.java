@@ -13,13 +13,11 @@
 
 package org.teksme.server.remote.service.http;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
-import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -30,12 +28,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.Response;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
 import org.teksme.server.common.utils.TeksModelHelper;
+import org.teksme.server.common.validator.Screening;
+import org.teksme.server.common.validator.Validator;
 import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
@@ -50,7 +51,9 @@ public class SendMessageServlet extends HttpServlet {
 
 	private IPersistenceManagerFactory persistenceMgrFactory;
 
-	private IAuth auth;
+	private IAuth authorization;
+
+	private Validator requestValidation;
 
 	public SendMessageServlet() {
 		super();
@@ -70,107 +73,77 @@ public class SendMessageServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		try {
-
-			final ServletInputStream in = request.getInputStream();
-			final BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+		if (authorization.isValidToken(request)) {
 			final ServletOutputStream outStream = response.getOutputStream();
+			final ServletInputStream in = request.getInputStream();
 
-			logger.info("OK, just got a new message via HTTP!");
+			OutputStreamWriter writer = new OutputStreamWriter(outStream);
 
-			logger.info("Checking Security");
-			boolean allOk = auth.isValidToken(request);
-			if(!allOk)
-				throw new ServletException("Security not acceptable");
-			
-			
-			String inXMLString = null;
-			StringBuffer xmlBuff = new StringBuffer();
-
-			boolean gotNessage = false;
-			while ((inXMLString = reader.readLine()) != null) {
-				xmlBuff.append(inXMLString);
-				gotNessage = true;
-			}
-			reader.close();
-
-			if (!gotNessage) {
-				logger.log(Level.WARNING, "Got no message!");
-				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-				response.getWriter().print(message);
-				response.getWriter().close();
-				return;
-			}
-
-			TeksPackageImpl.init();
-			// Retrieve the default factory singleton
-			// logger.info("XML Buff: " + xmlBuff.toString());
-			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(xmlBuff.toString());
-
-			OutboundMessage outMsg = teksModel.getOutboundMessage(0);
-			outMsg.setId(UUID.randomUUID().toString());
-
-			logger.info(outMsg.getShout().getThis());
-			logger.info("Pls send this message to " + outMsg.getRouting().getLiteral() + " gateway.");
-
-			queueSender.publishMessage(outMsg);
-
-			outStream.println("getContentLength: " + request.getContentLength());
-			outStream.println("getContentType: " + request.getContentType());
-
-			IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
-			persistenceMgr.makePersistent(teksModel);
-
-			// set the response code and write the response data
-			response.setStatus(HttpServletResponse.SC_OK);
-			OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
-
-			writer.write(xmlBuff.toString());
-			writer.flush();
-			writer.close();
-
-		} catch (PersistenceException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
 			try {
-				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-				response.getWriter().print(e.getMessage());
-				response.getWriter().close();
-			} catch (IOException ioe) {
+
+				logger.info("OK, just got a new request via HTTP!");
+
+				String postData = HttpUtils.INSTANCE.parsePostData(request.getContentLength(), in);
+
+				Map<Object, Object> options = new HashMap<Object, Object>();
+				options.put(Validator.CONTENT_TYPE, request.getContentType());
+				options.put(Validator.ENCODING, request.getCharacterEncoding());
+				options.put(Validator.HTTP_POST_DATA, postData);
+
+				Screening diagnostic = requestValidation.validate(request, options);
+
+				if (!diagnostic.getChildren().isEmpty()) {
+					Response teksResponse = requestValidation.handleResponse(diagnostic);
+					String strResp = requestValidation.getXMLResponse(teksResponse);
+
+					// set the response code and write the response data
+					response.setStatus(teksResponse.getError().getStatus());
+					response.setContentType("text/xml; charset=ISO-8859-1");
+
+					writer.write(strResp);
+					writer.flush();
+					writer.close();
+
+					return;
+
+				} else {
+
+					logger.info("The request message was successfully validated!");
+
+					TeksPackageImpl.init();
+					// Retrieve the default factory singleton
+					Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
+
+					OutboundMessage outMsg = teksModel.getOutboundMessage(0);
+					outMsg.setId(UUID.randomUUID().toString());
+
+					logger.info(outMsg.getShout().getThis());
+					logger.info("Pls send this message to " + outMsg.getRouting().getLiteral() + " gateway.");
+
+					// queueSender.publishMessage(outMsg);
+
+					IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
+					persistenceMgr.makePersistent(teksModel);
+
+					response.setStatus(HttpServletResponse.SC_OK);
+					outStream.println("getContentLength: " + request.getContentLength());
+					outStream.println("getContentType: " + request.getContentType());
+				}
+
+			} catch (PersistenceException e) {
+				e.printStackTrace();
+			} catch (IOException e) {
+				try {
+					response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+					writer.write(e.getMessage());
+					writer.flush();
+					writer.close();
+
+				} catch (IOException ioe) {
+				}
 			}
-		}
 
-	}
-
-	String ExpandHttpHeaders(List<HttpHeader> httpHeaderList) {
-		StringBuffer buffer = new StringBuffer();
-		for (HttpHeader h : httpHeaderList) {
-			buffer.append(h.key);
-			buffer.append("=");
-			buffer.append(h.value);
-			buffer.append("&");
-		}
-		return buffer.toString();
-	}
-
-	class HttpHeader {
-		public String key;
-
-		public String value;
-
-		public boolean unicode;
-
-		public HttpHeader() {
-			this.key = "";
-			this.value = "";
-			this.unicode = false;
-		}
-
-		public HttpHeader(String myKey, String myValue, boolean myUnicode) {
-			this.key = myKey;
-			this.value = myValue;
-			this.unicode = myUnicode;
-		}
+		}// OAuth
 	}
 
 	public void setMessageQueueSenderService(final MessageQueueSender queueSender) {
@@ -180,9 +153,13 @@ public class SendMessageServlet extends HttpServlet {
 	public void setPersistenceManagerFactory(IPersistenceManagerFactory persistenceMgrFactory) {
 		this.persistenceMgrFactory = persistenceMgrFactory;
 	}
-	
-	public void setAuthManager(IAuth auth){
-		this.auth = auth;
+
+	public void setRequestValidation(Validator requestValidation) {
+		this.requestValidation = requestValidation;
+	}
+
+	public void setRequestAuthorization(IAuth authorization) {
+		this.authorization = authorization;
 	}
 
 }

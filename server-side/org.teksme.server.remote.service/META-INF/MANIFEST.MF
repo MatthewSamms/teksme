@@ -11,11 +11,11 @@ Import-Package: javax.servlet,
  org.teksme.model.teks,
  org.teksme.server.common.persistence,
  org.teksme.server.common.utils,
- org.teksme.server.identity.service,
  org.teksme.server.provider.sms.service
 Require-Bundle: org.teksme.model;bundle-version="0.5.0",
  org.teksme.server.common;bundle-version="0.5.0",
- org.teksme.server.queue.sender;bundle-version="0.5.0"
+ org.teksme.server.queue.sender;bundle-version="0.5.0",
+ org.teksme.server.identity;bundle-version="0.5.0"
 Service-Component: OSGI-INF/web-component.xml
 Bundle-Vendor: TeksMe Inc.
 Export-Package: org.teksme.server.remote.service,
