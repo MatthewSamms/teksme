@@ -18,35 +18,50 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 
 import org.junit.Test;
 import org.teksme.server.identity.util.BASE64Encoder;
 import org.teksme.server.identity.util.UrlBuilder;
 
-public class AuthTest{
+public class AuthTest {
 
 	@Test
 	public void testAuthAccessToken() {
+		HttpURLConnection httpConn = null;
 		try {
 
 			BASE64Encoder encoder = new BASE64Encoder();
-	        String userId = "teksme";
-			String password="test";
-			
-			String encodedCredential = encoder.encode((userId  + ":" + password).getBytes());
+			String email = "fabianoc@acm.org";
+			String password = "teksme";
+
+			String fmt = "EEE, dd MMM yyyy HH:mm:ss ";
+			SimpleDateFormat df = new SimpleDateFormat(fmt, Locale.US);
+			df.setTimeZone(TimeZone.getTimeZone("GMT"));
+
+			String date = df.format(new Date()) + "GMT";
+
+			String encodedCredential = encoder.encode((email + ":" + password)
+					.getBytes());
 
 			UrlBuilder builderUrl = new UrlBuilder("http://localhost:8080/auth");
 			builderUrl.addParameter("oauth_consumer_key", "noCallbackConsumer");
-			
-			URL urlLogin = builderUrl.toUrl();
-			
-			HttpURLConnection connection = (HttpURLConnection)urlLogin.openConnection();
-	        connection.setRequestMethod("POST");
-	        connection.addRequestProperty("Authorization", "BASIC " + encodedCredential);
 
-			BufferedReader rd =  new BufferedReader(new InputStreamReader(connection.getInputStream()));
+			URL urlLogin = builderUrl.toUrl();
+
+			httpConn = (HttpURLConnection) urlLogin.openConnection();
+			httpConn.setRequestMethod("POST");
+			httpConn.addRequestProperty("Authorization", "BASIC "
+					+ encodedCredential);
+			httpConn.setRequestProperty("Date", date);
+
+			BufferedReader rd = new BufferedReader(new InputStreamReader(
+					httpConn.getInputStream()));
 			String line = rd.readLine();
-			System.out.println("Return after login authentication: "+line);			
+			System.out.println("Return after login authentication: " + line);
 
 		} catch (IOException e) {
 			AssertionError ae;
@@ -57,8 +72,10 @@ public class AuthTest{
 				ae.initCause(e);
 			}
 			throw ae;
+		} finally {
+			if (httpConn != null)
+				httpConn.disconnect();
 		}
-
 
 	}
 }
