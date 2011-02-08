@@ -15,7 +15,7 @@ public class CreateErrorResponseTest extends TeksModelTest {
 	private static final String MODEL_FILE = "output/teks_error_response.xml";
 
 	@Test
-	public void createOutboundMsg() {
+	public void createOutboundMsg() throws IOException {
 
 		TeksPackageImpl.init();
 		// Retrieve the default factory singleton
@@ -25,11 +25,15 @@ public class CreateErrorResponseTest extends TeksModelTest {
 
 		Response resp = factory.createResponse();
 
-		resp.setStatus(400);
-		resp.setCode(10003);
-		resp.setMessage("Please give us the full URL, including the 'http://' or 'https://'");
-		resp.setMoreInfo("http://api.teks.me/errors/10003");
+		org.teksme.model.teks.Error error = factory.createError();
 
+		error.setStatus(400);
+		error.setCode(10003);
+		error.setMessage("Please give us the full URL, including the 'http://' or 'https://'");
+		error.setMoreInfo("http://api.teks.me/errors/10003");
+		
+		resp.setError(error);
+		
 		teksModel.setResponse(resp);
 
 		Resource resource = resourceSet.createResource(URI
@@ -38,6 +42,7 @@ public class CreateErrorResponseTest extends TeksModelTest {
 		resource.getContents().add(teksModel);
 		// serialize resource Ð you can specify also serialization
 		// options which defined on org.eclipse.emf.ecore.xmi.XMIResource
+
 		try {
 			resource.save(null);
 		} catch (IOException e) {

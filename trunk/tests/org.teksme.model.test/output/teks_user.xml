@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="ASCII"?>
-<teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
-  <account userName="patadams" firstName="Pat" lastName="Adams" email="pat@painting.com" country="USA" yearOfBirth="1928" gender="male"/>
-</teks:Teks>
+<teks:User xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+  <firstName>Fabiano</firstName>
+  <lastName>Cruz</lastName>
+  <email>fabianoc@acm.org</email>
+  <password>991ae9e4e414e22e133c286fb51bc3bbb5194673</password>
+  <country>USA</country>
+  <yearOfBirth>1979</yearOfBirth>
+  <gender>male</gender>
+</teks:User>

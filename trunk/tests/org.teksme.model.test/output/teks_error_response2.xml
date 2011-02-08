@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ASCII"?>
+<teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+  <response>
+    <status>409</status>
+    <message>The XML element 'shout' must be followed by either attribute specifications, > or />.</message>
+    <code>4098</code>
+    <moreInfo>http://api.teks.me/errors/4098</moreInfo>
+  </response>
+</teks:Teks>
