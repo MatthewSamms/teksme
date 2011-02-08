@@ -13,6 +13,9 @@
 
 package org.teksme.server.identity.service.impl;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import javax.servlet.http.HttpServletRequest;
 
 import net.oauth.OAuthAccessor;
@@ -29,18 +32,16 @@ import org.teksme.server.identity.service.IAuth;
 /**
  * 
  * @since 0.5
- *
+ * 
  */
 public class AuthImpl implements IAuth {
 
 	private IPersistenceManager pm;
 	private IPersistenceManagerFactory persistenceMgrFactory;
-	
-	
+
 	public void bind(IPersistenceManagerFactory persistenceMgrFactory) {
 		this.persistenceMgrFactory = persistenceMgrFactory;
 	}
-
 
 	public void unbind(IPersistenceManagerFactory persistenceMgrFactory) {
 		this.persistenceMgrFactory = null;
@@ -55,14 +56,13 @@ public class AuthImpl implements IAuth {
 		}
 	}
 
-	
 	public boolean isValidToken(HttpServletRequest request) {
 		try {
 			OAuthMessage requestMessage = OAuthServlet.getMessage(request, null);
 
 			OAuthAccessor accessor = TeksmeOAuthProvider.getAccessor(requestMessage);
-			
-			if (!Boolean.TRUE.equals(accessor.getProperty("authorized")) || accessor.getProperty("user")==null ) {
+
+			if (!Boolean.TRUE.equals(accessor.getProperty("authorized")) || accessor.getProperty("user") == null) {
 				return false;
 			}
 			return true;
@@ -73,9 +73,9 @@ public class AuthImpl implements IAuth {
 		}
 	}
 
-	public boolean isValidUser(String userID, String pwd) {
-		User user = pm.getUser(userID, pwd);
-		return user == null?false:true;
+	public boolean isValidUser(String email, String password) throws NoSuchAlgorithmException, UnsupportedEncodingException, Exception {
+		User user = pm.getUser(email, password);
+		return user == null ? false : true;
 	}
 
 }
