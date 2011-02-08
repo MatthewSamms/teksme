@@ -6,23 +6,26 @@ Bundle-Version: 0.5.0
 Bundle-Activator: org.teksme.server.common.Activator
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Import-Package: javax.naming,
+ javax.servlet;version="2.5.0",
+ javax.servlet.http;version="2.5.0",
  org.osgi.framework,
  org.osgi.service.cm
 Export-Package: org.teksme.server.common,
  org.teksme.server.common.messaging,
  org.teksme.server.common.persistence,
- org.teksme.server.common.utils
+ org.teksme.server.common.utils,
+ org.teksme.server.common.validator
 Require-Bundle: org.teksme.model;bundle-version="0.5.0",
  org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
  com.springsource.antlr;bundle-version="2.7.7",
  com.rabbitmq.client;bundle-version="2.1.0",
- org.apache.commons.logging;bundle-version="1.1.1",
- org.dom4j;bundle-version="1.6.1",
  org.apache.commons.collections;bundle-version="3.2.0",
+ org.apache.commons.logging;bundle-version="1.1.1",
  org.hibernate;bundle-version="3.3.2",
- org.slf4j.api;bundle-version="1.5.11"
+ org.slf4j.api;bundle-version="1.5.11",
+ org.dom4j;bundle-version="1.6.1"
 Bundle-Vendor: TeksMe Inc.
 Bundle-ClassPath: .,
  lib/mysql-connector-java-5.1.13-bin.jar
-Service-Component: OSGI-INF/persistence-mgr-factory.xml
+Service-Component: OSGI-INF/persistence-mgr-factory.xml, OSGI-INF/validation-service.xml

@@ -26,6 +26,8 @@ public final class ErrorFormattingRules {
 
 	public static final String ASSOCIATED_XML_SCHEMA_NOT_FOUND = ".?(Package with uri ).*?('.*') not found";
 
-	public static final String INVALID_BOF_XML_DECLARATION = "[The XML declaration must end with \"\\?>\"]|[The encoding declaration is required .?*]|[Invalid encoding name]|[in the XML declaration]";
+	public static final String INVALID_BOF_XML_DECLARATION = ".?(The XML declaration must end with \"\\?>\")|(The encoding declaration is required)|(Invalid encoding name)|(in the XML declaration)";
+
+	public static final String INVALID_XML_ELEMENT_TAG_DECLARATION = "(?i)(?!.?Element type \"([^\"]*)\" )(must be followed by either attribute specifications)";
 
 }// ErrorFormattingRules class
