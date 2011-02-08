@@ -14,6 +14,8 @@ package org.teksme.server.identity;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
 import java.util.StringTokenizer;
 
 import javax.servlet.ServletConfig;
@@ -47,7 +49,7 @@ public class AuthenticationToken extends HttpServlet {
 	 */
 	private static final long serialVersionUID = -4712860526093888675L;
 	private IPersistenceManager persistenceMgr;
-	
+
 	@Override
 	public void init(ServletConfig config) throws ServletException {
 		super.init(config);
@@ -58,7 +60,6 @@ public class AuthenticationToken extends HttpServlet {
 			throw new ServletException(e.getMessage());
 		}
 	}
-
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 		processRequest(request, response);
@@ -116,7 +117,7 @@ public class AuthenticationToken extends HttpServlet {
 
 				OAuthAccessor accessor = new OAuthAccessor(consumer);
 
-				accessor.setProperty(Messages.AuthenticationToken_authorized, true);				
+				accessor.setProperty(Messages.AuthenticationToken_authorized, true);
 				// generate secret token
 				TeksmeOAuthProvider.generateAccessToken(accessor);
 				// set userId in accessor and mark it as authorized
@@ -134,17 +135,15 @@ public class AuthenticationToken extends HttpServlet {
 
 	}
 
+	private boolean validUser(String email, String password) throws NoSuchAlgorithmException, UnsupportedEncodingException, Exception {
 
-	private boolean validUser(String userID, String password) {
-
-		User user = persistenceMgr.getUser(userID, password);
-		return user == null?false:true;
+		User user = persistenceMgr.getUser(email, password);
+		return user == null ? false : true;
 	}
-
 
 	public void setPersistenceManagerFactory(IPersistenceManager persistenceMgr) {
 		this.persistenceMgr = persistenceMgr;
-		
+
 	}
 
 }
