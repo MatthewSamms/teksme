@@ -3,7 +3,7 @@ package org.teksme.server.identity;
 import org.eclipse.osgi.util.NLS;
 
 public class Messages extends NLS {
-	private static final String BUNDLE_NAME = "org.teksme.server.auth.messages"; //$NON-NLS-1$
+	private static final String BUNDLE_NAME = "org.teksme.server.identity.messages"; //$NON-NLS-1$
 	public static String AuthenticationToken_auth;
 	public static String AuthenticationToken_authorized;
 	public static String AuthenticationToken_basic;
