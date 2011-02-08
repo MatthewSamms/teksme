@@ -37,6 +37,9 @@ public enum ErrorDictionary {
 	ATTR_VALUE_CANNOT_CONTAIN_OPEN_TAG_SYMBOL(4097, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4097"), Messages.getString(
 			"ERROR_CODES_URL").concat("4097")),
 
+	INVALID_XML_ELEMENT_TAG_DECLARATION(4098, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4098"), Messages.getString(
+			"ERROR_CODES_URL").concat("4098")),
+
 	REQUIRED_XML_ELEMENT_OUT_OF_RANGE(4099, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4099"), Messages.getString(
 			"ERROR_CODES_URL").concat("4099")),
 
@@ -65,11 +68,17 @@ public enum ErrorDictionary {
 	CONTENT_LENGTH_NOT_SPECIFIED(4002, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4002"), Messages.getString(
 			"ERROR_CODES_URL").concat("4002")),
 
-	PREMATURE_EOF(4003, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4003"), Messages.getString("ERROR_CODES_URL").concat(
-			"4003")),
+	MALFORMED_XML_FILE(4003, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4003"), Messages.getString("ERROR_CODES_URL")
+			.concat("4003")),
 
 	WRONG_BOF_XML_DECLARATION(4004, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4004"), Messages.getString(
-			"ERROR_CODES_URL").concat("4004"));
+			"ERROR_CODES_URL").concat("4004")),
+
+	REQUIRED_HTTP_HEADER_NOT_FOUND(4005, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4005"), Messages.getString(
+			"ERROR_CODES_URL").concat("4005")),
+
+	MALFORMED_HTTP_HEADER(4006, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4006"), Messages.getString("ERROR_CODES_URL")
+			.concat("4006"));
 
 	private static final int XML_SYNTACTICALLY_INCORRECT_VALUE = 4008;
 

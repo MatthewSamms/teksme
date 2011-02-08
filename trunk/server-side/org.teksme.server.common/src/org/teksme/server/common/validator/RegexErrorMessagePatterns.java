@@ -57,9 +57,12 @@ public class RegexErrorMessagePatterns {
 		return Pattern.compile(ErrorFormattingRules.ASSOCIATED_XML_SCHEMA_NOT_FOUND, Pattern.CASE_INSENSITIVE);
 	}
 
-
 	public static Pattern getInvalidBOFXMLDeclarationPattern() {
 		return Pattern.compile(ErrorFormattingRules.INVALID_BOF_XML_DECLARATION, Pattern.CASE_INSENSITIVE);
+	}
+
+	public static Pattern getInvalidXMLElementTagDeclarationPattern() {
+		return Pattern.compile(ErrorFormattingRules.INVALID_XML_ELEMENT_TAG_DECLARATION, Pattern.CASE_INSENSITIVE);
 	}
 
 }

@@ -146,7 +146,7 @@ public class RequestValidation implements Validator {
 				diagnostics.add(createScreening(ErrorDictionary.WRONG_BOF_XML_DECLARATION));
 				return false;
 			}
-			
+
 			m = RegexErrorMessagePatterns.getInvalidXMLSchemaPattern().matcher(errorMessage);
 			if (m.find()) {
 				diagnostics.add(createScreening(ErrorDictionary.INVALID_ASSOCIATED_XML_SCHEMA));
@@ -155,7 +155,7 @@ public class RequestValidation implements Validator {
 
 			m = RegexErrorMessagePatterns.getPrematureEOFPattern().matcher(errorMessage);
 			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.PREMATURE_EOF));
+				diagnostics.add(createScreening(ErrorDictionary.MALFORMED_XML_FILE));
 				return false;
 			}
 
@@ -194,6 +194,13 @@ public class RequestValidation implements Validator {
 			if (m.find()) {
 				diagnostics
 						.add(createScreening(ErrorDictionary.MISSING_ATTR_QUOTES, new Object[] { "'" + m.group(2).split("\"")[3] + "'" }));
+				return false;
+			}
+
+			m = RegexErrorMessagePatterns.getInvalidXMLElementTagDeclarationPattern().matcher(errorMessage);
+			if (m.find()) {
+				diagnostics.add(createScreening(ErrorDictionary.INVALID_XML_ELEMENT_TAG_DECLARATION,
+						new Object[] { "'" + m.group(1) + "'" }));
 				return false;
 			}
 
@@ -295,14 +302,16 @@ public class RequestValidation implements Validator {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 
 		Response resp = factory.createResponse();
-
+		
 		for (Iterator<Screening> i = diagnostic.getChildren().iterator(); i.hasNext();) {
 			Screening childDiagnostic = (Screening) i.next();
 			logger.info(childDiagnostic.getMessage());
-			resp.setStatus(childDiagnostic.getStatusCode());
-			resp.setCode(childDiagnostic.getCode());
-			resp.setMessage(childDiagnostic.getMessage());
-			resp.setMoreInfo(childDiagnostic.getMoreInfoURL());
+			org.teksme.model.teks.Error error = factory.createError();
+			error.setStatus(childDiagnostic.getStatusCode());
+			error.setCode(childDiagnostic.getCode());
+			error.setMessage(childDiagnostic.getMessage());
+			error.setMoreInfo(childDiagnostic.getMoreInfoURL());
+			resp.setError(error);
 		}
 
 		return resp;

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="request validation">
+   <implementation class="org.teksme.server.common.validator.RequestValidation"/>
+   <service>
+      <provide interface="org.teksme.server.common.validator.Validator"/>
+   </service>
+</scr:component>

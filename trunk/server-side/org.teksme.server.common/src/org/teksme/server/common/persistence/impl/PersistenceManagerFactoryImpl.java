@@ -134,7 +134,7 @@ public class PersistenceManagerFactoryImpl implements IPersistenceManagerFactory
 
 			dataStore = (HbDataStore) HbHelper.INSTANCE.createRegisterDataStore(dsName);
 
-			if (null == dbProps || null == dataStore.getProperties()) {
+			if (null == dbProps || null == dataStore.getDataStoreProperties()) {
 				throw new PersistenceException("Persistence manager internal error: failed to initialize data store");
 			}
 			// set the properties
@@ -146,7 +146,7 @@ public class PersistenceManagerFactoryImpl implements IPersistenceManagerFactory
 					TeksResourceBundle.getString("datasource.cascade.policy"));
 			dbProps.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 			// dbProps.setProperty(PersistenceOptions.SET_PROXY, "true");
-			dataStore.setProperties(dbProps);
+			dataStore.setDataStoreProperties(dbProps);
 			// // sets its epackages stored in this datastore
 			dataStore.setEPackages(new EPackage[] { TeksPackage.eINSTANCE });
 			logger.info("Initializing datasource using hibernate...");
