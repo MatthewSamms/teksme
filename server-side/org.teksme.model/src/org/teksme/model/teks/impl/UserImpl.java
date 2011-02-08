@@ -31,7 +31,6 @@ import org.teksme.model.teks.User;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.UserImpl#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getFirstName <em>First Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getLastName <em>Last Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getEmail <em>Email</em>}</li>
@@ -49,26 +48,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * 
 	 */
 	private static final long serialVersionUID = 8938134523435652421L;
-
-	/**
-	 * The default value of the '{@link #getUserName() <em>User Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUserName()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String USER_NAME_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getUserName() <em>User Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUserName()
-	 * @generated
-	 * @ordered
-	 */
-	protected String userName = USER_NAME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getFirstName() <em>First Name</em>}' attribute.
@@ -234,28 +213,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getUserName() {
-		return userName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setUserName(String newUserName) {
-		String oldUserName = userName;
-		userName = newUserName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.USER__USER_NAME, oldUserName, userName));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getFirstName() {
 		return firstName;
 	}
@@ -414,8 +371,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.USER__USER_NAME:
-			return getUserName();
 		case TeksPackage.USER__FIRST_NAME:
 			return getFirstName();
 		case TeksPackage.USER__LAST_NAME:
@@ -442,9 +397,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.USER__USER_NAME:
-			setUserName((String) newValue);
-			return;
 		case TeksPackage.USER__FIRST_NAME:
 			setFirstName((String) newValue);
 			return;
@@ -478,9 +430,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.USER__USER_NAME:
-			setUserName(USER_NAME_EDEFAULT);
-			return;
 		case TeksPackage.USER__FIRST_NAME:
 			setFirstName(FIRST_NAME_EDEFAULT);
 			return;
@@ -514,9 +463,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.USER__USER_NAME:
-			return USER_NAME_EDEFAULT == null ? userName != null
-					: !USER_NAME_EDEFAULT.equals(userName);
 		case TeksPackage.USER__FIRST_NAME:
 			return FIRST_NAME_EDEFAULT == null ? firstName != null
 					: !FIRST_NAME_EDEFAULT.equals(firstName);
@@ -552,9 +498,7 @@ public class UserImpl extends TeksObjectImpl implements User {
 			return super.toString();
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (userName: ");
-		result.append(userName);
-		result.append(", firstName: ");
+		result.append(" (firstName: ");
 		result.append(firstName);
 		result.append(", lastName: ");
 		result.append(lastName);

@@ -17,24 +17,54 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-
 import org.eclipse.emf.ecore.impl.EFactoryImpl;
-
 import org.eclipse.emf.ecore.plugin.EcorePlugin;
-
-import org.teksme.model.teks.*;
+import org.teksme.model.teks.Annotation;
+import org.teksme.model.teks.AnnotationMapEntry;
+import org.teksme.model.teks.Answer;
+import org.teksme.model.teks.AnswerRef;
+import org.teksme.model.teks.Channel;
+import org.teksme.model.teks.ChannelKind;
+import org.teksme.model.teks.Command;
+import org.teksme.model.teks.Comment;
+import org.teksme.model.teks.Developer;
+import org.teksme.model.teks.FailureCauses;
+import org.teksme.model.teks.FreeText;
+import org.teksme.model.teks.InboundMessage;
+import org.teksme.model.teks.Keyword;
+import org.teksme.model.teks.LanguageKind;
+import org.teksme.model.teks.MessageStatuses;
+import org.teksme.model.teks.MultipleChoice;
+import org.teksme.model.teks.ObjectMessage;
+import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.Poll;
+import org.teksme.model.teks.PollSettings;
+import org.teksme.model.teks.ReplyMessage;
+import org.teksme.model.teks.Report;
+import org.teksme.model.teks.Response;
+import org.teksme.model.teks.ResponseDetail;
+import org.teksme.model.teks.ResponseRestriction;
+import org.teksme.model.teks.RestrictionKind;
+import org.teksme.model.teks.SMSGatewayKind;
+import org.teksme.model.teks.SecureText;
+import org.teksme.model.teks.Shout;
+import org.teksme.model.teks.StopCommandKind;
+import org.teksme.model.teks.Survey;
+import org.teksme.model.teks.Teks;
+import org.teksme.model.teks.TeksFactory;
+import org.teksme.model.teks.TeksPackage;
+import org.teksme.model.teks.User;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model <b>Factory</b>.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model <b>Factory</b>. <!--
+ * end-user-doc -->
  * @generated
  */
 public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	/**
 	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public static TeksFactory init() {
@@ -52,8 +82,8 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 
 	/**
 	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @generated
 	 */
 	public TeksFactoryImpl() {
@@ -61,8 +91,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -114,6 +143,8 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 			return (EObject) createOutboundMessage();
 		case TeksPackage.CHANNEL:
 			return (EObject) createChannel();
+		case TeksPackage.ERROR:
+			return (EObject) createError();
 		case TeksPackage.REPORT:
 			return (EObject) createReport();
 		case TeksPackage.SHOUT:
@@ -127,8 +158,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -155,8 +185,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -183,8 +212,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Teks createTeks() {
@@ -193,8 +221,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Comment createComment() {
@@ -203,8 +230,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Annotation createAnnotation() {
@@ -213,8 +239,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public AnnotationMapEntry createAnnotationMapEntry() {
@@ -223,8 +248,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public User createUser() {
@@ -233,8 +257,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Developer createDeveloper() {
@@ -243,8 +266,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Poll createPoll() {
@@ -253,8 +275,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Survey createSurvey() {
@@ -263,8 +284,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public PollSettings createPollSettings() {
@@ -273,8 +293,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ReplyMessage createReplyMessage() {
@@ -283,8 +302,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Response createResponse() {
@@ -293,8 +311,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ResponseRestriction createResponseRestriction() {
@@ -303,8 +320,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Keyword createKeyword() {
@@ -313,8 +329,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public FreeText createFreeText() {
@@ -323,8 +338,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SecureText createSecureText() {
@@ -333,8 +347,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public MultipleChoice createMultipleChoice() {
@@ -343,8 +356,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Answer createAnswer() {
@@ -353,8 +365,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ResponseDetail createResponseDetail() {
@@ -363,8 +374,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ObjectMessage createObjectMessage() {
@@ -373,8 +383,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public AnswerRef createAnswerRef() {
@@ -383,8 +392,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public InboundMessage createInboundMessage() {
@@ -393,8 +401,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public OutboundMessage createOutboundMessage() {
@@ -403,8 +410,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Channel createChannel() {
@@ -413,8 +419,16 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
+	 * @generated
+	 */
+	public org.teksme.model.teks.Error createError() {
+		ErrorImpl error = new ErrorImpl();
+		return error;
+	}
+
+	/**
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Report createReport() {
@@ -423,8 +437,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Shout createShout() {
@@ -433,8 +446,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Command createCommand() {
@@ -443,8 +455,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public LanguageKind createLanguageKindFromString(EDataType eDataType,
@@ -458,8 +469,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertLanguageKindToString(EDataType eDataType,
@@ -468,8 +478,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public ChannelKind createChannelKindFromString(EDataType eDataType,
@@ -483,8 +492,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertChannelKindToString(EDataType eDataType,
@@ -493,8 +501,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public RestrictionKind createRestrictionKindFromString(EDataType eDataType,
@@ -508,8 +515,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertRestrictionKindToString(EDataType eDataType,
@@ -518,8 +524,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public StopCommandKind createStopCommandKindFromString(EDataType eDataType,
@@ -533,8 +538,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertStopCommandKindToString(EDataType eDataType,
@@ -543,8 +547,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public MessageStatuses createMessageStatusesFromString(EDataType eDataType,
@@ -558,8 +561,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertMessageStatusesToString(EDataType eDataType,
@@ -568,8 +570,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public FailureCauses createFailureCausesFromString(EDataType eDataType,
@@ -583,8 +584,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertFailureCausesToString(EDataType eDataType,
@@ -593,8 +593,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public SMSGatewayKind createSMSGatewayKindFromString(EDataType eDataType,
@@ -608,8 +607,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String convertSMSGatewayKindToString(EDataType eDataType,
@@ -618,8 +616,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public TeksPackage getTeksPackage() {
@@ -627,8 +624,7 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @deprecated
 	 * @generated
 	 */
@@ -637,4 +633,4 @@ public class TeksFactoryImpl extends EFactoryImpl implements TeksFactory {
 		return TeksPackage.eINSTANCE;
 	}
 
-} //TeksFactoryImpl
+} // TeksFactoryImpl

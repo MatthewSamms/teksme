@@ -23,7 +23,6 @@ import org.teksme.model.TeksObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.teksme.model.teks.User#getUserName <em>User Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getFirstName <em>First Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getLastName <em>Last Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getEmail <em>Email</em>}</li>
@@ -41,32 +40,6 @@ import org.teksme.model.TeksObject;
  */
 public interface User extends TeksObject {
 	/**
-	 * Returns the value of the '<em><b>User Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>User Name</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>User Name</em>' attribute.
-	 * @see #setUserName(String)
-	 * @see org.teksme.model.teks.TeksPackage#getUser_UserName()
-	 * @model unique="false"
-	 * @generated
-	 */
-	String getUserName();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.User#getUserName <em>User Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>User Name</em>' attribute.
-	 * @see #getUserName()
-	 * @generated
-	 */
-	void setUserName(String value);
-
-	/**
 	 * Returns the value of the '<em><b>First Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -77,7 +50,7 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_FirstName()
-	 * @model
+	 * @model extendedMetaData="kind='element' name='firstName'"
 	 * @generated
 	 */
 	String getFirstName();
@@ -103,7 +76,7 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_LastName()
-	 * @model
+	 * @model extendedMetaData="kind='element' name='lastName'"
 	 * @generated
 	 */
 	String getLastName();
@@ -129,7 +102,7 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Email</em>' attribute.
 	 * @see #setEmail(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_Email()
-	 * @model
+	 * @model extendedMetaData="kind='element' name='email'"
 	 * @generated
 	 */
 	String getEmail();
@@ -155,7 +128,7 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Password</em>' attribute.
 	 * @see #setPassword(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_Password()
-	 * @model
+	 * @model extendedMetaData="kind='element' name='password'"
 	 * @generated
 	 */
 	String getPassword();
@@ -181,7 +154,7 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Country</em>' attribute.
 	 * @see #setCountry(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_Country()
-	 * @model
+	 * @model extendedMetaData="kind='element' name='country'"
 	 * @generated
 	 */
 	String getCountry();
@@ -207,7 +180,7 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Year Of Birth</em>' attribute.
 	 * @see #setYearOfBirth(int)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_YearOfBirth()
-	 * @model
+	 * @model extendedMetaData="kind='element' name='yearOfBirth'"
 	 * @generated
 	 */
 	int getYearOfBirth();
@@ -233,7 +206,7 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Gender</em>' attribute.
 	 * @see #setGender(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_Gender()
-	 * @model
+	 * @model extendedMetaData="kind='element' name='gender'"
 	 * @generated
 	 */
 	String getGender();

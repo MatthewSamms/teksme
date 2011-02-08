@@ -298,22 +298,13 @@ public interface TeksPackage extends EPackage {
 	int USER = 4;
 
 	/**
-	 * The feature id for the '<em><b>User Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int USER__USER_NAME = 0;
-
-	/**
 	 * The feature id for the '<em><b>First Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER__FIRST_NAME = 1;
+	int USER__FIRST_NAME = 0;
 
 	/**
 	 * The feature id for the '<em><b>Last Name</b></em>' attribute.
@@ -322,7 +313,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__LAST_NAME = 2;
+	int USER__LAST_NAME = 1;
 
 	/**
 	 * The feature id for the '<em><b>Email</b></em>' attribute.
@@ -331,7 +322,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__EMAIL = 3;
+	int USER__EMAIL = 2;
 
 	/**
 	 * The feature id for the '<em><b>Password</b></em>' attribute.
@@ -340,7 +331,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__PASSWORD = 4;
+	int USER__PASSWORD = 3;
 
 	/**
 	 * The feature id for the '<em><b>Country</b></em>' attribute.
@@ -349,7 +340,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__COUNTRY = 5;
+	int USER__COUNTRY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Year Of Birth</b></em>' attribute.
@@ -358,7 +349,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__YEAR_OF_BIRTH = 6;
+	int USER__YEAR_OF_BIRTH = 5;
 
 	/**
 	 * The feature id for the '<em><b>Gender</b></em>' attribute.
@@ -367,7 +358,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__GENDER = 7;
+	int USER__GENDER = 6;
 
 	/**
 	 * The number of structural features of the '<em>User</em>' class.
@@ -376,7 +367,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_FEATURE_COUNT = 8;
+	int USER_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.DeveloperImpl <em>Developer</em>}' class.
@@ -790,40 +781,13 @@ public interface TeksPackage extends EPackage {
 	int RESPONSE = 10;
 
 	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * The feature id for the '<em><b>Error</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSE__STATUS = 0;
-
-	/**
-	 * The feature id for the '<em><b>Message</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESPONSE__MESSAGE = 1;
-
-	/**
-	 * The feature id for the '<em><b>Code</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESPONSE__CODE = 2;
-
-	/**
-	 * The feature id for the '<em><b>More Info</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int RESPONSE__MORE_INFO = 3;
+	int RESPONSE__ERROR = 0;
 
 	/**
 	 * The number of structural features of the '<em>Response</em>' class.
@@ -832,7 +796,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSE_FEATURE_COUNT = 4;
+	int RESPONSE_FEATURE_COUNT = 1;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.ResponseRestrictionImpl <em>Response Restriction</em>}' class.
@@ -1993,6 +1957,61 @@ public interface TeksPackage extends EPackage {
 	int CHANNEL_FEATURE_COUNT = 1;
 
 	/**
+	 * The meta object id for the '{@link org.teksme.model.teks.impl.ErrorImpl <em>Error</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.teksme.model.teks.impl.ErrorImpl
+	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getError()
+	 * @generated
+	 */
+	int ERROR = 26;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR__STATUS = 0;
+
+	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR__MESSAGE = 1;
+
+	/**
+	 * The feature id for the '<em><b>Code</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR__CODE = 2;
+
+	/**
+	 * The feature id for the '<em><b>More Info</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR__MORE_INFO = 3;
+
+	/**
+	 * The number of structural features of the '<em>Error</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR_FEATURE_COUNT = 4;
+
+	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.ReportImpl <em>Report</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2000,7 +2019,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getReport()
 	 * @generated
 	 */
-	int REPORT = 26;
+	int REPORT = 27;
 
 	/**
 	 * The feature id for the '<em><b>Hide Results</b></em>' attribute.
@@ -2037,7 +2056,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getShout()
 	 * @generated
 	 */
-	int SHOUT = 27;
+	int SHOUT = 28;
 
 	/**
 	 * The feature id for the '<em><b>This</b></em>' attribute.
@@ -2074,7 +2093,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getCommand()
 	 * @generated
 	 */
-	int COMMAND = 28;
+	int COMMAND = 29;
 
 	/**
 	 * The feature id for the '<em><b>Default Handler</b></em>' attribute.
@@ -2120,7 +2139,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getLanguageKind()
 	 * @generated
 	 */
-	int LANGUAGE_KIND = 29;
+	int LANGUAGE_KIND = 30;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.ChannelKind <em>Channel Kind</em>}' enum.
@@ -2130,7 +2149,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getChannelKind()
 	 * @generated
 	 */
-	int CHANNEL_KIND = 30;
+	int CHANNEL_KIND = 31;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.RestrictionKind <em>Restriction Kind</em>}' enum.
@@ -2140,7 +2159,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getRestrictionKind()
 	 * @generated
 	 */
-	int RESTRICTION_KIND = 31;
+	int RESTRICTION_KIND = 32;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.StopCommandKind <em>Stop Command Kind</em>}' enum.
@@ -2150,7 +2169,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getStopCommandKind()
 	 * @generated
 	 */
-	int STOP_COMMAND_KIND = 32;
+	int STOP_COMMAND_KIND = 33;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.MessageStatuses <em>Message Statuses</em>}' enum.
@@ -2160,7 +2179,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getMessageStatuses()
 	 * @generated
 	 */
-	int MESSAGE_STATUSES = 33;
+	int MESSAGE_STATUSES = 34;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.FailureCauses <em>Failure Causes</em>}' enum.
@@ -2170,7 +2189,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getFailureCauses()
 	 * @generated
 	 */
-	int FAILURE_CAUSES = 34;
+	int FAILURE_CAUSES = 35;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.SMSGatewayKind <em>SMS Gateway Kind</em>}' enum.
@@ -2180,7 +2199,7 @@ public interface TeksPackage extends EPackage {
 	 * @see org.teksme.model.teks.impl.TeksPackageImpl#getSMSGatewayKind()
 	 * @generated
 	 */
-	int SMS_GATEWAY_KIND = 35;
+	int SMS_GATEWAY_KIND = 36;
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.Teks <em>Teks</em>}'.
@@ -2407,17 +2426,6 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getUser();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.User#getUserName <em>User Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>User Name</em>'.
-	 * @see org.teksme.model.teks.User#getUserName()
-	 * @see #getUser()
-	 * @generated
-	 */
-	EAttribute getUser_UserName();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.User#getFirstName <em>First Name</em>}'.
@@ -2931,48 +2939,15 @@ public interface TeksPackage extends EPackage {
 	EClass getResponse();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getStatus <em>Status</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.teksme.model.teks.Response#getError <em>Error</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Status</em>'.
-	 * @see org.teksme.model.teks.Response#getStatus()
+	 * @return the meta object for the containment reference '<em>Error</em>'.
+	 * @see org.teksme.model.teks.Response#getError()
 	 * @see #getResponse()
 	 * @generated
 	 */
-	EAttribute getResponse_Status();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getMessage <em>Message</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Message</em>'.
-	 * @see org.teksme.model.teks.Response#getMessage()
-	 * @see #getResponse()
-	 * @generated
-	 */
-	EAttribute getResponse_Message();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getCode <em>Code</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Code</em>'.
-	 * @see org.teksme.model.teks.Response#getCode()
-	 * @see #getResponse()
-	 * @generated
-	 */
-	EAttribute getResponse_Code();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getMoreInfo <em>More Info</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>More Info</em>'.
-	 * @see org.teksme.model.teks.Response#getMoreInfo()
-	 * @see #getResponse()
-	 * @generated
-	 */
-	EAttribute getResponse_MoreInfo();
+	EReference getResponse_Error();
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.ResponseRestriction <em>Response Restriction</em>}'.
@@ -3686,6 +3661,60 @@ public interface TeksPackage extends EPackage {
 	EAttribute getChannel_Channel();
 
 	/**
+	 * Returns the meta object for class '{@link org.teksme.model.teks.Error <em>Error</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Error</em>'.
+	 * @see org.teksme.model.teks.Error
+	 * @generated
+	 */
+	EClass getError();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Error#getStatus <em>Status</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Status</em>'.
+	 * @see org.teksme.model.teks.Error#getStatus()
+	 * @see #getError()
+	 * @generated
+	 */
+	EAttribute getError_Status();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Error#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.teksme.model.teks.Error#getMessage()
+	 * @see #getError()
+	 * @generated
+	 */
+	EAttribute getError_Message();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Error#getCode <em>Code</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Code</em>'.
+	 * @see org.teksme.model.teks.Error#getCode()
+	 * @see #getError()
+	 * @generated
+	 */
+	EAttribute getError_Code();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Error#getMoreInfo <em>More Info</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>More Info</em>'.
+	 * @see org.teksme.model.teks.Error#getMoreInfo()
+	 * @see #getError()
+	 * @generated
+	 */
+	EAttribute getError_MoreInfo();
+
+	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.Report <em>Report</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4064,14 +4093,6 @@ public interface TeksPackage extends EPackage {
 		 * @generated
 		 */
 		EClass USER = eINSTANCE.getUser();
-
-		/**
-		 * The meta object literal for the '<em><b>User Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute USER__USER_NAME = eINSTANCE.getUser_UserName();
 
 		/**
 		 * The meta object literal for the '<em><b>First Name</b></em>' attribute feature.
@@ -4476,36 +4497,12 @@ public interface TeksPackage extends EPackage {
 		EClass RESPONSE = eINSTANCE.getResponse();
 
 		/**
-		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Error</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute RESPONSE__STATUS = eINSTANCE.getResponse_Status();
-
-		/**
-		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESPONSE__MESSAGE = eINSTANCE.getResponse_Message();
-
-		/**
-		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESPONSE__CODE = eINSTANCE.getResponse_Code();
-
-		/**
-		 * The meta object literal for the '<em><b>More Info</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute RESPONSE__MORE_INFO = eINSTANCE.getResponse_MoreInfo();
+		EReference RESPONSE__ERROR = eINSTANCE.getResponse_Error();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.ResponseRestrictionImpl <em>Response Restriction</em>}' class.
@@ -5089,6 +5086,48 @@ public interface TeksPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CHANNEL__CHANNEL = eINSTANCE.getChannel_Channel();
+
+		/**
+		 * The meta object literal for the '{@link org.teksme.model.teks.impl.ErrorImpl <em>Error</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.teksme.model.teks.impl.ErrorImpl
+		 * @see org.teksme.model.teks.impl.TeksPackageImpl#getError()
+		 * @generated
+		 */
+		EClass ERROR = eINSTANCE.getError();
+
+		/**
+		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ERROR__STATUS = eINSTANCE.getError_Status();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ERROR__MESSAGE = eINSTANCE.getError_Message();
+
+		/**
+		 * The meta object literal for the '<em><b>Code</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ERROR__CODE = eINSTANCE.getError_Code();
+
+		/**
+		 * The meta object literal for the '<em><b>More Info</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ERROR__MORE_INFO = eINSTANCE.getError_MoreInfo();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.ReportImpl <em>Report</em>}' class.

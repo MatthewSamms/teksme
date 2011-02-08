@@ -16,13 +16,11 @@ package org.teksme.model.teks;
 import java.util.Date;
 
 import org.eclipse.emf.common.util.EList;
-
 import org.teksme.model.TeksObject;
 
 /**
- * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Message</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> A representation of the model object '
+ * <em><b>Message</b></em>'. <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
@@ -47,26 +45,25 @@ import org.teksme.model.TeksObject;
  */
 public interface Message extends TeksObject {
 	/**
-	 * Returns the value of the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Id</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Id</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Id</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Id</em>' attribute.
 	 * @see #setId(String)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_Id()
-	 * @model id="true"
-	 *        extendedMetaData="kind='element' name='id'"
+	 * @model id="true" extendedMetaData="kind='element' name='id'"
 	 * @generated
 	 */
 	String getId();
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getId <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Id</em>' attribute.
 	 * @see #getId()
 	 * @generated
@@ -74,13 +71,14 @@ public interface Message extends TeksObject {
 	void setId(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Date</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Date</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Date</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Date</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Date</em>' attribute.
 	 * @see #setDate(Date)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_Date()
@@ -91,8 +89,7 @@ public interface Message extends TeksObject {
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getDate <em>Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Date</em>' attribute.
 	 * @see #getDate()
 	 * @generated
@@ -104,8 +101,8 @@ public interface Message extends TeksObject {
 	 * The literals are from the enumeration {@link org.teksme.model.teks.SMSGatewayKind}.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Routing</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Routing</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Routing</em>' attribute.
@@ -118,10 +115,12 @@ public interface Message extends TeksObject {
 	SMSGatewayKind getRouting();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Message#getRouting <em>Routing</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Routing</em>' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Message#getRouting
+	 * <em>Routing</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Routing</em>' attribute.
 	 * @see org.teksme.model.teks.SMSGatewayKind
 	 * @see #getRouting()
 	 * @generated
@@ -129,26 +128,25 @@ public interface Message extends TeksObject {
 	void setRouting(SMSGatewayKind value);
 
 	/**
-	 * Returns the value of the '<em><b>From</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>From</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>From</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>From</em>' attribute isn't clear, there really
+	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>From</em>' attribute.
 	 * @see #setFrom(String)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_From()
-	 * @model required="true"
-	 *        extendedMetaData="kind='element' name='from'"
+	 * @model required="true" extendedMetaData="kind='element' name='from'"
 	 * @generated
 	 */
 	String getFrom();
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getFrom <em>From</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @param value the new value of the '<em>From</em>' attribute.
 	 * @see #getFrom()
 	 * @generated
@@ -159,8 +157,8 @@ public interface Message extends TeksObject {
 	 * Returns the value of the '<em><b>Channels</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Channels</em>' containment reference isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Channels</em>' containment reference isn't
+	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Channels</em>' containment reference.
@@ -173,8 +171,8 @@ public interface Message extends TeksObject {
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getChannels <em>Channels</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Channels</em>' containment reference.
 	 * @see #getChannels()
 	 * @generated
@@ -182,8 +180,13 @@ public interface Message extends TeksObject {
 	void setChannels(Channel value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * Returns the value of the '<em><b>To</b></em>' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
+	 * @return the value of the '<em>To</em>' attribute.
+	 * @see #setTo(String)
+	 * @see org.teksme.model.teks.TeksPackage#getMessage_To()
+	 * @model required="true" extendedMetaData="kind='element' name='to'"
 	 * @generated
 	 */
 	String[] getTo();
@@ -228,6 +231,7 @@ public interface Message extends TeksObject {
 	 * @return the value of the '<em>To</em>' attribute list.
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_To()
 	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='to'"
 	 * @generated
 	 */
 	EList<String> getToList();
@@ -250,8 +254,8 @@ public interface Message extends TeksObject {
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#getShout <em>Shout</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Shout</em>' containment reference.
 	 * @see #getShout()
 	 * @generated
@@ -259,13 +263,14 @@ public interface Message extends TeksObject {
 	void setShout(Shout value);
 
 	/**
-	 * Returns the value of the '<em><b>Stop On Error</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Stop On Error</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Stop On Error</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Stop On Error</em>' attribute.
 	 * @see #setStopOnError(boolean)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_StopOnError()
@@ -276,8 +281,8 @@ public interface Message extends TeksObject {
 
 	/**
 	 * Sets the value of the '{@link org.teksme.model.teks.Message#isStopOnError <em>Stop On Error</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!--
+	 * end-user-doc -->
 	 * @param value the new value of the '<em>Stop On Error</em>' attribute.
 	 * @see #isStopOnError()
 	 * @generated
@@ -285,13 +290,14 @@ public interface Message extends TeksObject {
 	void setStopOnError(boolean value);
 
 	/**
-	 * Returns the value of the '<em><b>Attempts</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Attempts</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Attempts</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Attempts</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Attempts</em>' attribute.
 	 * @see #setAttempts(int)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_Attempts()
@@ -301,23 +307,26 @@ public interface Message extends TeksObject {
 	int getAttempts();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Message#getAttempts <em>Attempts</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Attempts</em>' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Message#getAttempts
+	 * <em>Attempts</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Attempts</em>' attribute.
 	 * @see #getAttempts()
 	 * @generated
 	 */
 	void setAttempts(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Encoding</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Encoding</b></em>' attribute. <!--
+	 * begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Encoding</em>' attribute isn't clear,
-	 * there really should be more of a description here...
+	 * If the meaning of the '<em>Encoding</em>' attribute isn't clear, there
+	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * 
 	 * @return the value of the '<em>Encoding</em>' attribute.
 	 * @see #setEncoding(String)
 	 * @see org.teksme.model.teks.TeksPackage#getMessage_Encoding()
@@ -327,10 +336,12 @@ public interface Message extends TeksObject {
 	String getEncoding();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Message#getEncoding <em>Encoding</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Encoding</em>' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.Message#getEncoding
+	 * <em>Encoding</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
+	 * -->
+	 * 
+	 * @param value
+	 *            the new value of the '<em>Encoding</em>' attribute.
 	 * @see #getEncoding()
 	 * @generated
 	 */

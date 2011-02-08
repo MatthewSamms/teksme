@@ -240,6 +240,15 @@ public interface TeksFactory extends EFactory {
 	Channel createChannel();
 
 	/**
+	 * Returns a new object of class '<em>Error</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Error</em>'.
+	 * @generated
+	 */
+	Error createError();
+
+	/**
 	 * Returns a new object of class '<em>Report</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
