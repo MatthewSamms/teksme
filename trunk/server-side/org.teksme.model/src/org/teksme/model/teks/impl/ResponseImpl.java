@@ -15,8 +15,11 @@ package org.teksme.model.teks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.teksme.model.impl.TeksObjectImpl;
@@ -31,10 +34,7 @@ import org.teksme.model.teks.TeksPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.ResponseImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ResponseImpl#getMessage <em>Message</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ResponseImpl#getCode <em>Code</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.ResponseImpl#getMoreInfo <em>More Info</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.ResponseImpl#getError <em>Error</em>}</li>
  * </ul>
  * </p>
  *
@@ -42,89 +42,19 @@ import org.teksme.model.teks.TeksPackage;
  */
 public class ResponseImpl extends TeksObjectImpl implements Response {
 	/**
+	 * The cached value of the '{@link #getError() <em>Error</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getError()
+	 * @generated
+	 * @ordered
+	 */
+	protected org.teksme.model.teks.Error error;
+
+	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 3563704321960682129L;
-
-	/**
-	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int STATUS_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getStatus() <em>Status</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStatus()
-	 * @generated
-	 * @ordered
-	 */
-	protected int status = STATUS_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMessage()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String MESSAGE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMessage()
-	 * @generated
-	 * @ordered
-	 */
-	protected String message = MESSAGE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getCode() <em>Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCode()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int CODE_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getCode() <em>Code</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCode()
-	 * @generated
-	 * @ordered
-	 */
-	protected int code = CODE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getMoreInfo() <em>More Info</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMoreInfo()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String MORE_INFO_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getMoreInfo() <em>More Info</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getMoreInfo()
-	 * @generated
-	 * @ordered
-	 */
-	protected String moreInfo = MORE_INFO_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -150,8 +80,27 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public int getStatus() {
-		return status;
+	public org.teksme.model.teks.Error getError() {
+		if (error != null && ((EObject) error).eIsProxy()) {
+			InternalEObject oldError = (InternalEObject) error;
+			error = (org.teksme.model.teks.Error) eResolveProxy(oldError);
+			if (error != oldError) {
+				InternalEObject newError = (InternalEObject) error;
+				NotificationChain msgs = oldError.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.RESPONSE__ERROR,
+						null, null);
+				if (newError.eInternalContainer() == null) {
+					msgs = newError.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- TeksPackage.RESPONSE__ERROR, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							TeksPackage.RESPONSE__ERROR, oldError, error));
+			}
+		}
+		return error;
 	}
 
 	/**
@@ -159,12 +108,53 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setStatus(int newStatus) {
-		int oldStatus = status;
-		status = newStatus;
-		if (eNotificationRequired())
+	public org.teksme.model.teks.Error basicGetError() {
+		return error;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetError(
+			org.teksme.model.teks.Error newError, NotificationChain msgs) {
+		org.teksme.model.teks.Error oldError = error;
+		error = newError;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, TeksPackage.RESPONSE__ERROR, oldError,
+					newError);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setError(org.teksme.model.teks.Error newError) {
+		if (newError != error) {
+			NotificationChain msgs = null;
+			if (error != null)
+				msgs = ((InternalEObject) error).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.RESPONSE__ERROR,
+						null, msgs);
+			if (newError != null)
+				msgs = ((InternalEObject) newError).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.RESPONSE__ERROR,
+						null, msgs);
+			msgs = basicSetError(newError, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.RESPONSE__STATUS, oldStatus, status));
+					TeksPackage.RESPONSE__ERROR, newError, newError));
 	}
 
 	/**
@@ -172,65 +162,14 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getMessage() {
-		return message;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMessage(String newMessage) {
-		String oldMessage = message;
-		message = newMessage;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.RESPONSE__MESSAGE, oldMessage, message));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public int getCode() {
-		return code;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setCode(int newCode) {
-		int oldCode = code;
-		code = newCode;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.RESPONSE__CODE, oldCode, code));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getMoreInfo() {
-		return moreInfo;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setMoreInfo(String newMoreInfo) {
-		String oldMoreInfo = moreInfo;
-		moreInfo = newMoreInfo;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.RESPONSE__MORE_INFO, oldMoreInfo, moreInfo));
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.RESPONSE__ERROR:
+			return basicSetError(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -241,14 +180,10 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.RESPONSE__STATUS:
-			return getStatus();
-		case TeksPackage.RESPONSE__MESSAGE:
-			return getMessage();
-		case TeksPackage.RESPONSE__CODE:
-			return getCode();
-		case TeksPackage.RESPONSE__MORE_INFO:
-			return getMoreInfo();
+		case TeksPackage.RESPONSE__ERROR:
+			if (resolve)
+				return getError();
+			return basicGetError();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -261,17 +196,8 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.RESPONSE__STATUS:
-			setStatus((Integer) newValue);
-			return;
-		case TeksPackage.RESPONSE__MESSAGE:
-			setMessage((String) newValue);
-			return;
-		case TeksPackage.RESPONSE__CODE:
-			setCode((Integer) newValue);
-			return;
-		case TeksPackage.RESPONSE__MORE_INFO:
-			setMoreInfo((String) newValue);
+		case TeksPackage.RESPONSE__ERROR:
+			setError((org.teksme.model.teks.Error) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -285,17 +211,8 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.RESPONSE__STATUS:
-			setStatus(STATUS_EDEFAULT);
-			return;
-		case TeksPackage.RESPONSE__MESSAGE:
-			setMessage(MESSAGE_EDEFAULT);
-			return;
-		case TeksPackage.RESPONSE__CODE:
-			setCode(CODE_EDEFAULT);
-			return;
-		case TeksPackage.RESPONSE__MORE_INFO:
-			setMoreInfo(MORE_INFO_EDEFAULT);
+		case TeksPackage.RESPONSE__ERROR:
+			setError((org.teksme.model.teks.Error) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -309,41 +226,10 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.RESPONSE__STATUS:
-			return status != STATUS_EDEFAULT;
-		case TeksPackage.RESPONSE__MESSAGE:
-			return MESSAGE_EDEFAULT == null ? message != null
-					: !MESSAGE_EDEFAULT.equals(message);
-		case TeksPackage.RESPONSE__CODE:
-			return code != CODE_EDEFAULT;
-		case TeksPackage.RESPONSE__MORE_INFO:
-			return MORE_INFO_EDEFAULT == null ? moreInfo != null
-					: !MORE_INFO_EDEFAULT.equals(moreInfo);
+		case TeksPackage.RESPONSE__ERROR:
+			return error != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (status: ");
-		result.append(status);
-		result.append(", message: ");
-		result.append(message);
-		result.append(", code: ");
-		result.append(code);
-		result.append(", moreInfo: ");
-		result.append(moreInfo);
-		result.append(')');
-		return result.toString();
 	}
 
 } //ResponseImpl
