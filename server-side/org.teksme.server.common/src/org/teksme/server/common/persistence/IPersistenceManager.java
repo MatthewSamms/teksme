@@ -12,6 +12,9 @@
  */
 package org.teksme.server.common.persistence;
 
+import java.io.UnsupportedEncodingException;
+import java.security.NoSuchAlgorithmException;
+
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.teksme.model.teks.User;
 
@@ -101,10 +104,14 @@ public interface IPersistenceManager {
 
 	/**
 	 * Return User
+	 * 
 	 * @param userID
 	 * @param pwd
 	 * @return
+	 * @throws NoSuchAlgorithmException
+	 * @throws UnsupportedEncodingException
+	 * @throws Exception
 	 */
-	public User getUser(String userID, String pwd);
+	public User getUser(String userID, String pwd) throws NoSuchAlgorithmException, UnsupportedEncodingException, Exception;
 
 }

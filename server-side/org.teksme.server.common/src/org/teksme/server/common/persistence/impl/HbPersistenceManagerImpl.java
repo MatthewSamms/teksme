@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.security.MessageDigest;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -174,20 +175,38 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 	public DataStore getDataStore() {
 		return this.dataStore;
 	}
-	
 
-	public User getUser(String userID, String pwd){
+	public User getUser(String email, String password) throws Exception {
 		final SessionFactory sessionFactory = dataStore.getSessionFactory();
 		final Session session = sessionFactory.openSession();
-		
-		Query query = session.createQuery("SELECT user FROM User user WHERE user.username = "+userID+" and user.password="+pwd);
-		List list = query.list();
-		if(list.isEmpty())
+
+		MessageDigest md = MessageDigest.getInstance("SHA-1");
+		md.update(password.getBytes());
+
+		byte byteData[] = md.digest();
+
+		// convert the byte to hex format method 1
+		StringBuffer sb = new StringBuffer();
+		for (int i = 0; i < byteData.length; i++) {
+			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
+		}
+
+		System.out.println("Hex format : " + sb.toString());
+
+		Query query = session.createQuery("SELECT user FROM User user WHERE user.email = '" + email + "' and user.password = '"
+				+ sb.toString() + "'");
+		List<?> list = query.list();
+		if (list.isEmpty()) {
 			return null;
-		
+		} else if (list.size() > 1) {
+			throw new Exception("More than one user found on the database!");
+		}
+
 		User user = (User) list.get(0);
+
 		session.close();
 		return user;
+
 	}
 
 }// class PersistenceManagerImpl
