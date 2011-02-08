@@ -6,16 +6,14 @@ Bundle-Version: 0.5
 Bundle-Activator: org.teksme.server.identity.Activator
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: org.apache.commons.codec.binary,
+Import-Package: javax.servlet,
+ javax.servlet.http,
+ org.apache.commons.codec.binary,
  org.apache.commons.codec.digest,
- org.osgi.framework;version="1.3.0",
- org.osgi.util.tracker
+ org.osgi.framework,
+ org.osgi.service.http
 Bundle-Vendor: TeksMe Inc.
-Require-Bundle: javax.servlet;bundle-version="2.5.0",
- org.eclipse.equinox.http.jetty;bundle-version="2.0.0",
- org.eclipse.equinox.http.servlet;bundle-version="1.1.0",
- org.eclipse.osgi.services;bundle-version="3.2.100",
- org.teksme.server.common;bundle-version="0.5.0",
+Require-Bundle: org.teksme.server.common;bundle-version="0.5.0",
  org.teksme.model;bundle-version="0.5.0",
  org.eclipse.osgi
 Bundle-ClassPath: lib/commons-httpclient-3.1.jar,
