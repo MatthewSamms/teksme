@@ -68,7 +68,7 @@ public class TeksmeOAuthProvider {
 		consumerProperties = p;
 
 		// for each entry in the properties file create a OAuthConsumer
-		for (Map.Entry prop : p.entrySet()) {
+		for (@SuppressWarnings("rawtypes") Map.Entry prop : p.entrySet()) {
 			String consumer_key = (String) prop.getKey();
 			// make sure it's key not additional properties
 			if (!consumer_key.contains(".")) { //$NON-NLS-1$
@@ -134,12 +134,12 @@ public class TeksmeOAuthProvider {
 	/**
 	 * Set the access token
 	 */
-	public static synchronized void markAsAuthorized(OAuthAccessor accessor, String userId) throws OAuthException {
+	public static synchronized void markAsAuthorized(OAuthAccessor accessor, String email) throws OAuthException {
 
 		// first remove the accessor from cache
 		TOKENS.remove(accessor);
 
-		accessor.setProperty(Messages.TeksmeOAuthProvider_12, userId);
+		accessor.setProperty(Messages.TeksmeOAuthProvider_12, email);
 		accessor.setProperty(Messages.TeksmeOAuthProvider_13, Boolean.TRUE);
 
 		// update token in local cache
