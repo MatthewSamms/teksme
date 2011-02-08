@@ -42,17 +42,11 @@ http://api.teks.me/p/{profileId}/sendmsg
 <teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
 	<accountSID>ACc4836ef31bb2d557bf9d5fd5f050cd93</accountSID>
 	<outboundMessage>
-		<id>56f3d45cb6f14af22fee33245bf53b8e</id>
 		<from>+12023567865</from>
 		<to>+12028754532</to>
 		<channels>
 			<channel>SMS</channel>
-			<channel>GTalk</channel>
-			<channel>Twitter</channel>
 		</channels>
-		<stopOnError>false</stopOnError>
-		<schedule>Wed, 02 Oct 2010 15:00:00 +0200</schedule>
-		<concatenated>false</concatenated>
 		<shout this="Hello from TeksMe Cloud!" />
 	</outboundMessage>
 </teks:Teks>
