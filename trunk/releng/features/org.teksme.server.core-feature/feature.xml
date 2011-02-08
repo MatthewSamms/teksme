@@ -18,6 +18,11 @@
    </license>
 
    <requires>
+      <import plugin="javax.xml"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="javax.xml.bind"/>
+      <import plugin="org.apache.commons.httpclient"/>
+      <import plugin="org.apache.commons.logging"/>
       <import plugin="org.eclipse.core.runtime" version="3.6.0" match="compatible"/>
       <import plugin="org.eclipse.emf.common" version="2.6.0" match="compatible"/>
       <import plugin="org.eclipse.emf.ecore" version="2.6.0" match="compatible"/>
@@ -26,28 +31,28 @@
       <import plugin="org.eclipse.emf.ecore.xmi" version="2.5.0" match="compatible"/>
       <import plugin="org.eclipse.core.runtime" version="3.5.0" match="compatible"/>
       <import plugin="org.eclipse.emf.teneo.annotations" version="1.1.0" match="compatible"/>
-      <import plugin="org.apache.commons.logging"/>
       <import plugin="org.eclipse.emf.teneo" version="1.0.0" match="compatible"/>
       <import plugin="org.eclipse.emf.teneo.hibernate.mapper" version="1.1.0" match="compatible"/>
       <import plugin="org.dom4j"/>
       <import plugin="javax.persistence"/>
       <import plugin="org.eclipse.emf.teneo.annotations" version="1.0.0" match="compatible"/>
-      <import plugin="org.eclipse.osgi"/>
       <import plugin="org.eclipse.emf.ecore.xmi" version="2.5.0" match="greaterOrEqual"/>
       <import plugin="org.teksme.model" version="0.5.0" match="greaterOrEqual"/>
       <import plugin="org.eclipse.emf.teneo.hibernate" version="1.1.2" match="greaterOrEqual"/>
       <import plugin="com.springsource.antlr" version="2.7.7" match="greaterOrEqual"/>
       <import plugin="com.rabbitmq.client" version="2.1.0" match="greaterOrEqual"/>
       <import plugin="org.apache.commons.logging" version="1.1.1" match="greaterOrEqual"/>
-      <import plugin="org.dom4j" version="1.6.1" match="greaterOrEqual"/>
       <import plugin="org.apache.commons.collections" version="3.2.0" match="greaterOrEqual"/>
       <import plugin="org.hibernate" version="3.3.2" match="greaterOrEqual"/>
+      <import plugin="org.slf4j.api" version="1.5.11" match="greaterOrEqual"/>
+      <import plugin="org.dom4j" version="1.6.1" match="greaterOrEqual"/>
+      <import plugin="javax.servlet"/>
       <import plugin="org.eclipse.osgi.services"/>
       <import plugin="org.apache.log4j"/>
       <import plugin="org.teksme.server.common" version="0.5.0" match="greaterOrEqual"/>
       <import plugin="org.teksme.server.sms"/>
-      <import plugin="org.apache.commons.cli" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="com.springsource.org.apache.commons.io" version="1.4.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.cli" version="1.2.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.commons.io" version="1.4.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin
@@ -121,13 +126,6 @@
          unpack="false"/>
 
    <plugin
-         id="com.springsource.org.apache.commons.io"
-         download-size="0"
-         install-size="0"
-         version="0.0.0"
-         unpack="false"/>
-
-   <plugin
          id="com.springsource.antlr"
          download-size="0"
          install-size="0"
@@ -184,6 +182,13 @@
 
    <plugin
          id="com.rabbitmq.client"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.apache.commons.io"
          download-size="0"
          install-size="0"
          version="0.0.0"
