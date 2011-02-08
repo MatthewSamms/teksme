@@ -36,7 +36,6 @@ public class CreateAccountTest extends TeksModelTest {
 		Teks teksModel = factory.createTeks();
 
 		User newUser = factory.createUser();
-		newUser.setUserName("patadams");
 		newUser.setFirstName("Pat");
 		newUser.setLastName("Adams");
 		newUser.setEmail("pat@painting.com");

@@ -7,14 +7,15 @@ Bundle-ClassPath: .
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;visibility:=reexport,
- org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2",
- org.hibernate;bundle-version="3.3.2",
+ org.eclipse.emf.teneo.hibernate,
+ org.hibernate;bundle-version="3.6.0",
  org.eclipse.emf.ecore.change,
  org.apache.commons.logging,
  org.dom4j,
- org.hsqldb,
  com.mysql.jdbc,
  org.teksme.model;bundle-version="0.5.0",
- org.teksme.server.common;bundle-version="0.5.0"
+ org.teksme.server.common;bundle-version="0.5.0",
+ org.teksme.server.identity;bundle-version="0.5.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-Vendor: TeksMe Inc.
+Import-Package: javax.persistence;version="2.0.1"
