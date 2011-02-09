@@ -73,7 +73,6 @@
       <genEnumLiterals ecoreEnumLiteral="teks.ecore#//SMSGatewayKind/BULKSMS"/>
     </genEnums>
     <genClasses ecoreClass="teks.ecore#//Teks">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Teks/accountSID"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/outboundMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/response"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/developer"/>
@@ -98,6 +97,7 @@
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//User">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/firstName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/accountSID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/lastName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/email"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/password"/>
@@ -151,6 +151,7 @@
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//Response">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Response/error"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Response/message"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//ResponseRestriction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//ResponseRestriction/acceptMultipleChannels"/>
@@ -236,6 +237,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Error/message"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Error/code"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Error/moreInfo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Error/url"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//Report">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Report/hideResults"/>

@@ -78,22 +78,13 @@ public interface TeksPackage extends EPackage {
 	int TEKS = 0;
 
 	/**
-	 * The feature id for the '<em><b>Account SID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TEKS__ACCOUNT_SID = 0;
-
-	/**
 	 * The feature id for the '<em><b>Outbound Message</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__OUTBOUND_MESSAGE = 1;
+	int TEKS__OUTBOUND_MESSAGE = 0;
 
 	/**
 	 * The feature id for the '<em><b>Response</b></em>' containment reference.
@@ -102,7 +93,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__RESPONSE = 2;
+	int TEKS__RESPONSE = 1;
 
 	/**
 	 * The feature id for the '<em><b>Developer</b></em>' containment reference.
@@ -111,7 +102,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__DEVELOPER = 3;
+	int TEKS__DEVELOPER = 2;
 
 	/**
 	 * The feature id for the '<em><b>Poll</b></em>' containment reference.
@@ -120,7 +111,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__POLL = 4;
+	int TEKS__POLL = 3;
 
 	/**
 	 * The feature id for the '<em><b>Survey</b></em>' containment reference.
@@ -129,7 +120,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__SURVEY = 5;
+	int TEKS__SURVEY = 4;
 
 	/**
 	 * The feature id for the '<em><b>Inbound Message</b></em>' containment reference list.
@@ -138,7 +129,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__INBOUND_MESSAGE = 6;
+	int TEKS__INBOUND_MESSAGE = 5;
 
 	/**
 	 * The feature id for the '<em><b>Account</b></em>' containment reference.
@@ -147,7 +138,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS__ACCOUNT = 7;
+	int TEKS__ACCOUNT = 6;
 
 	/**
 	 * The number of structural features of the '<em>Teks</em>' class.
@@ -156,7 +147,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TEKS_FEATURE_COUNT = 8;
+	int TEKS_FEATURE_COUNT = 7;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.CommentImpl <em>Comment</em>}' class.
@@ -307,13 +298,22 @@ public interface TeksPackage extends EPackage {
 	int USER__FIRST_NAME = 0;
 
 	/**
+	 * The feature id for the '<em><b>Account SID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int USER__ACCOUNT_SID = 1;
+
+	/**
 	 * The feature id for the '<em><b>Last Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int USER__LAST_NAME = 1;
+	int USER__LAST_NAME = 2;
 
 	/**
 	 * The feature id for the '<em><b>Email</b></em>' attribute.
@@ -322,7 +322,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__EMAIL = 2;
+	int USER__EMAIL = 3;
 
 	/**
 	 * The feature id for the '<em><b>Password</b></em>' attribute.
@@ -331,7 +331,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__PASSWORD = 3;
+	int USER__PASSWORD = 4;
 
 	/**
 	 * The feature id for the '<em><b>Country</b></em>' attribute.
@@ -340,7 +340,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__COUNTRY = 4;
+	int USER__COUNTRY = 5;
 
 	/**
 	 * The feature id for the '<em><b>Year Of Birth</b></em>' attribute.
@@ -349,7 +349,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__YEAR_OF_BIRTH = 5;
+	int USER__YEAR_OF_BIRTH = 6;
 
 	/**
 	 * The feature id for the '<em><b>Gender</b></em>' attribute.
@@ -358,7 +358,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER__GENDER = 6;
+	int USER__GENDER = 7;
 
 	/**
 	 * The number of structural features of the '<em>User</em>' class.
@@ -367,7 +367,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int USER_FEATURE_COUNT = 7;
+	int USER_FEATURE_COUNT = 8;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.DeveloperImpl <em>Developer</em>}' class.
@@ -790,13 +790,22 @@ public interface TeksPackage extends EPackage {
 	int RESPONSE__ERROR = 0;
 
 	/**
+	 * The feature id for the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int RESPONSE__MESSAGE = 1;
+
+	/**
 	 * The number of structural features of the '<em>Response</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int RESPONSE_FEATURE_COUNT = 1;
+	int RESPONSE_FEATURE_COUNT = 2;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.ResponseRestrictionImpl <em>Response Restriction</em>}' class.
@@ -2003,13 +2012,22 @@ public interface TeksPackage extends EPackage {
 	int ERROR__MORE_INFO = 3;
 
 	/**
+	 * The feature id for the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ERROR__URL = 4;
+
+	/**
 	 * The number of structural features of the '<em>Error</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ERROR_FEATURE_COUNT = 4;
+	int ERROR_FEATURE_COUNT = 5;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.ReportImpl <em>Report</em>}' class.
@@ -2210,17 +2228,6 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTeks();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Teks#getAccountSID <em>Account SID</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Account SID</em>'.
-	 * @see org.teksme.model.teks.Teks#getAccountSID()
-	 * @see #getTeks()
-	 * @generated
-	 */
-	EAttribute getTeks_AccountSID();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.teksme.model.teks.Teks#getOutboundMessageList <em>Outbound Message</em>}'.
@@ -2437,6 +2444,17 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getUser_FirstName();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.User#getAccountSID <em>Account SID</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Account SID</em>'.
+	 * @see org.teksme.model.teks.User#getAccountSID()
+	 * @see #getUser()
+	 * @generated
+	 */
+	EAttribute getUser_AccountSID();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.User#getLastName <em>Last Name</em>}'.
@@ -2948,6 +2966,17 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getResponse_Error();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Response#getMessage <em>Message</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Message</em>'.
+	 * @see org.teksme.model.teks.Response#getMessage()
+	 * @see #getResponse()
+	 * @generated
+	 */
+	EAttribute getResponse_Message();
 
 	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.ResponseRestriction <em>Response Restriction</em>}'.
@@ -3715,6 +3744,17 @@ public interface TeksPackage extends EPackage {
 	EAttribute getError_MoreInfo();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Error#getUrl <em>Url</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Url</em>'.
+	 * @see org.teksme.model.teks.Error#getUrl()
+	 * @see #getError()
+	 * @generated
+	 */
+	EAttribute getError_Url();
+
+	/**
 	 * Returns the meta object for class '{@link org.teksme.model.teks.Report <em>Report</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3924,14 +3964,6 @@ public interface TeksPackage extends EPackage {
 		EClass TEKS = eINSTANCE.getTeks();
 
 		/**
-		 * The meta object literal for the '<em><b>Account SID</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TEKS__ACCOUNT_SID = eINSTANCE.getTeks_AccountSID();
-
-		/**
 		 * The meta object literal for the '<em><b>Outbound Message</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4101,6 +4133,14 @@ public interface TeksPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute USER__FIRST_NAME = eINSTANCE.getUser_FirstName();
+
+		/**
+		 * The meta object literal for the '<em><b>Account SID</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute USER__ACCOUNT_SID = eINSTANCE.getUser_AccountSID();
 
 		/**
 		 * The meta object literal for the '<em><b>Last Name</b></em>' attribute feature.
@@ -4503,6 +4543,14 @@ public interface TeksPackage extends EPackage {
 		 * @generated
 		 */
 		EReference RESPONSE__ERROR = eINSTANCE.getResponse_Error();
+
+		/**
+		 * The meta object literal for the '<em><b>Message</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute RESPONSE__MESSAGE = eINSTANCE.getResponse_Message();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.ResponseRestrictionImpl <em>Response Restriction</em>}' class.
@@ -5128,6 +5176,14 @@ public interface TeksPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ERROR__MORE_INFO = eINSTANCE.getError_MoreInfo();
+
+		/**
+		 * The meta object literal for the '<em><b>Url</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute ERROR__URL = eINSTANCE.getError_Url();
 
 		/**
 		 * The meta object literal for the '{@link org.teksme.model.teks.impl.ReportImpl <em>Report</em>}' class.

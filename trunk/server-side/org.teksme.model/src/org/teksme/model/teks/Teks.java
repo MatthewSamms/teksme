@@ -25,7 +25,6 @@ import org.teksme.model.TeksObject;
  * <p>
  * The following features are supported:
  * <ul>
- *   <li>{@link org.teksme.model.teks.Teks#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getOutboundMessageList <em>Outbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getResponse <em>Response</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getDeveloper <em>Developer</em>}</li>
@@ -42,32 +41,6 @@ import org.teksme.model.TeksObject;
  * @generated
  */
 public interface Teks extends TeksObject {
-	/**
-	 * Returns the value of the '<em><b>Account SID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Account SID</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Account SID</em>' attribute.
-	 * @see #setAccountSID(String)
-	 * @see org.teksme.model.teks.TeksPackage#getTeks_AccountSID()
-	 * @model extendedMetaData="kind='element' name='accountSID'"
-	 * @generated
-	 */
-	String getAccountSID();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getAccountSID <em>Account SID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Account SID</em>' attribute.
-	 * @see #getAccountSID()
-	 * @generated
-	 */
-	void setAccountSID(String value);
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

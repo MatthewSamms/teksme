@@ -24,6 +24,7 @@ import org.teksme.model.TeksObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.teksme.model.teks.User#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link org.teksme.model.teks.User#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getLastName <em>Last Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getEmail <em>Email</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getPassword <em>Password</em>}</li>
@@ -64,6 +65,32 @@ public interface User extends TeksObject {
 	 * @generated
 	 */
 	void setFirstName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Account SID</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Account SID</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Account SID</em>' attribute.
+	 * @see #setAccountSID(String)
+	 * @see org.teksme.model.teks.TeksPackage#getUser_AccountSID()
+	 * @model extendedMetaData="kind='element' name='accountSID'"
+	 * @generated
+	 */
+	String getAccountSID();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.User#getAccountSID <em>Account SID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Account SID</em>' attribute.
+	 * @see #getAccountSID()
+	 * @generated
+	 */
+	void setAccountSID(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Last Name</b></em>' attribute.

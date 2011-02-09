@@ -27,6 +27,7 @@ import org.teksme.model.TeksObject;
  *   <li>{@link org.teksme.model.teks.Error#getMessage <em>Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.Error#getCode <em>Code</em>}</li>
  *   <li>{@link org.teksme.model.teks.Error#getMoreInfo <em>More Info</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Error#getUrl <em>Url</em>}</li>
  * </ul>
  * </p>
  *
@@ -143,5 +144,31 @@ public interface Error extends TeksObject {
 	 * @generated
 	 */
 	void setMoreInfo(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Url</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Url</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Url</em>' attribute.
+	 * @see #setUrl(String)
+	 * @see org.teksme.model.teks.TeksPackage#getError_Url()
+	 * @model extendedMetaData="kind='element' name='url'"
+	 * @generated
+	 */
+	String getUrl();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Error#getUrl <em>Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Url</em>' attribute.
+	 * @see #getUrl()
+	 * @generated
+	 */
+	void setUrl(String value);
 
 } // Error
