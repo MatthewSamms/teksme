@@ -404,17 +404,8 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getTeks_AccountSID() {
-		return (EAttribute) teksEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EReference getTeks_OutboundMessage() {
-		return (EReference) teksEClass.getEStructuralFeatures().get(1);
+		return (EReference) teksEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -423,7 +414,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EReference getTeks_Response() {
-		return (EReference) teksEClass.getEStructuralFeatures().get(2);
+		return (EReference) teksEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -432,7 +423,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EReference getTeks_Developer() {
-		return (EReference) teksEClass.getEStructuralFeatures().get(3);
+		return (EReference) teksEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -441,7 +432,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EReference getTeks_Poll() {
-		return (EReference) teksEClass.getEStructuralFeatures().get(4);
+		return (EReference) teksEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -450,7 +441,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EReference getTeks_Survey() {
-		return (EReference) teksEClass.getEStructuralFeatures().get(5);
+		return (EReference) teksEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -459,7 +450,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EReference getTeks_InboundMessage() {
-		return (EReference) teksEClass.getEStructuralFeatures().get(6);
+		return (EReference) teksEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -468,7 +459,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * @generated
 	 */
 	public EReference getTeks_Account() {
-		return (EReference) teksEClass.getEStructuralFeatures().get(7);
+		return (EReference) teksEClass.getEStructuralFeatures().get(6);
 	}
 
 	/**
@@ -595,7 +586,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUser_LastName() {
+	public EAttribute getUser_AccountSID() {
 		return (EAttribute) userEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -604,7 +595,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUser_Email() {
+	public EAttribute getUser_LastName() {
 		return (EAttribute) userEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -613,7 +604,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUser_Password() {
+	public EAttribute getUser_Email() {
 		return (EAttribute) userEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -622,7 +613,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUser_Country() {
+	public EAttribute getUser_Password() {
 		return (EAttribute) userEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -631,7 +622,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUser_YearOfBirth() {
+	public EAttribute getUser_Country() {
 		return (EAttribute) userEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -640,8 +631,17 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getUser_Gender() {
+	public EAttribute getUser_YearOfBirth() {
 		return (EAttribute) userEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getUser_Gender() {
+		return (EAttribute) userEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -1011,6 +1011,15 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 */
 	public EReference getResponse_Error() {
 		return (EReference) responseEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getResponse_Message() {
+		return (EAttribute) responseEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1678,6 +1687,15 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getError_Url() {
+		return (EAttribute) errorEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getReport() {
 		return reportEClass;
 	}
@@ -1856,7 +1874,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 
 		// Create classes and their features
 		teksEClass = createEClass(TEKS);
-		createEAttribute(teksEClass, TEKS__ACCOUNT_SID);
 		createEReference(teksEClass, TEKS__OUTBOUND_MESSAGE);
 		createEReference(teksEClass, TEKS__RESPONSE);
 		createEReference(teksEClass, TEKS__DEVELOPER);
@@ -1881,6 +1898,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 
 		userEClass = createEClass(USER);
 		createEAttribute(userEClass, USER__FIRST_NAME);
+		createEAttribute(userEClass, USER__ACCOUNT_SID);
 		createEAttribute(userEClass, USER__LAST_NAME);
 		createEAttribute(userEClass, USER__EMAIL);
 		createEAttribute(userEClass, USER__PASSWORD);
@@ -1937,6 +1955,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 
 		responseEClass = createEClass(RESPONSE);
 		createEReference(responseEClass, RESPONSE__ERROR);
+		createEAttribute(responseEClass, RESPONSE__MESSAGE);
 
 		responseRestrictionEClass = createEClass(RESPONSE_RESTRICTION);
 		createEAttribute(responseRestrictionEClass,
@@ -2029,6 +2048,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEAttribute(errorEClass, ERROR__MESSAGE);
 		createEAttribute(errorEClass, ERROR__CODE);
 		createEAttribute(errorEClass, ERROR__MORE_INFO);
+		createEAttribute(errorEClass, ERROR__URL);
 
 		reportEClass = createEClass(REPORT);
 		createEAttribute(reportEClass, REPORT__HIDE_RESULTS);
@@ -2093,10 +2113,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		// Initialize classes and features; add operations and parameters
 		initEClass(teksEClass, Teks.class, "Teks", !IS_ABSTRACT, !IS_INTERFACE,
 				IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTeks_AccountSID(), ecorePackage.getEString(),
-				"accountSID", null, 0, 1, Teks.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 		initEReference(getTeks_OutboundMessage(), this.getOutboundMessage(),
 				this.getOutboundMessage_TeksRef(), "outboundMessage", null, 0,
 				-1, Teks.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE,
@@ -2176,6 +2192,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getUser_FirstName(), ecorePackage.getEString(),
 				"firstName", null, 0, 1, User.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getUser_AccountSID(), ecorePackage.getEString(),
+				"accountSID", null, 0, 1, User.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getUser_LastName(), ecorePackage.getEString(),
@@ -2365,6 +2385,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				null, 0, 1, Response.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getResponse_Message(), ecorePackage.getEString(),
+				"message", null, 1, 1, Response.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(responseRestrictionEClass, ResponseRestriction.class,
 				"ResponseRestriction", !IS_ABSTRACT, !IS_INTERFACE,
@@ -2654,6 +2678,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"moreInfo", null, 1, 1, org.teksme.model.teks.Error.class,
 				!IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE,
 				!IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getError_Url(), ecorePackage.getEString(), "url", null,
+				0, 1, org.teksme.model.teks.Error.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
 
 		initEClass(reportEClass, Report.class, "Report", !IS_ABSTRACT,
 				!IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -2776,10 +2804,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 */
 	protected void createExtendedMetaDataAnnotations() {
 		String source = "http:///org/eclipse/emf/ecore/util/ExtendedMetaData";
-		addAnnotation(getTeks_AccountSID(), source, new String[] { "kind",
-				"element", "name", "accountSID" });
 		addAnnotation(getUser_FirstName(), source, new String[] { "kind",
 				"element", "name", "firstName" });
+		addAnnotation(getUser_AccountSID(), source, new String[] { "kind",
+				"element", "name", "accountSID" });
 		addAnnotation(getUser_LastName(), source, new String[] { "kind",
 				"element", "name", "lastName" });
 		addAnnotation(getUser_Email(), source, new String[] { "kind",
@@ -2792,6 +2820,8 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"element", "name", "yearOfBirth" });
 		addAnnotation(getUser_Gender(), source, new String[] { "kind",
 				"element", "name", "gender" });
+		addAnnotation(getResponse_Message(), source, new String[] { "kind",
+				"element", "name", "message" });
 		addAnnotation(getMessage_Id(), source, new String[] { "kind",
 				"element", "name", "id" });
 		addAnnotation(getMessage_Date(), source, new String[] { "kind",
@@ -2826,6 +2856,8 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"element", "name", "code" });
 		addAnnotation(getError_MoreInfo(), source, new String[] { "kind",
 				"element", "name", "moreInfo" });
+		addAnnotation(getError_Url(), source, new String[] { "kind", "element",
+				"name", "url" });
 	}
 
 } //TeksPackageImpl

@@ -34,6 +34,7 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.ErrorImpl#getMessage <em>Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.ErrorImpl#getCode <em>Code</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.ErrorImpl#getMoreInfo <em>More Info</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.ErrorImpl#getUrl <em>Url</em>}</li>
  * </ul>
  * </p>
  *
@@ -121,6 +122,26 @@ public class ErrorImpl extends TeksObjectImpl implements
 	 * @ordered
 	 */
 	protected String moreInfo = MORE_INFO_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUrl() <em>Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getUrl() <em>Url</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUrl()
+	 * @generated
+	 * @ordered
+	 */
+	protected String url = URL_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -234,6 +255,28 @@ public class ErrorImpl extends TeksObjectImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getUrl() {
+		return url;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setUrl(String newUrl) {
+		String oldUrl = url;
+		url = newUrl;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.ERROR__URL, oldUrl, url));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -245,6 +288,8 @@ public class ErrorImpl extends TeksObjectImpl implements
 			return getCode();
 		case TeksPackage.ERROR__MORE_INFO:
 			return getMoreInfo();
+		case TeksPackage.ERROR__URL:
+			return getUrl();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -268,6 +313,9 @@ public class ErrorImpl extends TeksObjectImpl implements
 			return;
 		case TeksPackage.ERROR__MORE_INFO:
 			setMoreInfo((String) newValue);
+			return;
+		case TeksPackage.ERROR__URL:
+			setUrl((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -293,6 +341,9 @@ public class ErrorImpl extends TeksObjectImpl implements
 		case TeksPackage.ERROR__MORE_INFO:
 			setMoreInfo(MORE_INFO_EDEFAULT);
 			return;
+		case TeksPackage.ERROR__URL:
+			setUrl(URL_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -315,6 +366,9 @@ public class ErrorImpl extends TeksObjectImpl implements
 		case TeksPackage.ERROR__MORE_INFO:
 			return MORE_INFO_EDEFAULT == null ? moreInfo != null
 					: !MORE_INFO_EDEFAULT.equals(moreInfo);
+		case TeksPackage.ERROR__URL:
+			return URL_EDEFAULT == null ? url != null : !URL_EDEFAULT
+					.equals(url);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -338,6 +392,8 @@ public class ErrorImpl extends TeksObjectImpl implements
 		result.append(code);
 		result.append(", moreInfo: ");
 		result.append(moreInfo);
+		result.append(", url: ");
+		result.append(url);
 		result.append(')');
 		return result.toString();
 	}

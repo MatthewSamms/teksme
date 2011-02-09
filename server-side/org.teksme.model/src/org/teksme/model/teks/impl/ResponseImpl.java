@@ -35,6 +35,7 @@ import org.teksme.model.teks.TeksPackage;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.ResponseImpl#getError <em>Error</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.ResponseImpl#getMessage <em>Message</em>}</li>
  * </ul>
  * </p>
  *
@@ -50,6 +51,26 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	 * @ordered
 	 */
 	protected org.teksme.model.teks.Error error;
+
+	/**
+	 * The default value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MESSAGE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMessage() <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMessage()
+	 * @generated
+	 * @ordered
+	 */
+	protected String message = MESSAGE_EDEFAULT;
 
 	/**
 	 * 
@@ -162,6 +183,28 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getMessage() {
+		return message;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMessage(String newMessage) {
+		String oldMessage = message;
+		message = newMessage;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.RESPONSE__MESSAGE, oldMessage, message));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd,
 			int featureID, NotificationChain msgs) {
@@ -184,6 +227,8 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 			if (resolve)
 				return getError();
 			return basicGetError();
+		case TeksPackage.RESPONSE__MESSAGE:
+			return getMessage();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -198,6 +243,9 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 		switch (featureID) {
 		case TeksPackage.RESPONSE__ERROR:
 			setError((org.teksme.model.teks.Error) newValue);
+			return;
+		case TeksPackage.RESPONSE__MESSAGE:
+			setMessage((String) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -214,6 +262,9 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 		case TeksPackage.RESPONSE__ERROR:
 			setError((org.teksme.model.teks.Error) null);
 			return;
+		case TeksPackage.RESPONSE__MESSAGE:
+			setMessage(MESSAGE_EDEFAULT);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -228,8 +279,28 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 		switch (featureID) {
 		case TeksPackage.RESPONSE__ERROR:
 			return error != null;
+		case TeksPackage.RESPONSE__MESSAGE:
+			return MESSAGE_EDEFAULT == null ? message != null
+					: !MESSAGE_EDEFAULT.equals(message);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy())
+			return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (message: ");
+		result.append(message);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ResponseImpl

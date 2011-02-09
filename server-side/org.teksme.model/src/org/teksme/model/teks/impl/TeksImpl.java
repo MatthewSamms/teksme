@@ -50,7 +50,6 @@ import org.teksme.model.teks.User;
  * <p>
  * The following features are implemented:
  * <ul>
- *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getOutboundMessageList <em>Outbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getResponse <em>Response</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.TeksImpl#getDeveloper <em>Developer</em>}</li>
@@ -68,26 +67,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	 * 
 	 */
 	private static final long serialVersionUID = -3539686519347401341L;
-
-	/**
-	 * The default value of the '{@link #getAccountSID() <em>Account SID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAccountSID()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ACCOUNT_SID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getAccountSID() <em>Account SID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAccountSID()
-	 * @generated
-	 * @ordered
-	 */
-	protected String accountSID = ACCOUNT_SID_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getOutboundMessageList() <em>Outbound Message</em>}' containment reference list.
@@ -196,28 +175,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	@Override
 	protected EClass eStaticClass() {
 		return TeksPackage.Literals.TEKS;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String getAccountSID() {
-		return accountSID;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAccountSID(String newAccountSID) {
-		String oldAccountSID = accountSID;
-		accountSID = newAccountSID;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.TEKS__ACCOUNT_SID, oldAccountSID, accountSID));
 	}
 
 	/**
@@ -813,8 +770,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-		case TeksPackage.TEKS__ACCOUNT_SID:
-			return getAccountSID();
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return getOutboundMessageList();
 		case TeksPackage.TEKS__RESPONSE:
@@ -852,9 +807,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-		case TeksPackage.TEKS__ACCOUNT_SID:
-			setAccountSID((String) newValue);
-			return;
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			getOutboundMessageList().clear();
 			getOutboundMessageList().addAll(
@@ -892,9 +844,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-		case TeksPackage.TEKS__ACCOUNT_SID:
-			setAccountSID(ACCOUNT_SID_EDEFAULT);
-			return;
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			getOutboundMessageList().clear();
 			return;
@@ -928,9 +877,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-		case TeksPackage.TEKS__ACCOUNT_SID:
-			return ACCOUNT_SID_EDEFAULT == null ? accountSID != null
-					: !ACCOUNT_SID_EDEFAULT.equals(accountSID);
 		case TeksPackage.TEKS__OUTBOUND_MESSAGE:
 			return outboundMessage != null && !outboundMessage.isEmpty();
 		case TeksPackage.TEKS__RESPONSE:
@@ -947,23 +893,6 @@ public class TeksImpl extends TeksObjectImpl implements Teks {
 			return account != null;
 		}
 		return super.eIsSet(featureID);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String toString() {
-		if (eIsProxy())
-			return super.toString();
-
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (accountSID: ");
-		result.append(accountSID);
-		result.append(')');
-		return result.toString();
 	}
 
 } //TeksImpl

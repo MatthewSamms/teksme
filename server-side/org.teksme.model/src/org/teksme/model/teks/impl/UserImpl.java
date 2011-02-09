@@ -32,6 +32,7 @@ import org.teksme.model.teks.User;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getFirstName <em>First Name</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.UserImpl#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getLastName <em>Last Name</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getEmail <em>Email</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getPassword <em>Password</em>}</li>
@@ -68,6 +69,26 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * @ordered
 	 */
 	protected String firstName = FIRST_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getAccountSID() <em>Account SID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAccountSID()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ACCOUNT_SID_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getAccountSID() <em>Account SID</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getAccountSID()
+	 * @generated
+	 * @ordered
+	 */
+	protected String accountSID = ACCOUNT_SID_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getLastName() <em>Last Name</em>}' attribute.
@@ -235,6 +256,28 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getAccountSID() {
+		return accountSID;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setAccountSID(String newAccountSID) {
+		String oldAccountSID = accountSID;
+		accountSID = newAccountSID;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.USER__ACCOUNT_SID, oldAccountSID, accountSID));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public String getLastName() {
 		return lastName;
 	}
@@ -373,6 +416,8 @@ public class UserImpl extends TeksObjectImpl implements User {
 		switch (featureID) {
 		case TeksPackage.USER__FIRST_NAME:
 			return getFirstName();
+		case TeksPackage.USER__ACCOUNT_SID:
+			return getAccountSID();
 		case TeksPackage.USER__LAST_NAME:
 			return getLastName();
 		case TeksPackage.USER__EMAIL:
@@ -399,6 +444,9 @@ public class UserImpl extends TeksObjectImpl implements User {
 		switch (featureID) {
 		case TeksPackage.USER__FIRST_NAME:
 			setFirstName((String) newValue);
+			return;
+		case TeksPackage.USER__ACCOUNT_SID:
+			setAccountSID((String) newValue);
 			return;
 		case TeksPackage.USER__LAST_NAME:
 			setLastName((String) newValue);
@@ -433,6 +481,9 @@ public class UserImpl extends TeksObjectImpl implements User {
 		case TeksPackage.USER__FIRST_NAME:
 			setFirstName(FIRST_NAME_EDEFAULT);
 			return;
+		case TeksPackage.USER__ACCOUNT_SID:
+			setAccountSID(ACCOUNT_SID_EDEFAULT);
+			return;
 		case TeksPackage.USER__LAST_NAME:
 			setLastName(LAST_NAME_EDEFAULT);
 			return;
@@ -466,6 +517,9 @@ public class UserImpl extends TeksObjectImpl implements User {
 		case TeksPackage.USER__FIRST_NAME:
 			return FIRST_NAME_EDEFAULT == null ? firstName != null
 					: !FIRST_NAME_EDEFAULT.equals(firstName);
+		case TeksPackage.USER__ACCOUNT_SID:
+			return ACCOUNT_SID_EDEFAULT == null ? accountSID != null
+					: !ACCOUNT_SID_EDEFAULT.equals(accountSID);
 		case TeksPackage.USER__LAST_NAME:
 			return LAST_NAME_EDEFAULT == null ? lastName != null
 					: !LAST_NAME_EDEFAULT.equals(lastName);
@@ -500,6 +554,8 @@ public class UserImpl extends TeksObjectImpl implements User {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (firstName: ");
 		result.append(firstName);
+		result.append(", accountSID: ");
+		result.append(accountSID);
 		result.append(", lastName: ");
 		result.append(lastName);
 		result.append(", email: ");

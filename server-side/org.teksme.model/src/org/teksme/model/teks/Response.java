@@ -24,6 +24,7 @@ import org.teksme.model.TeksObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.teksme.model.teks.Response#getError <em>Error</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Response#getMessage <em>Message</em>}</li>
  * </ul>
  * </p>
  *
@@ -58,5 +59,32 @@ public interface Response extends TeksObject {
 	 * @generated
 	 */
 	void setError(org.teksme.model.teks.Error value);
+
+	/**
+	 * Returns the value of the '<em><b>Message</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Message</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Message</em>' attribute.
+	 * @see #setMessage(String)
+	 * @see org.teksme.model.teks.TeksPackage#getResponse_Message()
+	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='message'"
+	 * @generated
+	 */
+	String getMessage();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.Response#getMessage <em>Message</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Message</em>' attribute.
+	 * @see #getMessage()
+	 * @generated
+	 */
+	void setMessage(String value);
 
 } // Response
