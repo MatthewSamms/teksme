@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde version="3.6"?>
 
-<target name="Library Target Definition">
+<target name="TeksMe Library Target Definition">
 <locations>
 <location path="${eclipse_home}" type="Profile"/>
 <location path="${workspace_loc}/org.teksme.library.target/hibernate" type="Directory"/>
 <location path="${workspace_loc}/org.teksme.library.target/dependencies" type="Directory"/>
 <location path="${workspace_loc}/org.teksme.library.target/hsqldb" type="Directory"/>
+<location includeAllPlatforms="true" includeMode="slicer" type="InstallableUnit">
+<unit id="javax.activation" version="1.1.0.v201005080500"/>
+</location>
 </locations>
 </target>
