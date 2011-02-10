@@ -2,7 +2,9 @@
 
 <font size="3"><b>Making Signed Requests using one access token with OAuth</b></font>
 
-We use OAuth which allow secure API authorization from TèksMe. Please keep in mind that OAuth is complicated, especially for beginners. So we've created this guide to help you out. We've tried to simplify it, but if you get stuck, there are a lot of other good resources are on the reference section.  
+We use [http://oauth.net/ OAuth] which allow secure API authorization from TèksMe. 
+
+Please keep in mind that OAuth is complicated, especially for beginners. So we've created this guide to help you out. We've tried to simplify it, but if you get stuck, there are a lot of other good resources are on the reference section.  
 
 <font size="4"><b>Contents</b></font>
 
@@ -10,9 +12,11 @@ We use OAuth which allow secure API authorization from TèksMe. Please keep in m
 
 = Authentication Scheme Overview =
 
-The oAuth protocol comes in two flavors, 3-legged and 2-legged protocols. The 3-legged one is about delegating user access rights to an application and is the one that gets the most attention on the web. This mechanism is used by sites and applications within the Twitter Ecosystem to get access to your data held on Twitter. The 2-legged version is used to authenticate an application against a service provider (TèksMe in our case) with no specific user involved. So many integrations just need to make use of a single user account. By using a single access token, you don't need to implement the entire OAuth token acquisition dance.  
+The oAuth protocol comes in two flavors, 3-legged and 2-legged protocols. This document describes the 2-legged scheme used by TèksMe.
 
-The design of the TèksMe Authentication scheme was inspired by the Netflix API.
+The 3-legged one is about delegating user access rights to an application and is the one that gets the most attention on the web. This mechanism is used by sites and applications within the Twitter Ecosystem to get access to your data held on Twitter. The 2-legged version is used to authenticate an application against a service provider (TèksMe in our case) with no specific user involved. So many integrations just need to make use of a single user account. By using a single access token, you don't need to implement the entire OAuth token acquisition dance.  
+
+The design of the TèksMe Authentication scheme was inspired by the [http://developer.netflix.com/ Netflix API].
 
 == Before moving any further ==
 
@@ -43,9 +47,8 @@ Your base string must include exactly three elements, separated by exactly two a
 
 The signature base string includes the following components of the HTTP request:
 
-   * *The HTTP Request Method Must*: HTTP request method (e.g., "GET", "POST", etc.). Always be sent in uppercase, and must be percent-encoded. 
-   * *The URL Must*: the scheme, authority, and path as declared by the [http://www.w3.org/Protocols/rfc2616/ RFC2616 HTTP "Host" request header field. 
-Include the port number if it is other than 80 for HTTP or 443 for HTTPS.  The path and query components of the request resource URI. Be percent-encoded.
+   * *The HTTP Request Method Must*: HTTP request method (e.g., "GET", "POST", etc.). Always be sent in uppercase, and must be [http://en.wikipedia.org/wiki/URL-encoding percent-encoded]. 
+   * *The URL Must*: the scheme, authority, and path as declared by the [http://www.w3.org/Protocols/rfc2616/ RFC2616 HTTP "Host" request header field]. Include the port number if it is other than 80 for HTTP or 443 for HTTPS.  The path and query components of the request resource URI. Be [http://en.wikipedia.org/wiki/URL-encoding percent-encoded].
   * *The HTTP Request Parameter String Must*: include all requests you want to pass with the request. This means everything in the body for POSTs and everything after the question-mark for GETs. The protocol parameters excluding the "oauth_signature". Parameters included in the request entity-body if they comply with the strict restrictions defined in [http://tools.ietf.org/html/rfc5849#section-3.4.1 RFC5849 The OAuth 1.0 Protocol Section 3.4.1.3].
 
 === OAuth Parameters ===
