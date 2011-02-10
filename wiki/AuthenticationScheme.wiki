@@ -2,7 +2,7 @@
 
 <font size="3"><b>Making Signed Requests using one access token with OAuth</b></font>
 
-We use [http://oauth.net/ OAuth] which allow secure API authorization from TèksMe. 
+We use [http://oauth.net/ OAuth] that allows secure API authorization from TèksMe. 
 
 Please keep in mind that OAuth is complicated, especially for beginners. So we've created this guide to help you out. We've tried to simplify it, but if you get stuck, there are a lot of other good resources are on the reference section.  
 
