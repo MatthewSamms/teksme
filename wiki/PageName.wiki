@@ -1,26 +1,34 @@
 #summary Making Signed Requests using one access token with OAuth
 
-<wiki:toc max_depth="3" />
-
-== Authentication Scheme Overview ==
+<font size="3"><b>Making Signed Requests using one access token with OAuth</b></font>
 
 We use OAuth which allow secure API authorization from TèksMe. Please keep in mind that OAuth is complicated, especially for beginners. So we've created this guide to help you out. We've tried to simplify it, but if you get stuck, there are a lot of other good resources are on the reference section.  
+
+<font size="4"><b>Contents</b></font>
+
+<wiki:toc max_depth="3" />
+
+= Authentication Scheme Overview =
 
 The oAuth protocol comes in two flavors, 3-legged and 2-legged protocols. The 3-legged one is about delegating user access rights to an application and is the one that gets the most attention on the web. This mechanism is used by sites and applications within the Twitter Ecosystem to get access to your data held on Twitter. The 2-legged version is used to authenticate an application against a service provider (TèksMe in our case) with no specific user involved. So many integrations just need to make use of a single user account. By using a single access token, you don't need to implement the entire OAuth token acquisition dance.  
 
 The design of the TèksMe Authentication scheme was inspired by the Netflix API.
 
-=== Before moving any further ===
+== Before moving any further ==
 
 Please note that TèksMe is not yet fully available. At this stage, we have published some docs and are checking in code to the repository. For now, you need an invitation to use TèksMe. And if you were invited, we will provide you with your *consumer key* and *shared secret*, which you will need before anything else on this page will make sense. Please sign up for the waitlist.
 
 
-== Signed Requests (Consumer Key plus Signature) ==
+= Signed Requests (Consumer Key plus Signature) =
+
+== Overview ==
 
 Here we make sure that only registered developers are using TèksMe data. On a conceptual level 2-legged OAuth simply consists of the first and last steps of 3-legged OAuth:
 *(1)* Client has signed up to the server and got his client credentials (also known as “consumer key and shared  secret”); and *(2)* Client uses his client credentials (and empty token credentials) to access the protected resources on the server.
 
 You shouldn't ever share the combination of your OAuth consumer key, secret, access token, and access token secret.
+
+== "Signing" your requests ==
 
 Throughout your OAuth experience, you'll be "signing" various requests. Each request has four major components:
 
@@ -47,3 +55,4 @@ Include the port number if it is other than 80 for HTTP or 443 for HTTPS.  The p
   * {{{ oauth_signature_method }}} : the cryptographic method you're going to use to sign your call. Always send HMAC-SHA1, in upper-case letters.
   * {{{ oauth_timestamp }}} : the number of seconds elapsed since midnight, 1 January 1970. For more information: [http://tools.ietf.org/html/rfc5849#section-3.3 3.3.  RFC5849 The OAuth 1.0 Protocol Section 3.3 Nonce and Timestamp]. 
   * {{{ oauth_version }}} : OPTIONAL.  If present, MUST be set to "1.0".  Provides the version of the authentication process as defined in this specification.
+
