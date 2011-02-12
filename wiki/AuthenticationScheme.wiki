@@ -14,13 +14,17 @@ Please keep in mind that OAuth is complicated, especially for beginners. So we'v
 
 The oAuth protocol comes in two flavors, 3-legged and 2-legged protocols. This document describes the 2-legged scheme used by TèksMe.
 
-The 3-legged one is about delegating user access rights to an application and is the one that gets the most attention on the web. This mechanism is used by sites and applications within the Twitter Ecosystem to get access to your data held on Twitter. The 2-legged version is used to authenticate an application against a service provider (TèksMe in our case) with no specific user involved. So many integrations just need to make use of a single user account. By using a single access token, you don't need to implement the entire OAuth token acquisition dance.  
+The 3-legged one is about delegating user access rights to an application and is the one that gets the most attention on the web. For example, this mechanism is used by sites and applications within the Twitter Ecosystem to get access to your data held on Twitter. 
 
+The 2-legged version is used to authenticate an application against a service provider (TèksMe in our case) with no specific user involved (server-to-server). So many integrations just need to make use of a single user account. By using a single access token, you don't need to implement the entire OAuth token acquisition dance.  
+
+<wiki:comment>
 The design of the TèksMe Authentication scheme was inspired by the [http://developer.netflix.com/ Netflix API].
+</wiki:comment>
 
 == Before moving any further ==
 
-Please note that TèksMe is not yet fully available. At this stage, we have published some docs and are checking in code to the repository. For now, you need an invitation to use TèksMe. And if you were invited, we will provide you with your *consumer key* and *shared secret*, which you will need before anything else on this page will make sense. Please sign up for the waitlist.
+Please note that TèksMe is not yet fully available. At this stage, we have published some docs and are checking in code to the repository. For now, you need an invitation to use TèksMe. And if you were invited, we will provide you with your *consumer key* and *shared secret*, which you will need before anything else on this page will make sense. Please sign up for the [Waitlist waitlist].
 
 
 = Signed Requests (Consumer Key plus Signature) =
@@ -37,8 +41,11 @@ You shouldn't ever share the combination of your OAuth consumer key, secret, acc
 Throughout your OAuth experience, you'll be "signing" various requests. Each request has four major components:
 
   * *The Base String*: your HTTP verb - almost always GET or POST - plus the base URL, plus all of your request and OAuth parameters. The OAuth base string will look like certain parts are double encoded (mainly, the parameters to the request). This is normal, and you should not see characters other than {{{ ALPHA / DIGIT / "-" / "." / "_" / "~" }}} [http://tools.ietf.org/html/rfc3986 RFC 3986 section 2.3 Unreserved Characters], and obviously the {{{ %XX }}} characters in the encoded fields, separated by unencoded {{{ & }}}.
+
   * *The Public Key*: the consumer key provided by TèksMe upon registration. This key will be shown in plain text within the signed URL.
+
   * *The Secret*:  another piece of information provided by us. 
+
   * *The Signature*: a mix of your request, public key, and secret, produced by the signing algorithm HMAC/SHA1 (Hashing for Message Authentication with SHA1). See [http://tools.ietf.org/html/rfc5849#section-3.4.1 RFC5849 The OAuth 1.0 Protocol section 3.4.1. Signature Base String]. 
 
 === Constructing the Base String ===
@@ -48,13 +55,19 @@ Your base string must include exactly three elements, separated by exactly two a
 The signature base string includes the following components of the HTTP request:
 
    * *The HTTP Request Method Must*: HTTP request method (e.g., "GET", "POST", etc.). Always be sent in uppercase, and must be [http://en.wikipedia.org/wiki/URL-encoding percent-encoded]. 
+
    * *The URL Must*: the scheme, authority, and path as declared by the [http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html RFC2616 HTTP "Host" request header field]. Include the port number if it is other than 80 for HTTP or 443 for HTTPS.  The path and query components of the request resource URI. Be [http://en.wikipedia.org/wiki/URL-encoding percent-encoded].
+
   * *The HTTP Request Parameter String Must*: include all requests you want to pass with the request. This means everything in the body for POSTs and everything after the question-mark for GETs. The protocol parameters excluding the "oauth_signature". Parameters included in the request entity-body if they comply with the strict restrictions defined in [http://tools.ietf.org/html/rfc5849#section-3.4.1 RFC5849 The OAuth 1.0 Protocol Section 3.4.1.3].
 
 === OAuth Parameters ===
 
   * {{{ oauth_consumer_key }}} : your oauth_consumer_key is the same as your TèksMe API Key. 
+
   * {{{ oauth_nonce }}} : is a random string, uniquely generated by the client to allow the server to verify that a request has never been made before and helps prevent replay attacks when requests are made over a non-secure channel. For more information: [http://tools.ietf.org/html/rfc5849#section-3.3 3.3.  RFC5849 The OAuth 1.0 Protocol Section 3.3 Nonce and Timestamp]. 
+
   * {{{ oauth_signature_method }}} : the cryptographic method you're going to use to sign your call. Always send HMAC-SHA1, in upper-case letters.
+
   * {{{ oauth_timestamp }}} : the number of seconds elapsed since midnight, 1 January 1970. For more information: [http://tools.ietf.org/html/rfc5849#section-3.3 3.3.  RFC5849 The OAuth 1.0 Protocol Section 3.3 Nonce and Timestamp]. 
+
   * {{{ oauth_version }}} : OPTIONAL.  If present, MUST be set to "1.0".  Provides the version of the authentication process as defined in this specification.
