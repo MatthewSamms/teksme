@@ -26,4 +26,4 @@ Bundle-ClassPath: lib/commons-httpclient-3.1.jar,
  .
 Export-Package: org.teksme.server.identity.service,
  org.teksme.server.identity.util
-Service-Component: OSGI-INF/web-component.xml
+Service-Component: OSGI-INF/web-component.xml, OSGI-INF/identity.xml

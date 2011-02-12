@@ -18,21 +18,20 @@ import javax.servlet.ServletException;
 
 import org.osgi.service.http.HttpService;
 import org.osgi.service.http.NamespaceException;
-import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
-import org.teksme.server.common.persistence.PersistenceException;
 
 /**
  * 
  * @since 0.5
- *
+ * 
  */
 public class WebComponent {
 
-	private static final String AUTHENTICATION_SERVLET_ALIAS = "/auth";
+	private static final String REQUEST_TOKEN_SERVLET_ALIAS = "/oauth/login";
+
+	private static final String ECHO_SERVLET_ALIAS = "/oauth/echo";
 
 	private static Logger logger = Logger.getLogger(WebComponent.class.getName());
-
 
 	private HttpService httpService;
 	private IPersistenceManagerFactory persistenceMgrFactory;
@@ -40,7 +39,6 @@ public class WebComponent {
 	public void bind(HttpService httpService) {
 		this.httpService = httpService;
 	}
-
 
 	public void bind(IPersistenceManagerFactory persistenceMgrFactory) {
 		this.persistenceMgrFactory = persistenceMgrFactory;
@@ -56,15 +54,15 @@ public class WebComponent {
 
 	public void activate() {
 		try {
-			IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
-			logger.info("Starting up sevlet at " + AUTHENTICATION_SERVLET_ALIAS);
-			AuthenticationToken auth = new AuthenticationToken();
-			auth.setPersistenceManagerFactory(persistenceMgr);
-			httpService.registerServlet(AUTHENTICATION_SERVLET_ALIAS, auth, null, null);
-			logger.info("Sevlet up " + AUTHENTICATION_SERVLET_ALIAS);
-		} catch (PersistenceException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.info("Starting up sevlet at " + REQUEST_TOKEN_SERVLET_ALIAS);
+			RequestToken auth = new RequestToken();
+			auth.setPersistenceManagerFactory(persistenceMgrFactory);
+			httpService.registerServlet(REQUEST_TOKEN_SERVLET_ALIAS, auth, null, null);
+			logger.info("Sevlet up " + REQUEST_TOKEN_SERVLET_ALIAS);
+			logger.info("Starting up sevlet at " + ECHO_SERVLET_ALIAS);
+			EchoServlet echo = new EchoServlet();
+			httpService.registerServlet(ECHO_SERVLET_ALIAS, echo, null, null);
+			logger.info("Sevlet up " + ECHO_SERVLET_ALIAS);
 		} catch (ServletException e) {
 			e.printStackTrace();
 		} catch (NamespaceException e) {
@@ -73,7 +71,7 @@ public class WebComponent {
 	}
 
 	public void deactivate() {
-		httpService.unregister(AUTHENTICATION_SERVLET_ALIAS);
+		httpService.unregister(REQUEST_TOKEN_SERVLET_ALIAS);
 	}
 
 }

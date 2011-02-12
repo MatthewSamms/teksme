@@ -13,20 +13,28 @@
 
 package org.teksme.server.identity.service.impl;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import net.oauth.OAuth;
 import net.oauth.OAuthAccessor;
+import net.oauth.OAuthConsumer;
 import net.oauth.OAuthMessage;
+import net.oauth.OAuthProblemException;
 import net.oauth.server.OAuthServlet;
 
+import org.teksme.model.teks.Application;
+import org.teksme.model.teks.Profile;
 import org.teksme.model.teks.User;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
-import org.teksme.server.identity.provider.TeksmeOAuthProvider;
+import org.teksme.server.identity.provider.TeksOAuthProvider;
 import org.teksme.server.identity.service.IAuth;
 
 /**
@@ -36,6 +44,7 @@ import org.teksme.server.identity.service.IAuth;
  */
 public class AuthImpl implements IAuth {
 
+	@SuppressWarnings("unused")
 	private IPersistenceManager pm;
 	private IPersistenceManagerFactory persistenceMgrFactory;
 
@@ -56,26 +65,104 @@ public class AuthImpl implements IAuth {
 		}
 	}
 
-	public boolean isValidToken(HttpServletRequest request) {
+	public boolean isValidToken(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
 		try {
 			OAuthMessage requestMessage = OAuthServlet.getMessage(request, null);
 
-			OAuthAccessor accessor = TeksmeOAuthProvider.getAccessor(requestMessage);
+			OAuthAccessor accessor = TeksOAuthProvider.getAccessor(requestMessage);
+			TeksOAuthProvider.VALIDATOR.validateMessage(requestMessage, accessor);
 
-			if (!Boolean.TRUE.equals(accessor.getProperty("authorized")) || accessor.getProperty("user") == null) {
-				return false;
+			if (accessor.tokenSecret.isEmpty()) {
+				OAuthProblemException problem = new OAuthProblemException("permission_denied");
+				throw problem;
 			}
+
+			// make sure token is authorized
+			if (!Boolean.TRUE.equals(accessor.getProperty("authorized"))) {
+				// set userId in accessor and mark it as authorized
+				TeksOAuthProvider.markAsAuthorized(accessor, accessor.consumer.consumerKey);
+			}
+
 			return true;
 
 		} catch (Exception e) {
-			e.printStackTrace();
-			return false;
+			TeksOAuthProvider.handleException(e, request, response, true);
+		}
+
+		return false;
+
+	}
+
+	public User getAuthUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		User userTeksObj = null;
+		try {
+			OAuthMessage requestMessage = OAuthServlet.getMessage(request, null);
+			OAuthAccessor accessor = TeksOAuthProvider.getAccessor(requestMessage);
+			userTeksObj = (User) accessor.getProperty("userObj");
+		} catch (Exception e) {
+			TeksOAuthProvider.handleException(e, request, response, true);
+		}
+		return userTeksObj;
+	}
+
+	@SuppressWarnings("unused")
+	private void returnToConsumer(HttpServletRequest request, HttpServletResponse response, OAuthAccessor accessor) throws IOException,
+			ServletException {
+		// send the user back to site's callBackUrl
+		String callback = request.getParameter("oauth_callback");
+		if ("none".equals(callback) && accessor.consumer.callbackURL != null && accessor.consumer.callbackURL.length() > 0) {
+			// first check if we have something in our properties file
+			callback = accessor.consumer.callbackURL;
+		}
+
+		if ("none".equals(callback)) {
+			// no call back it must be a client
+			response.setContentType("text/plain");
+			PrintWriter out = response.getWriter();
+			out.println("You have successfully authorized '" + accessor.consumer.getProperty("description")
+					+ "'. Please close this browser window and click continue" + " in the client.");
+			out.close();
+		} else {
+			// if callback is not passed in, use the callback from config
+			if (callback == null || callback.length() <= 0)
+				callback = accessor.consumer.callbackURL;
+			String token = accessor.requestToken;
+			if (token != null) {
+				callback = OAuth.addParameters(callback, "oauth_token", token);
+			}
+
+			response.setStatus(HttpServletResponse.SC_MOVED_TEMPORARILY);
+			response.setHeader("Location", callback);
 		}
 	}
 
-	public boolean isValidUser(String email, String password) throws NoSuchAlgorithmException, UnsupportedEncodingException, Exception {
-		User user = pm.getUser(email, password);
-		return user == null ? false : true;
+	public synchronized void refreshOAuthConsumersCache(List<User> users) {
+		// for each entry in the list create a OAuthConsumer
+		for (User user : users) {
+			Profile profile = user.getProfile();
+			List<Application> apps = profile.getApplicationList();
+
+			for (Application application : apps) {
+				String consumerKey = application.getKey();
+				// make sure it's key not additional properties
+				if (consumerKey != null && !consumerKey.equals("")) {
+					String sharedSecret = application.getSharedSecret();
+					if (sharedSecret != null) {
+						String consumerDescription = application.getDescription();
+						String consumerCallbackURL = application.getCallbackURL();
+						// Create OAuthConsumer w/ key and secret
+						OAuthConsumer consumer = new OAuthConsumer(consumerCallbackURL, consumerKey, sharedSecret, null);
+						consumer.setProperty("name", application.getName());
+						consumer.setProperty("description", consumerDescription);
+						consumer.setProperty("userObj", user);
+						TeksOAuthProvider.ALL_CONSUMERS.put(consumerKey, consumer);
+					}
+				}
+
+			}
+		}
+
 	}
 
 }
