@@ -13,10 +13,14 @@
 
 package org.teksme.server.identity.service;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
+import java.io.IOException;
+import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.teksme.model.teks.User;
 
 /**
  * 
@@ -31,17 +35,10 @@ public interface IAuth {
 	 * @param request
 	 * @return
 	 */
-	public boolean isValidToken(HttpServletRequest request);
+	public boolean isValidToken(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
 
-	/**
-	 * Check if it is a valid user.
-	 * 
-	 * @param usedID
-	 * @param pwd
-	 * @return
-	 * @throws Exception
-	 * @throws UnsupportedEncodingException
-	 * @throws NoSuchAlgorithmException
-	 */
-	public boolean isValidUser(String usedID, String pwd) throws NoSuchAlgorithmException, UnsupportedEncodingException, Exception;
+	public User getAuthUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
+
+	public void refreshOAuthConsumersCache(List<User> users);
+
 }

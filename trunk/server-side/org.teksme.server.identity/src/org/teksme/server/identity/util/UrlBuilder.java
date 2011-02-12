@@ -100,6 +100,7 @@ public class UrlBuilder {
 
 	public URL toUrl() throws MalformedURLException {
 		String value = toString();
+		System.out.println(value);
 		URL url = new URL(value);
 		return url;
 	}
