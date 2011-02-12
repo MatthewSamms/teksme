@@ -8,76 +8,76 @@ public enum ErrorDictionary {
 
 	// -- #HTTP Status code: 422 Unprocessable Entity
 
-	COULD_NOT_PARSE_REQUEST(4221, HttpStatusCode.SC_UNPROCESSABLE_ENTITY.getValue(), Messages.getString("4221"), Messages.getString(
-			"ERROR_CODES_URL").concat("4221")),
+	COULD_NOT_PARSE_REQUEST(4221, HttpStatusCode.SC_UNPROCESSABLE_ENTITY.getValue(), Messages.getString("4221"),
+			Constants.API_ERROR_CODES_URL.concat("4221")),
 
-	INVALID_ASSOCIATED_XML_SCHEMA(4222, HttpStatusCode.SC_UNPROCESSABLE_ENTITY.getValue(), Messages.getString("4222"), Messages.getString(
-			"ERROR_CODES_URL").concat("4222")),
+	INVALID_ASSOCIATED_XML_SCHEMA(4222, HttpStatusCode.SC_UNPROCESSABLE_ENTITY.getValue(), Messages.getString("4222"),
+			Constants.API_ERROR_CODES_URL.concat("4222")),
 
 	// -- #HTTP Status code: 409 (Conflict) - the XML content was invalid
 	// against the specified schema
-	MISSING_REQUIRED_XML_ELEMENT(4091, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4091"), Messages.getString(
-			"ERROR_CODES_URL").concat("4091")),
+	MISSING_REQUIRED_XML_ELEMENT(4091, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4091"), Constants.API_ERROR_CODES_URL
+			.concat("4091")),
 
-	XML_SYNTACTICALLY_INCORRECT(4092, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4092"), Messages.getString(
-			"ERROR_CODES_URL").concat("4092")),
+	XML_SYNTACTICALLY_INCORRECT(4092, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4092"), Constants.API_ERROR_CODES_URL
+			.concat("4092")),
 
-	INVALID_XML_ELEMENT(4093, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4093"), Messages.getString("ERROR_CODES_URL")
+	INVALID_XML_ELEMENT(4093, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4093"), Constants.API_ERROR_CODES_URL
 			.concat("4093")),
 
-	INVALID_ROOT_ELEMENT(4094, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4094"), Messages.getString("ERROR_CODES_URL")
+	INVALID_ROOT_ELEMENT(4094, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4094"), Constants.API_ERROR_CODES_URL
 			.concat("4094")),
 
-	ATTR_MUST_BE_FOLLOWED_BY_EQUALS_SIG(4095, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4095"), Messages.getString(
-			"ERROR_CODES_URL").concat("4095")),
+	ATTR_MUST_BE_FOLLOWED_BY_EQUALS_SIG(4095, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4095"),
+			Constants.API_ERROR_CODES_URL.concat("4095")),
 
-	MISSING_ATTR_QUOTES(4096, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4096"), Messages.getString("ERROR_CODES_URL")
+	MISSING_ATTR_QUOTES(4096, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4096"), Constants.API_ERROR_CODES_URL
 			.concat("4096")),
 
-	ATTR_VALUE_CANNOT_CONTAIN_OPEN_TAG_SYMBOL(4097, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4097"), Messages.getString(
-			"ERROR_CODES_URL").concat("4097")),
+	ATTR_VALUE_CANNOT_CONTAIN_OPEN_TAG_SYMBOL(4097, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4097"),
+			Constants.API_ERROR_CODES_URL.concat("4097")),
 
-	INVALID_XML_ELEMENT_TAG_DECLARATION(4098, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4098"), Messages.getString(
-			"ERROR_CODES_URL").concat("4098")),
+	INVALID_XML_ELEMENT_TAG_DECLARATION(4098, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4098"),
+			Constants.API_ERROR_CODES_URL.concat("4098")),
 
-	REQUIRED_XML_ELEMENT_OUT_OF_RANGE(4099, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4099"), Messages.getString(
-			"ERROR_CODES_URL").concat("4099")),
+	REQUIRED_XML_ELEMENT_OUT_OF_RANGE(4099, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("4099"),
+			Constants.API_ERROR_CODES_URL.concat("4099")),
 
-	XML_CLOSING_TAG_IS_MISSING(40910, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40910"), Messages.getString(
-			"ERROR_CODES_URL").concat("40910")),
+	XML_CLOSING_TAG_IS_MISSING(40910, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40910"), Constants.API_ERROR_CODES_URL
+			.concat("40910")),
 
-	MISSING_XML_ELEMENT_MATCHING_END_TAG(40911, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40911"), Messages.getString(
-			"ERROR_CODES_URL").concat("40911")),
+	MISSING_XML_ELEMENT_MATCHING_END_TAG(40911, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40911"),
+			Constants.API_ERROR_CODES_URL.concat("40911")),
 
-	INVALID_XML_BEGINNING_ELEMENT(40912, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40912"), Messages.getString(
-			"ERROR_CODES_URL").concat("40912")),
+	INVALID_XML_BEGINNING_ELEMENT(40912, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40912"), Constants.API_ERROR_CODES_URL
+			.concat("40912")),
 
 	// -- #HTTP Status code: 415 Unsupported Media Type
-	INVALID_CONTENT_TYPE(4151, HttpStatusCode.SC_UNSUPPORTED_MEDIA_TYPE.getValue(), Messages.getString("4151"), Messages.getString(
-			"ERROR_CODES_URL").concat("4151")),
+	INVALID_CONTENT_TYPE(4151, HttpStatusCode.SC_UNSUPPORTED_MEDIA_TYPE.getValue(), Messages.getString("4151"),
+			Constants.API_ERROR_CODES_URL.concat("4151")),
 
 	// -- #HTTP Status code: 500 Internal Server Error
-	INTERNAL_SERVICE_ERROR(5001, HttpStatusCode.SC_UNSUPPORTED_MEDIA_TYPE.getValue(), Messages.getString("5001"), Messages.getString(
-			"ERROR_CODES_URL").concat("5001")),
+	INTERNAL_SERVICE_ERROR(5001, HttpStatusCode.SC_UNSUPPORTED_MEDIA_TYPE.getValue(), Messages.getString("5001"),
+			Constants.API_ERROR_CODES_URL.concat("5001")),
 
 	// -- #HTTP Status code: 400 Bad Request
 
-	EMPTY_REQUEST_BODY(4001, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4001"), Messages.getString("ERROR_CODES_URL")
+	EMPTY_REQUEST_BODY(4001, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4001"), Constants.API_ERROR_CODES_URL
 			.concat("4001")),
 
-	CONTENT_LENGTH_NOT_SPECIFIED(4002, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4002"), Messages.getString(
-			"ERROR_CODES_URL").concat("4002")),
+	CONTENT_LENGTH_NOT_SPECIFIED(4002, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4002"), Constants.API_ERROR_CODES_URL
+			.concat("4002")),
 
-	MALFORMED_XML_FILE(4003, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4003"), Messages.getString("ERROR_CODES_URL")
+	MALFORMED_XML_FILE(4003, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4003"), Constants.API_ERROR_CODES_URL
 			.concat("4003")),
 
-	WRONG_BOF_XML_DECLARATION(4004, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4004"), Messages.getString(
-			"ERROR_CODES_URL").concat("4004")),
+	WRONG_BOF_XML_DECLARATION(4004, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4004"), Constants.API_ERROR_CODES_URL
+			.concat("4004")),
 
-	REQUIRED_HTTP_HEADER_NOT_FOUND(4005, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4005"), Messages.getString(
-			"ERROR_CODES_URL").concat("4005")),
+	REQUIRED_HTTP_HEADER_NOT_FOUND(4005, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4005"),
+			Constants.API_ERROR_CODES_URL.concat("4005")),
 
-	MALFORMED_HTTP_HEADER(4006, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4006"), Messages.getString("ERROR_CODES_URL")
+	MALFORMED_HTTP_HEADER(4006, HttpStatusCode.SC_BAD_REQUEST.getValue(), Messages.getString("4006"), Constants.API_ERROR_CODES_URL
 			.concat("4006"));
 
 	private static final int XML_SYNTACTICALLY_INCORRECT_VALUE = 4008;

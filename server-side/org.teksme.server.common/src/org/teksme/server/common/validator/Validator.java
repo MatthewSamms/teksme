@@ -18,13 +18,19 @@ import org.teksme.model.teks.Response;
  */
 public interface Validator {
 
-	final static String DIAGNOSTIC_SOURCE = "org.teksme.server.common.validator";
-	
-	final static String CONTENT_TYPE = "Content-Type";
-	
-	final static String ENCODING = "Accept-Encoding";
+	final static String DIAGNOSTIC_SOURCE = "org.teksme.server.common.validator";//$NON-NLS-1$
 
-	final static String HTTP_POST_DATA = "HTTP Post Data";
+	final static String CONTENT_TYPE = "Content-Type";//$NON-NLS-1$
+
+	final static String ENCODING = "Accept-Encoding";//$NON-NLS-1$
+
+	final static String HTTP_POST_DATA = "HTTP POST Data";//$NON-NLS-1$
+
+	static final String REQUEST_CONTEXT_OPTIONS = "HTTP Request Context";//$NON-NLS-1$
+
+	static final Object HTTP_GET_DATA = "HTTP GET Data";//$NON-NLS-1$
+
+	static final Object TEKS_MODEL_ELEMENT = "Teks model element representation";//$NON-NLS-1$
 
 	/**
 	 * An common interface for pattern-based constraints.

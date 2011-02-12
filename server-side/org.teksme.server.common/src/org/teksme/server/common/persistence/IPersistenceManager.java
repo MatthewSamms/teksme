@@ -14,8 +14,10 @@ package org.teksme.server.common.persistence;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
 
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
+import org.teksme.model.TeksObject;
 import org.teksme.model.teks.User;
 
 public interface IPersistenceManager {
@@ -48,7 +50,7 @@ public interface IPersistenceManager {
 	 */
 	void close();
 
-	Object getObjectById(Object oid, boolean validate);
+	TeksObject getTeksObjectById(TeksObject oid, boolean validate);
 
 	/**
 	 * Looks up the instance of the given type with the given key.
@@ -60,7 +62,7 @@ public interface IPersistenceManager {
 	 *            object representation of a single field identity key
 	 * @return the corresponding persistent instance
 	 */
-	Object getObjectById(@SuppressWarnings("rawtypes") Class cls, Object key);
+	TeksObject getTeksObjectById(@SuppressWarnings("rawtypes") Class cls, TeksObject key);
 
 	/**
 	 * Looks up the instance corresponding to the specified oid. This is
@@ -70,7 +72,7 @@ public interface IPersistenceManager {
 	 *            The object id of the object to load
 	 * @return the corresponding persistent instance
 	 */
-	Object getObjectById(Object oid);
+	TeksObject getTeksObjectById(TeksObject oid);
 
 	/**
 	 * Make the parameter instance persistent in this
@@ -80,7 +82,7 @@ public interface IPersistenceManager {
 	 * is thrown. For a transient instance, it assigns an object identity to the
 	 * instance and transitions it to persistent-new.
 	 */
-	Object makePersistent(Object pc);
+	TeksObject makePersistent(TeksObject pc);
 
 	/**
 	 * This method returns the <code>IPersistenceManagerFactory</code> used to
@@ -113,5 +115,7 @@ public interface IPersistenceManager {
 	 * @throws Exception
 	 */
 	public User getUser(String userID, String pwd) throws NoSuchAlgorithmException, UnsupportedEncodingException, Exception;
+
+	public List<? extends TeksObject> getTeksObjects(Class<? extends TeksObject> clazz);
 
 }
