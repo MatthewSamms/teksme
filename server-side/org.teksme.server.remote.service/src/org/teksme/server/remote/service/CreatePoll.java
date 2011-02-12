@@ -1,4 +1,17 @@
-package org.teksme.server.remote.service.http;
+/*
+ * Copyright 2010 TèksMe, Inc.
+ * TèksMe licenses this file to you under the Apache License, version
+ * 2.0 (the "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.  See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
+package org.teksme.server.remote.service;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -11,29 +24,25 @@ import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 
 /**
- * Servlet implementation class ClickatellCallbackServlet
+ * Servlet implementation class CreatePoll
  */
-@SuppressWarnings("serial")
-public class ClickatellCallbackServlet extends HttpServlet {
+public class CreatePoll extends HttpServlet {
 
-	Logger logger = Logger.getLogger(ClickatellCallbackServlet.class.getName());
+	Logger logger = Logger.getLogger(CreatePoll.class.getName());
+
+	private static final long serialVersionUID = 1L;
 
 	private static String message = "Error during Servlet processing";
 
-	// TODO Inject the service
-	// SMSInboundMessage smsInboundMessage;
-	// TODO Inject the service
-	// JMSMsgQueueSender outboundMsgQueueSender;
+//	@EJB(mappedName = SMSPollHandler.JNDI_NAME)
+//	private SMSPollHandler createPollBean;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public ClickatellCallbackServlet() {
+	public CreatePoll() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -42,7 +51,8 @@ public class ClickatellCallbackServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 	}
 
@@ -50,10 +60,13 @@ public class ClickatellCallbackServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request,
+			HttpServletResponse response) {
 
-		//try {
-			BufferedReader reader = new BufferedReader(new InputStreamReader(request.getInputStream()));
+		try {
+
+			BufferedReader reader = new BufferedReader(new InputStreamReader(
+					request.getInputStream()));
 
 			final ServletOutputStream outStream = response.getOutputStream();
 
@@ -84,21 +97,16 @@ public class ClickatellCallbackServlet extends HttpServlet {
 			logger.info("getContentLength: " + request.getContentLength());
 			logger.info("getContentType: " + request.getContentType());
 
-			// InboundTextMessage inboundMsg =
-			// smsInboundMessage.createInboundMsgModelFromXml(xmlBuff.toString());
-
-			// logger.info("MO: " + inboundMsg.getOriginator());
-
-			// outboundMsgQueueSender.send(inboundMsg);
+//			createPollBean.createPollModelFromXml(xmlBuff.toString());
 
 			// set the response code and write the response data
 			response.setStatus(HttpServletResponse.SC_OK);
-			OutputStreamWriter writer = new OutputStreamWriter(response.getOutputStream());
+			OutputStreamWriter writer = new OutputStreamWriter(
+					response.getOutputStream());
 			writer.write("Result");
 			writer.flush();
 			writer.close();
 
-			/*
 		} catch (IOException e) {
 			try {
 				response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
@@ -106,14 +114,6 @@ public class ClickatellCallbackServlet extends HttpServlet {
 				response.getWriter().close();
 			} catch (IOException ioe) {
 			}
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}*/
-
+		}
 	}
-
 }

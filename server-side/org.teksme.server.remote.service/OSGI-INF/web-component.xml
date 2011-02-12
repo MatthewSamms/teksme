@@ -5,5 +5,5 @@
    <reference bind="bind" interface="org.teksme.server.queue.sender.MessageQueueSender" name="messageQueueSender" unbind="unbind"/>
    <reference bind="bind" cardinality="1..1" interface="org.teksme.server.common.persistence.IPersistenceManagerFactory" name="persistenceMgrFactory" policy="static" unbind="unbind"/>
    <reference bind="bind" cardinality="1..1" interface="org.teksme.server.common.validator.Validator" name="requestValidation" policy="static" unbind="unbind"/>
-   <reference bind="bind" cardinality="1..1" interface="org.teksme.server.identity.service.IAuth" name="authorization" policy="static" unbind="unbind"/>
+   <reference bind="bind" cardinality="1..1" interface="org.teksme.server.identity.service.IAuth" name="authorization" policy="static" unbind="undind"/>
 </scr:component>

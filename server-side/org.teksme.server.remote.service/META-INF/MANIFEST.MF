@@ -18,5 +18,6 @@ Require-Bundle: org.teksme.model;bundle-version="0.5.0",
  org.teksme.server.identity;bundle-version="0.5.0"
 Service-Component: OSGI-INF/web-component.xml
 Bundle-Vendor: TeksMe Inc.
-Export-Package: org.teksme.server.remote.service,
- org.teksme.server.remote.service.http
+Export-Package: org.teksme.server.remote.service
+Bundle-Activator: org.teksme.server.remote.service.Activator
+Bundle-ActivationPolicy: lazy
