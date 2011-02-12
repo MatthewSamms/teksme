@@ -31,7 +31,7 @@ public class ObjectMessageImpl extends MessageImpl implements ObjectMessage {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1900708701663197521L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * <!-- begin-user-doc -->

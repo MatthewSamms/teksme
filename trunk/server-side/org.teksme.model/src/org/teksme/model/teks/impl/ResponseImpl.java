@@ -14,12 +14,12 @@
 package org.teksme.model.teks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.notify.NotificationChain;
-import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
+
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.teksme.model.impl.TeksObjectImpl;
@@ -42,6 +42,11 @@ import org.teksme.model.teks.TeksPackage;
  * @generated
  */
 public class ResponseImpl extends TeksObjectImpl implements Response {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The cached value of the '{@link #getError() <em>Error</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -71,11 +76,6 @@ public class ResponseImpl extends TeksObjectImpl implements Response {
 	 * @ordered
 	 */
 	protected String message = MESSAGE_EDEFAULT;
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 3563704321960682129L;
 
 	/**
 	 * <!-- begin-user-doc -->

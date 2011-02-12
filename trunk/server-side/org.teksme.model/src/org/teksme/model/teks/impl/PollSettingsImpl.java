@@ -67,7 +67,7 @@ public class PollSettingsImpl extends TeksObjectImpl implements PollSettings {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 534768864345053639L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getCloseDate() <em>Close Date</em>}' attribute.

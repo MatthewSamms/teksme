@@ -55,7 +55,7 @@ public class ReplyMessageImpl extends TeksObjectImpl implements ReplyMessage {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2261727391343173819L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The cached value of the '{@link #getConfirmationList() <em>Confirmation</em>}' containment reference list.

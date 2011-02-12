@@ -54,7 +54,7 @@ public class AnnotationImpl extends TeksObjectImpl implements Annotation {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5491030295701387721L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getAnnotation() <em>Annotation</em>}' attribute.

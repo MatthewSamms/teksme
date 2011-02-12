@@ -40,9 +40,13 @@ import org.teksme.model.teks.TeksPackage;
  *
  * @generated
  */
-@SuppressWarnings("serial")
 public class ErrorImpl extends TeksObjectImpl implements
 		org.teksme.model.teks.Error {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	/**
 	 * The default value of the '{@link #getStatus() <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->

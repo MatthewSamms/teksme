@@ -50,7 +50,7 @@ public abstract class PollQuestionImpl extends TeksObjectImpl implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5474704859136370546L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getNote() <em>Note</em>}' attribute.

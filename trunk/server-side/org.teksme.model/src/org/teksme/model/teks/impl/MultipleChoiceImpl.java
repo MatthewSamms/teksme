@@ -55,7 +55,7 @@ public class MultipleChoiceImpl extends PollQuestionImpl implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 2485431295447072301L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getQuestion() <em>Question</em>}' attribute.

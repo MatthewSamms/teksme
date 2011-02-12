@@ -31,7 +31,7 @@ public class FreeTextImpl extends PlainTextImpl implements FreeText {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7748229718723110491L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * <!-- begin-user-doc -->

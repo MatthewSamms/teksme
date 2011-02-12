@@ -40,7 +40,7 @@ public class SecureTextImpl extends PlainTextImpl implements SecureText {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7470035725801124490L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getHashAlgorithm() <em>Hash Algorithm</em>}' attribute.

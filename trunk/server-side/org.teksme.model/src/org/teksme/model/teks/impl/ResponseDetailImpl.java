@@ -58,7 +58,7 @@ public class ResponseDetailImpl extends TeksObjectImpl implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 5802667543498922150L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getDateTime() <em>Date Time</em>}' attribute.
