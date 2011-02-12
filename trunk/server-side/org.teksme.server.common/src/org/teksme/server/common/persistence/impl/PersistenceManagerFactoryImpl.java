@@ -12,13 +12,17 @@
  */
 package org.teksme.server.common.persistence.impl;
 
+import java.io.IOException;
 import java.util.Properties;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.teneo.PersistenceOptions;
 import org.eclipse.emf.teneo.hibernate.HbDataStore;
 import org.eclipse.emf.teneo.hibernate.HbHelper;
+import org.hibernate.SessionFactory;
+import org.hibernate.StaleObjectStateException;
 import org.hibernate.cfg.Environment;
 import org.hibernate.dialect.Dialect;
 import org.teksme.model.teks.TeksPackage;
@@ -48,6 +52,12 @@ public class PersistenceManagerFactoryImpl implements IPersistenceManagerFactory
 	private Properties dsProperties;
 
 	private IPersistenceManager persistenceMgr;
+
+	public SessionFactory getSessionFactory() {
+		return sf;
+	}
+
+	private SessionFactory sf;
 
 	public void setProperties(Properties dsProperties) {
 		this.dsProperties = dsProperties;
@@ -128,7 +138,7 @@ public class PersistenceManagerFactoryImpl implements IPersistenceManagerFactory
 		return persistenceMgr;
 	}
 
-	private HbDataStore initialize(String dsName, Properties dbProps) throws PersistenceException {
+	private synchronized HbDataStore initialize(String dsName, Properties dbProps) throws PersistenceException {
 		HbDataStore dataStore = null;
 		try {
 
@@ -144,7 +154,7 @@ public class PersistenceManagerFactoryImpl implements IPersistenceManagerFactory
 			// for all the available options
 			dbProps.setProperty(PersistenceOptions.CASCADE_POLICY_ON_NON_CONTAINMENT,
 					TeksResourceBundle.getString("datasource.cascade.policy"));
-			dbProps.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
+			//dbProps.setProperty(PersistenceOptions.INHERITANCE_MAPPING, "JOINED");
 			// dbProps.setProperty(PersistenceOptions.SET_PROXY, "true");
 			dataStore.setDataStoreProperties(dbProps);
 			// // sets its epackages stored in this datastore
@@ -207,6 +217,41 @@ public class PersistenceManagerFactoryImpl implements IPersistenceManagerFactory
 		else if (URL.contains(MYSQL_DB))
 			return org.hibernate.dialect.MySQLInnoDBDialect.getDialect();
 		return null;
+	}
+
+	public void doFilter() throws IOException {
+
+		try {
+			logger.info("Starting a database transaction");
+			sf.getCurrentSession().beginTransaction();
+
+			// Commit and cleanup
+			logger.info("Committing the database transaction");
+			sf.getCurrentSession().getTransaction().commit();
+
+		} catch (StaleObjectStateException staleEx) {
+			logger.info("This interceptor does not implement optimistic concurrency control!");
+			logger.info("Your application will not work until you add compensation actions!");
+			// Rollback, close everything, possibly compensate for any permanent
+			// changes during the conversation, and finally restart business
+			// conversation. Maybe give the user of the application a chance to
+			// merge some of his work with fresh data... what you do here
+			// depends
+			// on your applications design.
+			throw staleEx;
+		} catch (Throwable ex) {
+			// Rollback only
+			ex.printStackTrace();
+			try {
+				if (sf.getCurrentSession().getTransaction().isActive()) {
+					logger.info("Trying to rollback database transaction after exception");
+					sf.getCurrentSession().getTransaction().rollback();
+				}
+			} catch (Throwable rbEx) {
+				logger.log(Level.SEVERE, "Could not rollback transaction after exception!", rbEx);
+			}
+
+		}
 	}
 
 }

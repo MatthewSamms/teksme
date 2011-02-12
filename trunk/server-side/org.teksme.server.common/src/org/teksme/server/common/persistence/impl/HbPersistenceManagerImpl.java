@@ -34,6 +34,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.teksme.model.TeksObject;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.User;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
@@ -46,6 +47,7 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 
 	private HbDataStore dataStore = null;
 
+	@SuppressWarnings("unused")
 	private boolean autodetectDataSource = true;
 
 	private IPersistenceManagerFactory persistenceMgrFactory;
@@ -54,7 +56,7 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 
 	}
 
-	public String getObjectId(Object obj) {
+	public String getTeksObjectId(TeksObject obj) {
 		return null;
 	}
 
@@ -68,26 +70,35 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 
 	}
 
-	public Object getObjectById(Object oid, boolean validate) {
+	public TeksObject getTeksObjectById(TeksObject oid, boolean validate) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object getObjectById(@SuppressWarnings("rawtypes") Class cls, Object key) {
+	public TeksObject getTeksObjectById(@SuppressWarnings("rawtypes") Class cls, TeksObject key) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object getObjectById(Object oid) {
+	public TeksObject getTeksObjectById(TeksObject oid) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public Object makePersistent(Object pc) {
+	public TeksObject makePersistent(TeksObject teksObj) {
 		final SessionFactory sessionFactory = dataStore.getSessionFactory();
 		{
+
 			// Create a session and a transaction
-			final Session session = sessionFactory.openSession();
+			Session session = sessionFactory.openSession();
+			
+			if(session.isOpen()) {
+				System.out.println("Session is OPEN!");
+				session.close();
+			}
+			
+			session = sessionFactory.openSession();
+			
 			Transaction tx = session.getTransaction();
 
 			// Start a transaction, create a library and make it persistent
@@ -95,7 +106,7 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 
 			logger.info("Persisting the object model in the database...");
 
-			session.save(pc);
+			session.save(teksObj);
 
 			// at commit the objects will be present in the database
 			tx.commit();
@@ -176,7 +187,7 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 		return this.dataStore;
 	}
 
-	public User getUser(String email, String password) throws Exception {
+	public User getUser(String accountSID, String password) throws Exception {
 		final SessionFactory sessionFactory = dataStore.getSessionFactory();
 		final Session session = sessionFactory.openSession();
 
@@ -191,22 +202,51 @@ public class HbPersistenceManagerImpl implements IPersistenceManager {
 			sb.append(Integer.toString((byteData[i] & 0xff) + 0x100, 16).substring(1));
 		}
 
-		System.out.println("Hex format : " + sb.toString());
-
-		Query query = session.createQuery("SELECT user FROM User user WHERE user.email = '" + email + "' and user.password = '"
+		Query query = session.createQuery("SELECT user FROM User user WHERE user.accountSID = '" + accountSID + "' and user.password = '"
 				+ sb.toString() + "'");
 		List<?> list = query.list();
 		if (list.isEmpty()) {
+			System.out.println("No user found!");
 			return null;
 		} else if (list.size() > 1) {
 			throw new Exception("More than one user found on the database!");
 		}
 
 		User user = (User) list.get(0);
+		System.out.println("User: " + user);
 
 		session.close();
 		return user;
 
+	}
+
+	public List<? extends TeksObject> getTeksObjects(Class<? extends TeksObject> clazz) {
+		final SessionFactory sessionFactory = dataStore.getSessionFactory();
+		final Session session = sessionFactory.openSession();
+
+		String className = getClassName(clazz);
+		String strQuery = "SELECT " + className.toLowerCase() + " FROM " + className + " " + className.toLowerCase();
+		System.out.println("QUERY: " + strQuery);
+
+		Query query = session.createQuery(strQuery);
+		@SuppressWarnings("unchecked")
+		List<? extends TeksObject> list = query.list();
+		if (list.isEmpty()) {
+			return null;
+		}
+
+		//session.close();
+		return list;
+	}
+
+	public static String getClassName(@SuppressWarnings("rawtypes") Class c) {
+		String className = c.getName();
+		int firstChar;
+		firstChar = className.lastIndexOf('.') + 1;
+		if (firstChar > 0) {
+			className = className.substring(firstChar);
+		}
+		return className;
 	}
 
 }// class PersistenceManagerImpl

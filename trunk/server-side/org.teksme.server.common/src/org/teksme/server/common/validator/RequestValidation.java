@@ -90,139 +90,156 @@ public class RequestValidation implements Validator {
 
 	public boolean validate(HttpServletRequest request, ScreeningChain diagnostics, Map<Object, Object> context) {
 
-		String contentType = request.getContentType();
+		String method = request.getMethod();
 		boolean valid = true;
-
 		try {
-
-			String postData = null;
-			if (context.containsKey(Validator.HTTP_POST_DATA)) {
-				postData = (String) context.get(Validator.HTTP_POST_DATA);
+			if (method.toUpperCase().equals("GET")) {
+				valid = doGetValidate(request, diagnostics, context);
+			} else if (method.toUpperCase().equals("POST")) {
+				valid = doPostValidate(request, diagnostics, context);
 			}
-			// empty request
-			if (postData.isEmpty()) {
-				logger.log(Level.WARNING, "Got no message!");
-				diagnostics.add(createScreening(ErrorDictionary.EMPTY_REQUEST_BODY));
-				return false;
-			}
-
-			logger.info("OK, message received! Let's validate it now...");
-			logger.info("Request content type: " + contentType);
-
-			if (request.getContentLength() == -1) {
-				diagnostics.add(createScreening(ErrorDictionary.CONTENT_LENGTH_NOT_SPECIFIED));
-				return false;
-			}
-
-			if (contentType.contains("application/xml") || contentType.contains("text/xml")) {
-
-				TeksPackageImpl.init();
-				Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
-
-				if (teksModel.eContents().isEmpty()) {
-					diagnostics.add(createScreening(ErrorDictionary.COULD_NOT_PARSE_REQUEST));
-					return false;
-				}
-
-				return validateParameters(teksModel, diagnostics);
-
-			} else {
-
-				diagnostics.add(createScreening(ErrorDictionary.INVALID_CONTENT_TYPE, new Object[] { contentType }));
-				return false;
-
-			}
-
 		} catch (IOException ioe) {
-
-			Matcher m = null;
-
-			final String errorMessage = ioe.getMessage();
-
-			logger.log(Level.WARNING, errorMessage);
-
-			m = RegexErrorMessagePatterns.getInvalidBOFXMLDeclarationPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.WRONG_BOF_XML_DECLARATION));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getInvalidXMLSchemaPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.INVALID_ASSOCIATED_XML_SCHEMA));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getPrematureEOFPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.MALFORMED_XML_FILE));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getInvalidXMLBeginningElementPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.INVALID_XML_BEGINNING_ELEMENT));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getMissingXMLClosingTagElementPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.XML_CLOSING_TAG_IS_MISSING));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getInvalidXMLElementPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.INVALID_XML_ELEMENT, new Object[] { m.group(2) }));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getInvalidXMLRootElementPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.INVALID_ROOT_ELEMENT));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getMissingEqualSignForAttrPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.ATTR_MUST_BE_FOLLOWED_BY_EQUALS_SIG, new Object[] { "'" + m.group(2) + "'",
-						"'" + m.group(3) + "'" }));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getMissingQuotesForAttrPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics
-						.add(createScreening(ErrorDictionary.MISSING_ATTR_QUOTES, new Object[] { "'" + m.group(2).split("\"")[3] + "'" }));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getInvalidXMLElementTagDeclarationPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.INVALID_XML_ELEMENT_TAG_DECLARATION,
-						new Object[] { "'" + m.group(1) + "'" }));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getInvalidXMLOpenTagForAttrPattern().matcher(errorMessage);
-			if (m.find()) {
-				diagnostics.add(createScreening(ErrorDictionary.ATTR_VALUE_CANNOT_CONTAIN_OPEN_TAG_SYMBOL, new Object[] {
-						"'" + m.group(2) + "'", "'" + m.group(3) + "'" }));
-				return false;
-			}
-
-			m = RegexErrorMessagePatterns.getMissingXMLElementMatchingEndTagPattern().matcher(errorMessage);
-			if (m.find()) {
-				String element = "'" + m.group(1) + "'";
-				String matchingElement = "'" + m.group(3) + "'";
-				diagnostics.add(createScreening(ErrorDictionary.MISSING_XML_ELEMENT_MATCHING_END_TAG, new Object[] { element,
-						matchingElement }));
-				return false;
-			}
-
+			return handleIOException(ioe, diagnostics);
 		}
 
 		return valid;
+	}
+
+	private boolean handleIOException(IOException ioe, ScreeningChain diagnostics) {
+		Matcher m = null;
+
+		final String errorMessage = ioe.getMessage();
+
+		logger.log(Level.WARNING, errorMessage);
+
+		m = RegexErrorMessagePatterns.getInvalidBOFXMLDeclarationPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.WRONG_BOF_XML_DECLARATION));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getInvalidXMLSchemaPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.INVALID_ASSOCIATED_XML_SCHEMA));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getPrematureEOFPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.MALFORMED_XML_FILE));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getInvalidXMLBeginningElementPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.INVALID_XML_BEGINNING_ELEMENT));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getMissingXMLClosingTagElementPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.XML_CLOSING_TAG_IS_MISSING));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getInvalidXMLElementPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.INVALID_XML_ELEMENT, new Object[] { m.group(2) }));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getInvalidXMLRootElementPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.INVALID_ROOT_ELEMENT));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getMissingEqualSignForAttrPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.ATTR_MUST_BE_FOLLOWED_BY_EQUALS_SIG, new Object[] { "'" + m.group(2) + "'",
+					"'" + m.group(3) + "'" }));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getMissingQuotesForAttrPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.MISSING_ATTR_QUOTES, new Object[] { "'" + m.group(2).split("\"")[3] + "'" }));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getInvalidXMLElementTagDeclarationPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.INVALID_XML_ELEMENT_TAG_DECLARATION, new Object[] { "'" + m.group(1) + "'" }));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getInvalidXMLOpenTagForAttrPattern().matcher(errorMessage);
+		if (m.find()) {
+			diagnostics.add(createScreening(ErrorDictionary.ATTR_VALUE_CANNOT_CONTAIN_OPEN_TAG_SYMBOL, new Object[] {
+					"'" + m.group(2) + "'", "'" + m.group(3) + "'" }));
+			return false;
+		}
+
+		m = RegexErrorMessagePatterns.getMissingXMLElementMatchingEndTagPattern().matcher(errorMessage);
+		if (m.find()) {
+			String element = "'" + m.group(1) + "'";
+			String matchingElement = "'" + m.group(3) + "'";
+			diagnostics
+					.add(createScreening(ErrorDictionary.MISSING_XML_ELEMENT_MATCHING_END_TAG, new Object[] { element, matchingElement }));
+			return false;
+		}
+
+		return false;
+	}
+
+	private boolean doGetValidate(HttpServletRequest request, ScreeningChain diagnostics, Map<Object, Object> context) {
+		// TODO Auto-generated method stub
+		return true;
+	}
+
+	private boolean doPostValidate(HttpServletRequest request, ScreeningChain diagnostics, Map<Object, Object> context) throws IOException {
+		String contentType = request.getContentType();
+
+		String postData = null;
+
+		if (context.containsKey(Validator.HTTP_POST_DATA)) {
+			postData = (String) context.get(Validator.HTTP_POST_DATA);
+		}
+
+		// empty request
+		if (postData.isEmpty()) {
+			logger.log(Level.WARNING, "Got no message!");
+			diagnostics.add(createScreening(ErrorDictionary.EMPTY_REQUEST_BODY));
+			return false;
+		}
+
+		logger.info("OK, message received! Let's validate it now...");
+		logger.info("Request content type: " + contentType);
+
+		if (request.getContentLength() == -1) {
+			diagnostics.add(createScreening(ErrorDictionary.CONTENT_LENGTH_NOT_SPECIFIED));
+			return false;
+		}
+
+		if (contentType.contains(Constants.APP_XML_MIME_TYPE) || contentType.contains(Constants.TEXT_XML_MIME_TYPE)) {
+
+			TeksPackageImpl.init();
+			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
+
+			if (teksModel.eContents().isEmpty()) {
+				diagnostics.add(createScreening(ErrorDictionary.COULD_NOT_PARSE_REQUEST));
+				return false;
+			}
+
+			return validateParameters(teksModel, diagnostics);
+
+		} else {
+
+			diagnostics.add(createScreening(ErrorDictionary.INVALID_CONTENT_TYPE, new Object[] { contentType }));
+			return false;
+
+		}
+
 	}
 
 	private boolean validateParameters(EObject teksModel, ScreeningChain diagnostics) {
@@ -302,7 +319,7 @@ public class RequestValidation implements Validator {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 
 		Response resp = factory.createResponse();
-		
+
 		for (Iterator<Screening> i = diagnostic.getChildren().iterator(); i.hasNext();) {
 			Screening childDiagnostic = (Screening) i.next();
 			logger.info(childDiagnostic.getMessage());

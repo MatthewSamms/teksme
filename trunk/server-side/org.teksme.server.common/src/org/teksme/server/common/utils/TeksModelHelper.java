@@ -16,13 +16,19 @@ package org.teksme.server.common.utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.UUID;
 import java.util.logging.Logger;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
+import org.teksme.model.teks.Channel;
+import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.SMSGatewayKind;
+import org.teksme.model.teks.Shout;
 import org.teksme.model.teks.Teks;
+import org.teksme.model.teks.TeksFactory;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.model.teks.util.TeksResourceFactoryImpl;
 
@@ -32,7 +38,8 @@ public class TeksModelHelper {
 
 	Logger logger = Logger.getLogger(TeksModelHelper.class.getName());
 
-	private TeksModelHelper() { }
+	private TeksModelHelper() {
+	}
 
 	private static TeksModelHelper init() {
 		if (INSTANCE == null) {
@@ -58,9 +65,41 @@ public class TeksModelHelper {
 		load_resource.load(is, null);
 
 		Teks teksObj = (Teks) load_resource.getContents().get(0);
-		
+
+		OutboundMessage outMsg = teksObj.getOutboundMessage(0);
+		outMsg.setId(UUID.randomUUID().toString());
+
+		// logger.info(outMsg.getShout().getThis());
+
 		return teksObj;
 
+	}
+
+	public Teks createTeksModelFromRequestParameters(String from, String to, String inChannel, String inShout) {
+		TeksFactory factory = TeksFactory.eINSTANCE;
+		Teks teksModel = factory.createTeks();
+
+		OutboundMessage outMsg = factory.createOutboundMessage();
+		outMsg.setId(UUID.randomUUID().toString());
+		outMsg.setFrom(from);
+		outMsg.setTo(new String[] { to });
+
+		Channel channel = factory.createChannel();
+		channel.setChannel(new String[] { inChannel });
+		outMsg.setChannels(channel);
+
+		Shout shout = factory.createShout();
+		shout.setThis(inShout);
+		outMsg.setShout(shout);
+
+		// default
+		outMsg.setRouting(SMSGatewayKind.MOVISTAR_PERU);
+
+		outMsg.setTeksRef(teksModel);
+
+		teksModel.setOutboundMessage(0, outMsg);
+
+		return teksModel;
 	}
 
 }
