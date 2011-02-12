@@ -23,7 +23,6 @@ import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.validator.Validator;
 import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
-import org.teksme.server.remote.service.http.SendMessageServlet;
 
 public class WebComponent {
 
@@ -79,13 +78,15 @@ public class WebComponent {
 
 	public void activate() {
 		try {
+
 			logger.info("Starting up sevlet at " + SEND_MSG_SERVLET_ALIAS);
-			SendMessageServlet sendMsgServlet = new SendMessageServlet();
+			SendMessage sendMsgServlet = new SendMessage();
 			sendMsgServlet.setMessageQueueSenderService(queueSender);
 			sendMsgServlet.setPersistenceManagerFactory(persistenceMgrFactory);
 			sendMsgServlet.setRequestValidation(requestValidation);
 			sendMsgServlet.setRequestAuthorization(authorization);
 			httpService.registerServlet(SEND_MSG_SERVLET_ALIAS, sendMsgServlet, null, null);
+			logger.info("Sevlet up " + SEND_MSG_SERVLET_ALIAS);
 
 		} catch (ServletException e) {
 			e.printStackTrace();

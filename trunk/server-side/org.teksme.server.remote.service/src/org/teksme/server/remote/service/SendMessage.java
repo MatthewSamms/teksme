@@ -11,13 +11,12 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.remote.service.http;
+package org.teksme.server.remote.service;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -30,10 +29,13 @@ import javax.servlet.http.HttpServletResponse;
 import org.teksme.model.teks.OutboundMessage;
 import org.teksme.model.teks.Response;
 import org.teksme.model.teks.Teks;
+import org.teksme.model.teks.User;
 import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
+import org.teksme.server.common.utils.HttpParameters;
+import org.teksme.server.common.utils.HttpUtils;
 import org.teksme.server.common.utils.TeksModelHelper;
 import org.teksme.server.common.validator.Screening;
 import org.teksme.server.common.validator.Validator;
@@ -41,11 +43,9 @@ import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
 @SuppressWarnings("serial")
-public class SendMessageServlet extends HttpServlet {
+public class SendMessage extends HttpServlet {
 
-	private static String message = "Error during Servlet processing";
-
-	private static Logger logger = Logger.getLogger(SendMessageServlet.class.getName());
+	private static Logger logger = Logger.getLogger(SendMessage.class.getName());
 
 	private MessageQueueSender queueSender;
 
@@ -55,55 +55,74 @@ public class SendMessageServlet extends HttpServlet {
 
 	private Validator requestValidation;
 
-	public SendMessageServlet() {
+	private Map<Object, Object> requestOptions;
+
+	public SendMessage() {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		execute(request, response);
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+		final String from = request.getParameter("from");
+		final String to = request.getParameter("to");
+		final String channel = request.getParameter("channel");
+		final String shout = request.getParameter("shout");
+
+		Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromRequestParameters(from, to, channel, shout);
+
+		HttpParameters httpParams = new HttpParameters();
+		httpParams.addParameter("from", from);
+		httpParams.addParameter("to", to);
+		httpParams.addParameter("channel", channel);
+		httpParams.addParameter("shout", shout);
+
+		requestOptions = new HashMap<Object, Object>();
+		requestOptions.put(Validator.CONTENT_TYPE, request.getContentType());
+		requestOptions.put(Validator.ENCODING, request.getCharacterEncoding());
+		requestOptions.put(Validator.HTTP_GET_DATA, httpParams.getParameters());
+		requestOptions.put(Validator.TEKS_MODEL_ELEMENT, teksModel);
+
+		processRequest(request, response);
 	}
 
-	private void execute(HttpServletRequest request, HttpServletResponse response) {
+	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+		final ServletInputStream in = request.getInputStream();
 
+		String postData = new HttpUtils().parsePostData(request, in);
+
+		requestOptions = new HashMap<Object, Object>();
+		requestOptions.put(Validator.CONTENT_TYPE, request.getContentType());
+		requestOptions.put(Validator.ENCODING, request.getCharacterEncoding());
+		requestOptions.put(Validator.HTTP_POST_DATA, postData);
+
+		processRequest(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		if (authorization.isValidToken(request)) {
+		final String method = request.getMethod();
+
+		if (authorization.isValidToken(request, response)) {
+			logger.info("User has been authorized!");
+
 			final ServletOutputStream outStream = response.getOutputStream();
-			final ServletInputStream in = request.getInputStream();
-
 			OutputStreamWriter writer = new OutputStreamWriter(outStream);
+
+			Screening diagnostic = requestValidation.validate(request, this.requestOptions);
 
 			try {
 
 				logger.info("OK, just got a new request via HTTP!");
 
-				String postData = HttpUtils.INSTANCE.parsePostData(request.getContentLength(), in);
-
-				Map<Object, Object> options = new HashMap<Object, Object>();
-				options.put(Validator.CONTENT_TYPE, request.getContentType());
-				options.put(Validator.ENCODING, request.getCharacterEncoding());
-				options.put(Validator.HTTP_POST_DATA, postData);
-
-				Screening diagnostic = requestValidation.validate(request, options);
-
 				if (!diagnostic.getChildren().isEmpty()) {
+
 					Response teksResponse = requestValidation.handleResponse(diagnostic);
 					String strResp = requestValidation.getXMLResponse(teksResponse);
-
 					// set the response code and write the response data
 					response.setStatus(teksResponse.getError().getStatus());
-					response.setContentType("text/xml; charset=ISO-8859-1");
-
 					writer.write(strResp);
 					writer.flush();
 					writer.close();
-
 					return;
 
 				} else {
@@ -112,12 +131,21 @@ public class SendMessageServlet extends HttpServlet {
 
 					TeksPackageImpl.init();
 					// Retrieve the default factory singleton
-					Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
+					Teks teksModel = null;
+
+					if (method.toUpperCase().equals("GET")) {
+						teksModel = (Teks) requestOptions.get(Validator.TEKS_MODEL_ELEMENT);
+					} else if (method.toUpperCase().equals("POST")) {
+						String postData = (String) requestOptions.get(Validator.HTTP_POST_DATA);
+						teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
+					}
+
+					User user = authorization.getAuthUser(request, response);
+					teksModel.setAccount(user);
 
 					OutboundMessage outMsg = teksModel.getOutboundMessage(0);
-					outMsg.setId(UUID.randomUUID().toString());
 
-					logger.info(outMsg.getShout().getThis());
+					logger.info("Outbound message object: " + outMsg);
 					logger.info("Pls send this message to " + outMsg.getRouting().getLiteral() + " gateway.");
 
 					// queueSender.publishMessage(outMsg);
@@ -143,7 +171,7 @@ public class SendMessageServlet extends HttpServlet {
 				}
 			}
 
-		}// OAuth
+		}
 	}
 
 	public void setMessageQueueSenderService(final MessageQueueSender queueSender) {
