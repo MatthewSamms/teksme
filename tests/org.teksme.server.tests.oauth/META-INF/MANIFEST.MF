@@ -4,5 +4,4 @@ Bundle-Name: Oauth
 Bundle-SymbolicName: org.teksme.server.tests.oauth
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Require-Bundle: org.junit,
- org.teksme.server.identity;bundle-version="0.5.0"
+Require-Bundle: org.junit
