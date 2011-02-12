@@ -42,7 +42,7 @@ public class KeywordImpl extends TeksObjectImpl implements Keyword {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -883879810706061790L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getKey() <em>Key</em>}' attribute.

@@ -48,7 +48,7 @@ public class AnswerRefImpl extends TeksObjectImpl implements AnswerRef {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5909320912736997559L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The cached value of the '{@link #getChoiceRef() <em>Choice Ref</em>}' reference.

@@ -52,7 +52,7 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -7204245476420866334L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getSchedule() <em>Schedule</em>}' attribute.

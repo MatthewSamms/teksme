@@ -43,7 +43,7 @@ public class AnnotationMapEntryImpl extends TeksObjectImpl implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1045376214583297205L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getKey() <em>Key</em>}' attribute.

@@ -68,7 +68,7 @@ public class PollImpl extends TeksObjectImpl implements Poll {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7125915934980584104L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The cached value of the '{@link #getQuestionList() <em>Question</em>}' containment reference list.

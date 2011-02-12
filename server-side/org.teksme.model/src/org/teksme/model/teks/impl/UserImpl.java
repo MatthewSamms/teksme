@@ -14,13 +14,17 @@
 package org.teksme.model.teks.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.teksme.model.impl.TeksObjectImpl;
 
+import org.teksme.model.teks.Profile;
 import org.teksme.model.teks.TeksPackage;
 import org.teksme.model.teks.User;
 
@@ -32,13 +36,16 @@ import org.teksme.model.teks.User;
  * The following features are implemented:
  * <ul>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getFirstName <em>First Name</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.UserImpl#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.UserImpl#getMobileNumber <em>Mobile Number</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getEmail <em>Email</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getPassword <em>Password</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getCountry <em>Country</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.UserImpl#getYearOfBirth <em>Year Of Birth</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.UserImpl#getGender <em>Gender</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.UserImpl#getCompany <em>Company</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.UserImpl#getWebsiteURL <em>Website URL</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.UserImpl#getBlogURL <em>Blog URL</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.UserImpl#getProfile <em>Profile</em>}</li>
  * </ul>
  * </p>
  *
@@ -48,7 +55,7 @@ public class UserImpl extends TeksObjectImpl implements User {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8938134523435652421L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getFirstName() <em>First Name</em>}' attribute.
@@ -71,26 +78,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	protected String firstName = FIRST_NAME_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getAccountSID() <em>Account SID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAccountSID()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ACCOUNT_SID_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getAccountSID() <em>Account SID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getAccountSID()
-	 * @generated
-	 * @ordered
-	 */
-	protected String accountSID = ACCOUNT_SID_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getLastName() <em>Last Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -109,6 +96,26 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * @ordered
 	 */
 	protected String lastName = LAST_NAME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getMobileNumber() <em>Mobile Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMobileNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String MOBILE_NUMBER_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getMobileNumber() <em>Mobile Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getMobileNumber()
+	 * @generated
+	 * @ordered
+	 */
+	protected String mobileNumber = MOBILE_NUMBER_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getEmail() <em>Email</em>}' attribute.
@@ -191,24 +198,74 @@ public class UserImpl extends TeksObjectImpl implements User {
 	protected int yearOfBirth = YEAR_OF_BIRTH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getGender() <em>Gender</em>}' attribute.
+	 * The default value of the '{@link #getCompany() <em>Company</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGender()
+	 * @see #getCompany()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final String GENDER_EDEFAULT = null;
+	protected static final String COMPANY_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getGender() <em>Gender</em>}' attribute.
+	 * The cached value of the '{@link #getCompany() <em>Company</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getGender()
+	 * @see #getCompany()
 	 * @generated
 	 * @ordered
 	 */
-	protected String gender = GENDER_EDEFAULT;
+	protected String company = COMPANY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getWebsiteURL() <em>Website URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWebsiteURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String WEBSITE_URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getWebsiteURL() <em>Website URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getWebsiteURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected String websiteURL = WEBSITE_URL_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getBlogURL() <em>Blog URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBlogURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String BLOG_URL_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getBlogURL() <em>Blog URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getBlogURL()
+	 * @generated
+	 * @ordered
+	 */
+	protected String blogURL = BLOG_URL_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getProfile() <em>Profile</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getProfile()
+	 * @generated
+	 * @ordered
+	 */
+	protected Profile profile;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -256,28 +313,6 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getAccountSID() {
-		return accountSID;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setAccountSID(String newAccountSID) {
-		String oldAccountSID = accountSID;
-		accountSID = newAccountSID;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.USER__ACCOUNT_SID, oldAccountSID, accountSID));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public String getLastName() {
 		return lastName;
 	}
@@ -293,6 +328,29 @@ public class UserImpl extends TeksObjectImpl implements User {
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					TeksPackage.USER__LAST_NAME, oldLastName, lastName));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getMobileNumber() {
+		return mobileNumber;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setMobileNumber(String newMobileNumber) {
+		String oldMobileNumber = mobileNumber;
+		mobileNumber = newMobileNumber;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.USER__MOBILE_NUMBER, oldMobileNumber,
+					mobileNumber));
 	}
 
 	/**
@@ -389,8 +447,8 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String getGender() {
-		return gender;
+	public String getCompany() {
+		return company;
 	}
 
 	/**
@@ -398,12 +456,153 @@ public class UserImpl extends TeksObjectImpl implements User {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setGender(String newGender) {
-		String oldGender = gender;
-		gender = newGender;
+	public void setCompany(String newCompany) {
+		String oldCompany = company;
+		company = newCompany;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.USER__GENDER, oldGender, gender));
+					TeksPackage.USER__COMPANY, oldCompany, company));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getWebsiteURL() {
+		return websiteURL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setWebsiteURL(String newWebsiteURL) {
+		String oldWebsiteURL = websiteURL;
+		websiteURL = newWebsiteURL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.USER__WEBSITE_URL, oldWebsiteURL, websiteURL));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String getBlogURL() {
+		return blogURL;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setBlogURL(String newBlogURL) {
+		String oldBlogURL = blogURL;
+		blogURL = newBlogURL;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.USER__BLOG_URL, oldBlogURL, blogURL));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Profile getProfile() {
+		if (profile != null && ((EObject) profile).eIsProxy()) {
+			InternalEObject oldProfile = (InternalEObject) profile;
+			profile = (Profile) eResolveProxy(oldProfile);
+			if (profile != oldProfile) {
+				InternalEObject newProfile = (InternalEObject) profile;
+				NotificationChain msgs = oldProfile.eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.USER__PROFILE,
+						null, null);
+				if (newProfile.eInternalContainer() == null) {
+					msgs = newProfile.eInverseAdd(this, EOPPOSITE_FEATURE_BASE
+							- TeksPackage.USER__PROFILE, null, msgs);
+				}
+				if (msgs != null)
+					msgs.dispatch();
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							TeksPackage.USER__PROFILE, oldProfile, profile));
+			}
+		}
+		return profile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Profile basicGetProfile() {
+		return profile;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetProfile(Profile newProfile,
+			NotificationChain msgs) {
+		Profile oldProfile = profile;
+		profile = newProfile;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this,
+					Notification.SET, TeksPackage.USER__PROFILE, oldProfile,
+					newProfile);
+			if (msgs == null)
+				msgs = notification;
+			else
+				msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setProfile(Profile newProfile) {
+		if (newProfile != profile) {
+			NotificationChain msgs = null;
+			if (profile != null)
+				msgs = ((InternalEObject) profile).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.USER__PROFILE,
+						null, msgs);
+			if (newProfile != null)
+				msgs = ((InternalEObject) newProfile).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - TeksPackage.USER__PROFILE,
+						null, msgs);
+			msgs = basicSetProfile(newProfile, msgs);
+			if (msgs != null)
+				msgs.dispatch();
+		} else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.USER__PROFILE, newProfile, newProfile));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd,
+			int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case TeksPackage.USER__PROFILE:
+			return basicSetProfile(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -416,10 +615,10 @@ public class UserImpl extends TeksObjectImpl implements User {
 		switch (featureID) {
 		case TeksPackage.USER__FIRST_NAME:
 			return getFirstName();
-		case TeksPackage.USER__ACCOUNT_SID:
-			return getAccountSID();
 		case TeksPackage.USER__LAST_NAME:
 			return getLastName();
+		case TeksPackage.USER__MOBILE_NUMBER:
+			return getMobileNumber();
 		case TeksPackage.USER__EMAIL:
 			return getEmail();
 		case TeksPackage.USER__PASSWORD:
@@ -428,8 +627,16 @@ public class UserImpl extends TeksObjectImpl implements User {
 			return getCountry();
 		case TeksPackage.USER__YEAR_OF_BIRTH:
 			return getYearOfBirth();
-		case TeksPackage.USER__GENDER:
-			return getGender();
+		case TeksPackage.USER__COMPANY:
+			return getCompany();
+		case TeksPackage.USER__WEBSITE_URL:
+			return getWebsiteURL();
+		case TeksPackage.USER__BLOG_URL:
+			return getBlogURL();
+		case TeksPackage.USER__PROFILE:
+			if (resolve)
+				return getProfile();
+			return basicGetProfile();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -445,11 +652,11 @@ public class UserImpl extends TeksObjectImpl implements User {
 		case TeksPackage.USER__FIRST_NAME:
 			setFirstName((String) newValue);
 			return;
-		case TeksPackage.USER__ACCOUNT_SID:
-			setAccountSID((String) newValue);
-			return;
 		case TeksPackage.USER__LAST_NAME:
 			setLastName((String) newValue);
+			return;
+		case TeksPackage.USER__MOBILE_NUMBER:
+			setMobileNumber((String) newValue);
 			return;
 		case TeksPackage.USER__EMAIL:
 			setEmail((String) newValue);
@@ -463,8 +670,17 @@ public class UserImpl extends TeksObjectImpl implements User {
 		case TeksPackage.USER__YEAR_OF_BIRTH:
 			setYearOfBirth((Integer) newValue);
 			return;
-		case TeksPackage.USER__GENDER:
-			setGender((String) newValue);
+		case TeksPackage.USER__COMPANY:
+			setCompany((String) newValue);
+			return;
+		case TeksPackage.USER__WEBSITE_URL:
+			setWebsiteURL((String) newValue);
+			return;
+		case TeksPackage.USER__BLOG_URL:
+			setBlogURL((String) newValue);
+			return;
+		case TeksPackage.USER__PROFILE:
+			setProfile((Profile) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -481,11 +697,11 @@ public class UserImpl extends TeksObjectImpl implements User {
 		case TeksPackage.USER__FIRST_NAME:
 			setFirstName(FIRST_NAME_EDEFAULT);
 			return;
-		case TeksPackage.USER__ACCOUNT_SID:
-			setAccountSID(ACCOUNT_SID_EDEFAULT);
-			return;
 		case TeksPackage.USER__LAST_NAME:
 			setLastName(LAST_NAME_EDEFAULT);
+			return;
+		case TeksPackage.USER__MOBILE_NUMBER:
+			setMobileNumber(MOBILE_NUMBER_EDEFAULT);
 			return;
 		case TeksPackage.USER__EMAIL:
 			setEmail(EMAIL_EDEFAULT);
@@ -499,8 +715,17 @@ public class UserImpl extends TeksObjectImpl implements User {
 		case TeksPackage.USER__YEAR_OF_BIRTH:
 			setYearOfBirth(YEAR_OF_BIRTH_EDEFAULT);
 			return;
-		case TeksPackage.USER__GENDER:
-			setGender(GENDER_EDEFAULT);
+		case TeksPackage.USER__COMPANY:
+			setCompany(COMPANY_EDEFAULT);
+			return;
+		case TeksPackage.USER__WEBSITE_URL:
+			setWebsiteURL(WEBSITE_URL_EDEFAULT);
+			return;
+		case TeksPackage.USER__BLOG_URL:
+			setBlogURL(BLOG_URL_EDEFAULT);
+			return;
+		case TeksPackage.USER__PROFILE:
+			setProfile((Profile) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -517,12 +742,12 @@ public class UserImpl extends TeksObjectImpl implements User {
 		case TeksPackage.USER__FIRST_NAME:
 			return FIRST_NAME_EDEFAULT == null ? firstName != null
 					: !FIRST_NAME_EDEFAULT.equals(firstName);
-		case TeksPackage.USER__ACCOUNT_SID:
-			return ACCOUNT_SID_EDEFAULT == null ? accountSID != null
-					: !ACCOUNT_SID_EDEFAULT.equals(accountSID);
 		case TeksPackage.USER__LAST_NAME:
 			return LAST_NAME_EDEFAULT == null ? lastName != null
 					: !LAST_NAME_EDEFAULT.equals(lastName);
+		case TeksPackage.USER__MOBILE_NUMBER:
+			return MOBILE_NUMBER_EDEFAULT == null ? mobileNumber != null
+					: !MOBILE_NUMBER_EDEFAULT.equals(mobileNumber);
 		case TeksPackage.USER__EMAIL:
 			return EMAIL_EDEFAULT == null ? email != null : !EMAIL_EDEFAULT
 					.equals(email);
@@ -534,9 +759,17 @@ public class UserImpl extends TeksObjectImpl implements User {
 					: !COUNTRY_EDEFAULT.equals(country);
 		case TeksPackage.USER__YEAR_OF_BIRTH:
 			return yearOfBirth != YEAR_OF_BIRTH_EDEFAULT;
-		case TeksPackage.USER__GENDER:
-			return GENDER_EDEFAULT == null ? gender != null : !GENDER_EDEFAULT
-					.equals(gender);
+		case TeksPackage.USER__COMPANY:
+			return COMPANY_EDEFAULT == null ? company != null
+					: !COMPANY_EDEFAULT.equals(company);
+		case TeksPackage.USER__WEBSITE_URL:
+			return WEBSITE_URL_EDEFAULT == null ? websiteURL != null
+					: !WEBSITE_URL_EDEFAULT.equals(websiteURL);
+		case TeksPackage.USER__BLOG_URL:
+			return BLOG_URL_EDEFAULT == null ? blogURL != null
+					: !BLOG_URL_EDEFAULT.equals(blogURL);
+		case TeksPackage.USER__PROFILE:
+			return profile != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -554,10 +787,10 @@ public class UserImpl extends TeksObjectImpl implements User {
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (firstName: ");
 		result.append(firstName);
-		result.append(", accountSID: ");
-		result.append(accountSID);
 		result.append(", lastName: ");
 		result.append(lastName);
+		result.append(", mobileNumber: ");
+		result.append(mobileNumber);
 		result.append(", email: ");
 		result.append(email);
 		result.append(", password: ");
@@ -566,8 +799,12 @@ public class UserImpl extends TeksObjectImpl implements User {
 		result.append(country);
 		result.append(", yearOfBirth: ");
 		result.append(yearOfBirth);
-		result.append(", gender: ");
-		result.append(gender);
+		result.append(", company: ");
+		result.append(company);
+		result.append(", websiteURL: ");
+		result.append(websiteURL);
+		result.append(", blogURL: ");
+		result.append(blogURL);
 		result.append(')');
 		return result.toString();
 	}

@@ -75,11 +75,11 @@
     <genClasses ecoreClass="teks.ecore#//Teks">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/outboundMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/response"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/developer"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/poll"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/account"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/profile"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/survey"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/inboundMessage"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/account"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Teks/poll"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//Comment">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Comment/id"/>
@@ -97,17 +97,30 @@
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//User">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/firstName"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/accountSID"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/lastName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/mobileNumber"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/email"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/password"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/country"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/yearOfBirth"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/gender"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/company"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/websiteURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//User/blogURL"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//User/profile"/>
     </genClasses>
-    <genClasses ecoreClass="teks.ecore#//Developer">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Developer/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Developer/websiteURL"/>
+    <genClasses ecoreClass="teks.ecore#//Profile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Profile/application"/>
+    </genClasses>
+    <genClasses ecoreClass="teks.ecore#//Application">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/key"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/sharedSecret"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/registered"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/callbackURL"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Application/rateLimits"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference teks.ecore#//Application/profileRef"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//Poll">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Poll/question"/>
@@ -196,7 +209,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//ResponseDetail/rawMessage"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//ResponseDetail/setValue"/>
     </genClasses>
-    <genClasses ecoreClass="teks.ecore#//ObjectMessage"/>
     <genClasses ecoreClass="teks.ecore#//AnswerRef">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference teks.ecore#//AnswerRef/choiceRef"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference teks.ecore#//AnswerRef/answerRef"/>
@@ -204,16 +216,16 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//AnswerRef/id"/>
     </genClasses>
     <genClasses image="false" ecoreClass="teks.ecore#//Message">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/id"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/date"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/routing"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/from"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Message/channels"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/to"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Message/shout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/stopOnError"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/date"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/routing"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/attempts"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/encoding"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/id"/>
     </genClasses>
     <genClasses ecoreClass="teks.ecore#//InboundMessage">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//InboundMessage/partNumber"/>
@@ -229,6 +241,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/concatenated"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference teks.ecore#//OutboundMessage/teksRef"/>
     </genClasses>
+    <genClasses ecoreClass="teks.ecore#//ObjectMessage"/>
     <genClasses ecoreClass="teks.ecore#//Channel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Channel/channel"/>
     </genClasses>

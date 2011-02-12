@@ -55,7 +55,7 @@ public class ResponseRestrictionImpl extends TeksObjectImpl implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 8995163270515799288L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #isAcceptMultipleChannels() <em>Accept Multiple Channels</em>}' attribute.

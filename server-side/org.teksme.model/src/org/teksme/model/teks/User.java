@@ -24,13 +24,16 @@ import org.teksme.model.TeksObject;
  * The following features are supported:
  * <ul>
  *   <li>{@link org.teksme.model.teks.User#getFirstName <em>First Name</em>}</li>
- *   <li>{@link org.teksme.model.teks.User#getAccountSID <em>Account SID</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getLastName <em>Last Name</em>}</li>
+ *   <li>{@link org.teksme.model.teks.User#getMobileNumber <em>Mobile Number</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getEmail <em>Email</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getPassword <em>Password</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getCountry <em>Country</em>}</li>
  *   <li>{@link org.teksme.model.teks.User#getYearOfBirth <em>Year Of Birth</em>}</li>
- *   <li>{@link org.teksme.model.teks.User#getGender <em>Gender</em>}</li>
+ *   <li>{@link org.teksme.model.teks.User#getCompany <em>Company</em>}</li>
+ *   <li>{@link org.teksme.model.teks.User#getWebsiteURL <em>Website URL</em>}</li>
+ *   <li>{@link org.teksme.model.teks.User#getBlogURL <em>Blog URL</em>}</li>
+ *   <li>{@link org.teksme.model.teks.User#getProfile <em>Profile</em>}</li>
  * </ul>
  * </p>
  *
@@ -51,7 +54,8 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>First Name</em>' attribute.
 	 * @see #setFirstName(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_FirstName()
-	 * @model extendedMetaData="kind='element' name='firstName'"
+	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='firstName'"
 	 * @generated
 	 */
 	String getFirstName();
@@ -67,32 +71,6 @@ public interface User extends TeksObject {
 	void setFirstName(String value);
 
 	/**
-	 * Returns the value of the '<em><b>Account SID</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Account SID</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Account SID</em>' attribute.
-	 * @see #setAccountSID(String)
-	 * @see org.teksme.model.teks.TeksPackage#getUser_AccountSID()
-	 * @model extendedMetaData="kind='element' name='accountSID'"
-	 * @generated
-	 */
-	String getAccountSID();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.User#getAccountSID <em>Account SID</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Account SID</em>' attribute.
-	 * @see #getAccountSID()
-	 * @generated
-	 */
-	void setAccountSID(String value);
-
-	/**
 	 * Returns the value of the '<em><b>Last Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -103,7 +81,8 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Last Name</em>' attribute.
 	 * @see #setLastName(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_LastName()
-	 * @model extendedMetaData="kind='element' name='lastName'"
+	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='lastName'"
 	 * @generated
 	 */
 	String getLastName();
@@ -119,6 +98,33 @@ public interface User extends TeksObject {
 	void setLastName(String value);
 
 	/**
+	 * Returns the value of the '<em><b>Mobile Number</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Mobile Number</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Mobile Number</em>' attribute.
+	 * @see #setMobileNumber(String)
+	 * @see org.teksme.model.teks.TeksPackage#getUser_MobileNumber()
+	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='mobileNumber'"
+	 * @generated
+	 */
+	String getMobileNumber();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.User#getMobileNumber <em>Mobile Number</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mobile Number</em>' attribute.
+	 * @see #getMobileNumber()
+	 * @generated
+	 */
+	void setMobileNumber(String value);
+
+	/**
 	 * Returns the value of the '<em><b>Email</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -129,7 +135,8 @@ public interface User extends TeksObject {
 	 * @return the value of the '<em>Email</em>' attribute.
 	 * @see #setEmail(String)
 	 * @see org.teksme.model.teks.TeksPackage#getUser_Email()
-	 * @model extendedMetaData="kind='element' name='email'"
+	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='email'"
 	 * @generated
 	 */
 	String getEmail();
@@ -223,29 +230,107 @@ public interface User extends TeksObject {
 	void setYearOfBirth(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Gender</b></em>' attribute.
+	 * Returns the value of the '<em><b>Company</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Gender</em>' attribute isn't clear,
+	 * If the meaning of the '<em>Company</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Gender</em>' attribute.
-	 * @see #setGender(String)
-	 * @see org.teksme.model.teks.TeksPackage#getUser_Gender()
-	 * @model extendedMetaData="kind='element' name='gender'"
+	 * @return the value of the '<em>Company</em>' attribute.
+	 * @see #setCompany(String)
+	 * @see org.teksme.model.teks.TeksPackage#getUser_Company()
+	 * @model extendedMetaData="kind='element' name='company'"
 	 * @generated
 	 */
-	String getGender();
+	String getCompany();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.User#getGender <em>Gender</em>}' attribute.
+	 * Sets the value of the '{@link org.teksme.model.teks.User#getCompany <em>Company</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Gender</em>' attribute.
-	 * @see #getGender()
+	 * @param value the new value of the '<em>Company</em>' attribute.
+	 * @see #getCompany()
 	 * @generated
 	 */
-	void setGender(String value);
+	void setCompany(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Website URL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Website URL</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Website URL</em>' attribute.
+	 * @see #setWebsiteURL(String)
+	 * @see org.teksme.model.teks.TeksPackage#getUser_WebsiteURL()
+	 * @model extendedMetaData="kind='element' name='websiteURL'"
+	 * @generated
+	 */
+	String getWebsiteURL();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.User#getWebsiteURL <em>Website URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Website URL</em>' attribute.
+	 * @see #getWebsiteURL()
+	 * @generated
+	 */
+	void setWebsiteURL(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Blog URL</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Blog URL</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Blog URL</em>' attribute.
+	 * @see #setBlogURL(String)
+	 * @see org.teksme.model.teks.TeksPackage#getUser_BlogURL()
+	 * @model extendedMetaData="kind='element' name='blogURL'"
+	 * @generated
+	 */
+	String getBlogURL();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.User#getBlogURL <em>Blog URL</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Blog URL</em>' attribute.
+	 * @see #getBlogURL()
+	 * @generated
+	 */
+	void setBlogURL(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Profile</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Profile</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Profile</em>' containment reference.
+	 * @see #setProfile(Profile)
+	 * @see org.teksme.model.teks.TeksPackage#getUser_Profile()
+	 * @model containment="true" resolveProxies="true"
+	 * @generated
+	 */
+	Profile getProfile();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.User#getProfile <em>Profile</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Profile</em>' containment reference.
+	 * @see #getProfile()
+	 * @generated
+	 */
+	void setProfile(Profile value);
 
 } // User

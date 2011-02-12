@@ -45,7 +45,7 @@ public abstract class PlainTextImpl extends PollQuestionImpl implements
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -1405997035459603438L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getQuestion() <em>Question</em>}' attribute.

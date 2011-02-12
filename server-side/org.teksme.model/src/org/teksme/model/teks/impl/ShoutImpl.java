@@ -42,7 +42,7 @@ public class ShoutImpl extends TeksObjectImpl implements Shout {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -5499944939887526610L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getThis() <em>This</em>}' attribute.

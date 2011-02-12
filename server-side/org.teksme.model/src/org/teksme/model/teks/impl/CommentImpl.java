@@ -45,7 +45,7 @@ public class CommentImpl extends TeksObjectImpl implements Comment {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1596522505873866952L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.

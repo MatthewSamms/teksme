@@ -42,7 +42,7 @@ public class InboundMessageImpl extends MessageImpl implements InboundMessage {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 7361909466666545706L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #getPartNumber() <em>Part Number</em>}' attribute.

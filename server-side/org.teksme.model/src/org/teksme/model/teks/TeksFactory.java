@@ -78,13 +78,22 @@ public interface TeksFactory extends EFactory {
 	User createUser();
 
 	/**
-	 * Returns a new object of class '<em>Developer</em>'.
+	 * Returns a new object of class '<em>Profile</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Developer</em>'.
+	 * @return a new object of class '<em>Profile</em>'.
 	 * @generated
 	 */
-	Developer createDeveloper();
+	Profile createProfile();
+
+	/**
+	 * Returns a new object of class '<em>Application</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Application</em>'.
+	 * @generated
+	 */
+	Application createApplication();
 
 	/**
 	 * Returns a new object of class '<em>Poll</em>'.
@@ -195,15 +204,6 @@ public interface TeksFactory extends EFactory {
 	ResponseDetail createResponseDetail();
 
 	/**
-	 * Returns a new object of class '<em>Object Message</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Object Message</em>'.
-	 * @generated
-	 */
-	ObjectMessage createObjectMessage();
-
-	/**
 	 * Returns a new object of class '<em>Answer Ref</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -229,6 +229,15 @@ public interface TeksFactory extends EFactory {
 	 * @generated
 	 */
 	OutboundMessage createOutboundMessage();
+
+	/**
+	 * Returns a new object of class '<em>Object Message</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Object Message</em>'.
+	 * @generated
+	 */
+	ObjectMessage createObjectMessage();
 
 	/**
 	 * Returns a new object of class '<em>Channel</em>'.

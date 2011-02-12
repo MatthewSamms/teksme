@@ -27,11 +27,11 @@ import org.teksme.model.TeksObject;
  * <ul>
  *   <li>{@link org.teksme.model.teks.Teks#getOutboundMessageList <em>Outbound Message</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getResponse <em>Response</em>}</li>
- *   <li>{@link org.teksme.model.teks.Teks#getDeveloper <em>Developer</em>}</li>
- *   <li>{@link org.teksme.model.teks.Teks#getPoll <em>Poll</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Teks#getProfile <em>Profile</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getSurvey <em>Survey</em>}</li>
  *   <li>{@link org.teksme.model.teks.Teks#getInboundMessageList <em>Inbound Message</em>}</li>
- *   <li>{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}</li>
+ *   <li>{@link org.teksme.model.teks.Teks#getPoll <em>Poll</em>}</li>
  * </ul>
  * </p>
  *
@@ -89,7 +89,7 @@ public interface Teks extends TeksObject {
 	 * @return the value of the '<em>Outbound Message</em>' containment reference list.
 	 * @see org.teksme.model.teks.TeksPackage#getTeks_OutboundMessage()
 	 * @see org.teksme.model.teks.OutboundMessage#getTeksRef
-	 * @model opposite="teksRef" containment="true" resolveProxies="true" keys="id"
+	 * @model opposite="teksRef" containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<OutboundMessage> getOutboundMessageList();
@@ -121,56 +121,56 @@ public interface Teks extends TeksObject {
 	void setResponse(Response value);
 
 	/**
-	 * Returns the value of the '<em><b>Developer</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Account</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Developer</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Account</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Developer</em>' containment reference.
-	 * @see #setDeveloper(Developer)
-	 * @see org.teksme.model.teks.TeksPackage#getTeks_Developer()
+	 * @return the value of the '<em>Account</em>' containment reference.
+	 * @see #setAccount(User)
+	 * @see org.teksme.model.teks.TeksPackage#getTeks_Account()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	Developer getDeveloper();
+	User getAccount();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getDeveloper <em>Developer</em>}' containment reference.
+	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Developer</em>' containment reference.
-	 * @see #getDeveloper()
+	 * @param value the new value of the '<em>Account</em>' containment reference.
+	 * @see #getAccount()
 	 * @generated
 	 */
-	void setDeveloper(Developer value);
+	void setAccount(User value);
 
 	/**
-	 * Returns the value of the '<em><b>Poll</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Profile</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Poll</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Profile</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Poll</em>' containment reference.
-	 * @see #setPoll(Poll)
-	 * @see org.teksme.model.teks.TeksPackage#getTeks_Poll()
+	 * @return the value of the '<em>Profile</em>' containment reference.
+	 * @see #setProfile(Profile)
+	 * @see org.teksme.model.teks.TeksPackage#getTeks_Profile()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	Poll getPoll();
+	Profile getProfile();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getPoll <em>Poll</em>}' containment reference.
+	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getProfile <em>Profile</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Poll</em>' containment reference.
-	 * @see #getPoll()
+	 * @param value the new value of the '<em>Profile</em>' containment reference.
+	 * @see #getProfile()
 	 * @generated
 	 */
-	void setPoll(Poll value);
+	void setProfile(Profile value);
 
 	/**
 	 * Returns the value of the '<em><b>Survey</b></em>' containment reference.
@@ -244,35 +244,35 @@ public interface Teks extends TeksObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Inbound Message</em>' containment reference list.
 	 * @see org.teksme.model.teks.TeksPackage#getTeks_InboundMessage()
-	 * @model containment="true" resolveProxies="true" keys="id"
+	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
 	EList<InboundMessage> getInboundMessageList();
 
 	/**
-	 * Returns the value of the '<em><b>Account</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Poll</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Account</em>' containment reference isn't clear,
+	 * If the meaning of the '<em>Poll</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Account</em>' containment reference.
-	 * @see #setAccount(User)
-	 * @see org.teksme.model.teks.TeksPackage#getTeks_Account()
+	 * @return the value of the '<em>Poll</em>' containment reference.
+	 * @see #setPoll(Poll)
+	 * @see org.teksme.model.teks.TeksPackage#getTeks_Poll()
 	 * @model containment="true" resolveProxies="true"
 	 * @generated
 	 */
-	User getAccount();
+	Poll getPoll();
 
 	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getAccount <em>Account</em>}' containment reference.
+	 * Sets the value of the '{@link org.teksme.model.teks.Teks#getPoll <em>Poll</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Account</em>' containment reference.
-	 * @see #getAccount()
+	 * @param value the new value of the '<em>Poll</em>' containment reference.
+	 * @see #getPoll()
 	 * @generated
 	 */
-	void setAccount(User value);
+	void setPoll(Poll value);
 
 } // Teks

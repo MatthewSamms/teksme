@@ -42,7 +42,7 @@ public class ReportImpl extends TeksObjectImpl implements Report {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1170976363751999472L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The default value of the '{@link #isHideResults() <em>Hide Results</em>}' attribute.

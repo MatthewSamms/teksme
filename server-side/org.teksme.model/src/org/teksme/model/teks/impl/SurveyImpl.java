@@ -60,7 +60,7 @@ public class SurveyImpl extends TeksObjectImpl implements Survey {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6301605514044984757L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The cached value of the '{@link #getAnnotationsList() <em>Annotations</em>}' containment reference list.

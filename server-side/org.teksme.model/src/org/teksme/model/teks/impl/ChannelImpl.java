@@ -44,7 +44,7 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -9214690731681659535L;
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The cached value of the '{@link #getChannelList() <em>Channel</em>}' attribute list.
