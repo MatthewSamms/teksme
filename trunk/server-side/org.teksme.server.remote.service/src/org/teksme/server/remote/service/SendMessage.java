@@ -148,7 +148,7 @@ public class SendMessage extends HttpServlet {
 					logger.info("Outbound message object: " + outMsg);
 					logger.info("Pls send this message to " + outMsg.getRouting().getLiteral() + " gateway.");
 
-					// queueSender.publishMessage(outMsg);
+					queueSender.publishMessage(outMsg);
 
 					IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
 					persistenceMgr.makePersistent(teksModel);
