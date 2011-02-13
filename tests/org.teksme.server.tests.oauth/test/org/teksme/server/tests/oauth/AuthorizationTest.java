@@ -49,4 +49,18 @@ public class AuthorizationTest extends OAuthTest {
 		updateProperties("Last action: added requestToken");
 	}
 
+	@Test(expected = OAuthException.class)
+	public void requestTokenForUnknownUserTest() throws IOException,
+			URISyntaxException, OAuthException {
+
+		String consumerKey = "8726136782616871687681468";
+		String consumerSecret = props.getProperty("consumerSecret");
+
+		OAuthAccessor accessor = createOAuthAccessor(consumerKey,
+				consumerSecret, null);
+		OAuthClient client = new OAuthClient(new HttpClient4());
+		client.getRequestToken(accessor);
+
+	}
+
 }
