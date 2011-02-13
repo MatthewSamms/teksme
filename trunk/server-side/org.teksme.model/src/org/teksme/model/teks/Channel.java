@@ -82,6 +82,7 @@ public interface Channel extends TeksObject {
 	 * @return the value of the '<em>Channel</em>' attribute list.
 	 * @see org.teksme.model.teks.TeksPackage#getChannel_Channel()
 	 * @model required="true"
+	 *        extendedMetaData="kind='element' name='channel'"
 	 * @generated
 	 */
 	EList<String> getChannelList();

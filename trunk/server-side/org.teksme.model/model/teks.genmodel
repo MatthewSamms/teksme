@@ -222,7 +222,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference teks.ecore#//Message/shout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/stopOnError"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/date"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/routing"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/attempts"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/encoding"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//Message/id"/>
@@ -237,6 +236,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/schedule"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/timeout"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/delay"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/routing"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/callback"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute teks.ecore#//OutboundMessage/concatenated"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference teks.ecore#//OutboundMessage/teksRef"/>

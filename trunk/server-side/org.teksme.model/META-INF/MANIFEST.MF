@@ -5,7 +5,6 @@ Bundle-SymbolicName: org.teksme.model;singleton:=true
 Bundle-Version: 0.5.0
 Bundle-ClassPath: .
 Bundle-Vendor: TeksMe Inc.
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0"
@@ -24,3 +23,4 @@ Export-Package: org.teksme.model;uses:="org.eclipse.emf.ecore",
    org.eclipse.emf.ecore.xmi.util,
    org.eclipse.emf.common.notify,
    org.eclipse.emf.ecore.resource.impl"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6

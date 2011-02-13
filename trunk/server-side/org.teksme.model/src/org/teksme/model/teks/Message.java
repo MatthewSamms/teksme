@@ -33,7 +33,6 @@ import org.teksme.model.TeksObject;
  *   <li>{@link org.teksme.model.teks.Message#getShout <em>Shout</em>}</li>
  *   <li>{@link org.teksme.model.teks.Message#isStopOnError <em>Stop On Error</em>}</li>
  *   <li>{@link org.teksme.model.teks.Message#getDate <em>Date</em>}</li>
- *   <li>{@link org.teksme.model.teks.Message#getRouting <em>Routing</em>}</li>
  *   <li>{@link org.teksme.model.teks.Message#getAttempts <em>Attempts</em>}</li>
  *   <li>{@link org.teksme.model.teks.Message#getEncoding <em>Encoding</em>}</li>
  *   <li>{@link org.teksme.model.teks.Message#getId <em>Id</em>}</li>
@@ -228,35 +227,6 @@ public interface Message extends TeksObject {
 	 * @generated
 	 */
 	void setDate(Date value);
-
-	/**
-	 * Returns the value of the '<em><b>Routing</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.teksme.model.teks.SMSGatewayKind}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Routing</em>' attribute isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Routing</em>' attribute.
-	 * @see org.teksme.model.teks.SMSGatewayKind
-	 * @see #setRouting(SMSGatewayKind)
-	 * @see org.teksme.model.teks.TeksPackage#getMessage_Routing()
-	 * @model extendedMetaData="kind='element' name='routing'"
-	 * @generated
-	 */
-	SMSGatewayKind getRouting();
-
-	/**
-	 * Sets the value of the '{@link org.teksme.model.teks.Message#getRouting <em>Routing</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Routing</em>' attribute.
-	 * @see org.teksme.model.teks.SMSGatewayKind
-	 * @see #getRouting()
-	 * @generated
-	 */
-	void setRouting(SMSGatewayKind value);
 
 	/**
 	 * Returns the value of the '<em><b>Attempts</b></em>' attribute.

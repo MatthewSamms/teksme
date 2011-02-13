@@ -26,6 +26,7 @@ import java.util.Date;
  *   <li>{@link org.teksme.model.teks.OutboundMessage#getSchedule <em>Schedule</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundMessage#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundMessage#getDelay <em>Delay</em>}</li>
+ *   <li>{@link org.teksme.model.teks.OutboundMessage#getRouting <em>Routing</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundMessage#getCallback <em>Callback</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundMessage#isConcatenated <em>Concatenated</em>}</li>
  *   <li>{@link org.teksme.model.teks.OutboundMessage#getTeksRef <em>Teks Ref</em>}</li>
@@ -114,6 +115,35 @@ public interface OutboundMessage extends Message {
 	 * @generated
 	 */
 	void setDelay(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Routing</b></em>' attribute.
+	 * The literals are from the enumeration {@link org.teksme.model.teks.SMSGatewayKind}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Routing</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Routing</em>' attribute.
+	 * @see org.teksme.model.teks.SMSGatewayKind
+	 * @see #setRouting(SMSGatewayKind)
+	 * @see org.teksme.model.teks.TeksPackage#getOutboundMessage_Routing()
+	 * @model extendedMetaData="kind='element' name='routing'"
+	 * @generated
+	 */
+	SMSGatewayKind getRouting();
+
+	/**
+	 * Sets the value of the '{@link org.teksme.model.teks.OutboundMessage#getRouting <em>Routing</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Routing</em>' attribute.
+	 * @see org.teksme.model.teks.SMSGatewayKind
+	 * @see #getRouting()
+	 * @generated
+	 */
+	void setRouting(SMSGatewayKind value);
 
 	/**
 	 * Returns the value of the '<em><b>Callback</b></em>' attribute.

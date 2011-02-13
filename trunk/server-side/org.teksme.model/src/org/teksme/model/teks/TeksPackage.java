@@ -1594,22 +1594,13 @@ public interface TeksPackage extends EPackage {
 	int MESSAGE__DATE = 5;
 
 	/**
-	 * The feature id for the '<em><b>Routing</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MESSAGE__ROUTING = 6;
-
-	/**
 	 * The feature id for the '<em><b>Attempts</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__ATTEMPTS = 7;
+	int MESSAGE__ATTEMPTS = 6;
 
 	/**
 	 * The feature id for the '<em><b>Encoding</b></em>' attribute.
@@ -1618,7 +1609,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__ENCODING = 8;
+	int MESSAGE__ENCODING = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1627,7 +1618,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE__ID = 9;
+	int MESSAGE__ID = 8;
 
 	/**
 	 * The number of structural features of the '<em>Message</em>' class.
@@ -1636,7 +1627,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MESSAGE_FEATURE_COUNT = 10;
+	int MESSAGE_FEATURE_COUNT = 9;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.InboundMessageImpl <em>Inbound Message</em>}' class.
@@ -1701,15 +1692,6 @@ public interface TeksPackage extends EPackage {
 	 * @ordered
 	 */
 	int INBOUND_MESSAGE__DATE = MESSAGE__DATE;
-
-	/**
-	 * The feature id for the '<em><b>Routing</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int INBOUND_MESSAGE__ROUTING = MESSAGE__ROUTING;
 
 	/**
 	 * The feature id for the '<em><b>Attempts</b></em>' attribute.
@@ -1848,15 +1830,6 @@ public interface TeksPackage extends EPackage {
 	int OUTBOUND_MESSAGE__DATE = MESSAGE__DATE;
 
 	/**
-	 * The feature id for the '<em><b>Routing</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OUTBOUND_MESSAGE__ROUTING = MESSAGE__ROUTING;
-
-	/**
 	 * The feature id for the '<em><b>Attempts</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1911,13 +1884,22 @@ public interface TeksPackage extends EPackage {
 	int OUTBOUND_MESSAGE__DELAY = MESSAGE_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Routing</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int OUTBOUND_MESSAGE__ROUTING = MESSAGE_FEATURE_COUNT + 3;
+
+	/**
 	 * The feature id for the '<em><b>Callback</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OUTBOUND_MESSAGE__CALLBACK = MESSAGE_FEATURE_COUNT + 3;
+	int OUTBOUND_MESSAGE__CALLBACK = MESSAGE_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Concatenated</b></em>' attribute.
@@ -1926,7 +1908,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OUTBOUND_MESSAGE__CONCATENATED = MESSAGE_FEATURE_COUNT + 4;
+	int OUTBOUND_MESSAGE__CONCATENATED = MESSAGE_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Teks Ref</b></em>' container reference.
@@ -1935,7 +1917,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OUTBOUND_MESSAGE__TEKS_REF = MESSAGE_FEATURE_COUNT + 5;
+	int OUTBOUND_MESSAGE__TEKS_REF = MESSAGE_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Outbound Message</em>' class.
@@ -1944,7 +1926,7 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OUTBOUND_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 6;
+	int OUTBOUND_MESSAGE_FEATURE_COUNT = MESSAGE_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link org.teksme.model.teks.impl.ObjectMessageImpl <em>Object Message</em>}' class.
@@ -2009,15 +1991,6 @@ public interface TeksPackage extends EPackage {
 	 * @ordered
 	 */
 	int OBJECT_MESSAGE__DATE = MESSAGE__DATE;
-
-	/**
-	 * The feature id for the '<em><b>Routing</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OBJECT_MESSAGE__ROUTING = MESSAGE__ROUTING;
 
 	/**
 	 * The feature id for the '<em><b>Attempts</b></em>' attribute.
@@ -3734,17 +3707,6 @@ public interface TeksPackage extends EPackage {
 	EAttribute getMessage_Date();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Message#getRouting <em>Routing</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Routing</em>'.
-	 * @see org.teksme.model.teks.Message#getRouting()
-	 * @see #getMessage()
-	 * @generated
-	 */
-	EAttribute getMessage_Routing();
-
-	/**
 	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Message#getAttempts <em>Attempts</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3873,6 +3835,17 @@ public interface TeksPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getOutboundMessage_Delay();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.OutboundMessage#getRouting <em>Routing</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Routing</em>'.
+	 * @see org.teksme.model.teks.OutboundMessage#getRouting()
+	 * @see #getOutboundMessage()
+	 * @generated
+	 */
+	EAttribute getOutboundMessage_Routing();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.OutboundMessage#getCallback <em>Callback</em>}'.
@@ -5319,14 +5292,6 @@ public interface TeksPackage extends EPackage {
 		EAttribute MESSAGE__DATE = eINSTANCE.getMessage_Date();
 
 		/**
-		 * The meta object literal for the '<em><b>Routing</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MESSAGE__ROUTING = eINSTANCE.getMessage_Routing();
-
-		/**
 		 * The meta object literal for the '<em><b>Attempts</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5432,6 +5397,15 @@ public interface TeksPackage extends EPackage {
 		 */
 		EAttribute OUTBOUND_MESSAGE__DELAY = eINSTANCE
 				.getOutboundMessage_Delay();
+
+		/**
+		 * The meta object literal for the '<em><b>Routing</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute OUTBOUND_MESSAGE__ROUTING = eINSTANCE
+				.getOutboundMessage_Routing();
 
 		/**
 		 * The meta object literal for the '<em><b>Callback</b></em>' attribute feature.

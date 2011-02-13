@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
 import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
 
@@ -40,6 +41,7 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#getSchedule <em>Schedule</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#getTimeout <em>Timeout</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#getDelay <em>Delay</em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#getRouting <em>Routing</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#getCallback <em>Callback</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#isConcatenated <em>Concatenated</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.OutboundMessageImpl#getTeksRef <em>Teks Ref</em>}</li>
@@ -113,6 +115,26 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 	 * @ordered
 	 */
 	protected int delay = DELAY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getRouting() <em>Routing</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRouting()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final SMSGatewayKind ROUTING_EDEFAULT = SMSGatewayKind.CLICKATELL;
+
+	/**
+	 * The cached value of the '{@link #getRouting() <em>Routing</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getRouting()
+	 * @generated
+	 * @ordered
+	 */
+	protected SMSGatewayKind routing = ROUTING_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCallback() <em>Callback</em>}' attribute.
@@ -238,6 +260,28 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET,
 					TeksPackage.OUTBOUND_MESSAGE__DELAY, oldDelay, delay));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public SMSGatewayKind getRouting() {
+		return routing;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setRouting(SMSGatewayKind newRouting) {
+		SMSGatewayKind oldRouting = routing;
+		routing = newRouting == null ? ROUTING_EDEFAULT : newRouting;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					TeksPackage.OUTBOUND_MESSAGE__ROUTING, oldRouting, routing));
 	}
 
 	/**
@@ -408,6 +452,8 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 			return getTimeout();
 		case TeksPackage.OUTBOUND_MESSAGE__DELAY:
 			return getDelay();
+		case TeksPackage.OUTBOUND_MESSAGE__ROUTING:
+			return getRouting();
 		case TeksPackage.OUTBOUND_MESSAGE__CALLBACK:
 			return getCallback();
 		case TeksPackage.OUTBOUND_MESSAGE__CONCATENATED:
@@ -436,6 +482,9 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 			return;
 		case TeksPackage.OUTBOUND_MESSAGE__DELAY:
 			setDelay((Integer) newValue);
+			return;
+		case TeksPackage.OUTBOUND_MESSAGE__ROUTING:
+			setRouting((SMSGatewayKind) newValue);
 			return;
 		case TeksPackage.OUTBOUND_MESSAGE__CALLBACK:
 			setCallback((String) newValue);
@@ -467,6 +516,9 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 		case TeksPackage.OUTBOUND_MESSAGE__DELAY:
 			setDelay(DELAY_EDEFAULT);
 			return;
+		case TeksPackage.OUTBOUND_MESSAGE__ROUTING:
+			setRouting(ROUTING_EDEFAULT);
+			return;
 		case TeksPackage.OUTBOUND_MESSAGE__CALLBACK:
 			setCallback(CALLBACK_EDEFAULT);
 			return;
@@ -495,6 +547,8 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 			return timeout != TIMEOUT_EDEFAULT;
 		case TeksPackage.OUTBOUND_MESSAGE__DELAY:
 			return delay != DELAY_EDEFAULT;
+		case TeksPackage.OUTBOUND_MESSAGE__ROUTING:
+			return routing != ROUTING_EDEFAULT;
 		case TeksPackage.OUTBOUND_MESSAGE__CALLBACK:
 			return CALLBACK_EDEFAULT == null ? callback != null
 					: !CALLBACK_EDEFAULT.equals(callback);
@@ -523,6 +577,8 @@ public class OutboundMessageImpl extends MessageImpl implements OutboundMessage 
 		result.append(timeout);
 		result.append(", delay: ");
 		result.append(delay);
+		result.append(", routing: ");
+		result.append(routing);
 		result.append(", callback: ");
 		result.append(callback);
 		result.append(", concatenated: ");
