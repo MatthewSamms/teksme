@@ -40,7 +40,6 @@ public class CreateOutboundMsgTest extends TeksModelTest {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 		Teks teksModel = factory.createTeks();
-		teksModel.setAccountSID("BAa4836gh31bb2d557bf9d5fd5f050ef93");
 
 		OutboundMessage outMsg = factory.createOutboundMessage();
 
@@ -51,24 +50,23 @@ public class CreateOutboundMsgTest extends TeksModelTest {
 		outMsg.setFrom("+12023567865");
 
 		// The number of the handset to which the message must be delivered
-		outMsg.setTo(new String[] { "+12028125643" });
+		outMsg.setTo("+12028129412, +12025501337");
 
-		outMsg.setCallback("http://www.www.com");
+		outMsg.setCallback("http://yourapp.com/callback");
 
 		Channel channel = factory.createChannel();
 		channel.setChannel(new String[] { ChannelKind.SMS.getLiteral(),
-				ChannelKind.GTALK.getLiteral(), ChannelKind.TWITTER.getLiteral() });
-		
+				ChannelKind.GTALK.getLiteral(),
+				ChannelKind.TWITTER.getLiteral() });
+
 		outMsg.setChannels(channel);
-		
+
 		Shout shout = factory.createShout();
 		shout.setThis("Hello from TeksMe Cloud!");
 
 		outMsg.setShout(shout);
 
 		outMsg.setStopOnError(false);
-
-		outMsg.setTeksRef(teksModel);
 
 		Calendar calendar = Calendar.getInstance();
 		calendar.add(Calendar.DAY_OF_YEAR, 1);
@@ -77,6 +75,8 @@ public class CreateOutboundMsgTest extends TeksModelTest {
 		outMsg.setSchedule(tomorrow);
 
 		outMsg.setConcatenated(false);
+
+		outMsg.setTeksRef(teksModel);
 
 		teksModel.setOutboundMessage(0, outMsg);
 
