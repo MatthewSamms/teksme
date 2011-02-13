@@ -127,7 +127,7 @@ public class MailOutboundSMSBuilder extends TeksBuilder {
 		logger.info("[ from: " + outMsg.getFrom() + " | smsGateway: "
 				+ outMsg.getRouting() + " ]");
 
-		outMsg.setTeksRef(teksModel);
+		// outMsg.setTeksRef(teksModel);
 
 		teksModel.setOutboundMessage(0, outMsg);
 
@@ -165,7 +165,7 @@ public class MailOutboundSMSBuilder extends TeksBuilder {
 		}
 
 		// The number of the handset to which the message must be delivered
-		outMsg.setTo(new String[] { recipient });
+		outMsg.setTo(recipient);
 
 		// Delays delivery of SMS to mobile device in minutes
 		outMsg.setDelay(10);
@@ -198,7 +198,7 @@ public class MailOutboundSMSBuilder extends TeksBuilder {
 
 		outMsg.setShout(shout);
 
-		outMsg.setTeksRef(teksModel);
+		// outMsg.setTeksRef(teksModel);
 
 		teksModel.setOutboundMessage(0, outMsg);
 
