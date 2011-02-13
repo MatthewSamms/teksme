@@ -1,5 +1,7 @@
 package org.teksme.server.tests.oauth;
 
+import static org.junit.Assert.assertFalse;
+
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
@@ -64,6 +66,8 @@ public class SignedRequestsTest extends OAuthTest {
 		} catch (URISyntaxException e) {
 			e.printStackTrace();
 		} catch (OAuthException e) {
+			assertFalse("OAuth token has expired!",
+					e.getMessage().contains("token_expired"));
 			e.printStackTrace();
 		}
 		try {
