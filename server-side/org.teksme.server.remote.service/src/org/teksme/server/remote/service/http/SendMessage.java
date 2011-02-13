@@ -34,7 +34,6 @@ import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
-import org.teksme.server.common.utils.HttpParameters;
 import org.teksme.server.common.utils.HttpUtils;
 import org.teksme.server.common.utils.TeksModelHelper;
 import org.teksme.server.common.validator.Screening;
@@ -62,25 +61,12 @@ public class SendMessage extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		final String from = request.getParameter("from");
-		final String to = request.getParameter("to");
-		final String channel = request.getParameter("channel");
-		final String shout = request.getParameter("shout");
-		final String gateway = request.getParameter("gateway");
-
-		Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromRequestParameters(from, to, channel, shout, gateway);
-
-		HttpParameters httpParams = new HttpParameters();
-		httpParams.addParameter("from", from);
-		httpParams.addParameter("to", to);
-		httpParams.addParameter("channel", channel);
-		httpParams.addParameter("shout", shout);
+		String[] requiredParams = { "from", "to", "channel", "shout" };
 
 		requestOptions = new HashMap<Object, Object>();
 		requestOptions.put(Validator.CONTENT_TYPE, request.getContentType());
 		requestOptions.put(Validator.ENCODING, request.getCharacterEncoding());
-		requestOptions.put(Validator.HTTP_GET_DATA, httpParams.getParameters());
-		requestOptions.put(Validator.TEKS_MODEL_ELEMENT, teksModel);
+		requestOptions.put(Validator.HTTP_GET_REQUIRED_DATA, requiredParams);
 
 		processRequest(request, response);
 	}
@@ -98,6 +84,7 @@ public class SendMessage extends HttpServlet {
 		processRequest(request, response);
 	}
 
+	@SuppressWarnings("unchecked")
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
 		final String method = request.getMethod();
@@ -108,10 +95,9 @@ public class SendMessage extends HttpServlet {
 			final ServletOutputStream outStream = response.getOutputStream();
 			OutputStreamWriter writer = new OutputStreamWriter(outStream);
 
-			Screening diagnostic = requestValidation.validate(request, this.requestOptions);
-
 			try {
 
+				Screening diagnostic = requestValidation.validate(request, this.requestOptions);
 				logger.info("OK, just got a new request via HTTP!");
 
 				if (!diagnostic.getChildren().isEmpty()) {
@@ -127,18 +113,18 @@ public class SendMessage extends HttpServlet {
 
 				} else {
 
-					logger.info("The request message was successfully validated!");
-
 					TeksPackageImpl.init();
 					// Retrieve the default factory singleton
 					Teks teksModel = null;
 
-					if (method.toUpperCase().equals("GET")) {
-						teksModel = (Teks) requestOptions.get(Validator.TEKS_MODEL_ELEMENT);
-					} else if (method.toUpperCase().equals("POST")) {
+					if (method.equalsIgnoreCase("GET")) {
+						teksModel = TeksModelHelper.INSTANCE.createOutMessageFromRequestParameters(request.getParameterMap());
+					} else if (method.equalsIgnoreCase("POST")) {
 						String postData = (String) requestOptions.get(Validator.HTTP_POST_DATA);
 						teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
 					}
+
+					logger.info("The request message was successfully validated!");
 
 					User user = authorization.getAuthUser(request, response);
 					teksModel.setAccount(user);
