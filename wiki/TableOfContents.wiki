@@ -1,7 +1,6 @@
 #summary Documentation Table of Contents
 
-== How do I start? ==
-
+*How do I start?*
   * Learn more about TèksMe API.
   * [Waitlist Request access].
   * Run the Hello World examples
