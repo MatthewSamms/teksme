@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.remote.service;
+package org.teksme.server.remote.service.http;
 
 import java.io.BufferedReader;
 import java.io.IOException;

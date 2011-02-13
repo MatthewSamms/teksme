@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.teksme.server.remote.service;
+package org.teksme.server.remote.service.http;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -42,7 +42,6 @@ import org.teksme.server.common.validator.Validator;
 import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
-@SuppressWarnings("serial")
 public class SendMessage extends HttpServlet {
 
 	private static Logger logger = Logger.getLogger(SendMessage.class.getName());
@@ -67,8 +66,9 @@ public class SendMessage extends HttpServlet {
 		final String to = request.getParameter("to");
 		final String channel = request.getParameter("channel");
 		final String shout = request.getParameter("shout");
+		final String gateway = request.getParameter("gateway");
 
-		Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromRequestParameters(from, to, channel, shout);
+		Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromRequestParameters(from, to, channel, shout, gateway);
 
 		HttpParameters httpParams = new HttpParameters();
 		httpParams.addParameter("from", from);
@@ -189,5 +189,7 @@ public class SendMessage extends HttpServlet {
 	public void setRequestAuthorization(IAuth authorization) {
 		this.authorization = authorization;
 	}
+
+	private static final long serialVersionUID = 1L;
 
 }

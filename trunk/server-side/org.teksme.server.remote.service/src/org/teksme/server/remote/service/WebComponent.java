@@ -23,6 +23,7 @@ import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.validator.Validator;
 import org.teksme.server.identity.service.IAuth;
 import org.teksme.server.queue.sender.MessageQueueSender;
+import org.teksme.server.remote.service.http.SendMessage;
 
 public class WebComponent {
 
