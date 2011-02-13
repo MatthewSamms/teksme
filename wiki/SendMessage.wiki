@@ -91,4 +91,13 @@ The `<`outboundMessage`>` verb sends a message to multiple channels with a singl
 
 }}}
 
-Note that you don't supply the standard <id> element; the server creates this in response to your POST request. 
+Note that you don't supply the standard {{{<id>}}} element; the server creates this in response to your POST request. 
+
+= Additional resources =
+
+You may find the following third-party documents useful:
+
+  * HTTP 1.1 [http://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html method definitions]; specification for GET, POST, PUT, and DELETE
+  * HTTP 1.1 [http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html status code definitions]
+  * [http://www.xml.com/pub/a/98/10/guide0.html A Technical Introduction to XML]
+  * [http://www.xml.com/pub/a/1999/01/namespaces.html XML Namespaces by Example]
