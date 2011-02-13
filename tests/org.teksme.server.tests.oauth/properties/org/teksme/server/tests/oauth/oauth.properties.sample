@@ -1,0 +1,11 @@
+teksme.consumerKey=7y0Wxw7B9kLIVNdPAEv47g
+teksme.serviceProvider.userAuthorizationURL=oauth/authorize
+teksme.serviceProvider.baseURL=https\://api.teks.me/
+teksme.serviceProvider.requestTokenURL=oauth/request_token
+teksme.serviceProvider.accessTokenURL=oauth/access_token
+teksme.consumerSecret=F34HyfNIvLTXJNgUpLSyRRdQBYYllWIMXyim6NzPQ
+
+#oacurl
+accessTokenUrl=http\://localhost\:8080/oauth/access_token
+requestTokenUrl=http\://localhost\:8080/oauth/login
+userAuthorizationUrl=http\://localhost\:8080/oauth/authorize
