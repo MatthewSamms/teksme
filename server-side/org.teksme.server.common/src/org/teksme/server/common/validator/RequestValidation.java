@@ -2,11 +2,13 @@ package org.teksme.server.common.validator;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.regex.Matcher;
@@ -93,9 +95,9 @@ public class RequestValidation implements Validator {
 		String method = request.getMethod();
 		boolean valid = true;
 		try {
-			if (method.toUpperCase().equals("GET")) {
+			if (method.equalsIgnoreCase("GET")) {
 				valid = doGetValidate(request, diagnostics, context);
-			} else if (method.toUpperCase().equals("POST")) {
+			} else if (method.equalsIgnoreCase("POST")) {
 				valid = doPostValidate(request, diagnostics, context);
 			}
 		} catch (IOException ioe) {
@@ -192,9 +194,29 @@ public class RequestValidation implements Validator {
 		return false;
 	}
 
+	@SuppressWarnings("unchecked")
 	private boolean doGetValidate(HttpServletRequest request, ScreeningChain diagnostics, Map<Object, Object> context) {
-		// TODO Auto-generated method stub
+
+		String[] requiredParams = (String[]) context.get(Validator.HTTP_GET_REQUIRED_DATA);
+		return validateRequireParameters(request.getParameterMap(), diagnostics, requiredParams);
+
+	}
+
+	private boolean validateRequireParameters(Map<String, String[]> parameters, ScreeningChain diagnostics, String... names) {
+		Set<String> present = parameters.keySet();
+		List<String> absent = new ArrayList<String>();
+		for (String required : names) {
+			if (!present.contains(required)) {
+				absent.add(required);
+			}
+		}
+		if (!absent.isEmpty()) {
+			diagnostics.add(createScreening(ErrorDictionary.MISSING_REQUIRED_PARAM, absent.toArray()));
+			return false;
+		}
+
 		return true;
+
 	}
 
 	private boolean doPostValidate(HttpServletRequest request, ScreeningChain diagnostics, Map<Object, Object> context) throws IOException {
