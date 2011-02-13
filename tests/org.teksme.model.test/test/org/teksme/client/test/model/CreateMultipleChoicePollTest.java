@@ -21,7 +21,6 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.junit.Test;
 import org.teksme.model.teks.Answer;
-import org.teksme.model.teks.Developer;
 import org.teksme.model.teks.Keyword;
 import org.teksme.model.teks.MultipleChoice;
 import org.teksme.model.teks.Poll;
@@ -42,11 +41,6 @@ public class CreateMultipleChoicePollTest extends TeksModelTest {
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		// Create an instance of Teks
 		Teks eduTeks = factory.createTeks();
-
-		Developer developerProfile = factory.createDeveloper();
-		developerProfile.setId(DEVELOPER_PROFILE_ID);
-
-		eduTeks.setDeveloper(developerProfile);
 
 		Poll poll = factory.createPoll();
 		poll.setAuthor("Fabiano Cruz");

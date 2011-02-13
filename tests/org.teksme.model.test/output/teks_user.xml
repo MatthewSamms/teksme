@@ -1,10 +1,26 @@
 <?xml version="1.0" encoding="ASCII"?>
-<teks:User xmlns:teks="http://teksme.org/meta/1.0.0/teks">
-  <firstName>Fabiano</firstName>
-  <lastName>Cruz</lastName>
-  <email>fabianoc@acm.org</email>
-  <password>991ae9e4e414e22e133c286fb51bc3bbb5194673</password>
-  <country>USA</country>
-  <yearOfBirth>1979</yearOfBirth>
-  <gender>male</gender>
-</teks:User>
+<teks:Teks xmlns:teks="http://teksme.org/meta/1.0.0/teks">
+  <account>
+    <profile>
+      <application>
+        <name>WaWaRed</name>
+        <key>675hvkhmkp5sd5v7yd6cp3uj</key>
+        <sharedSecret>6BU4893qXN</sharedSecret>
+        <description>Simple application using TeksMe</description>
+        <registered>2011-02-11T17:16:22.792-0500</registered>
+        <status>active</status>
+        <callbackURL>http://localhost:8080/callback</callbackURL>
+        <rateLimits>50000</rateLimits>
+      </application>
+    </profile>
+    <firstName>Pat</firstName>
+    <lastName>Adams</lastName>
+    <mobileNumber>+12026451324</mobileNumber>
+    <email>pat@painting.com</email>
+    <password>991ae9e4e414e22e133c286fb51bc3bbb5194673</password>
+    <country>USA</country>
+    <yearOfBirth>1928</yearOfBirth>
+    <company>Inter-American Development Bank</company>
+    <websiteURL>http://www.iadb.org</websiteURL>
+  </account>
+</teks:Teks>

@@ -1,7 +1,19 @@
+/*
+ * Copyright 2010 TèksMe, Inc.
+ * TèksMe licenses this file to you under the Apache License, version
+ * 2.0 (the "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+ * implied.  See the License for the specific language governing
+ * permissions and limitations under the License.
+ */
+
 package org.teksme.client.test.persistence;
 
 import java.io.IOException;
-import java.util.UUID;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;
@@ -12,16 +24,15 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.junit.Test;
-import org.teksme.model.teks.OutboundMessage;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
 
-public class OutboundMsgPersistenceTest extends PersistenceTest {
+public class PersistUserTest extends PersistenceTest {
 
-	private static final String MODEL_FILE = "output/teks_outmsg.xml";
+	private static final String MODEL_FILE = "output/teks_user.xml";
 
 	@Test
-	public void persistOutMessageTest() throws IOException {
+	public void persistUserAccountTest() throws IOException {
 
 		// load resource
 		Resource res = resourceSet.getResource(URI.createURI(MODEL_FILE), true);
@@ -53,10 +64,6 @@ public class OutboundMsgPersistenceTest extends PersistenceTest {
 		tx.begin();
 
 		Teks eduTeks = (Teks) res.getContents().get(0);
-
-		OutboundMessage outMsg = eduTeks.getOutboundMessage(0);
-		outMsg.setId(UUID.randomUUID().toString());
-
 		session.save(eduTeks);
 
 		// at commit the objects will be present in the database

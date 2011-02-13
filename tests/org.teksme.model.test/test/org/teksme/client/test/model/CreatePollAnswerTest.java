@@ -39,7 +39,6 @@ public class CreatePollAnswerTest extends TeksModelTest {
 		newUser.setFirstName("Pat");
 		newUser.setLastName("Adams");
 		newUser.setEmail("pat@painting.com");
-		newUser.setGender("male");
 		newUser.setCountry("USA");
 		newUser.setYearOfBirth(1928);
 

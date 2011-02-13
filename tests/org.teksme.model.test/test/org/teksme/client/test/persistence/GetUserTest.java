@@ -20,7 +20,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Environment;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksPackage;
 import org.teksme.model.teks.User;
 import org.teksme.model.teks.impl.TeksPackageImpl;
@@ -84,7 +83,7 @@ public class GetUserTest {
 		final SessionFactory sessionFactory = dataStore.getSessionFactory();
 		{
 
-			String email = "fabianoc@acm.org";
+			String accountSID = "56f3d45cb6f14af22fee33245bf53b8e";
 			String password = "teksme";
 
 			final Session session = sessionFactory.openSession();
@@ -111,8 +110,8 @@ public class GetUserTest {
 				System.out.println("Hex format : " + sb.toString());
 
 				Query query = session
-						.createQuery("SELECT user FROM User user WHERE user.email = '"
-								+ email
+						.createQuery("SELECT user FROM User user WHERE user.accountSID = '"
+								+ accountSID
 								+ "' and user.password = '"
 								+ sb.toString() + "'");
 				List<?> list = query.list();
