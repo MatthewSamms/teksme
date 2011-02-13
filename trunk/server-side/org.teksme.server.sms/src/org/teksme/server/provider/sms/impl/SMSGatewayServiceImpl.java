@@ -1,5 +1,6 @@
 package org.teksme.server.provider.sms.impl;
 
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import org.smslib.AGateway;
@@ -26,30 +27,34 @@ public class SMSGatewayServiceImpl implements SMSGatewayService {
 	public void sendMessage(OutboundMessage message) throws Exception {
 		Service srv = smsConnServiceFactory.startSMSService();
 		// TODO adapter Teksme outbound message to SMSlib outbound message
-		org.smslib.OutboundMessage msg = adapt(message);
+		ArrayList<org.smslib.OutboundMessage> msgs = adapt(message);
 		final String gatewayId = message.getRouting().getName();
 		AGateway gateway = smsConnServiceFactory.getSMSGateway(gatewayId);
 
-		msg.setGatewayId(gatewayId);
-
-		logger.info("SMS gateway status: " + gateway.getStatus());
-
-		if (SMSGatewayKind.CLICKATELL.getName().equals(gateway.getGatewayId()))
-			logger.info("Is recipient's network covered? : " + gateway.queryCoverage(msg));
-
-		srv.sendMessage(msg, gatewayId);
-
-		logger.info(msg.toString());
+		for (org.smslib.OutboundMessage outMessage : msgs) {
+			outMessage.setGatewayId(gatewayId);
+			logger.info("SMS gateway status: " + gateway.getStatus());
+			if (SMSGatewayKind.CLICKATELL.getName().equals(gateway.getGatewayId()))
+				logger.info("Is recipient's network covered? : " + gateway.queryCoverage(outMessage));
+			srv.sendMessage(outMessage, gatewayId);
+			logger.info(outMessage.toString());
+		}
 	}
 
-	private org.smslib.OutboundMessage adapt(OutboundMessage teksOutMsg) {
+	private ArrayList<org.smslib.OutboundMessage> adapt(OutboundMessage teksOutMsg) {
+		ArrayList<org.smslib.OutboundMessage> outMsgs = new ArrayList<org.smslib.OutboundMessage>();
+		String[] to = teksOutMsg.getTo().split(",");
+		for (int i = 0; i < to.length; i++) {
+			org.smslib.OutboundMessage msg = new org.smslib.OutboundMessage(to[i].trim(), teksOutMsg.getShout().getThis());
+			msg.setId(teksOutMsg.getId());
+			msg.setFrom(teksOutMsg.getFrom());
+			msg.setDate(teksOutMsg.getDate());
+			outMsgs.add(msg);
+		}
 
-		org.smslib.OutboundMessage msg = new org.smslib.OutboundMessage(teksOutMsg.getTo(0), teksOutMsg.getShout().getThis());
-
-		// msg.setDate(teksOutMsg.getTimestamp());
+		return outMsgs;
 
 		// msg.setDCSMessageClass(getDCSMessageClass());
-		// msg.setId(teksOutMsg.getId());
 		// msg.setGatewayId(teksOutMsg.getSmsGateway().getName());
 
 		// TODO review
@@ -70,8 +75,6 @@ public class SMSGatewayServiceImpl implements SMSGatewayService {
 		// TODO teksOutMsg getFlashSms
 		// msg.setFlashSms(getFlashSms());
 
-		msg.setFrom(teksOutMsg.getFrom());
-
 		// TODO teksOutMsg message statuses
 		// msg.setMessageStatus(getMessageStatus());
 		// TODO teksOutMsg failure cause
@@ -84,7 +87,6 @@ public class SMSGatewayServiceImpl implements SMSGatewayService {
 
 		// msg.setRefNo(teksOutMsg.getRefNo());
 
-		return msg;
 	}
 
 }
