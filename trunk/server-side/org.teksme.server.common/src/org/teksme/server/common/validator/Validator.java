@@ -30,6 +30,8 @@ public interface Validator {
 
 	static final Object HTTP_GET_DATA = "HTTP GET Data";//$NON-NLS-1$
 
+	static final Object HTTP_GET_REQUIRED_DATA = "HTTP GET required data";//$NON-NLS-1$
+
 	static final Object TEKS_MODEL_ELEMENT = "Teks model element representation";//$NON-NLS-1$
 
 	/**

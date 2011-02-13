@@ -16,6 +16,7 @@ package org.teksme.server.common.utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 
@@ -75,25 +76,31 @@ public class TeksModelHelper {
 
 	}
 
-	public Teks createTeksModelFromRequestParameters(String from, String to, String inChannel, String inShout) {
+	public Teks createOutMessageFromRequestParameters(Map<String, String[]> parameters) {
+
 		TeksFactory factory = TeksFactory.eINSTANCE;
 		Teks teksModel = factory.createTeks();
 
 		OutboundMessage outMsg = factory.createOutboundMessage();
 		outMsg.setId(UUID.randomUUID().toString());
-		outMsg.setFrom(from);
-		outMsg.setTo(new String[] { to });
+
+		outMsg.setFrom(parameters.get("from")[0]);
+
+		outMsg.setTo(parameters.get("to")[0]);
 
 		Channel channel = factory.createChannel();
-		channel.setChannel(new String[] { inChannel });
+		channel.setChannel(new String[] { parameters.get("channel")[0] });
 		outMsg.setChannels(channel);
 
 		Shout shout = factory.createShout();
-		shout.setThis(inShout);
+		shout.setThis(parameters.get("shout")[0]);
 		outMsg.setShout(shout);
 
-		// default
-		outMsg.setRouting(SMSGatewayKind.MOVISTAR_PERU);
+		if (parameters.get("gateway") != null)
+			outMsg.setRouting(SMSGatewayKind.getByName(parameters.get("gateway")[0]));
+		else
+			// default
+			outMsg.setRouting(SMSGatewayKind.MOVISTAR_PERU);
 
 		outMsg.setTeksRef(teksModel);
 

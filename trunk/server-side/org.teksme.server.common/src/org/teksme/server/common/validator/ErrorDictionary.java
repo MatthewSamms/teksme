@@ -52,6 +52,9 @@ public enum ErrorDictionary {
 	INVALID_XML_BEGINNING_ELEMENT(40912, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40912"), Constants.API_ERROR_CODES_URL
 			.concat("40912")),
 
+	MISSING_REQUIRED_PARAM(40913, HttpStatusCode.SC_CONFLICT.getValue(), Messages.getString("40913"), Constants.API_ERROR_CODES_URL
+			.concat("40913")),
+
 	// -- #HTTP Status code: 415 Unsupported Media Type
 	INVALID_CONTENT_TYPE(4151, HttpStatusCode.SC_UNSUPPORTED_MEDIA_TYPE.getValue(), Messages.getString("4151"),
 			Constants.API_ERROR_CODES_URL.concat("4151")),
