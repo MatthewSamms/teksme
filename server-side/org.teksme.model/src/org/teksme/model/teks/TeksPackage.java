@@ -1558,7 +1558,7 @@ public interface TeksPackage extends EPackage {
 	int MESSAGE__CHANNELS = 1;
 
 	/**
-	 * The feature id for the '<em><b>To</b></em>' attribute list.
+	 * The feature id for the '<em><b>To</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1658,7 +1658,7 @@ public interface TeksPackage extends EPackage {
 	int INBOUND_MESSAGE__CHANNELS = MESSAGE__CHANNELS;
 
 	/**
-	 * The feature id for the '<em><b>To</b></em>' attribute list.
+	 * The feature id for the '<em><b>To</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1794,7 +1794,7 @@ public interface TeksPackage extends EPackage {
 	int OUTBOUND_MESSAGE__CHANNELS = MESSAGE__CHANNELS;
 
 	/**
-	 * The feature id for the '<em><b>To</b></em>' attribute list.
+	 * The feature id for the '<em><b>To</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1957,7 +1957,7 @@ public interface TeksPackage extends EPackage {
 	int OBJECT_MESSAGE__CHANNELS = MESSAGE__CHANNELS;
 
 	/**
-	 * The feature id for the '<em><b>To</b></em>' attribute list.
+	 * The feature id for the '<em><b>To</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -3663,11 +3663,11 @@ public interface TeksPackage extends EPackage {
 	EReference getMessage_Channels();
 
 	/**
-	 * Returns the meta object for the attribute list '{@link org.teksme.model.teks.Message#getToList <em>To</em>}'.
+	 * Returns the meta object for the attribute '{@link org.teksme.model.teks.Message#getTo <em>To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute list '<em>To</em>'.
-	 * @see org.teksme.model.teks.Message#getToList()
+	 * @return the meta object for the attribute '<em>To</em>'.
+	 * @see org.teksme.model.teks.Message#getTo()
 	 * @see #getMessage()
 	 * @generated
 	 */
@@ -5260,7 +5260,7 @@ public interface TeksPackage extends EPackage {
 		EReference MESSAGE__CHANNELS = eINSTANCE.getMessage_Channels();
 
 		/**
-		 * The meta object literal for the '<em><b>To</b></em>' attribute list feature.
+		 * The meta object literal for the '<em><b>To</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
