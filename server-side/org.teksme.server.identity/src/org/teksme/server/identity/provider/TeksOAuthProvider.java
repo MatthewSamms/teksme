@@ -120,7 +120,7 @@ public class TeksOAuthProvider {
 	public static synchronized void generateRequestToken(OAuthAccessor accessor) throws OAuthException {
 
 		// generate oauth_token and oauth_secret
-		String consumer_key = (String) accessor.consumer.getProperty("user");
+		String consumer_key = (String) accessor.consumer.getProperty("consumerKey");
 		// generate token and secret based on consumer_key
 
 		// for now use md5 of name + current time as token
@@ -176,28 +176,31 @@ public class TeksOAuthProvider {
 		for (User user : users) {
 			Profile profile = user.getProfile();
 			List<Application> apps = profile.getApplicationList();
-
-			for (Application application : apps) {
-				String consumerKey = application.getKey();
-				// make sure it's key not additional properties
-				if (consumerKey != null && !consumerKey.equals("")) {
-					String sharedSecret = application.getSharedSecret();
-					if (sharedSecret != null) {
-						String consumerDescription = application.getDescription();
-						String consumerCallbackURL = application.getCallbackURL();
-						// Create OAuthConsumer w/ key and secret
-						OAuthConsumer consumer = new OAuthConsumer(consumerCallbackURL, consumerKey, sharedSecret, null);
-						consumer.setProperty("name", application.getName());
-						consumer.setProperty("description", consumerDescription);
-						consumer.setProperty("userObj", user);
-						ALL_CONSUMERS.put(consumerKey, consumer);
-					}
-				}
-
-			}
+			if (apps != null)
+				TeksOAuthProvider.loadConsumersApps(apps, user);
 		}
 		logger.info("oAuth cosumers cache has been successfuly created...");
+	}
 
+	public static void loadConsumersApps(List<Application> apps, User user) {
+		for (Application application : apps) {
+			String consumerKey = application.getKey();
+			// make sure it's key not additional properties
+			if (consumerKey != null && !consumerKey.equals("")) {
+				String sharedSecret = application.getSharedSecret();
+				if (sharedSecret != null) {
+					String consumerDescription = application.getDescription();
+					String consumerCallbackURL = application.getCallbackURL();
+					// Create OAuthConsumer w/ key and secret
+					OAuthConsumer consumer = new OAuthConsumer(consumerCallbackURL, consumerKey, sharedSecret, null);
+					consumer.setProperty("name", application.getName());
+					consumer.setProperty("consumerKey", consumerKey);
+					consumer.setProperty("description", consumerDescription);
+					consumer.setProperty("userObj", user);
+					ALL_CONSUMERS.put(consumerKey, consumer);
+				}
+			}
+		}
 	}
 
 }
