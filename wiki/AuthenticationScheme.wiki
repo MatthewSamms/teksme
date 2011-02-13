@@ -127,3 +127,11 @@ props.setProperty("requestToken", accessor.requestToken);
 props.setProperty("tokenSecret", accessor.tokenSecret);
 
 }}}
+
+
+= Additional resources =
+
+You may find the following third-party documents useful:
+
+  * The OAuth 1.0 Protocol: http://tools.ietf.org/html/rfc5849 
+  * The Authoritative Guide to OAuth 1.0: http://hueniverse.com/oauth/guide/ 
