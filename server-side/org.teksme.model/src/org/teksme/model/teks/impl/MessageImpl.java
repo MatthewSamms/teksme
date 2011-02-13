@@ -18,30 +18,22 @@ import java.util.Date;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
-
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
 import org.eclipse.emf.ecore.util.EDataTypeUniqueEList;
-
 import org.teksme.model.impl.TeksObjectImpl;
-
 import org.teksme.model.teks.Channel;
 import org.teksme.model.teks.Message;
-import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.model.teks.Shout;
 import org.teksme.model.teks.TeksPackage;
 
 /**
- * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Message</b></em>'.
- * <!-- end-user-doc -->
+ * <!-- begin-user-doc --> An implementation of the model object '
+ * <em><b>Message</b></em>'. <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * <ul>
@@ -51,7 +43,6 @@ import org.teksme.model.teks.TeksPackage;
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getShout <em>Shout</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#isStopOnError <em>Stop On Error</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getDate <em>Date</em>}</li>
- *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getRouting <em>Routing</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getAttempts <em>Attempts</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getEncoding <em>Encoding</em>}</li>
  *   <li>{@link org.teksme.model.teks.impl.MessageImpl#getId <em>Id</em>}</li>
@@ -68,8 +59,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The default value of the '{@link #getFrom() <em>From</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFrom()
 	 * @generated
 	 * @ordered
@@ -78,8 +68,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getFrom() <em>From</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getFrom()
 	 * @generated
 	 * @ordered
@@ -88,8 +77,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getChannels() <em>Channels</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getChannels()
 	 * @generated
 	 * @ordered
@@ -98,8 +86,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getToList() <em>To</em>}' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getToList()
 	 * @generated
 	 * @ordered
@@ -108,8 +95,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The empty value for the '{@link #getTo() <em>To</em>}' array accessor.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getTo()
 	 * @generated
 	 * @ordered
@@ -118,8 +104,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getShout() <em>Shout</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getShout()
 	 * @generated
 	 * @ordered
@@ -128,8 +113,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The default value of the '{@link #isStopOnError() <em>Stop On Error</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isStopOnError()
 	 * @generated
 	 * @ordered
@@ -138,8 +122,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #isStopOnError() <em>Stop On Error</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #isStopOnError()
 	 * @generated
 	 * @ordered
@@ -148,8 +131,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The default value of the '{@link #getDate() <em>Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -158,8 +140,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getDate() <em>Date</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getDate()
 	 * @generated
 	 * @ordered
@@ -167,29 +148,8 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	protected Date date = DATE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRouting() <em>Routing</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRouting()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final SMSGatewayKind ROUTING_EDEFAULT = SMSGatewayKind.CLICKATELL;
-
-	/**
-	 * The cached value of the '{@link #getRouting() <em>Routing</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getRouting()
-	 * @generated
-	 * @ordered
-	 */
-	protected SMSGatewayKind routing = ROUTING_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getAttempts() <em>Attempts</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAttempts()
 	 * @generated
 	 * @ordered
@@ -198,8 +158,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getAttempts() <em>Attempts</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getAttempts()
 	 * @generated
 	 * @ordered
@@ -208,8 +167,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The default value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -218,8 +176,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 
 	/**
 	 * The cached value of the '{@link #getEncoding() <em>Encoding</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getEncoding()
 	 * @generated
 	 * @ordered
@@ -227,9 +184,9 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	protected String encoding = ENCODING_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The default value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -237,9 +194,9 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	protected static final String ID_EDEFAULT = null;
 
 	/**
-	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * The cached value of the '{@link #getId() <em>Id</em>}' attribute. <!--
+	 * begin-user-doc --> <!-- end-user-doc -->
+	 * 
 	 * @see #getId()
 	 * @generated
 	 * @ordered
@@ -247,8 +204,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	protected String id = ID_EDEFAULT;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	protected MessageImpl() {
@@ -256,8 +212,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -266,8 +221,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getFrom() {
@@ -275,8 +229,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setFrom(String newFrom) {
@@ -288,8 +241,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Channel getChannels() {
@@ -317,8 +269,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Channel basicGetChannels() {
@@ -326,8 +277,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetChannels(Channel newChannels,
@@ -347,8 +297,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setChannels(Channel newChannels) {
@@ -371,8 +320,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String[] getTo() {
@@ -384,8 +332,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getTo(int index) {
@@ -393,8 +340,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getToLength() {
@@ -402,8 +348,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setTo(String[] newTo) {
@@ -411,8 +356,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setTo(int index, String element) {
@@ -420,8 +364,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EList<String> getToList() {
@@ -433,8 +376,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Shout getShout() {
@@ -461,8 +403,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Shout basicGetShout() {
@@ -470,8 +411,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public NotificationChain basicSetShout(Shout newShout,
@@ -491,8 +431,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setShout(Shout newShout) {
@@ -515,8 +454,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public boolean isStopOnError() {
@@ -524,8 +462,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setStopOnError(boolean newStopOnError) {
@@ -538,8 +475,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public Date getDate() {
@@ -547,8 +483,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setDate(Date newDate) {
@@ -560,30 +495,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public SMSGatewayKind getRouting() {
-		return routing;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public void setRouting(SMSGatewayKind newRouting) {
-		SMSGatewayKind oldRouting = routing;
-		routing = newRouting == null ? ROUTING_EDEFAULT : newRouting;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					TeksPackage.MESSAGE__ROUTING, oldRouting, routing));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public int getAttempts() {
@@ -591,8 +503,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setAttempts(int newAttempts) {
@@ -604,8 +515,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getEncoding() {
@@ -613,8 +523,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setEncoding(String newEncoding) {
@@ -626,8 +535,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public String getId() {
@@ -635,8 +543,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	public void setId(String newId) {
@@ -648,8 +555,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -665,8 +571,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -688,8 +593,6 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 			return isStopOnError();
 		case TeksPackage.MESSAGE__DATE:
 			return getDate();
-		case TeksPackage.MESSAGE__ROUTING:
-			return getRouting();
 		case TeksPackage.MESSAGE__ATTEMPTS:
 			return getAttempts();
 		case TeksPackage.MESSAGE__ENCODING:
@@ -701,8 +604,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -728,9 +630,6 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 		case TeksPackage.MESSAGE__DATE:
 			setDate((Date) newValue);
 			return;
-		case TeksPackage.MESSAGE__ROUTING:
-			setRouting((SMSGatewayKind) newValue);
-			return;
 		case TeksPackage.MESSAGE__ATTEMPTS:
 			setAttempts((Integer) newValue);
 			return;
@@ -745,8 +644,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -770,9 +668,6 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 		case TeksPackage.MESSAGE__DATE:
 			setDate(DATE_EDEFAULT);
 			return;
-		case TeksPackage.MESSAGE__ROUTING:
-			setRouting(ROUTING_EDEFAULT);
-			return;
 		case TeksPackage.MESSAGE__ATTEMPTS:
 			setAttempts(ATTEMPTS_EDEFAULT);
 			return;
@@ -787,8 +682,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -808,8 +702,6 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 		case TeksPackage.MESSAGE__DATE:
 			return DATE_EDEFAULT == null ? date != null : !DATE_EDEFAULT
 					.equals(date);
-		case TeksPackage.MESSAGE__ROUTING:
-			return routing != ROUTING_EDEFAULT;
 		case TeksPackage.MESSAGE__ATTEMPTS:
 			return attempts != ATTEMPTS_EDEFAULT;
 		case TeksPackage.MESSAGE__ENCODING:
@@ -822,8 +714,7 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @generated
 	 */
 	@Override
@@ -840,8 +731,6 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 		result.append(stopOnError);
 		result.append(", date: ");
 		result.append(date);
-		result.append(", routing: ");
-		result.append(routing);
 		result.append(", attempts: ");
 		result.append(attempts);
 		result.append(", encoding: ");
@@ -852,4 +741,4 @@ public abstract class MessageImpl extends TeksObjectImpl implements Message {
 		return result.toString();
 	}
 
-} //MessageImpl
+} // MessageImpl

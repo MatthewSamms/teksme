@@ -1577,7 +1577,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_Routing() {
+	public EAttribute getMessage_Attempts() {
 		return (EAttribute) messageEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -1586,7 +1586,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_Attempts() {
+	public EAttribute getMessage_Encoding() {
 		return (EAttribute) messageEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -1595,17 +1595,8 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getMessage_Encoding() {
-		return (EAttribute) messageEClass.getEStructuralFeatures().get(8);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	public EAttribute getMessage_Id() {
-		return (EAttribute) messageEClass.getEStructuralFeatures().get(9);
+		return (EAttribute) messageEClass.getEStructuralFeatures().get(8);
 	}
 
 	/**
@@ -1701,7 +1692,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundMessage_Callback() {
+	public EAttribute getOutboundMessage_Routing() {
 		return (EAttribute) outboundMessageEClass.getEStructuralFeatures().get(
 				3);
 	}
@@ -1711,7 +1702,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EAttribute getOutboundMessage_Concatenated() {
+	public EAttribute getOutboundMessage_Callback() {
 		return (EAttribute) outboundMessageEClass.getEStructuralFeatures().get(
 				4);
 	}
@@ -1721,9 +1712,19 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getOutboundMessage_Concatenated() {
+		return (EAttribute) outboundMessageEClass.getEStructuralFeatures().get(
+				5);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EReference getOutboundMessage_TeksRef() {
 		return (EReference) outboundMessageEClass.getEStructuralFeatures().get(
-				5);
+				6);
 	}
 
 	/**
@@ -2148,7 +2149,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEReference(messageEClass, MESSAGE__SHOUT);
 		createEAttribute(messageEClass, MESSAGE__STOP_ON_ERROR);
 		createEAttribute(messageEClass, MESSAGE__DATE);
-		createEAttribute(messageEClass, MESSAGE__ROUTING);
 		createEAttribute(messageEClass, MESSAGE__ATTEMPTS);
 		createEAttribute(messageEClass, MESSAGE__ENCODING);
 		createEAttribute(messageEClass, MESSAGE__ID);
@@ -2163,6 +2163,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 		createEAttribute(outboundMessageEClass, OUTBOUND_MESSAGE__SCHEDULE);
 		createEAttribute(outboundMessageEClass, OUTBOUND_MESSAGE__TIMEOUT);
 		createEAttribute(outboundMessageEClass, OUTBOUND_MESSAGE__DELAY);
+		createEAttribute(outboundMessageEClass, OUTBOUND_MESSAGE__ROUTING);
 		createEAttribute(outboundMessageEClass, OUTBOUND_MESSAGE__CALLBACK);
 		createEAttribute(outboundMessageEClass, OUTBOUND_MESSAGE__CONCATENATED);
 		createEReference(outboundMessageEClass, OUTBOUND_MESSAGE__TEKS_REF);
@@ -2754,10 +2755,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				null, 0, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
-		initEAttribute(getMessage_Routing(), this.getSMSGatewayKind(),
-				"routing", null, 0, 1, Message.class, !IS_TRANSIENT,
-				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
-				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessage_Attempts(), ecorePackage.getEInt(),
 				"attempts", null, 0, 1, Message.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
@@ -2808,6 +2805,10 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOutboundMessage_Delay(), ecorePackage.getEInt(),
 				"delay", null, 0, 1, OutboundMessage.class, !IS_TRANSIENT,
+				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
+				!IS_DERIVED, IS_ORDERED);
+		initEAttribute(getOutboundMessage_Routing(), this.getSMSGatewayKind(),
+				"routing", null, 0, 1, OutboundMessage.class, !IS_TRANSIENT,
 				!IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE,
 				!IS_DERIVED, IS_ORDERED);
 		initEAttribute(getOutboundMessage_Callback(),
@@ -3026,8 +3027,6 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"element", "name", "stopOnError" });
 		addAnnotation(getMessage_Date(), source, new String[] { "kind",
 				"element", "name", "date" });
-		addAnnotation(getMessage_Routing(), source, new String[] { "kind",
-				"element", "name", "routing" });
 		addAnnotation(getMessage_Attempts(), source, new String[] { "kind",
 				"element", "name", "attempts" });
 		addAnnotation(getMessage_Encoding(), source, new String[] { "kind",
@@ -3040,10 +3039,14 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				"kind", "element", "name", "timeout" });
 		addAnnotation(getOutboundMessage_Delay(), source, new String[] {
 				"kind", "element", "name", "delay" });
+		addAnnotation(getOutboundMessage_Routing(), source, new String[] {
+				"kind", "element", "name", "routing" });
 		addAnnotation(getOutboundMessage_Callback(), source, new String[] {
 				"kind", "element", "name", "callback" });
 		addAnnotation(getOutboundMessage_Concatenated(), source, new String[] {
 				"kind", "element", "name", "concatenated" });
+		addAnnotation(getChannel_Channel(), source, new String[] { "kind",
+				"element", "name", "channel" });
 		addAnnotation(getError_Status(), source, new String[] { "kind",
 				"element", "name", "status" });
 		addAnnotation(getError_Message(), source, new String[] { "kind",
