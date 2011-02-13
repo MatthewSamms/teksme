@@ -47,7 +47,7 @@ http://api.teks.me/p/{profileId}/sendmsg
 You can send text messages and pictures or sounds to one or more recipients, by sending an HTTP GET request to its URI. The URI for a request has the following format:
 
 {{{
-http://api.teks.me/p/{profileId}/sendmsg?parameters
+GET /sendmsg?parameters
 }}}
 
 == Example ==
