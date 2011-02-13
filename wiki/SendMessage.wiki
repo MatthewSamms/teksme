@@ -1,7 +1,7 @@
 #summary TèksML <outboundMessage> verb.
 #labels Featured
 
-<font size="3"><b>Making Social Texting Apps made easy with TèksMe API</b></font>
+<font size="3"><b>Building Social Texting Apps made easy with TèksMe API</b></font>
 
 This document describes how to use TèksMe API to submit information through multiple channels including text messaging, Twitter, email etc. 
 
