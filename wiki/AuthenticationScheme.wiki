@@ -32,7 +32,7 @@ Please note that TèksMe is not yet fully available. At this stage, we have publ
 == Overview ==
 
 Here we make sure that only registered developers are using TèksMe data. On a conceptual level 2-legged OAuth simply consists of the first and last steps of 3-legged OAuth:
-*( 1 )* Client has signed up to the server and got his client credentials (also known as “consumer key and shared  secret”); and *( 2 )* Client uses his client credentials (and empty token credentials) to access the protected resources on the server.
+*( 1 )* Client has signed up to the server and got his client credentials (also known as “consumer key and shared  secret”); and *( 2 )* Client uses his client credentials `[`and token credentials`]` to access the protected resources on the server.
 
 You shouldn't ever share the combination of your OAuth consumer key, secret, access token, and access token secret.
 
@@ -71,7 +71,6 @@ At a minimum, your base string must contain the following OAuth parameters:
 
 == Get Your Request Token ==
 
-Here you're going to ask us to send you a special link for your subscriber to click. The OAuth parameters are exactly the same as the ones you used to query the catalog, so--assuming you got that working--this should work the first time you try it. Form your base string the same way you did with the catalog:
 
 {{{
 
@@ -112,7 +111,7 @@ oauth_token=YourToken
 
 If that sounds like a lot of work, you're right! But we are pretty sure that you are using a library for this, right? If not, please take a look at the [http://oauth.net/code OAuth Code Page]. That would probably make things a lot simpler. 
 
-The following code snippet using a Java OAuth library available here: http://code.google.com/p/oauth/
+The following code snippet uses a Java OAuth library available here: http://code.google.com/p/oauth/
 
 {{{
 
