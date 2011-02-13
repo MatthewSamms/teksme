@@ -11,8 +11,8 @@ Export-Package: com.rabbitmq.client,
  com.rabbitmq.tools.jsonrpc,
  com.rabbitmq.utility
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
-Require-Bundle: org.apache.commons.cli;bundle-version="1.0.0",
- com.springsource.org.apache.commons.io;bundle-version="1.4.0"
+Require-Bundle: org.apache.commons.cli;bundle-version="1.2.0",
+ org.apache.commons.io;bundle-version="1.4.0"
 Import-Package: javax.net,
  javax.net.ssl
 Eclipse-BuddyPolicy: dependent
