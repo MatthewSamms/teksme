@@ -29,11 +29,10 @@ import org.teksme.model.teks.TeksPackage;
  * <p>
  * The following features are implemented:
  * <ul>
- * <li>{@link org.teksme.model.teks.impl.ChannelImpl#getChannelList <em>Channel
- * </em>}</li>
+ *   <li>{@link org.teksme.model.teks.impl.ChannelImpl#getChannelList <em>Channel</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @generated
  */
 public class ChannelImpl extends TeksObjectImpl implements Channel {
@@ -43,9 +42,8 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * The cached value of the '{@link #getChannelList() <em>Channel</em>}'
-	 * attribute list. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The cached value of the '{@link #getChannelList() <em>Channel</em>}' attribute list.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getChannelList()
 	 * @generated
 	 * @ordered
@@ -53,9 +51,8 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 	protected EList<String> channel;
 
 	/**
-	 * The empty value for the '{@link #getChannel() <em>Channel</em>}' array
-	 * accessor. <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
+	 * The empty value for the '{@link #getChannel() <em>Channel</em>}' array accessor.
+	 * <!-- begin-user-doc --> <!-- end-user-doc -->
 	 * @see #getChannel()
 	 * @generated
 	 * @ordered
@@ -64,7 +61,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	protected ChannelImpl() {
@@ -73,7 +69,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -83,7 +78,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String[] getChannel() {
@@ -96,7 +90,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public String getChannel(int index) {
@@ -105,7 +98,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public int getChannelLength() {
@@ -114,7 +106,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setChannel(String[] newChannel) {
@@ -124,7 +115,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public void setChannel(int index, String element) {
@@ -133,7 +123,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	public EList<String> getChannelList() {
@@ -146,7 +135,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -160,7 +148,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@SuppressWarnings("unchecked")
@@ -177,7 +164,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -192,7 +178,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override
@@ -206,7 +191,6 @@ public class ChannelImpl extends TeksObjectImpl implements Channel {
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc -->
-	 * 
 	 * @generated
 	 */
 	@Override

@@ -2740,7 +2740,7 @@ public class TeksPackageImpl extends EPackageImpl implements TeksPackage {
 				!IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, IS_RESOLVE_PROXIES,
 				!IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMessage_To(), ecorePackage.getEString(), "to", null,
-				1, -1, Message.class, !IS_TRANSIENT, !IS_VOLATILE,
+				1, 1, Message.class, !IS_TRANSIENT, !IS_VOLATILE,
 				IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED,
 				IS_ORDERED);
 		initEReference(getMessage_Shout(), this.getShout(), null, "shout",
