@@ -10,7 +10,6 @@ The `<`outboundMessage`>` verb sends a message to multiple channels with a singl
 Here are the the *required parameters* in the HTTP POST request:
 
 || *Field* || *Short description* || 
-|| *accountSID* || Account Security Identifier (commonly abbreviated SID) is a unique ID string that is assigned to each account. ||  
 || *from* || The source/sender address (a.k.a “Sender ID”) that the message will appear to come from. For mobile phones, the numbers are in E.164 format. ||
 || *to* || The destination address to whom this message is to be sent. If a handset, the number should be in E.164 format. ||
 || *channel* || This allows for engaging your users via text-based communication channels such as SMS, GTalk, Twitter, Yahoo, and nearly every IM network. For IM clients, you need to supply the appropriate credentials. ||
