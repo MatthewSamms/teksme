@@ -23,7 +23,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.oauth.OAuth;
 import net.oauth.OAuthAccessor;
-import net.oauth.OAuthConsumer;
 import net.oauth.OAuthMessage;
 import net.oauth.OAuthProblemException;
 import net.oauth.server.OAuthServlet;
@@ -70,10 +69,15 @@ public class AuthImpl implements IAuth {
 		try {
 			OAuthMessage requestMessage = OAuthServlet.getMessage(request, null);
 
+			// look up user's access token object from cache
+			// TODO fallback to the database if necessary
 			OAuthAccessor accessor = TeksOAuthProvider.getAccessor(requestMessage);
+
 			TeksOAuthProvider.VALIDATOR.validateMessage(requestMessage, accessor);
 
 			if (accessor.tokenSecret.isEmpty()) {
+				// for some reason, neither can be retrieved, then something has
+				// gone wrong and proactively deny access
 				OAuthProblemException problem = new OAuthProblemException("permission_denied");
 				throw problem;
 			}
@@ -137,31 +141,13 @@ public class AuthImpl implements IAuth {
 		}
 	}
 
-	public synchronized void refreshOAuthConsumersCache(List<User> users) {
+	public synchronized void refreshOAuthConsumersCache(User user) {
 		// for each entry in the list create a OAuthConsumer
-		for (User user : users) {
-			Profile profile = user.getProfile();
-			List<Application> apps = profile.getApplicationList();
+		Profile profile = user.getProfile();
+		List<Application> apps = profile.getApplicationList();
 
-			for (Application application : apps) {
-				String consumerKey = application.getKey();
-				// make sure it's key not additional properties
-				if (consumerKey != null && !consumerKey.equals("")) {
-					String sharedSecret = application.getSharedSecret();
-					if (sharedSecret != null) {
-						String consumerDescription = application.getDescription();
-						String consumerCallbackURL = application.getCallbackURL();
-						// Create OAuthConsumer w/ key and secret
-						OAuthConsumer consumer = new OAuthConsumer(consumerCallbackURL, consumerKey, sharedSecret, null);
-						consumer.setProperty("name", application.getName());
-						consumer.setProperty("description", consumerDescription);
-						consumer.setProperty("userObj", user);
-						TeksOAuthProvider.ALL_CONSUMERS.put(consumerKey, consumer);
-					}
-				}
-
-			}
-		}
+		if (apps != null)
+			TeksOAuthProvider.loadConsumersApps(apps, user);
 
 	}
 

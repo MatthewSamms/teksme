@@ -27,6 +27,7 @@ import net.oauth.OAuthConsumer;
 import net.oauth.OAuthMessage;
 import net.oauth.server.OAuthServlet;
 
+import org.teksme.model.teks.User;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
@@ -95,14 +96,10 @@ public class RequestToken extends HttpServlet {
 			response.setContentType("text/plain");
 			OutputStream out = response.getOutputStream();
 
-			response.setHeader("userID", "1928739817387192");
+			User user = (User) consumer.getProperty("userObj");
+			response.setHeader("userID", user.getEmail());
 
 			OAuth.formEncode(OAuth.newList("oauth_token", accessor.requestToken, "oauth_token_secret", accessor.tokenSecret), out);
-
-			// OutputStreamWriter writer = new OutputStreamWriter(out);
-			// writer.write(strResp);
-			// writer.flush();
-			// writer.close();
 
 			out.close();
 

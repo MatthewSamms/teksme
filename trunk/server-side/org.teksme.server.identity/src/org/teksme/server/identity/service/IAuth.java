@@ -14,7 +14,6 @@
 package org.teksme.server.identity.service;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -39,6 +38,6 @@ public interface IAuth {
 
 	public User getAuthUser(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException;
 
-	public void refreshOAuthConsumersCache(List<User> users);
+	public void refreshOAuthConsumersCache(User user);
 
 }
