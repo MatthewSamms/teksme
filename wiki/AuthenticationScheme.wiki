@@ -132,36 +132,28 @@ props.setProperty("tokenSecret", accessor.tokenSecret);
 
 === PHP OAuth Lib ===
 
-The following code snippet uses a PHP OAuth library available here: http://code.google.com/p/oauth-php/
-
+The following code snippet uses a PHP OAuth library available here: http://code.google.com/p/oauth/
 
 {{{
 
 <?php
+require_once("./library/OAuth.php");
 
-include_once "OAuthStore.php";
-include_once "OAuthRequester.php";
+$test_consumer = new OAuthConsumer('YourConsumerKey', 'YourConsumerSecret, NULL);
+$hmac_method = new OAuthSignatureMethod_HMAC_SHA1();
+$sig_method = $hmac_method;
 
-$key = 'YOUR_CONSUMER_KEY'; // fill with your public key 
-$secret = 'YOUR_SHARED_SECRET'; // fill with your secret key
-$url = "http://api.teks.me/oauth/login"; 
+try {
 
-$options = array('consumer_key' => $key, 'consumer_secret' => $secret);
-OAuthStore::instance("2Leg", $options);
+	$req_req = OAuthRequest::from_consumer_and_token($test_consumer, NULL, "GET", "http://api.teks.me/oauth/login", NULL);
+	$req_req->sign_request($sig_method, $test_consumer, NULL);
+	$a=stream_get_contents(fopen($req_req,'rb'));
+	var_dump($a);
 
-$method = "GET";
-$params = null;
-
-try
-{
-	$request = new OAuthRequester($url, $method, $params);
-	$result = $request->doRequest();
-	$response = $result['body'];
-	var_dump($response);
-}
-catch(OAuthException2 $e)
-{
-	echo "Exception";
+} catch (OAuthException $e) {
+	print($e->getMessage() . "\n<hr />\n");
+	print_r($req);
+	die();
 }
 
 ?>
