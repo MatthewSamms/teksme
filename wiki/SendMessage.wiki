@@ -54,16 +54,16 @@ GET /sendmsg?parameters
 
 {{{
 http://api.teks.me/p/{profileId}/sendmsg?oauth_token=YourToken
-&channel=SMS
-&shout=Hello%20from%20TeksMe%21
-&to=Recipient(s)Phone 
-&from=YourPhone
-&oauth_consumer_key=YourConsumerKey
-&oauth_signature_method=HMAC-SHA1
-&oauth_timestamp=1297578530
-&oauth_nonce=1297578530577906000
-&oauth_version=1.0
-&oauth_signature=YourSignature
+         &channel=SMS
+         &shout=Hello%20from%20TeksMe%21
+         &to=Recipient(s)Phone 
+         &from=YourPhone
+         &oauth_consumer_key=YourConsumerKey
+         &oauth_signature_method=HMAC-SHA1
+         &oauth_timestamp=1297578530
+         &oauth_nonce=1297578530577906000
+         &oauth_version=1.0
+         &oauth_signature=YourSignature
 
 }}}
 
