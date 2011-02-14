@@ -139,7 +139,11 @@ The following code snippet uses a PHP OAuth library available here: http://code.
 <?php
 require_once("./library/OAuth.php");
 
-$test_consumer = new OAuthConsumer(TEKSME_CONSUMER_KEY, TEKSME_CONSUMER_SECRET, NULL);
+$key = ' '; // fill with your public key 
+$secret = ' '; // fill with your secret key
+$url = "http://api.teks.me/oauth/login"; // fill with the url for the oauth service
+
+$test_consumer = new OAuthConsumer($key, $secret, NULL);
 
 $hmac_method = new OAuthSignatureMethod_HMAC_SHA1();
 
@@ -147,7 +151,7 @@ $sig_method = $hmac_method;
 
 try {
 	
-	$req_req = OAuthRequest::from_consumer_and_token($test_consumer, NULL, "GET", TEKSME_REQUEST_TOKEN_URL, NULL);
+	$req_req = OAuthRequest::from_consumer_and_token($test_consumer, NULL, "GET", $url, NULL);
 	$req_req->sign_request($sig_method, $test_consumer, NULL);
 	$a=stream_get_contents(fopen($req_req,'rb'));
 	var_dump($a);
@@ -161,6 +165,7 @@ try {
 ?>
 
 }}}
+
 
 = Additional resources =
 
