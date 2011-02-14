@@ -69,7 +69,7 @@ http://api.teks.me/p/{profileId}/sendmsg?oauth_token=YourToken
 
 == PHP Sample Code ==
 
-If you want to see an example on how to send messages using PHP, please have a look at the [http://code.google.com/p/teksme/source/browse/#svn%2Fteksme-oauth-php-client%2Ftrunk%2Fclient%2Fphp%2Fexample%2Fteksme-oauth-php-client teksme-oauth-php-client] in the source code repository. 
+If you want to see an example on how to send messages using PHP, please have a look at the [http://code.google.com/p/teksme/source/browse/trunk/client/php/example/teksme-oauth-php-client/oauth_send_message.php teksme-oauth-php-client project] in the source code repository. 
 
 = HTTP POST =
 
