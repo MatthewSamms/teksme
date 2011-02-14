@@ -71,9 +71,11 @@ http://api.teks.me/p/{profileId}/sendmsg?oauth_token=YourToken
 
 == TèksML `<`outboundMessage`>` ==
 
-The `<`outboundMessage`>` verb sends a message to multiple channels with a single transmission, which saves valuable time. To shout a new message, send a POST request, and supply the XML representation of the new message.
+The `<`outboundMessage`>` verb sends a message to multiple channels with a single transmission, which saves valuable time. To shout a new message, send a POST request, and supply the XML representation of the new message in a parameter called {{{ data }}}.
 
 == Example==
+
+The XML representation of a new message using the TèksML lingo.
 
 {{{
 
@@ -92,6 +94,17 @@ The `<`outboundMessage`>` verb sends a message to multiple channels with a singl
 }}}
 
 Note that you don't supply the standard {{{<id>}}} element; the server creates this in response to your POST request. 
+
+{{{
+POST /sendmsg?oauth_token=YourToken
+         &data=YourXML
+         &oauth_consumer_key=YourConsumerKey
+         &oauth_signature_method=HMAC-SHA1
+         &oauth_timestamp=1297578530
+         &oauth_nonce=1297578530577906000
+         &oauth_version=1.0
+         &oauth_signature=YourSignature
+}}}
 
 = Additional resources =
 
