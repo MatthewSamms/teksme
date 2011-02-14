@@ -107,9 +107,11 @@ oauth_token=YourToken
 
 }}}
 
-=== Using an OAuth library ===
+== Using an OAuth library ==
 
 If that sounds like a lot of work, you're right! But we are pretty sure that you are using a library for this, right? If not, please take a look at the [http://oauth.net/code OAuth Code Page]. That would probably make things a lot simpler. 
+
+=== Java OAuth Lib ===
 
 The following code snippet uses a Java OAuth library available here: http://code.google.com/p/oauth/
 
@@ -125,6 +127,46 @@ client.getRequestToken(accessor);
 
 props.setProperty("requestToken", accessor.requestToken);
 props.setProperty("tokenSecret", accessor.tokenSecret);
+
+}}}
+
+=== PHP OAuth Lib ===
+
+The following code snippet uses a PHP OAuth library available here: http://code.google.com/p/oauth-php/
+
+
+{{{
+
+<?php
+
+include_once "OAuthStore.php";
+include_once "OAuthRequester.php";
+
+// Test of the OAuthStore2Leg 
+
+$key = 'YOUR_CONSUMER_KEY'; // fill with your public key 
+$secret = 'YOUR_SHARED_SECRET'; // fill with your secret key
+$url = "http://api.teks.me/oauth/login"; 
+
+$options = array('consumer_key' => $key, 'consumer_secret' => $secret);
+OAuthStore::instance("2Leg", $options);
+
+$method = "GET";
+$params = null;
+
+try
+{
+	$request = new OAuthRequester($url, $method, $params);
+	$result = $request->doRequest();
+	$response = $result['body'];
+	var_dump($response);
+}
+catch(OAuthException2 $e)
+{
+	echo "Exception";
+}
+
+?>
 
 }}}
 
