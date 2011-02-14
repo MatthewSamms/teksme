@@ -128,10 +128,14 @@ props.setProperty("tokenSecret", accessor.tokenSecret);
 
 }}}
 
-
 = Additional resources =
 
 You may find the following third-party documents useful:
 
-  * The OAuth 1.0 Protocol: http://tools.ietf.org/html/rfc5849 
-  * The Authoritative Guide to OAuth 1.0: http://hueniverse.com/oauth/guide/ 
+  * [http://tools.ietf.org/html/rfc5849 The OAuth 1.0 Protocol] 
+  * [http://code.google.com/p/oauth/ Reference Implementations]
+  * [http://www.hueniverse.com/hueniverse/2007/10/beginners-guide.html Beginner’s Guide to OAuth - Part I: Overview]
+  * [http://www.hueniverse.com/hueniverse/2007/10/beginners-gui-1.html Beginner’s Guide to OAuth - Part II : Protocol Workflow]
+  * [http://www.hueniverse.com/hueniverse/2008/10/beginners-guide.html Beginner’s Guide to OAuth - Part III : Security Architecture]
+  * [http://www.hueniverse.com/hueniverse/2008/10/beginners-gui-1.html Beginner’s Guide to OAuth - Part IV: Signing Requests]
+  * [http://blog.andydenmark.com/2009/03/how-to-build-oauth-consumer.html How to Build an OAuth Consumer]
