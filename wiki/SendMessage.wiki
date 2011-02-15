@@ -34,6 +34,7 @@ Here are the the *optional parameters* in the HTTP GET or POST request:
 || *delay* || Delays, in minutes, the delivery of a message. || 
 || *callback* || A relative or absolute URL. It enables your application to receive message delivery statuses via an HTTP, SOAP or XML callback which is posted to a URL of yours using the GET or POST method. This is done every time a message status is updated. ||
 || *concatenated* || It will span long messages across `<N>` messages where applicable. A maximum of 3 is recommended. One SMS will be sent for every 160 characters or 140 bytes. ||
+|| *routing* || A list with one or more gateways to consider while sending this message. Available: {{{ BULKSMS }}}, {{{CLICKATEL}}}, {{{ MOVISTAR }}} ||
 
 = Endpoint URL =
 
