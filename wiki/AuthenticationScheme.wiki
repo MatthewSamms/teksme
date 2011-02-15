@@ -1,4 +1,5 @@
 #summary Making Signed Requests using one access token with OAuth
+#labels Featured
 
 <font size="3"><b>Making Signed Requests using one access token with OAuth</b></font>
 
