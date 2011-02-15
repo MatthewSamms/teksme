@@ -12,7 +12,11 @@ Error: oauth_problem=timestamp_refused&oauth_acceptable_timestamps=1297740444-12
 
 This means that your system clock is not in sync with our API servers by 5 minutes or more. The timestamp we give you indicates the range of times we would be expecting from you in your oauth_timestamp field. We also return the time to you in the body of the error message.
   
-We recommend using a stable NTP server to keep your clock in sync with us.
+We recommend using a stable NTP server to keep your clock in sync with us. 
+
+You can play around a little bit here: http://www.epochconverter.com/
+
+ 
 
 
 
