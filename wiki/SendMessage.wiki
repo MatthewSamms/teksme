@@ -67,6 +67,10 @@ http://api.teks.me/p/{profileId}/sendmsg?oauth_token=YourToken
 
 }}}
 
+== Java Sample Code ==
+
+Now that you are familiar with the protocol discussed in this document, it is time to take a look at the sample code available at our SVN repository within the {{{ teksme-oauth-java-client }}} project. Here is the example: [http://code.google.com/p/teksme/source/browse/trunk/client/java/example/teksme-oauth-java-client/src/org/teksme/server/tests/oauth/SignedSendMessageRequest.java SignedSendMessageRequest.java]  
+
 == PHP Sample Code ==
 
 If you want to see an example on how to send messages using PHP, please have a look at the [http://code.google.com/p/teksme/source/browse/trunk/client/php/example/teksme-oauth-php-client/oauth_send_message.php teksme-oauth-php-client project] in the source code repository. 
