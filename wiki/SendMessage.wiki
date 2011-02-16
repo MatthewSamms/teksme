@@ -19,7 +19,7 @@ Here are the the *required parameters* in the HTTP GET or POST request:
 
 || *Field* || *Short description* || 
 || *from* || The source/sender address (a.k.a “Sender ID”) that the message will appear to come from. For mobile phones, the numbers are in [http://en.wikipedia.org/wiki/E.164 E.164 format]. ||
-|| *to* || The destination address to whom this message is to be sent. If a handset, the number should be in [http://en.wikipedia.org/wiki/E.164 E.164 format]. ||
+|| *to* || The destination address to whom this message is to be sent. If a handset, the number should be in [http://en.wikipedia.org/wiki/E.164 E.164 format]. If you want to send the same message to more than one recipient, please separate with comma. ||
 || *channel* || This allows for engaging your users via text-based communication channels such as SMS, GTalk, Twitter, Yahoo, and nearly every IM network. For IM clients, you need to supply the appropriate credentials. ||
 || *shout* || The text content of the message. Note that the maximum individual short message sizes of 160 7-bit characters, 140 8-bit characters, or 70 16-bit characters (including spaces). ||
 
