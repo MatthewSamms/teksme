@@ -8,10 +8,10 @@
     </channels>
     <shout this="Hello from TeksMe Cloud!"/>
     <from>+12023567865</from>
-    <to>+12028129412</to>
-    <to> +12025501337</to>
-    <id>a33742a9-c2cd-4bff-b039-22f01560b4f3</id>
-    <schedule>2011-02-14T01:21:13.407-0500</schedule>
+    <to>+12028129412, +12025501337</to>
+    <id>e5a5c1e3-80fb-4a83-90ac-94b9a83de7da</id>
+    <schedule>2011-02-15T19:30:36.464-0500</schedule>
+    <routing>BULKSMS</routing>
     <callback>http://yourapp.com/callback</callback>
   </outboundMessage>
 </teks:Teks>

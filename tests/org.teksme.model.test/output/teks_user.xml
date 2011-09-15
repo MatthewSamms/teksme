@@ -12,6 +12,16 @@
         <callbackURL>http://localhost:8080/callback</callbackURL>
         <rateLimits>50000</rateLimits>
       </application>
+      <application>
+        <name>WaWaRed Local</name>
+        <key>675hvytrfp5sd5v7yd6cp3uj</key>
+        <sharedSecret>6BU4893qXN</sharedSecret>
+        <description>Testing WaWaRed app</description>
+        <registered>2011-02-11T17:16:22.792-0500</registered>
+        <status>active</status>
+        <callbackURL>http://localhost:8080/callback</callbackURL>
+        <rateLimits>50000</rateLimits>
+      </application>
     </profile>
     <firstName>Pat</firstName>
     <lastName>Adams</lastName>

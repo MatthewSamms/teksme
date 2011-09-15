@@ -27,7 +27,7 @@ public class PersistenceTest {
 
 		props.setProperty(Environment.DRIVER, "com.mysql.jdbc.Driver");
 		props.setProperty(Environment.USER, "teksmeuser");
-		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:8889/"
+		props.setProperty(Environment.URL, "jdbc:mysql://127.0.0.1:3306/"
 				+ dbName);
 		props.setProperty(Environment.PASS, "teksme");
 		props.setProperty(Environment.DIALECT,

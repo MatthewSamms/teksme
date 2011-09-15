@@ -24,6 +24,7 @@ import org.junit.Test;
 import org.teksme.model.teks.Channel;
 import org.teksme.model.teks.ChannelKind;
 import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.model.teks.Shout;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
@@ -61,6 +62,8 @@ public class CreateOutboundMsgTest extends TeksModelTest {
 
 		outMsg.setChannels(channel);
 
+		outMsg.setRouting(SMSGatewayKind.BULKSMS);
+		
 		Shout shout = factory.createShout();
 		shout.setThis("Hello from TeksMe Cloud!");
 
