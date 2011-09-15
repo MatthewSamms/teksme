@@ -1,17 +1,22 @@
 package org.teksme.server.tests.oauth;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Properties;
 
 import net.oauth.OAuth;
 import net.oauth.OAuthAccessor;
 import net.oauth.OAuthConsumer;
+import net.oauth.OAuthMessage;
 import net.oauth.OAuthServiceProvider;
+import net.oauth.http.HttpMessage;
+import net.oauth.http.HttpMessageDecoder;
 
 public class OAuthTest {
 
@@ -22,19 +27,51 @@ public class OAuthTest {
 				null);
 		OAuthConsumer consumer = new OAuthConsumer(callbackUrl, consumerKey,
 				consumerSecret, provider);
+		consumer.setProperty(OAuthConsumer.ACCEPT_ENCODING,
+				HttpMessageDecoder.ACCEPTED);
 		return new OAuthAccessor(consumer);
 	}
 
 	@SuppressWarnings("rawtypes")
-	static Collection<? extends Entry> getOAuthParams(Properties map) {
-		List<Map.Entry> params = new ArrayList<Map.Entry>();
+	static Collection<OAuth.Parameter> getOAuthParams(Properties map)
+			throws UnsupportedEncodingException {
+		List<OAuth.Parameter> params = new ArrayList<OAuth.Parameter>();
 		Iterator it = map.entrySet().iterator();
 		while (it.hasNext()) {
 			Map.Entry p = (Map.Entry) it.next();
-			params.add(new OAuth.Parameter((String) p.getKey(), (String) p
-					.getValue()));
+			final byte[] utf8 = ((String) p.getValue())
+					.getBytes(OAuth.ENCODING);
+			params.add(new OAuth.Parameter((String) p.getKey(), new String(utf8, "ISO-8859-1")));
 		}
 		return params;
+	}
+
+	static class MessageWithBody extends OAuthMessage {
+
+		public MessageWithBody(String method, String URL,
+				Collection<OAuth.Parameter> parameters, String contentType,
+				byte[] body) {
+			super(method, URL, parameters);
+			this.body = body;
+			Collection<Map.Entry<String, String>> headers = getHeaders();
+			headers.add(new OAuth.Parameter(HttpMessage.ACCEPT_ENCODING,
+					HttpMessageDecoder.ACCEPTED));
+			if (body != null) {
+				headers.add(new OAuth.Parameter(HttpMessage.CONTENT_LENGTH,
+						String.valueOf(body.length)));
+			}
+			if (contentType != null) {
+				headers.add(new OAuth.Parameter(HttpMessage.CONTENT_TYPE,
+						contentType));
+			}
+		}
+
+		private final byte[] body;
+
+		@Override
+		public InputStream getBodyAsStream() {
+			return (body == null) ? null : new ByteArrayInputStream(body);
+		}
 	}
 
 }

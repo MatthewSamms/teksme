@@ -30,6 +30,7 @@ public class OAuthRequestTokenClient {
 
 		String consumerKey = "675hvkhmkp5sd5v7yd6cp3uj";
 		String consumerSecret = "6BU4893qXN";
+		//String reqUrl = "http://97.107.129.138:8089/oauth/login";
 		String reqUrl = "http://localhost:8080/oauth/login";
 
 		OAuthServiceProvider provider = new OAuthServiceProvider(reqUrl, null,
