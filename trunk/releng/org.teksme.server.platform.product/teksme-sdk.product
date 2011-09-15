@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" version="0.5.0" useFeatures="true" includeLaunchers="true">
+<product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" version="0.5.0" useFeatures="true" includeLaunchers="false">
 
    <configIni use="default">
       <linux>./configuration.files/configuration/config.ini</linux>
