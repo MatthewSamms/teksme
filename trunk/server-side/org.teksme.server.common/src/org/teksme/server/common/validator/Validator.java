@@ -65,8 +65,6 @@ public interface Validator {
 
 	public Response handleResponse(Screening diagnostic);
 
-	public String getXMLResponse(Response teksResponse) throws IOException;
-
 	public BasicScreening createScreening(ErrorDictionary errorDictionary);
 
 	public BasicScreening createDefaultScreening(HttpServletRequest request);

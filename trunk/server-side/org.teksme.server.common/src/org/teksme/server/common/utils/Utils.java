@@ -18,6 +18,8 @@ import java.io.InputStream;
 import java.io.StringWriter;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.transform.Transformer;
@@ -26,6 +28,13 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
 public final class Utils {
+
+	public static String getDateRFCFormat(Date date) {
+		// String rfcDate = "Sat, 13 Mar 2010 11:29:05 -0800";
+		String pattern = "EEE, dd MMM yyyy HH:mm:ss Z";
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		return format.format(date);
+	}
 
 	public static String convertXMLFileToString(String fileName) {
 		try {
@@ -55,5 +64,5 @@ public final class Utils {
 		}
 		return hexStr;
 	}
-	
+
 }

@@ -12,7 +12,7 @@
  */
 package org.teksme.server.common;
 
-import java.util.Properties;
+import java.util.Hashtable;
 import java.util.logging.Logger;
 
 import org.osgi.framework.BundleActivator;
@@ -48,11 +48,11 @@ public class Activator implements BundleActivator {
 
 		Activator.context = bundleContext;
 
-		Properties props = new Properties();
-		props.put(Constants.SERVICE_PID, "rabbitmq.connections");
+		Hashtable<String, String> serviceProperties = new Hashtable<String, String>();
+		serviceProperties.put(Constants.SERVICE_PID, "rabbitmq.connections");
 
 		// FIXME change to DS
-		context.registerService(ManagedServiceFactory.class.getName(), new AMQPConnectionServiceFactory(context), props);
+		context.registerService(ManagedServiceFactory.class.getName(), new AMQPConnectionServiceFactory(context), serviceProperties);
 
 	}
 

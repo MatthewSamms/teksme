@@ -8,4 +8,6 @@ public interface Constants {
 
 	public static final String TEXT_XML_MIME_TYPE = "text/xml";//$NON-NLS-1$
 
+	public static final String APP_WWW_FORM_URLENCODED = "application/x-www-form-urlencoded";//$NON-NLS-1$
+
 }
