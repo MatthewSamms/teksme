@@ -1,9 +1,9 @@
 <?php
 require_once("./library/OAuth.php");
 
-$key = '675hvkhmkp5sd5v7yd6cp3uj'; // fill with your public key 
+$key = '675hvytrfp5sd5v7yd6cp3uj'; // fill with your public key 
 $secret = '6BU4893qXN'; // fill with your secret key
-$url = "http://localhost:8080/oauth/login"; // fill with the url for the oauth service
+$url = "http://97.107.129.138:8089/oauth/login"; // fill with the url for the oauth service
 
 $test_consumer = new OAuthConsumer($key, $secret, NULL);
 
