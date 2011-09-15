@@ -1,6 +1,6 @@
-/*
- * Copyright 2010 TèksMe, Inc.
- * TèksMe licenses this file to you under the Apache License, version
+/**
+ * Copyright 2010 Creative Works, Inc.
+ * Creative Works licenses this file to you under the Apache License, version
  * 2.0 (the "License"); you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *    http://www.apache.org/licenses/LICENSE-2.0
@@ -10,7 +10,6 @@
  * implied.  See the License for the specific language governing
  * permissions and limitations under the License.
  */
-
 package org.teksme.server.common.persistence;
 
 import javax.naming.NamingException;
