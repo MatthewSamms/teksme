@@ -4,7 +4,7 @@ Bundle-Name: TeksMe Common Server Components
 Bundle-SymbolicName: org.teksme.server.common
 Bundle-Version: 0.5.0
 Bundle-Activator: org.teksme.server.common.Activator
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.naming,
  javax.servlet;version="2.5.0",
  javax.servlet.http;version="2.5.0",
@@ -16,13 +16,13 @@ Export-Package: org.teksme.server.common,
  org.teksme.server.common.utils,
  org.teksme.server.common.validator
 Require-Bundle: org.teksme.model;bundle-version="0.5.0",
- org.eclipse.emf.teneo.hibernate;bundle-version="1.1.2",
  org.eclipse.emf.ecore.xmi;bundle-version="2.5.0",
+ org.eclipse.emf.teneo.hibernate;bundle-version="1.2.0",
  com.springsource.antlr;bundle-version="2.7.7",
  com.rabbitmq.client;bundle-version="2.1.0",
+ org.hibernate;bundle-version="3.6.0",
  org.apache.commons.collections;bundle-version="3.2.0",
  org.apache.commons.logging;bundle-version="1.1.1",
- org.hibernate;bundle-version="3.3.2",
  org.slf4j.api;bundle-version="1.5.11",
  org.dom4j;bundle-version="1.6.1"
 Bundle-Vendor: TeksMe Inc.

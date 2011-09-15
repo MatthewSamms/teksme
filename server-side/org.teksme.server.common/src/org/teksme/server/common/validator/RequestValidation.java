@@ -1,7 +1,6 @@
 package org.teksme.server.common.validator;
 
 import java.io.IOException;
-import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -16,13 +15,9 @@ import java.util.regex.Matcher;
 import javax.servlet.http.HttpServletRequest;
 
 import org.eclipse.emf.common.util.Diagnostic;
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.util.Diagnostician;
-import org.eclipse.emf.ecore.xmi.XMLResource;
-import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.teksme.model.teks.Response;
 import org.teksme.model.teks.Teks;
 import org.teksme.model.teks.TeksFactory;
@@ -243,7 +238,8 @@ public class RequestValidation implements Validator {
 			return false;
 		}
 
-		if (contentType.contains(Constants.APP_XML_MIME_TYPE) || contentType.contains(Constants.TEXT_XML_MIME_TYPE)) {
+		if (contentType.contains(Constants.APP_XML_MIME_TYPE) || contentType.contains(Constants.TEXT_XML_MIME_TYPE)
+				|| contentType.contains(Constants.APP_WWW_FORM_URLENCODED)) {
 
 			TeksPackageImpl.init();
 			Teks teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
@@ -354,30 +350,6 @@ public class RequestValidation implements Validator {
 		}
 
 		return resp;
-	}
-
-	public String getXMLResponse(Response teksResponse) throws IOException {
-
-		TeksPackageImpl.init();
-		// Retrieve the default factory singleton
-		TeksFactory factory = TeksFactory.eINSTANCE;
-
-		// Create an instance of Teks
-		Teks teksModel = factory.createTeks();
-		teksModel.setResponse(teksResponse);
-
-		Map<Object, Object> options = new HashMap<Object, Object>();
-		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
-
-		URI uri = URI.createPlatformResourceURI("*.xml", true);
-		XMLResource xmlResource = new XMLResourceImpl(uri);
-		xmlResource.getContents().add(teksModel);
-		StringWriter stringWriter = new StringWriter();
-		xmlResource.save(new URIConverter.WriteableOutputStream(stringWriter, xmlResource.getEncoding()), options);
-		String result = stringWriter.getBuffer().toString();
-
-		return result;
-
 	}
 
 }

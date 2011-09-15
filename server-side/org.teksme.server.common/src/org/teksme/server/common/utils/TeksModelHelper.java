@@ -16,16 +16,25 @@ package org.teksme.server.common.utils;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 import java.util.logging.Logger;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.URIConverter;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
+import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceImpl;
 import org.teksme.model.teks.Channel;
 import org.teksme.model.teks.OutboundMessage;
+import org.teksme.model.teks.Response;
 import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.model.teks.Shout;
 import org.teksme.model.teks.Teks;
@@ -49,9 +58,72 @@ public class TeksModelHelper {
 		return INSTANCE;
 	}
 
-	public Teks createTeksModelFromXml(String xmlInput) throws IOException {
+	@SuppressWarnings("unchecked")
+	public Teks createOutMessageFromRequest(HttpServletRequest request) throws IOException {
 
-		// logger.info("XML: " + xmlInput);
+		final String method = request.getMethod();
+
+		Teks teksModel = null;
+
+		if (method.equalsIgnoreCase("GET")) {
+			teksModel = TeksModelHelper.INSTANCE.createOutMessageFromRequestGet(request.getParameterMap());
+		} else if (method.equalsIgnoreCase("POST")) {
+			String postData = request.getParameter("data");
+			if (postData != null)
+				teksModel = createTeksModelFromXml(postData);
+		}
+
+		return teksModel;
+
+	}
+
+	public Teks createOutMessageFromRequestGet(Map<String, String[]> parameters) throws UnsupportedEncodingException {
+
+		TeksFactory factory = TeksFactory.eINSTANCE;
+		Teks teksModel = factory.createTeks();
+
+		OutboundMessage outMsg = factory.createOutboundMessage();
+		outMsg.setId(UUID.randomUUID().toString());
+
+		byte fromBytes[] = parameters.get("from")[0].toString().getBytes("ISO-8859-1");
+		byte toBytes[] = parameters.get("to")[0].toString().getBytes("ISO-8859-1");
+		byte channelBytes[] = parameters.get("channel")[0].toString().getBytes("ISO-8859-1");
+		byte shoutBytes[] = parameters.get("shout")[0].toString().getBytes("ISO-8859-1");
+
+		String strfrom = new String(fromBytes, "UTF-8");
+		String strTo = new String(toBytes, "UTF-8");
+		String strChannel = new String(channelBytes, "UTF-8");
+		String strShout = new String(shoutBytes, "UTF-8");
+
+		outMsg.setFrom(strfrom);
+		outMsg.setTo(strTo);
+
+		Channel channel = factory.createChannel();
+		channel.setChannel(new String[] { strChannel });
+		outMsg.setChannels(channel);
+
+		Shout shout = factory.createShout();
+		shout.setThis(strShout);
+		outMsg.setShout(shout);
+
+		if (parameters.get("routing") != null) {
+			byte routingBytes[] = parameters.get("routing")[0].toString().getBytes("ISO-8859-1");
+			String strRouting = new String(routingBytes, "UTF-8");
+			outMsg.setRouting(SMSGatewayKind.getByName(strRouting));
+		} else {
+			// default
+			outMsg.setRouting(SMSGatewayKind.MOVISTAR_PERU);
+		}
+		outMsg.setTeksRef(teksModel);
+
+		outMsg.setDate(new Date());
+
+		teksModel.setOutboundMessage(0, outMsg);
+
+		return teksModel;
+	}
+
+	public Teks createTeksModelFromXml(String xmlInput) throws IOException {
 
 		InputStream is = new ByteArrayInputStream(xmlInput.getBytes("ASCII"));
 
@@ -70,43 +142,37 @@ public class TeksModelHelper {
 		OutboundMessage outMsg = teksObj.getOutboundMessage(0);
 		outMsg.setId(UUID.randomUUID().toString());
 
-		// logger.info(outMsg.getShout().getThis());
-
 		return teksObj;
 
 	}
 
-	public Teks createOutMessageFromRequestParameters(Map<String, String[]> parameters) {
+	public String getXMLFromResponseObject(Response teksResponse) throws IOException {
 
+		TeksPackageImpl.init();
+		// Retrieve the default factory singleton
 		TeksFactory factory = TeksFactory.eINSTANCE;
+
+		// Create an instance of Teks
 		Teks teksModel = factory.createTeks();
+		teksModel.setResponse(teksResponse);
 
-		OutboundMessage outMsg = factory.createOutboundMessage();
-		outMsg.setId(UUID.randomUUID().toString());
+		return getXMLFromTeksModel(teksModel);
+	}
 
-		outMsg.setFrom(parameters.get("from")[0]);
+	public String getXMLFromTeksModel(Teks teksModel) throws IOException {
 
-		outMsg.setTo(parameters.get("to")[0]);
+		Map<Object, Object> options = new HashMap<Object, Object>();
+		options.put(XMLResource.OPTION_EXTENDED_META_DATA, Boolean.TRUE);
 
-		Channel channel = factory.createChannel();
-		channel.setChannel(new String[] { parameters.get("channel")[0] });
-		outMsg.setChannels(channel);
+		URI uri = URI.createPlatformResourceURI("*.xml", true);
+		XMLResource xmlResource = new XMLResourceImpl(uri);
+		xmlResource.getContents().add(teksModel);
+		StringWriter stringWriter = new StringWriter();
+		xmlResource.save(new URIConverter.WriteableOutputStream(stringWriter, xmlResource.getEncoding()), options);
+		String result = stringWriter.getBuffer().toString();
 
-		Shout shout = factory.createShout();
-		shout.setThis(parameters.get("shout")[0]);
-		outMsg.setShout(shout);
+		return result;
 
-		if (parameters.get("gateway") != null)
-			outMsg.setRouting(SMSGatewayKind.getByName(parameters.get("gateway")[0]));
-		else
-			// default
-			outMsg.setRouting(SMSGatewayKind.MOVISTAR_PERU);
-
-		outMsg.setTeksRef(teksModel);
-
-		teksModel.setOutboundMessage(0, outMsg);
-
-		return teksModel;
 	}
 
 }

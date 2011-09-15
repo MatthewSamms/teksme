@@ -15,6 +15,7 @@ package org.teksme.server.common.messaging;
 import java.io.IOException;
 import java.util.Dictionary;
 import java.util.HashMap;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
@@ -48,13 +49,14 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
 		try {
 
-			Properties svcProps = new Properties();
-			svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
-			svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
+			Hashtable<String, String> serviceProperties = new Hashtable<String, String>();
+
+			serviceProperties.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
+			serviceProperties.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
 
 			Connection conn = init();
 
-			reg = context.registerService(Connection.class.getName(), conn, svcProps);
+			reg = context.registerService(Connection.class.getName(), conn, serviceProperties);
 
 			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
 
@@ -85,11 +87,11 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 		try {
 			conn = init();
 
-			Properties svcProps = new Properties();
-			svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
-			svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
+			Hashtable<String, String> serviceProperties = new Hashtable<String, String>();
+			serviceProperties.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
+			serviceProperties.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
 
-			reg = context.registerService(Connection.class.getName(), conn, svcProps);
+			reg = context.registerService(Connection.class.getName(), conn, serviceProperties);
 
 			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
 
@@ -132,7 +134,7 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
 		Connection conn = msgBroker.connect();
 
-		//FIXME
+		// FIXME
 		msgBroker.declareQueueing(conn, AMQPQueueType.OUTBOUND_QUEUE);
 
 		return conn;

@@ -16,18 +16,18 @@ public class HttpUtils {
 	public HttpUtils() {
 	}
 
-	public String parsePostData(HttpServletRequest request, ServletInputStream in) throws IOException {
+	public String parsePostData(HttpServletRequest request, ServletInputStream in, String postParam) throws IOException {
 		StringBuffer xmlBuff = new StringBuffer();
-
-		final BufferedReader reader = new BufferedReader(new InputStreamReader(in));
-		String inXMLString = null;
-		while ((inXMLString = reader.readLine()) != null) {
-			xmlBuff.append(inXMLString);
+		String xml = request.getParameter(postParam);
+		if (xml != null) {
+			final BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+			String inXMLString = null;
+			while ((inXMLString = reader.readLine()) != null) {
+				xmlBuff.append(inXMLString);
+			}
+			reader.close();
 		}
-		reader.close();
-
 		return xmlBuff.toString();
-
 	}
 
 	public String ExpandHttpHeaders(List<HttpHeader> httpHeaderList) {
