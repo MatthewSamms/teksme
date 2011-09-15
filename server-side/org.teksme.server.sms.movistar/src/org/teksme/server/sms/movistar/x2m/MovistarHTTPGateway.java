@@ -212,7 +212,10 @@ public class MovistarHTTPGateway extends HTTPGateway {
 				Vector<Hashtable<String, String>> data = new Vector<Hashtable<String, String>>();
 
 				Hashtable<String, String> ht1 = new Hashtable<String, String>();
-				ht1.put("celular", msg.getRecipient());
+				String to = msg.getRecipient();
+				if (to.startsWith("+"))
+					to = msg.getRecipient().replace("+", "");
+				ht1.put("celular", to);
 				ht1.put("texto", msg.getText());
 				ht1.put("fecha", formatDate(GTW_DATE_PATTERN, msg.getDate()));
 				data.add(ht1);
@@ -228,7 +231,7 @@ public class MovistarHTTPGateway extends HTTPGateway {
 				}
 
 				for (Object object : result) {
-					//System.out.println(object.toString());
+					// System.out.println(object.toString());
 					response.add(object.toString());
 				}
 			}
@@ -261,7 +264,7 @@ public class MovistarHTTPGateway extends HTTPGateway {
 				msg.setMessageStatus(MessageStatuses.SENT);
 				incOutboundMessageCount();
 				ok = true;
-			} else{
+			} else {
 				msg.setFailureCause(FailureCauses.UNKNOWN);
 				msg.setRefNo(null);
 				msg.setDispatchDate(null);
