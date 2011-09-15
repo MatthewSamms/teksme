@@ -154,6 +154,9 @@ public class BulkSmsHTTPGateway extends HTTPGateway {
 		List<String> response = new ArrayList<String>();
 		String reqLine;
 		boolean ok = false;
+		
+		System.out.println("Shout --> "+msg.getText());
+
 		request.add(new HttpHeader("username", this.username, false));
 		request.add(new HttpHeader("password", this.password, false));
 		request.add(new HttpHeader("message", msg.getText(), false));
@@ -170,14 +173,14 @@ public class BulkSmsHTTPGateway extends HTTPGateway {
 			request.add(new HttpHeader("source_id", getFrom(), false));
 		reqLine = ExpandHttpHeaders(request);
 
-		System.out.println("Request line: " + reqLine);
+		//System.out.println("Request line: " + reqLine);
 
 		final String strURL = this.providerUrl
 				+ "/eapi/submission/send_sms/2/2.0";
 
 		url = new URL(strURL);
 		synchronized (this.SYNC_Commander) {
-			System.out.println("URL: " + strURL);
+			//System.out.println("URL: " + strURL);
 			// response = HttpGet(url);
 
 			URLConnection conn = url.openConnection();
@@ -193,7 +196,7 @@ public class BulkSmsHTTPGateway extends HTTPGateway {
 			String line;
 			while ((line = rd.readLine()) != null) {
 				// Print the response output...
-				System.out.println(line);
+				//System.out.println(line);
 				response.add(line);
 			}
 			wr.close();
