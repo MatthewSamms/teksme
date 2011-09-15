@@ -15,12 +15,12 @@ package org.teksme.server.remote.service.http;
 
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
-import javax.servlet.ServletInputStream;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -34,8 +34,8 @@ import org.teksme.model.teks.impl.TeksPackageImpl;
 import org.teksme.server.common.persistence.IPersistenceManager;
 import org.teksme.server.common.persistence.IPersistenceManagerFactory;
 import org.teksme.server.common.persistence.PersistenceException;
-import org.teksme.server.common.utils.HttpUtils;
 import org.teksme.server.common.utils.TeksModelHelper;
+import org.teksme.server.common.utils.Utils;
 import org.teksme.server.common.validator.Screening;
 import org.teksme.server.common.validator.Validator;
 import org.teksme.server.identity.service.IAuth;
@@ -61,6 +61,10 @@ public class SendMessage extends HttpServlet {
 
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
+		// request.setCharacterEncoding("ISO-8859-1");
+
+		logger.info("OK, just got a new request via HTTP GET!");
+
 		String[] requiredParams = { "from", "to", "channel", "shout" };
 
 		requestOptions = new HashMap<Object, Object>();
@@ -72,9 +76,18 @@ public class SendMessage extends HttpServlet {
 	}
 
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-		final ServletInputStream in = request.getInputStream();
 
-		String postData = new HttpUtils().parsePostData(request, in);
+		logger.info("OK, just got a new request via HTTP POST!");
+
+		String postData = request.getParameter("data");
+
+		System.out.println("CONTENT-TYPE: " + request.getContentType());
+		System.out.println("ENCODING: " + request.getCharacterEncoding());
+
+		byte bytes[] = request.getParameter("shout").toString().getBytes("ISO-8859-1");
+		String s = new String(bytes, "UTF-8");
+
+		logger.info("Shout: " + s);
 
 		requestOptions = new HashMap<Object, Object>();
 		requestOptions.put(Validator.CONTENT_TYPE, request.getContentType());
@@ -84,13 +97,10 @@ public class SendMessage extends HttpServlet {
 		processRequest(request, response);
 	}
 
-	@SuppressWarnings("unchecked")
 	public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-		final String method = request.getMethod();
-
 		if (authorization.isValidToken(request, response)) {
-			logger.info("User has been authorized!");
+			logger.info("User has been authorized through OAuth!");
 
 			final ServletOutputStream outStream = response.getOutputStream();
 			OutputStreamWriter writer = new OutputStreamWriter(outStream);
@@ -98,40 +108,26 @@ public class SendMessage extends HttpServlet {
 			try {
 
 				Screening diagnostic = requestValidation.validate(request, this.requestOptions);
-				logger.info("OK, just got a new request via HTTP!");
 
 				if (!diagnostic.getChildren().isEmpty()) {
 
 					Response teksResponse = requestValidation.handleResponse(diagnostic);
-					String strResp = requestValidation.getXMLResponse(teksResponse);
-					// set the response code and write the response data
-					response.setStatus(teksResponse.getError().getStatus());
-					writer.write(strResp);
-					writer.flush();
-					writer.close();
-					return;
+					String strErrorResp = TeksModelHelper.INSTANCE.getXMLFromResponseObject(teksResponse);
+					int status = teksResponse.getError().getStatus();
+					setResponseData(response, writer, strErrorResp, status);
 
 				} else {
 
-					TeksPackageImpl.init();
-					// Retrieve the default factory singleton
-					Teks teksModel = null;
-
-					if (method.equalsIgnoreCase("GET")) {
-						teksModel = TeksModelHelper.INSTANCE.createOutMessageFromRequestParameters(request.getParameterMap());
-					} else if (method.equalsIgnoreCase("POST")) {
-						String postData = (String) requestOptions.get(Validator.HTTP_POST_DATA);
-						teksModel = TeksModelHelper.INSTANCE.createTeksModelFromXml(postData);
-					}
-
 					logger.info("The request message was successfully validated!");
+
+					TeksPackageImpl.init();
+					Teks teksModel = TeksModelHelper.INSTANCE.createOutMessageFromRequest(request);
 
 					User user = authorization.getAuthUser(request, response);
 					teksModel.setAccount(user);
 
 					OutboundMessage outMsg = teksModel.getOutboundMessage(0);
 
-					logger.info("Outbound message object: " + outMsg);
 					logger.info("Pls send this message to " + outMsg.getRouting().getLiteral() + " gateway.");
 
 					queueSender.publishMessage(outMsg);
@@ -139,10 +135,12 @@ public class SendMessage extends HttpServlet {
 					IPersistenceManager persistenceMgr = persistenceMgrFactory.getPersistenceManager();
 					persistenceMgr.makePersistent(teksModel);
 
-					response.setStatus(HttpServletResponse.SC_OK);
-					outStream.println("getContentLength: " + request.getContentLength());
-					outStream.println("getContentType: " + request.getContentType());
+					String strResp = TeksModelHelper.INSTANCE.getXMLFromTeksModel(teksModel);
+					setResponseData(response, writer, strResp, HttpServletResponse.SC_OK);
+
 				}
+
+				return;
 
 			} catch (PersistenceException e) {
 				e.printStackTrace();
@@ -158,6 +156,21 @@ public class SendMessage extends HttpServlet {
 			}
 
 		}
+	}
+
+	private void setResponseData(HttpServletResponse response, OutputStreamWriter writer, String strDataResp, int status)
+			throws IOException {
+		// set the response code and write the response data
+		response.setStatus(status);
+		response.setHeader("Date", Utils.getDateRFCFormat(new Date()));
+		response.setHeader("Expires", Utils.getDateRFCFormat(new Date()));
+		response.setContentType("application/xml; charset=UTF-8");
+		response.setHeader("Server", "TeksMe Web API Server");
+		response.setHeader("Cache-Control", "private, max-age=0, must-revalidate, no-transform");
+		response.setContentLength(strDataResp.getBytes().length);
+		writer.write(strDataResp);
+		writer.flush();
+		writer.close();
 	}
 
 	public void setMessageQueueSenderService(final MessageQueueSender queueSender) {
