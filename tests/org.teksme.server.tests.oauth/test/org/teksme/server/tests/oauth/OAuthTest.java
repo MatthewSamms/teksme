@@ -25,6 +25,8 @@ import org.junit.Before;
 public class OAuthTest {
 
 	Properties props;
+	String token;
+	String tokenSecret;
 
 	@Before
 	public void setup() {
@@ -70,7 +72,24 @@ public class OAuthTest {
 				consumerSecret, callbackUrl);
 		accessor.tokenSecret = props.getProperty("tokenSecret");
 		OAuthClient client = new OAuthClient(new HttpClient4());
+
 		return client.invoke(accessor, method, url, params);
+	}
+
+	protected String getToken() {
+		return token;
+	}
+
+	protected void setToken(String token) {
+		this.token = token;
+	}
+
+	protected String getTokenSecret() {
+		return tokenSecret;
+	}
+
+	protected void setTokenSecret(String tokenSecret) {
+		this.tokenSecret = tokenSecret;
 	}
 
 }

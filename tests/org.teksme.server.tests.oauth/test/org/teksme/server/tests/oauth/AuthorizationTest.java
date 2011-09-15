@@ -38,7 +38,7 @@ public class AuthorizationTest extends OAuthTest {
 		OAuthAccessor accessor = createOAuthAccessor(consumerKey,
 				consumerSecret, callbackUrl);
 		OAuthClient client = new OAuthClient(new HttpClient4());
-		client.getRequestToken(accessor);
+		client.getRequestToken(accessor, "POST");
 
 		assertNotNull("Request token cannot be null!", accessor.requestToken);
 		assertNotNull("Token secret cannot be null!", accessor.tokenSecret);
