@@ -18,7 +18,6 @@ import java.util.logging.Logger;
 
 import org.smslib.AGateway;
 import org.smslib.SMSLibException;
-import org.smslib.http.ClickatellHTTPGateway;
 import org.teksme.model.teks.SMSGatewayKind;
 import org.teksme.server.provider.sms.service.SMSConnectionServiceFactory;
 
