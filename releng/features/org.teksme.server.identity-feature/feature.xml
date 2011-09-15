@@ -17,6 +17,15 @@
       %license
    </license>
 
+   <requires>
+      <import plugin="org.teksme.server.common" version="0.5.0" match="greaterOrEqual"/>
+      <import plugin="org.teksme.model" version="0.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.osgi"/>
+      <import plugin="javax.servlet"/>
+      <import plugin="org.apache.commons.codec"/>
+      <import plugin="org.eclipse.osgi.services"/>
+   </requires>
+
    <plugin
          id="org.teksme.server.identity"
          download-size="0"
