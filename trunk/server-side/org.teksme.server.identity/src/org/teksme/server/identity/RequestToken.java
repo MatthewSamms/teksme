@@ -81,6 +81,7 @@ public class RequestToken extends HttpServlet {
 			OAuthConsumer consumer = TeksOAuthProvider.getConsumer(requestMessage);
 
 			OAuthAccessor accessor = new OAuthAccessor(consumer);
+			
 			TeksOAuthProvider.VALIDATOR.validateMessage(requestMessage, accessor);
 			{
 				// Support the 'Variable Accessor Secret' extension
