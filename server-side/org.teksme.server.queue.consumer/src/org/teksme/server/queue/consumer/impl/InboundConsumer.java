@@ -16,10 +16,12 @@ package org.teksme.server.queue.consumer.impl;
 import java.io.IOException;
 
 import org.teksme.model.teks.InboundMessage;
+import org.teksme.model.teks.Message;
+import org.teksme.server.queue.consumer.BaseConsumer;
+import org.teksme.server.queue.consumer.MessageListener;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 
 /**
@@ -27,7 +29,7 @@ import com.rabbitmq.client.Envelope;
  * @since 0.5
  * 
  */
-public class InboundConsumer extends DefaultConsumer {
+public class InboundConsumer extends BaseConsumer {
 
 	// private SMSInboundMessage inbound;
 
@@ -35,6 +37,7 @@ public class InboundConsumer extends DefaultConsumer {
 		super(channel);
 	}
 
+	@SuppressWarnings("unused")
 	@Override
 	public void handleDelivery(String consumerTag, Envelope envelope, BasicProperties properties, byte[] body) throws IOException {
 		long deliveryTag = envelope.getDeliveryTag();
@@ -51,5 +54,11 @@ public class InboundConsumer extends DefaultConsumer {
 		// TODO: implement HTTP callback to client application
 
 		getChannel().basicAck(deliveryTag, false);
+	}
+
+	@Override
+	public void addMessageListener(MessageListener<Message> listener) {
+		// TODO Auto-generated method stub
+		
 	}
 }

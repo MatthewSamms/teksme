@@ -74,7 +74,8 @@ public class SendSSLMail implements Runnable {
 		// Create an "Alternative" Multipart message
 		Multipart mp = new MimeMultipart("alternative");
 
-		BodyPart bp1 = getFileBodyPart(new File("data/survey-uploaded-msg.txt"), "text/plain");
+		BodyPart bp1 = getFileBodyPart(
+				new File("data/survey-uploaded-msg.txt"), "text/plain");
 		mp.addBodyPart(bp1);
 
 		MimeMessage message = new MimeMessage(mailSession);
@@ -85,9 +86,11 @@ public class SendSSLMail implements Runnable {
 		message.addRecipient(Message.RecipientType.TO, new InternetAddress(TO));
 		message.setSubject(subject);
 
-		transport.connect(SMTP_HOST_NAME, SMTP_HOST_PORT, SMTP_AUTH_USER, SMTP_AUTH_PWD);
+		transport.connect(SMTP_HOST_NAME, SMTP_HOST_PORT, SMTP_AUTH_USER,
+				SMTP_AUTH_PWD);
 
-		transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
+		transport.sendMessage(message,
+				message.getRecipients(Message.RecipientType.TO));
 		transport.close();
 	}
 

@@ -1,22 +1,38 @@
 #!/bin/bash
 #
-#          \\\\ ////
-#         \\  - -  //
-#            @ @
+#      \\\\ ////
+#     \\  - -  //
+#         @ @
 # ---oOOo-( )-oOOo---
 #
-# Provider: TeksMe Inc.
+# Provider: Creative Works Inc.
 #
 
 ABOUT=./about.inf
 
-# set path to eclipse folder. If local folder, use '.'; otherwise, use /path/to/eclipse/
-eclipsehome='.';
+# get the absolute path of the executable
+SELF_PATH=$(cd -P -- "$(dirname -- "$0")" && pwd -P) 
 
-# get path to equinox jar inside $eclipsehome folder
-cp=$(find $eclipsehome -name "org.eclipse.equinox.launcher_*.jar" | sort | tail -1);
+# resolve symlinks
+while [ -h $SELF_PATH ]; do
+    # 1) cd to directory of the symlink
+    # 2) cd to the directory of where the symlink points
+    # 3) get the pwd
+    # 4) append the basename
+    DIR=$(dirname -- "$SELF_PATH")
+    SYM=$(readlink $SELF_PATH)
+    SELF_PATH=$(cd $DIR && cd $(dirname -- "$SYM") && pwd)
+done
+
+# set path to eclipse folder. If local folder, use '.'; otherwise, use /path/to/eclipse/
+tekshome='.';
+
+# get path to equinox jar inside $tekshome folder
+cp=$(find $tekshome -name "org.eclipse.equinox.launcher_*.jar" | sort | tail -1);
 
 framework_args=org.eclipse.core.runtime.adaptor.EclipseStarter 
+
+config=$SELF_PATH/configuration
 
 # User define Function (UDF)
 processLine(){
@@ -58,5 +74,5 @@ sw_vers
                                                                 
 echo $*
 
-java -XX:MaxPermSize=256m -Xms128m -Xmx1g -jar $cp $* $framework_args$ -os macosx -ws cocoa -arch x86 -consoleLog -console
+java -XX:MaxPermSize=256m -Xms128m -Xmx1g -Dteksme.configurationDir=$config -jar $cp $* $framework_args$ -os macosx -ws cocoa -arch x86 -consoleLog -console
 

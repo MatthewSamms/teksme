@@ -52,7 +52,7 @@ public class Activator implements BundleActivator {
 		serviceProperties.put(Constants.SERVICE_PID, "rabbitmq.connections");
 
 		// FIXME change to DS
-		context.registerService(ManagedServiceFactory.class.getName(), new AMQPConnectionServiceFactory(context), serviceProperties);
+		context.registerService(ManagedServiceFactory.class, new AMQPConnectionServiceFactory(context), serviceProperties);
 
 	}
 

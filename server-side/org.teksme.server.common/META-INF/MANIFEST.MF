@@ -25,7 +25,7 @@ Require-Bundle: org.teksme.model;bundle-version="0.5.0",
  org.apache.commons.logging;bundle-version="1.1.1",
  org.slf4j.api;bundle-version="1.5.11",
  org.dom4j;bundle-version="1.6.1"
-Bundle-Vendor: TeksMe Inc.
+Bundle-Vendor: CreativeWorks Inc.
 Bundle-ClassPath: .,
  lib/mysql-connector-java-5.1.13-bin.jar
 Service-Component: OSGI-INF/persistence-mgr-factory.xml, OSGI-INF/validation-service.xml

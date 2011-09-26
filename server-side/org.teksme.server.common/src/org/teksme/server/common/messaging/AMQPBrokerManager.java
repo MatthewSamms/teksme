@@ -13,8 +13,12 @@
 package org.teksme.server.common.messaging;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import org.teksme.server.common.utils.TeksConfig.MessageMiddleware;
+import org.teksme.server.common.utils.TeksConfig.MessageMiddleware.Queue;
 
 import com.rabbitmq.client.AMQP;
 import com.rabbitmq.client.Channel;
@@ -23,32 +27,32 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.ShutdownListener;
 import com.rabbitmq.client.ShutdownSignalException;
-import com.rabbitmq.client.impl.ClientVersion;
 
 public final class AMQPBrokerManager implements ShutdownListener {
 
 	private static Logger logger = Logger.getLogger(AMQPBrokerManager.class.getName());
 
-	protected Connection connect() throws IOException {
+	private Connection conn;
+
+	protected Connection connect(MessageMiddleware msgMiddlewareConfig) throws IOException {
 
 		logger.info("Connecting to AMQP broker...");
-		logger.info("RabbitMQ client version: " + ClientVersion.VERSION);
-
-		String host = AMQPBrokerParameters.PROP_HOST;
-		Integer portObj = AMQPBrokerParameters.PROP_PORT;
 
 		ConnectionFactory connFactory = new ConnectionFactory();
-		connFactory.setUsername(AMQPBrokerParameters.PROP_USERNAME);
-		connFactory.setPassword(AMQPBrokerParameters.PROP_PASSWORD);
-		connFactory.setVirtualHost(AMQPBrokerParameters.PROP_VIRTUAL_HOST);
-		connFactory.setHost(host);
+		connFactory.setUsername(msgMiddlewareConfig.getUsername());
+		connFactory.setPassword(msgMiddlewareConfig.getPasswd());
+		connFactory.setVirtualHost(msgMiddlewareConfig.getVirtualHost());
+		connFactory.setHost(msgMiddlewareConfig.getHost());
 		connFactory.setRequestedHeartbeat(0);
-		connFactory.setPort(portObj == null ? AMQP.PROTOCOL.PORT : portObj.intValue());
+		connFactory.setPort(msgMiddlewareConfig.getPort() == null ? AMQP.PROTOCOL.PORT : msgMiddlewareConfig.getPort());
 
 		toString(connFactory);
 
-		Connection conn = connFactory.newConnection();
-
+		try {
+			conn = connFactory.newConnection();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		conn.addShutdownListener(this);
 
 		logger.info("RabbitMQ AMQP broker connected!");
@@ -56,24 +60,37 @@ public final class AMQPBrokerManager implements ShutdownListener {
 		return conn;
 	}
 
-	protected void declareQueueing(Connection conn, AMQPQueueType queueType) throws IOException {
+	protected void declareQueueing(Connection conn, MessageMiddleware config) throws IOException {
 
-		final boolean durable = Boolean.getBoolean(AMQPBrokerParameters.DURABLE);
-		final boolean autoDelete = Boolean.getBoolean(AMQPBrokerParameters.AUTO_DELETE);
-		final boolean exclusive = Boolean.getBoolean(AMQPBrokerParameters.EXCLUSIVE);
-		final String type = AMQPBrokerParameters.TYPE;
+		String routingKey = null;
+		String exchangeName = null;
+		String queueName = null;
+		String type = null;
+		boolean durable = false;
+		boolean autoDelete = false;
+		boolean exclusive = false;
 
-		final String routingKey = queueType.getSmsRoutingKey();
-		final String exchangeName = queueType.getExchange();
-		final String queueName = queueType.getQueue();
+		List<MessageMiddleware.Queue> queues = config.getQueues();
+		for (Queue queue : queues) {
+			queueName = queue.getName();
+			routingKey = queue.getKey();
+			exchangeName = queue.getExchange();
+			type = queue.getType();
+			durable = queue.isDurable();
+			autoDelete = queue.isAutoDelete();
+			exclusive = queue.isExclusive();
 
-		Channel channel = conn.createChannel();
+			logger.info("Declaring exchange [" + exchangeName + "] and queue [" + queueName + "]");
 
-		channel.exchangeDeclare(exchangeName, type, durable);
-		channel.queueDeclare(queueName, durable, exclusive, autoDelete, null);
-		channel.queueBind(queueName, exchangeName, routingKey);
+			Channel channel = conn.createChannel();
 
-		logger.info("Declaring exchange [" + exchangeName + "] and queue [" + queueName + "]");
+			channel.exchangeDeclare(exchangeName, type, durable);
+			channel.queueDeclare(queueName, durable, exclusive, autoDelete, null);
+
+			logger.info("Binding queue [" + queueName + "] and exchange [" + exchangeName + "] to routing key [" + routingKey + "]");
+			channel.queueBind(queueName, exchangeName, routingKey);
+
+		}
 
 	}
 
@@ -86,7 +103,6 @@ public final class AMQPBrokerManager implements ShutdownListener {
 	}
 
 	public void shutdownCompleted(ShutdownSignalException sse) {
-		// TODO Auto-generated method stub
 
 		Connection conn = (Connection) sse.getReference();
 		Command closeCommand = (Command) sse.getReason();

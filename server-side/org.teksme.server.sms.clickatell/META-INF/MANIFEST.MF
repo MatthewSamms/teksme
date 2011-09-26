@@ -4,7 +4,7 @@ Bundle-Name: Clickatell
 Bundle-SymbolicName: org.teksme.server.sms.clickatell
 Bundle-Version: 0.5.0
 Bundle-Vendor: TeksMe Inc.
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: org.smslib,
  org.smslib.http,
  org.teksme.model.teks

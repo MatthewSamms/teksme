@@ -17,13 +17,14 @@ import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Map;
-import java.util.Properties;
 import java.util.logging.Logger;
 
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.cm.ConfigurationException;
 import org.osgi.service.cm.ManagedServiceFactory;
+import org.teksme.server.common.utils.TeksConfig;
+import org.teksme.server.common.utils.XmlConfiguration;
 
 import com.rabbitmq.client.Connection;
 
@@ -34,29 +35,41 @@ import com.rabbitmq.client.Connection;
  */
 public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
+	@SuppressWarnings("rawtypes")
 	private final Map<String, AMQPServiceRegistry<Connection, ServiceRegistration>> map = new HashMap<String, AMQPServiceRegistry<Connection, ServiceRegistration>>();
+	@SuppressWarnings("rawtypes")
+	private AMQPServiceRegistry<Connection, ServiceRegistration> connPair = null;
 
-	AMQPServiceRegistry<Connection, ServiceRegistration> connPair = null;
-	ServiceRegistration reg = null;
+	private ServiceRegistration<Connection> reg = null;
 
 	private final BundleContext context;
 
+	private String host;
+	private String connectionName;
+
 	private static Logger logger = Logger.getLogger(AMQPConnectionServiceFactory.class.getName());
 
-	public void updated(String pid, @SuppressWarnings("rawtypes") Dictionary props) throws ConfigurationException {
+	@SuppressWarnings("rawtypes")
+	public void updated(String pid, Dictionary props) throws ConfigurationException {
 
 		logger.info("AMQPConnectionServiceFactory.updated()");
 
 		try {
 
-			Hashtable<String, String> serviceProperties = new Hashtable<String, String>();
+			XmlConfiguration read = new XmlConfiguration();
 
-			serviceProperties.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
-			serviceProperties.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
+			TeksConfig.MessageMiddleware msgMiddlewareConfig = read.readMessageMiddlewareConfig("teks-server.xml");
+
+			host = msgMiddlewareConfig.getHost();
+			connectionName = msgMiddlewareConfig.getName();
+
+			Hashtable<String, String> serviceProperties = new Hashtable<String, String>();
+			serviceProperties.put(AMQPBrokerParameters.CONNECTION_NAME, this.connectionName);
+			serviceProperties.put(AMQPBrokerParameters.HOST, this.host);
 
 			Connection conn = init();
 
-			reg = context.registerService(Connection.class.getName(), conn, serviceProperties);
+			reg = context.registerService(Connection.class, conn, serviceProperties);
 
 			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
 
@@ -79,6 +92,7 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public AMQPConnectionServiceFactory(BundleContext context) throws AMQPBrokerException {
 
 		this.context = context;
@@ -88,18 +102,21 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 			conn = init();
 
 			Hashtable<String, String> serviceProperties = new Hashtable<String, String>();
-			serviceProperties.put(AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME);
-			serviceProperties.put(AMQPBrokerParameters.CONNECTION_HOST, AMQPBrokerParameters.PROP_HOST);
+			serviceProperties.put(AMQPBrokerParameters.CONNECTION_NAME, this.connectionName);
+			serviceProperties.put(AMQPBrokerParameters.HOST, this.host);
 
-			reg = context.registerService(Connection.class.getName(), conn, serviceProperties);
+			reg = context.registerService(Connection.class, conn, serviceProperties);
 
 			connPair = new AMQPServiceRegistry<Connection, ServiceRegistration>(conn, reg);
 
 		} catch (IOException e) {
-			throw new AMQPBrokerException("Internal RabbitMQ messaging broker error: " + e.getMessage());
+			e.printStackTrace();
+			
+			//throw new AMQPBrokerException("Internal RabbitMQ messaging broker error: " + e.getMessage());
 		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	public void deleted(String pid) {
 		AMQPServiceRegistry<Connection, ServiceRegistration> pair = null;
 		synchronized (map) {
@@ -123,19 +140,18 @@ public class AMQPConnectionServiceFactory implements ManagedServiceFactory {
 
 		logger.info("AMQPConnectionServiceFactory.init()");
 
-		String host = AMQPBrokerParameters.PROP_HOST;
-		String name = AMQPBrokerParameters.PROP_NAME;
+		XmlConfiguration read = new XmlConfiguration();
 
-		Properties svcProps = new Properties();
-		svcProps.put(AMQPBrokerParameters.CONNECTION_NAME, name);
-		svcProps.put(AMQPBrokerParameters.CONNECTION_HOST, host);
+		TeksConfig.MessageMiddleware msgMiddlewareConfig = read.readMessageMiddlewareConfig("teks-server.xml");
+
+		host = msgMiddlewareConfig.getHost();
+		connectionName = msgMiddlewareConfig.getName();
 
 		AMQPBrokerManager msgBroker = new AMQPBrokerManager();
 
-		Connection conn = msgBroker.connect();
+		Connection conn = msgBroker.connect(msgMiddlewareConfig);
 
-		// FIXME
-		msgBroker.declareQueueing(conn, AMQPQueueType.OUTBOUND_QUEUE);
+		msgBroker.declareQueueing(conn, msgMiddlewareConfig);
 
 		return conn;
 	}
