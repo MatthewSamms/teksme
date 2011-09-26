@@ -18,14 +18,12 @@ import java.util.logging.Logger;
 
 import org.teksme.model.teks.Message;
 import org.teksme.model.teks.OutboundMessage;
-import org.teksme.server.common.messaging.AMQPQueueType;
+import org.teksme.server.queue.consumer.BaseConsumer;
 import org.teksme.server.queue.consumer.MessageEventDispatcher;
-import org.teksme.server.queue.consumer.MessageEventSource;
 import org.teksme.server.queue.consumer.MessageListener;
 
 import com.rabbitmq.client.AMQP.BasicProperties;
 import com.rabbitmq.client.Channel;
-import com.rabbitmq.client.DefaultConsumer;
 import com.rabbitmq.client.Envelope;
 import com.rabbitmq.client.ShutdownSignalException;
 
@@ -34,7 +32,7 @@ import com.rabbitmq.client.ShutdownSignalException;
  * @since 0.5
  * 
  */
-public class OutboundMessageConsumer extends DefaultConsumer implements MessageEventSource<Message> {
+public class OutboundMessageConsumer extends BaseConsumer {
 
 	private final MessageEventDispatcher<Message> dispatcher = new MessageEventDispatcher<Message>();
 
@@ -56,14 +54,14 @@ public class OutboundMessageConsumer extends DefaultConsumer implements MessageE
 			logger.info("Oubound message consumer invoked to handle routing key: " + routingKey);
 
 			// TODO implement a better messaging handler
-			if (AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey().equals(routingKey)) {
-				logger.info("Partial matching based on the message key: " + AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey());
+//			if (AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey().equals(routingKey)) {
+//				logger.info("Partial matching based on the message key: " + AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey());
 				OutboundMessage outMsg = (OutboundMessage) new java.io.ObjectInputStream(new java.io.ByteArrayInputStream(body))
 						.readObject();
 				logger.info("Channel(s) : " + outMsg.getChannels());
 				logger.info("Gateway: " + outMsg.getRouting().getLiteral());
 				dispatcher.fire(outMsg);
-			}
+//			}
 
 			getChannel().basicAck(deliveryTag, false);
 
@@ -74,6 +72,7 @@ public class OutboundMessageConsumer extends DefaultConsumer implements MessageE
 
 	}
 
+	@Override
 	public void addMessageListener(MessageListener<Message> listener) {
 		dispatcher.addListener(listener);
 	}

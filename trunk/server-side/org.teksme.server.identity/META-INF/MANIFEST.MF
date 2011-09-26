@@ -1,29 +1,29 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Identity
+Bundle-Name: Identity Management Plugin
 Bundle-SymbolicName: org.teksme.server.identity
 Bundle-Version: 0.5
 Bundle-Activator: org.teksme.server.identity.Activator
 Bundle-ActivationPolicy: lazy
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Import-Package: javax.servlet,
  javax.servlet.http,
  org.apache.commons.codec.binary,
  org.apache.commons.codec.digest,
  org.osgi.framework,
  org.osgi.service.http
-Bundle-Vendor: TeksMe Inc.
+Bundle-Vendor: CreativeWorks Inc.
 Require-Bundle: org.teksme.server.common;bundle-version="0.5.0",
  org.teksme.model;bundle-version="0.5.0",
  org.eclipse.osgi
-Bundle-ClassPath: lib/commons-httpclient-3.1.jar,
+Bundle-ClassPath: .,
+ lib/commons-httpclient-3.1.jar,
  lib/commons-logging-1.1.jar,
  lib/oauth-20100601.jar,
  lib/oauth-consumer-20100601.jar,
  lib/oauth-httpclient3-20100601.jar,
  lib/oauth-httpclient4-20100601.jar,
- lib/oauth-provider-20100601.jar,
- .
+ lib/oauth-provider-20100601.jar
 Export-Package: org.teksme.server.identity.service,
  org.teksme.server.identity.util
 Service-Component: OSGI-INF/web-component.xml, OSGI-INF/identity.xml

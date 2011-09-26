@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<teks-server>
+	<message-middleware>
+		<name>remote</name>
+		<host>184.106.63.240</host>
+		<port>5672</port>
+		<username>teksme</username>
+		<passwd>cloudelicious!</passwd>
+		<virtual-host>/</virtual-host>
+		<queues>
+			<queue>
+				<name>teksme.inboundPrimaryQueue</name>
+				<key>sms.inbound</key>
+				<exchange>teksme.inbound</exchange>
+				<consumer-class>
+					org.teksme.server.queue.consumer.impl.InboundConsumer
+				</consumer-class>
+				<configuration>
+					<durable>true</durable>
+					<autoDelete>false</autoDelete>
+					<exclusive>false</exclusive>
+					<type>direct</type>
+				</configuration>
+			</queue>
+			<queue>
+				<name>teksme.outboundPrimaryQueue</name>
+				<key>sms.outbound</key>
+				<exchange>teksme.outbound</exchange>
+				<consumer-class>
+					org.teksme.server.queue.consumer.impl.OutboundMessageConsumer
+				</consumer-class>
+				<configuration>
+					<durable>true</durable>
+					<autoDelete>false</autoDelete>
+					<exclusive>false</exclusive>
+					<type>direct</type>
+				</configuration>
+			</queue>
+		</queues>
+	</message-middleware>
+</teks-server>

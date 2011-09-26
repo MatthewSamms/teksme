@@ -27,7 +27,7 @@ Bundle-Name: SMSlib Bundle
 Bundle-ManifestVersion: 2
 Bundle-Description: Provides the SMSlib classes as an OSGibundle. Note that this bundle still requires the javax.commpackage to be present in the container. A compatible bundlecan be downloaded from http://www.knopflerfish.org/releases/current/docs/jars/comm-win32/comm-win32_all-2.0.1.html
 Bundle-SymbolicName: org.smslib
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Bundle-ClassPath: comm-win32_all-2.0.1.jar,
  .
 Import-Package: org.apache.log4j

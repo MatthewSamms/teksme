@@ -4,17 +4,17 @@ Bundle-Name: Teksme Email Provider
 Bundle-SymbolicName: org.teksme.server.email
 Bundle-Version: 0.5.0
 Bundle-Activator: org.teksme.server.mail.Activator
-Bundle-Vendor: TeksMe Inc.
-Bundle-RequiredExecutionEnvironment: J2SE-1.5
-Import-Package: javax.activation,
- javax.mail,
+Bundle-Vendor: CreativeWorks Inc.
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Import-Package: javax.activation;version="1.1.0",
+ javax.mail;version="1.4.1",
  org.apache.commons.logging,
  org.apache.log4j,
- org.osgi.framework;version="1.3.0",
+ org.osgi.framework;version="1.6.0",
  org.quartz,
  org.quartz.impl
-Require-Bundle: javax.mail.glassfish,
- org.teksme.model;bundle-version="0.5.0",
+Require-Bundle: org.teksme.model;bundle-version="0.5.0",
  org.teksme.server.common;bundle-version="0.5.0",
- org.teksme.server.queue.sender;bundle-version="0.5.0"
+ org.teksme.server.queue.sender;bundle-version="0.5.0",
+ javax.mail;bundle-version="1.4.0"
 Service-Component: OSGI-INF/mail-to-sms-component.xml

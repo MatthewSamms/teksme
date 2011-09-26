@@ -25,7 +25,6 @@ import org.osgi.framework.ServiceReference;
 import org.teksme.model.teks.InboundMessage;
 import org.teksme.model.teks.OutboundMessage;
 import org.teksme.server.common.messaging.AMQPBrokerParameters;
-import org.teksme.server.common.messaging.AMQPQueueType;
 import org.teksme.server.queue.sender.Activator;
 import org.teksme.server.queue.sender.MessageQueueSender;
 
@@ -69,13 +68,15 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			AMQP.BasicProperties messageProps = new AMQP.BasicProperties(contentType, contentEncoding, null, deliveryMode, priority, null,
 					replyTo, expiration, messageId, timestamp, null, null, null, null);
 
-			logger.info("Publishing message to queue " + AMQPQueueType.OUTBOUND_QUEUE.getQueue() + " with routing key "
-					+ AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey() + "...");
+			final String queueName = "teksme.outboundPrimaryQueue";
+			final String routingKey = "sms.outbound";
+			final String exchange = "teksme.outbound";
 
-			lChannel.basicPublish(AMQPQueueType.OUTBOUND_QUEUE.getExchange(), AMQPQueueType.OUTBOUND_QUEUE.getSmsRoutingKey(),
-					messageProps, data);
+			logger.info("Publishing message to queue [" + queueName + "] with routing key [" + routingKey + "] ...");
 
-			//new Test().run();
+			lChannel.basicPublish(exchange, routingKey, messageProps, data);
+
+			// new Test().run();
 
 		} catch (InvalidSyntaxException e) {
 			// Shouldn't happen
@@ -118,7 +119,14 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 			AMQP.BasicProperties messageProperties = new AMQP.BasicProperties(null, null, null, new Integer(2), null, null, null, null,
 					null, null, null, null, null, null);
 
-			lChannel.basicPublish(AMQPQueueType.INBOUND_QUEUE.getQueue(), AMQPQueueType.INBOUND_QUEUE.getQueue(), messageProperties, data);
+			final String queueName = "teksme.inboundPrimary";
+			final String routingKey = "sms.inbound";
+			final String exchange = "teksme.inbound";
+
+			logger.info("Publishing message to queue [" + queueName + "] with routing key [" + routingKey + "] ...");
+
+			lChannel.basicPublish(exchange, routingKey, messageProperties, data);
+
 			lChannel.close();
 			// lConnection.close();
 		} catch (Exception lIoException) {
@@ -138,13 +146,14 @@ public class AMQPQueueSenderService implements MessageQueueSender {
 		return data;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private Connection getAMQPConnServiceReference() throws InvalidSyntaxException {
 
 		BundleContext bundleContext = Activator.getContext();
 
-		ServiceReference result = null;
+		ServiceReference<Connection> result = null;
 		ServiceReference[] refs = bundleContext.getServiceReferences(Connection.class.getName(),
-				String.format("(%s=%s)", AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.PROP_NAME));
+				String.format("(%s=%s)", AMQPBrokerParameters.CONNECTION_NAME, AMQPBrokerParameters.HOST));
 		if (refs != null && refs.length > 0) {
 			result = refs[0];
 		}

@@ -13,37 +13,25 @@
 
 package org.teksme.server.common.messaging;
 
-import org.teksme.server.common.TeksResourceBundle;
+public class AMQPBrokerParameters {
 
-/**
- * 
- * @since 0.5
- * 
- */
-public interface AMQPBrokerParameters {
-
-	public static final String PROP_NAME = TeksResourceBundle.getString("mq.prop.name").trim();
-
-	public static final String PROP_HOST = TeksResourceBundle.getString("mq.prop.host").trim();
-
-	public static final Integer PROP_PORT = Integer.valueOf(TeksResourceBundle.getString("mq.prop.port").trim());
-
-	public static final String PROP_USERNAME = TeksResourceBundle.getString("mq.prop.username").trim();
-
-	public static final String PROP_PASSWORD = TeksResourceBundle.getString("mq.prop.passwd").trim();
-
-	public static final String PROP_VIRTUAL_HOST = TeksResourceBundle.getString("mq.prop.virtual.host").trim();
-
-	public static final String CONNECTION_NAME = TeksResourceBundle.getString("mq.connection.name").trim();
-
-	public static final String CONNECTION_HOST = TeksResourceBundle.getString("mq.connection.host").trim();
-	
-	public static final String DURABLE = TeksResourceBundle.getString("mq.channel.durable").trim();
-
-	public static final String AUTO_DELETE = TeksResourceBundle.getString("mq.channel.autoDelete").trim();
-	
-	public static final String EXCLUSIVE = TeksResourceBundle.getString("mq.channel.exclusive").trim();
-	
-	public static final String TYPE = TeksResourceBundle.getString("mq.channel.type").trim();
+	public static final String MESSAGE_MIDDLEWARE = "message-middleware";
+	public static final String CONNECTION_NAME = "name";
+	public static final String HOST = "host";
+	public static final String PORT = "port";
+	public static final String USERNAME = "username";
+	public static final String PASSWD = "passwd";
+	public static final String VIRTUAL_HOST = "virtual-host";
+	public static final String QUEUES = "queues";
+	public static final String QUEUE = "queue";
+	public static final String QUEUE_NAME = "name";
+	public static final String QUEUE_KEY = "key";
+	public static final String QUEUE_EXCHANGE = "exchange";
+	public static final String CONFIGURATION = "configuration";
+	public static final String DURABLE = "durable";
+	public static final String AUTO_DELETE = "autoDelete";
+	public static final String EXCLUSIVE = "exclusive";
+	public static final String TYPE = "type";
+	public static final String CONSUMER_CLASS = "consumer-class";
 
 }

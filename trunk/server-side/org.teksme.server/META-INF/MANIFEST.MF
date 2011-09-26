@@ -12,5 +12,5 @@ Require-Bundle: org.eclipse.core.runtime,
  org.teksme.model;bundle-version="0.5.0"
 Export-Package: org.teksme.server;uses:="org.osgi.framework",
  org.teksme.server.jms.queues;uses:="org.teksme.model.teks"
-Bundle-Vendor: TeksMe Inc.
+Bundle-Vendor: CreativeWorks Inc.
 Bundle-ClassPath: .

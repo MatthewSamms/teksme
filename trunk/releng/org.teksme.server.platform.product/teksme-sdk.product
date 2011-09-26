@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?pde version="3.5"?>
 
-<product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" version="0.5.0" useFeatures="true" includeLaunchers="false">
+<product name="TeksMe cloud-based platform SDK" uid="org.teksme.platform.sdk" id="org.teksme.server.platform.product.TeksMeCloud" application="org.eclipse.ant.core.antRunner" version="0.5.0" useFeatures="true" includeLaunchers="true">
 
    <configIni use="default">
       <linux>./configuration.files/configuration/config.ini</linux>
