@@ -1,0 +1,1 @@
+&lt;wiki:gadget url="http://sites.google.com/site/fabianocrave/Waitlist.xml" width="760" height="1300" border="0" /&gt;
